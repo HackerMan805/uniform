@@ -1,0 +1,380 @@
+// PARTIAL : CMS Header
+
+// Import Standard Tools
+@import 'global/feature-tools';
+
+// Header height is fluid, so we need to specify line-heights in several places for different elements
+// in the header. This mixin allows us to avoid repetition of code. Variables are set in _edlio.scss
+@mixin header-line-height {
+	@include override-line-height($header-default-font-size, $header-line-height-multiplier);
+
+	@include min-screen-size(huge) {
+		line-height: $header-line-height-multiplier-huge * get-line-height($header-default-font-size, huge);
+	}
+}
+
+header.main {
+
+	.width-constraint {
+		@extend %flexbox;
+		@include flex(1, 0, auto);
+		@include align-items(center);
+		position: relative;
+	}
+
+	position: fixed;
+	width: 100%;
+	z-index: $z-index-header;
+
+	background: $header-bg-color;
+
+	border-bottom: $header-border-width solid $header-border-color;
+	box-shadow: 0 4px 10px 3px $default-drop-shadow-color;
+
+	color: $header-text-color;
+
+	a {
+		color: $header-text-color;
+		text-decoration: none;
+	}
+
+	.hamburger {
+		// flex-shrink must be 0 to avoid shrinking below content-width in Chrome
+		@include flex(0, 0, auto);
+		@include order(0);
+
+		// this is for IE which doesn't expand to the whole height
+		display: block;
+
+		margin-right: .382em;
+		padding: 0 .382em;
+
+		@include min-screen-size(medium) {
+			padding: 0 .618em;
+		}
+
+		text-decoration: none;
+		color: $header-link-color;
+
+		@include header-line-height;
+
+		cursor: pointer;
+
+		svg.icon {
+			fill: $header-dropdown-color;
+			vertical-align: middle;
+			height: 1.5em;
+			width: 1.5em;
+		}
+
+		&:hover,
+		&:active,
+		&:focus {
+			background: $header-dropdown-color;
+			color: $dropdown-hover-color;
+			svg.icon {
+				fill: $dropdown-hover-color;
+			}
+		}
+	}
+
+	h1.school-name {
+		@include order(1);
+		margin: 0;
+
+		@include font-size(large);
+
+		@include header-line-height;
+
+		@include ellipsis;
+
+		> a {
+			color: $header-link-color;
+			text-decoration: none;
+			@include font-size(large);
+		}
+
+		svg {
+			fill: $white;
+		}
+	}
+
+	nav {
+		@extend %flexbox;
+		// flex-shrink must be 0 to avoid shrinking below content-width in Chrome
+		@include flex(1, 0, auto);
+		@include justify-content(flex-end);
+		@include align-self(baseline);
+		@include order(2);
+
+		@include override-line-height(large, 2, true);
+
+		@include min-screen-size(huge) {
+			line-height: 1.618 * get-line-height(large, huge);
+			height: 1.618 * get-line-height(large, huge);
+		}
+
+		a {
+			padding: 0 1em;
+
+			@include font-size(normal);
+
+			color: $header-link-color;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+
+			@include header-line-height;
+		}
+
+		.dropdown {
+			@include flex(0, 1, auto);
+			@include flex-direction(column);
+
+			margin-bottom: 0;
+
+			position: relative;
+
+			cursor: pointer;
+
+			&:hover {
+				span {
+					color: $dropdown-hover-color;
+				}
+
+				svg.icon {
+					fill: $dropdown-hover-color;
+				}
+			}
+
+			a {
+				margin-left: 0;
+			}
+
+			header {
+				@extend %flexbox;
+				@include align-items(center);
+
+				padding: 0 .618em;
+				cursor: default;
+
+				@include font-size(normal);
+
+				@include override-line-height(large, 2, true);
+
+				@include min-screen-size(huge) {
+					line-height: 1.618 * get-line-height(large, huge);
+					height: 1.618 * get-line-height(large, huge);
+				}
+
+				a {
+					@extend %flexbox;
+					@include align-items(center);
+					padding: 0;
+					cursor: default;
+				}
+
+				span {
+					@include hide;
+					color: $header-link-color;
+
+					@include min-screen-size(medium) {
+						@include show;
+					}
+				}
+
+				svg.icon {
+					height: 1.5em;
+					width: 1.5em;
+
+					fill: $header-link-color;
+
+					@include min-screen-size(medium) {
+						margin-right: .618em;
+					}
+
+					@include header-line-height;
+				}
+
+				.profile-photo {
+					width: 2em;
+					height: 2em;
+					border-radius: 50%;
+					margin: 0 .618em 0 .382em;
+				}
+
+				&:after {
+					content: '\25BC';
+					font-size: .618em;
+					margin-left: .618em;
+
+					@include hide;
+
+					@include min-screen-size(medium) {
+						@include show;
+					}
+				}
+			}
+
+			.menu {
+				// hide dropdown menus by default
+				@include hide;
+				@include flex-direction(column);
+
+				position: absolute;
+				right: 0;
+
+				@include min-screen-size(medium) {
+					left: 0;
+					right: auto;
+				}
+
+				padding: .382em 0 .618em;
+				min-width: 100%;
+				box-shadow: 0px 4px 4px 0px $default-drop-shadow-color;
+				white-space: nowrap;
+
+				a {
+					@include flex(1, 0, auto);
+					@include align-items(center);
+
+					display: block;
+					line-height: 3em;
+					padding: 0 1.382em 0 1em;
+					color: $dropdown-font-color;
+
+					svg.icon {
+						width: 1.5em;
+						height: 1.5em;
+						fill: $dropdown-font-color;
+						margin-right: .618em;
+						border: none;
+						background-color: transparent;
+					}
+
+					&:hover {
+						color: $dropdown-hover-color;
+						text-decoration: none;
+						background: $dropdown-bg-color;
+						box-shadow: inset .382em 0 0 0 $dropdown-hover-color;
+
+						svg.icon {
+							fill: $dropdown-hover-color;
+						}
+					}
+				}
+			}
+
+			&:hover {
+				header {
+					background: $header-dropdown-color;
+					color: $dropdown-hover-color;
+				}
+				.menu {
+					@include show(flex);
+
+					position: absolute;
+					height: auto;
+
+					background: $header-dropdown-color;
+				}
+			}
+
+		}
+
+	}
+
+	.tip {
+		position: absolute;
+		top: 4.5em;
+		left: 3.1em;
+		box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.35);
+		background: $white;
+		z-index: $z-index-front;
+		padding: 1.66667em;
+		max-width: 20em;
+		color: $grey-c08;
+		text-align: center;
+		@include font-size(normal);
+
+		@include max-screen-size(medium) {
+			@include font-size(large);
+			left: 1em;
+			top: 4em;
+		}
+
+		.tail {
+			position: absolute;
+			width: 38px;
+			height: 20px;
+			overflow: hidden;
+			top: -20px;
+			left: 17px;
+		}
+
+		.tail:before {
+			content: "";
+			position: absolute;
+			left: 9px;
+			top: 12px;
+			width: 20px;
+			height: 18px;
+			background: $white;
+
+			@include rotate(45);
+
+			box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.25);
+		}
+
+		.intro {
+
+			@extend %flexbox;
+			@include flex(1, 0, auto);
+			@include align-items(center);
+			@include justify-content(center);
+
+			margin-bottom: 1em;
+
+			svg.spike {
+				height: 2.778em;
+				width: 3.667em;
+				background: $edlio-red;
+				fill: $white;
+				border-radius: $default-border-radius;
+				margin-right: 1em;
+			}
+
+			p {
+				margin: 0;
+				@include font-size(large);
+
+				@include max-screen-size(medium) {
+					@include font-size(larger);
+				}
+			}
+
+		}
+
+		p:last-of-type {
+			margin-bottom: 0;
+		}
+
+		.close.icon {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			height: 1em;
+			width: 1em;
+			fill: $grey-n04;
+			cursor: pointer;
+
+			&:hover {
+				fill: rgb(41, 171, 226);
+			}
+		}
+
+	}
+
+}

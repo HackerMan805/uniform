@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+		<title>Edlio - Uniform Kitchen Sink</title>
+
+		<link rel="stylesheet" href="css/ui.css">
+		<link rel="stylesheet" href="css/features/kitchen-sink.css">
+	</head>
+
+	<body class="edlio cms unset-all">
+		<header class="main" role="banner">
+			<div class="width-constraint">
+				<h1 class="school-name">
+					<a href="javascript:;">Edlio CMS GUI Elements</a>
+				</h1>
+
+				<nav>
+					<a href="javascript:;">Basic Link</a>
+					<section class="dropdown">
+						<header>
+							<a href="javascript:;">
+								<svg viewbox="0 0 2048 2048" class="icon">
+									<use xlink:href="#question-circle"></use>
+								</svg>
+								<span>Dropdown Menu</span>
+							</a>
+						</header>
+						<nav class="menu">
+							<a href="javascript:;">
+								<svg viewbox="0 0 2048 2048" class="icon">
+									<use xlink:href="#info-circle"></use>
+								</svg>
+								Menu Item 1
+							</a>
+							<a href="javascript:;">
+								<svg viewbox="0 0 2048 2048" class="icon">
+									<use xlink:href="#spike"></use>
+								</svg>
+								Menu Item 2
+							</a>
+						</nav>
+					</section>
+				</nav>
+			</div>
+		</header>
+
+		<nav class="main">
+			<edlio-drawer id="main-menu">
+				<a href="">
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#bullhorn"></use>
+					</svg>
+					<span>Announcement</span>
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#angle-right"></use>
+					</svg>
+				</a>
+				<a href="">
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#calendar-o"></use>
+					</svg>
+					<span>Plan</span>
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#angle-right"></use>
+					</svg>
+				</a>
+				<a href="">
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#files-o"></use>
+					</svg>
+					<span>Pages &amp; Departments</span>
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#angle-right"></use>
+					</svg>
+				</a>
+				<a href="">
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#play-circle"></use>
+					</svg>
+					<span>Media</span>
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#angle-right"></use>
+					</svg>
+				</a>
+				<a href="">
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#heart"></use>
+					</svg>
+					<span>Community</span>
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#angle-right"></use>
+					</svg>
+				</a>
+				<a href="">
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#cog"></use>
+					</svg>
+					<span>Site Management</span>
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#angle-right"></use>
+					</svg>
+				</a>
+				<a href="">
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#ellipsis-h"></use>
+					</svg>
+					<span>More</span>
+					<svg viewbox="0 0 2048 2048" class="icon">
+						<use xlink:href="#angle-right"></use>
+					</svg>
+				</a>
+			</edlio-drawer>
+		</nav>
+
+		<!-- Feature content -->
+		<main id="blazer" class="kitchen-sink">
+
+			<div class="content">
+
+				<section class="disclaimer">
+					<edlio-notification class="alert">
+						<svg viewbox="0 0 2048 2048" class="icon">
+							<use xlink:href="#exclamation-triangle"></use>
+						</svg>
+						<section class="message">
+							<h1>Important Note to Designers and Developers</h1>
+							<p>
+								The CMS Kitchen Sink is a showroom for all CURRENTLY IMPLEMENTED
+								features in the CMS. The Kitchen sink is NOT meant to be an
+								accurate reflection of all component specs as they appear in
+								<a href="https://edlioinc.atlassian.net/wiki/display/UX/UX" target="_blank">Confluence</a>,
+								but rather an up-to-date representation of components which are
+								already being used in production.
+							</p>
+							<p>
+								Developers should continuously add to the Kitchen Sink as they develop
+								new components or make modifcations to existing ones. The appearance
+								and behavior of components should reasonably reflect the specs defined
+								in Confluence, with some notable differences: The UX/Design team uses
+								pixel values in their designs to maintain consistency. Since Blazer
+								uses rems as the base unit, it will not be possible to guarantee
+								pixel-perfect accuracy, however the UX team specs are built on top
+								of the
+								<a href="https://edlioinc.atlassian.net/wiki/display/UX/Typography" target="_blank">core typography definitions</a>
+								which also form the basis for Blazer's layout engine. This will
+								provide for a close match to the Confluence specs while maintaining
+								consistent and automatic responsive behavior in all browsers.
+							</p>
+						</section>
+					</edlio-notification>
+				</section>
+
+				<!-- <section class="search bar">
+					<form>
+						<div class="icon input">
+							<input type="text" name="search" placeholder="Search">
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#search"></use>
+							</svg>
+						</div>
+					</form>
+				</section> -->
+
+				<section id="typography" class="typography">
+					<header>
+						<h1>Typography</h1>
+
+						<ol class="breadcrumb">
+
+							<li><a href="#typography">Typography</a></li>
+							<li class="active"><a href="">Font Stack</a></li>
+						</ol>
+					</header>
+
+					<div class="example columns">
+						<section class="avenir">
+							<h1>Avenir</h1>
+							<p>
+								Designed by Adrian Frutiger in 1988, Avenir&trade; is a
+								linear sans in the tradition of Erbar and Futura. Unlike Futura,
+								Avenir is not purely geometric; It has vertical strokes that are
+								thicker than the horizontals, an "o" that is not a perfect circle,
+								and shortened ascenders. These nuances aid in legibility and give
+								Avenir a harmonious and sensible appearance for both texts and
+								headlines.
+							</p>
+							<p>
+								Avenir&trade; is available on most Macs and some Windows machines.
+							</p>
+						</section>
+						<section class="helvetica">
+							<h1>Helvetica</h1>
+							<p>
+								Helvetica is one of the most popular typefaces of the 20th Century.
+								It is included in some form on almost all Macs and many Windows
+								machines.
+							</p>
+						</section>
+						<section class="arial">
+							<h1>Arial</h1>
+							<p>
+								Arial is a sans-serif font included on all Windows machines. It is
+								nearly ubiquitous, making it a good choice as a fallback font.
+							</p>
+						</section>
+					</div>
+
+					<section class="sans-serif example">
+						<h1>Sans-serif</h1>
+						<p>
+							In the unlikely event that none of the above fonts are available
+							on a user's machine, Blazer will roll back to the default OS
+							sans-serif typeface.
+						</p>
+					</section>
+
+				</section>
+
+				<section id="buttons" class="buttons">
+					<header>
+						<h1>Buttons</h1>
+
+						<ol class="breadcrumb">
+							<li><a href="#buttons">Buttons</a></li>
+							<li class="active"><a href="">Primary Action Buttons</a></li>
+						</ol>
+					</header>
+
+					<section class="primary example">
+						<a class="button">
+							Primary Action Button
+						</a>
+						<a class="bare button">
+							Bare Primary Action Button
+						</a>
+						<a class="labeled icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#user"></use>
+							</svg>
+							With Icon
+						</a>
+						<a class="icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#bars"></use>
+							</svg>
+						</a>
+						<a class="circular icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#heart"></use>
+							</svg>
+						</a>
+
+						<a class="bare icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#bars"></use>
+							</svg>
+						</a>
+						<a class="bare circular icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#heart"></use>
+							</svg>
+						</a>
+
+						<br>
+
+						<a class="disabled button">
+							Disabled Button
+						</a>
+						<a class="disabled labeled icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#user"></use>
+							</svg>
+							Disabled
+						</a>
+						<a class="disabled icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#bars"></use>
+							</svg>
+						</a>
+						<a class="disabled circular icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#heart"></use>
+							</svg>
+						</a>
+
+						<button class="button">
+							Button tag
+						</button>
+					</section>
+
+					<ol class="breadcrumb">
+						<li><a href="#buttons">Buttons</a></li>
+						<li class="active"><a href="">Secondary Action Buttons</a></li>
+					</ol>
+
+					<section class="secondary example">
+						<a class="secondary button">
+							Secondary Action Button
+						</a>
+						<a class="bare secondary button">
+							Bare Secondary Action Button
+						</a>
+						<a class="secondary labeled icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#user"></use>
+							</svg>
+							With Icon
+						</a>
+						<a class="secondary icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#bars"></use>
+							</svg>
+						</a>
+						<a class="secondary circular icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#heart"></use>
+							</svg>
+						</a>
+						<a class="bare secondary icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#bars"></use>
+							</svg>
+						</a>
+						<a class="bare secondary circular icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#heart"></use>
+							</svg>
+						</a>
+
+						<br>
+
+						<a class="disabled secondary button">
+							Disabled Button
+						</a>
+						<a class="disabled secondary labeled icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#user"></use>
+							</svg>
+							Disabled
+						</a>
+						<a class="disabled secondary icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#bars"></use>
+							</svg>
+						</a>
+						<a class="disabled secondary circular icon button">
+							<svg viewbox="0 0 2048 2048">
+								<use xlink:href="#heart"></use>
+							</svg>
+						</a>
+						<button class="secondary button">
+							Button tag
+						</button>
+					</section>
+
+					<ol class="breadcrumb">
+						<li><a href="#buttons">Buttons</a></li>
+						<li class="active"><a href="">Button Groups</a></li>
+					</ol>
+
+					<section class="groups secondary example">
+						<div class="button-bar">
+							<a class="button" href="javascript:;">Button 1</a>
+							<a class="button" href="javascript:;">Button 2</a>
+							<a class="button" href="javascript:;">Button 3</a>
+							<a class="button" href="javascript:;">Button 4</a>
+							<a class="button" href="javascript:;">Button 5</a>
+						</div>
+
+						<div class="button-bar">
+							<a class="secondary button" href="javascript:;">Button 1</a>
+							<a class="secondary button" href="javascript:;">Button 2</a>
+							<a class="secondary button" href="javascript:;">Button 3</a>
+							<a class="secondary button" href="javascript:;">Button 4</a>
+							<a class="secondary button" href="javascript:;">Button 5</a>
+						</div>
+					</section>
+				</section>
+
+				<section id="tabs" class="tabs">
+					<header>
+						<h1>Tabs</h1>
+					</header>
+
+					<div class="example">
+						<aside class="tab bar">
+						  <a href="">Inactive Tab</a>
+							<a class="selected" href="">Active Tab</a>
+						</aside>
+					</div>
+				</section>
+
+				<section id="notifications" class="notifications">
+					<header>
+						<h1>Notifications</h1>
+
+						<ol class="breadcrumb">
+
+							<li><a href="#notifications">Notifications</a></li>
+							<li class="active"><a href="">Confirmation</a></li>
+						</ol>
+					</header>
+
+					<div class="example">
+						<edlio-notification class="confirmation">
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#check"></use>
+							</svg>
+							<section class="message">
+								<h1>This is a Confirmation notification</h1>
+								<p>
+									Optional notification description. Ideally kept short and concise.
+								</p>
+							</section>
+							<a class="close">
+								<svg viewbox="0 0 2048 2048" class="icon">
+									<use xlink:href="#times"></use>
+								</svg>
+							</a>
+						</edlio-notification>
+					</div>
+
+					<ol class="breadcrumb">
+
+						<li><a href="#notifications">Notifications</a></li>
+						<li class="active"><a href="">Alert</a></li>
+					</ol>
+
+					<div class="example">
+						<edlio-notification class="alert">
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#exclamation-triangle"></use>
+							</svg>
+							<section class="message">
+								<h1>Here's a lovely Alert notification</h1>
+							</section>
+							<a class="close">
+								<svg viewbox="0 0 2048 2048" class="icon">
+									<use xlink:href="#times"></use>
+								</svg>
+							</a>
+						</edlio-notification>
+					</div>
+				</section>
+
+				<section id="select_menus" class="select-menus">
+					<header>
+						<h1>Select Menus</h1>
+					</header>
+
+					<div class="example">
+						<edlio-select>
+							<select-title>
+								Simple Select
+								<svg viewbox="0 0 2048 2048" class="caret icon">
+									<use xlink:href="#caret-down"></use>
+								</svg>
+							</select-title>
+
+							<menu>
+								<item>This item has a long label</item>
+								<item>Short label</item>
+								<item>Medium-length label</item>
+							</menu>
+						</edlio-select>
+
+						<edlio-select class="bare">
+							<select-title>
+								<svg viewbox="0 0 2048 2048" class="icon">
+									<use xlink:href="#cog">
+									</use>
+								</svg>
+							</select-title>
+
+							<menu>
+								<item>This item has a long label</item>
+								<item>Short label</item>
+								<item>Third Item</item>
+								<!-- <item>
+									Item with flyout
+									<menu>
+										<item>flyout item</item>
+										<item>flyout item</item>
+										<item>flyout item</item>
+									</menu>
+								</item> -->
+							</menu>
+						</edlio-select>
+					</div>
+
+				</section>
+
+				<section id="toggle_selectors" class="toggle-selectors">
+					<header>
+						<h1>Toggle Selectors</h1>
+					</header>
+
+					<div class="toggle-selector example-1">
+						<div class="on option">
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#eye"></use>
+							</svg>
+							<input type="radio" id="toggle_selector_on" name="toggle_selector" value="on" checked>
+							<label for="toggle_selector_on">On</label>
+						</div>
+						<div class="off option">
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#eye-slash"></use>
+							</svg>
+							<input type="radio" id="toggle_selector_off" name="toggle_selector" value="off">
+							<label for="toggle_selector_off">Off</label>
+						</div>
+					</div>
+
+					<div class="toggle-selector example-2">
+						<div class="option 1">
+							<input type="radio" id="toggle_selector_2_option_1" name="toggle_selector_1" value="option-1" checked>
+							<label for="toggle_selector_option_1">Option 1</label>
+						</div>
+						<div class="option 2">
+							<input type="radio" id="toggle_selector_2_option_2" name="toggle_selector_1" value="option-2">
+							<label for="toggle_selector_option_2">Option 2</label>
+						</div>
+						<div class="option 3">
+							<input type="radio" id="toggle_selector_2_option_3" name="toggle_selector_1" value="option-3" checked>
+							<label for="toggle_selector_option_3">Option 3</label>
+						</div>
+					</div>
+
+					<script type="text/javascript">
+						(function () {
+							var toggleSelector1 = new ToggleSelector({
+								node: document.querySelector('.toggle-selector.example-1'),
+								selectedOption: 'on'
+							});
+
+							var toggleSelector2 = new ToggleSelector({
+								node: document.querySelector('.toggle-selector.example-2'),
+								selectedOption: 'option-2'
+							});
+
+							function ToggleSelector (data) {
+								var self = this;
+
+								self.node = data.node;
+								self.options = [];
+								self.selectedOption = data.selectedOption;
+
+								var options = data.node.querySelectorAll('.option')
+
+								for (var i = 0; i < options.length; i++) {
+									var value = options[i].querySelector('input').value;
+
+									self.options.push(new Option({
+										node: options[i],
+										value: value,
+										selected: value === self.selectedOption,
+										clickCallback: selectOption
+									}));
+								}
+
+								function selectOption (option, input, value) {
+									self.options.forEach(function (option) {
+										option.node.classList.remove('selected');
+									});
+
+									option.classList.add('selected');
+									input.checked = true;
+									self.selectedOption = value;
+								}
+							}
+
+							function Option (data) {
+								var self = this;
+
+								self.node = data.node;
+								self.input = self.node.querySelector('input[type="radio"]');
+								self.selected = data.selected;
+								self.value = data.value;
+
+								if (self.selected) {
+									self.node.classList.add('selected');
+									self.input.checked = true;
+								}
+
+								self.node.addEventListener('click', function (evt) {
+									data.clickCallback(self.node, self.input, self.value);
+								})
+							}
+						})();
+					</script>
+				</section>
+
+				<section id="icons" class="icons">
+					<header>
+						<h1>Icons</h1>
+
+						<ol class="breadcrumb">
+
+							<li><a href="#icons">Icons</a></li>
+							<li class="active"><a href="">Font Awesome</a></li>
+						</ol>
+					</header>
+
+					<ul class="example">
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#bars"></use>
+							</svg>
+							Hamburger Menu
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#question-circle"></use>
+							</svg>
+							Help Menu
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#user"></use>
+							</svg>
+							User/ Account Menu
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#caret-down"></use>
+							</svg>
+							Select / Dropdown Menu
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#line-chart"></use>
+							</svg>
+							Web Status
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#bullhorn"></use>
+							</svg>
+							Announce
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#calendar-o"></use>
+							</svg>
+							Plan
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#files-o"></use>
+							</svg>
+							Departments & Pages
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#play-circle"></use>
+							</svg>
+							Media
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#heart"></use>
+							</svg>
+							Community
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#cog"></use>
+							</svg>
+							Site Management
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#ellipsis-h"></use>
+							</svg>
+							More
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#calendar"></use>
+							</svg>
+							Calendars
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#cutlery"></use>
+							</svg>
+							Food Menu
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#clock-o"></use>
+							</svg>
+							Bell Schedules
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#university"></use>
+							</svg>
+							Facilities
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#picture-o"></use>
+							</svg>
+							Photos / Images
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#film"></use>
+							</svg>
+							Videos / Film
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#users"></use>
+							</svg>
+							Users & Staff
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#shopping-cart"></use>
+							</svg>
+							Store
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#gift"></use>
+							</svg>
+							Donations
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#heart-o"></use>
+							</svg>
+							Sponsors
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#graduation-cap"></use>
+							</svg>
+							Alumni
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#camera"></use>
+							</svg>
+							Take a picture
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#video-camera"></use>
+							</svg>
+							Record a video
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#play"></use>
+							</svg>
+							Play a video
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#share"></use>
+							</svg>
+							Share
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#pencil"></use>
+							</svg>
+							Edit
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#trash-o"></use>
+							</svg>
+							Delete
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#link"></use>
+							</svg>
+							Attach
+						</li>
+						<li>
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#undo"></use>
+							</svg>
+							Undo
+						</li>
+					</ul>
+				</section>
+
+				<!-- <section class="flex-layouts">
+					<h1>Flex Layouts</h1>
+
+					<p>
+						The Flex Grid is infinitely nestable. For basic grid functionality, just add <code>@extend %layout</code> to a container and add elements inside. The grid will default to creating columns out of each item added inside the grid container.
+					</p>
+
+					<p>
+						To create a left sidebar, simply add class <code>.sidebar</code> to whichever cell you'd like to function as a sidebar. For a right-aligned sidebar, use class <code>.right.sidebar</code>.
+					</p>
+
+					<section class="example-1">
+						<aside class="sidebar">
+							Left Sidebar
+						</aside>
+
+						<section class="workspace">
+							<div class="cell">
+								Cell
+							</div>
+							<div class="cell">
+								Cell
+							</div>
+						</section>
+					</section>
+
+					<section class="example-2">
+						<section class="workspace">
+							<div class="cell">
+								Cell
+							</div>
+							<div class="cell">
+								Cell
+							</div>
+							<div class="cell">
+								Cell
+							</div>
+							<div class="cell">
+								Cell
+							</div>
+						</section>
+
+						<aside class="right sidebar">
+							Right Sidebar
+						</aside>
+					</section>
+
+					<section class="example-3">
+						<aside class="sidebar">
+							Left Sidebar
+						</aside>
+
+						<section class="workspace">
+							<div class="cell">
+								Cell
+							</div>
+							<div class="cell">
+								Cell
+							</div>
+							<div class="cell">
+								Cell
+							</div>
+						</section>
+
+						<aside class="right sidebar">
+							Right Sidebar
+						</aside>
+					</section>
+
+					<section class="example-4">
+						<aside class="sidebar">
+							<div class="row">
+								<div class="cell">
+									Cell
+								</div>
+								<div class="cell">
+									Cell
+								</div>
+							</div>
+							<div class="row">
+								<div class="cell">
+									Cell
+								</div>
+								<div class="cell">
+									Cell
+								</div>
+							</div>
+						</aside>
+
+						<section class="workspace">
+							<div class="row">
+								<div class="cell">
+									Cell
+								</div>
+								<div class="cell">
+									Cell
+								</div>
+								<div class="cell">
+									Cell
+								</div>
+							</div>
+							<div class="row">
+								<div class="cell">
+									Cell
+								</div>
+								<div class="cell">
+									Cell
+								</div>
+								<div class="cell">
+									Cell
+								</div>
+								<div class="cell">
+									Cell
+								</div>
+							</div>
+							<div class="row">
+								<div class="cell">
+									Cell
+								</div>
+								<div class="cell">
+									Cell
+								</div>
+							</div>
+						</section>
+
+						<aside class="right sidebar">
+							Right Sidebar
+						</aside>
+					</section>
+
+				</section> -->
+
+				<section id="tooltips" class="tooltips">
+					<header>
+						<h1>Tooltips</h1>
+					</header>
+
+					<div class="example">
+						<a class="labeled icon button" data-tooltip="Top Tooltip has a long message in it" data-tooltip-position="top" data-tooltip-alignment="left">
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#question-circle"></use>
+							</svg>
+							Top Tooltip Button
+						</a>
+
+						<a class="labeled icon button" data-tooltip="Bottom Tooltip is shorter" data-tooltip-position="bottom" data-tooltip-alignment="center">
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#question-circle"></use>
+							</svg>
+							Bottom Tooltip Button
+						</a>
+
+						<a class="circular icon button" data-tooltip="Small Tooltip is expanded" data-tooltip-position="bottom" data-tooltip-alignment="right">
+							<svg viewbox="0 0 2048 2048" class="icon">
+								<use xlink:href="#question-circle"></use>
+							</svg>
+						</a>
+					</div>
+
+				</section>
+
+				<section id="modals" class="modals">
+					<header>
+						<h1>Modals</h1>
+					</header>
+
+					<div class="example">
+						<a class="button" id="simple-modal-opener">
+							Open Modal Window
+						</a>
+						<a class="button" id="multipage-modal-opener">
+							Open Multi-Page Modal
+						</a>
+					</div>
+
+					<edlio-modal id="simple-modal">
+						<page>
+							<header>
+								<h1>Modal Title</h1>
+								<svg viewbox="0 0 2048 2048" class="close icon">
+									<use xlink:href="#times"></use>
+								</svg>
+							</header>
+
+							<div class="content">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+								</p>
+							</div>
+
+							<footer>
+								<a class="secondary button">Secondary Button</a>
+								<a class="finish button">Primary Action</a>
+							</footer>
+						</page>
+					</edlio-modal>
+
+					<script>
+						(function() {
+							document.getElementById('simple-modal-opener')
+								.addEventListener('click', function() {
+									document.getElementById('simple-modal')
+										.show(document.getElementById('simple-modal-opener'));
+								});
+
+							document.getElementById('simple-modal')
+								.querySelector('footer > .secondary.button')
+								.addEventListener('click', function() {
+									document.getElementById('simple-modal')
+										.hide();
+								});
+
+							document.getElementById('simple-modal')
+								.querySelector('header > .close')
+								.addEventListener('click', function() {
+									document.getElementById('simple-modal')
+										.hide();
+								});
+
+						})();
+					</script>
+
+					<edlio-modal id="multipage-modal" class="full">
+						<page>
+							<header>
+								<h1>Modal Page 1</h1>
+								<svg viewbox="0 0 2048 2048" class="close icon">
+									<use xlink:href="#times"></use>
+								</svg>
+							</header>
+							<div class="content">
+								<p>
+									This modal has a lot of text in it to show that it will be scrollable if there is too much content to display.
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+								</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+								</p>
+							</div>
+							<footer>
+								<a href="javascript:;" class="next-page button">Next</a>
+							</footer>
+						</page>
+						<page>
+							<header>
+								<h1>Modal Page 2</h1>
+								<svg viewbox="0 0 2048 2048" class="back icon">
+									<use xlink:href="#chevron-left"></use>
+								</svg>
+								<svg viewbox="0 0 2048 2048" class="close icon">
+									<use xlink:href="#times"></use>
+								</svg>
+							</header>
+							<div class="content">
+								<p>
+									The modal component is entirely functional- Styling should be
+									added on a project basis. This component simply displays a
+									a modal window on click. It includes code to open and close
+									the modal window, with basic overridable styling.
+								</p>
+							</div>
+							<footer>
+								<a href="javascript:;" class="secondary button">Secondary Action</a>
+								<a href="javascript:;" class="finish button">Primary Action</a>
+							</footer>
+						</page>
+					</edlio-modal>
+
+					<script>
+						(function() {
+							document.getElementById('multipage-modal-opener')
+								.addEventListener('click', function() {
+									document.getElementById('multipage-modal')
+										.show(document.getElementById('multipage-modal-opener'));
+								});
+
+							document.getElementById('multipage-modal')
+								.querySelector('footer > .secondary.button')
+								.addEventListener('click', function() {
+									document.getElementById('multipage-modal')
+										.hide();
+								});
+
+							document.getElementById('multipage-modal')
+								.querySelector('footer > .next-page.button')
+								.addEventListener('click', function() {
+									document.getElementById('multipage-modal')
+										.nextPage();
+								});
+
+							var closeButton = document.getElementById('multipage-modal')
+								.querySelectorAll('header > .close.icon');
+
+							for (var i = 0; i < closeButton.length; i++) {
+								closeButton[i].addEventListener('click', function() {
+									document.getElementById('multipage-modal')
+										.hide();
+								});
+							}
+
+							document.getElementById('multipage-modal')
+								.querySelector('header > .back.icon')
+								.addEventListener('click', function() {
+									document.getElementById('multipage-modal')
+										.previousPage();
+								})
+						})();
+					</script>
+
+				</section>
+
+				<!-- Build separate system that allows any element to be a drawer -->
+				<!-- Should provide horizontal and vertical drawers that come in from all sides -->
+				<!-- <section class="drawers">
+					<h1>Drawer Menu</h1>
+
+					<a class="button" id="drawer-opener">
+						Open Drawer Menu
+					</a>
+
+					<script>
+						(function() {
+							document.getElementById('drawer-opener')
+								.addEventListener('click', function() {
+									document.getElementById('main-menu')
+										.open();
+								});
+						})();
+					</script>
+				</section> -->
+
+				<section class="accordions">
+					<header>
+						<h1>Accordions</h1>
+
+						<ol class="breadcrumb">
+
+							<li><a href="#accordions">Accordions</a></li>
+							<li class="active"><a href="">Standard</a></li>
+						</ol>
+					</header>
+
+					<section class="example description">
+						<p>
+							The accordion component is mainly functional; Styling should be added
+							on a case-by-case basis as the component could be used in many
+							different contexts.
+						</p>
+
+						<p>
+							The styling and animations seen here are simply for display purposes in the Kitchen Sink.
+						</p>
+					</section>
+
+					<div class="example">
+						<edlio-accordion>
+							<section>
+								<header>
+									Accordion Header
+									<svg viewbox="0 0 2048 2048" class="icon">
+										<use xlink:href="#caret-down">
+										</use>
+									</svg>
+								</header>
+								<div class="content">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio sapiente dicta maxime? Consequuntur eum fugit nesciunt incidunt sed, laboriosam necessitatibus reiciendis animi quasi explicabo at ad excepturi recusandae libero dignissimos.
+								</div>
+							</section>
+							<section>
+								<header>
+									Accordion Header
+									<svg viewbox="0 0 2048 2048" class="icon">
+										<use xlink:href="#caret-down">
+										</use>
+									</svg>
+								</header>
+								<div class="content">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio sapiente dicta maxime? Consequuntur eum fugit nesciunt incidunt sed, laboriosam necessitatibus reiciendis animi quasi explicabo at ad excepturi recusandae libero dignissimos.
+								</div>
+							</section>
+							<section>
+								<header>
+									Accordion Header
+									<svg viewbox="0 0 2048 2048" class="icon">
+										<use xlink:href="#caret-down">
+										</use>
+									</svg>
+								</header>
+								<div class="content">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio sapiente dicta maxime? Consequuntur eum fugit nesciunt incidunt sed, laboriosam necessitatibus reiciendis animi quasi explicabo at ad excepturi recusandae libero dignissimos.
+								</div>
+							</section>
+						</edlio-accordion>
+					</div>
+
+					<ol class="breadcrumb">
+
+						<li><a href="#accordions">Accordions</a></li>
+						<li class="active"><a href="">Collapsing</a></li>
+					</ol>
+
+					<div class="example">
+						<edlio-accordion collapse-others="true">
+							<section>
+								<header>
+									Accordion Header
+									<svg viewbox="0 0 2048 2048" class="icon">
+										<use xlink:href="#caret-down">
+										</use>
+									</svg>
+								</header>
+								<div class="content">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio sapiente dicta maxime? Consequuntur eum fugit nesciunt incidunt sed, laboriosam necessitatibus reiciendis animi quasi explicabo at ad excepturi recusandae libero dignissimos.
+								</div>
+							</section>
+							<section>
+								<header>
+									Accordion Header
+									<svg viewbox="0 0 2048 2048" class="icon">
+										<use xlink:href="#caret-down">
+										</use>
+									</svg>
+								</header>
+								<div class="content">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio sapiente dicta maxime? Consequuntur eum fugit nesciunt incidunt sed, laboriosam necessitatibus reiciendis animi quasi explicabo at ad excepturi recusandae libero dignissimos.
+								</div>
+							</section>
+							<section>
+								<header>
+									Accordion Header
+									<svg viewbox="0 0 2048 2048" class="icon">
+										<use xlink:href="#caret-down">
+										</use>
+									</svg>
+								</header>
+								<div class="content">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio sapiente dicta maxime? Consequuntur eum fugit nesciunt incidunt sed, laboriosam necessitatibus reiciendis animi quasi explicabo at ad excepturi recusandae libero dignissimos.
+								</div>
+							</section>
+						</edlio-accordion>
+					</div>
+				</section>
+
+				<section id="forms" class="forms">
+					<header>
+						<h1>Forms</h1>
+					</header>
+
+					<form class="example">
+						<fieldset>
+							<legend>Fieldset Legend</legend>
+
+							<ol class="breadcrumb">
+								<li><a href="#forms">Forms</a></li>
+								<li class="active"><a href="">Text Inputs</a></li>
+							</ol>
+
+							<label for="text_field">Text Field</label>
+							<input id="text_field" type="text" placeholder="Text Field">
+
+							<label for="password_field">Password Field</label>
+							<input id="password_field" type="password">
+
+							<label for="number_field">Number Field</label>
+							<input id="number_field" type="number" placeholder="Number Field">
+
+							<label for="url_field">URL Field</label>
+							<input id="url_field" type="url" placeholder="URL Field">
+
+							<label for="date_field">Date Field</label>
+							<input id="date_field" type="date" placeholder="Date Field">
+
+							<label for="time_field">Time Field</label>
+							<input id="time_field" type="time" placeholder="Time Field">
+
+							<label for="text_field">Textarea</label>
+							<textarea id="textarea" placeholder="Textarea"></textarea>
+
+							<label for="icon_input">Icon Input</label>
+							<div class="icon input">
+								<svg viewbox="0 0 2048 2048" class="icon">
+									<use xlink:href="#search"></use>
+								</svg>
+								<input id="icon_input" type="text" placeholder="Icon Input">
+							</div>
+
+							<ol class="breadcrumb">
+								<li><a href="#forms">Forms</a></li>
+								<li class="active"><a href="">Group Inputs</a></li>
+							</ol>
+
+							<input id="checkbox" type="checkbox">
+							<label for="checkbox">Checkbox</label>
+
+							<br>
+
+							<input id="toggle" class="toggle" type="checkbox">
+							<label for="toggle">Toggle</label>
+
+							<br>
+
+							<input id="radio" type="radio">
+							<label for="radio">Radio Button</label>
+
+							<br>
+
+							<select id="select_menu">
+								<option value="Option 1">Select Menu</option>
+								<option value="Option 2">Option 2</option>
+								<option value="Option 3">Option 3</option>
+							</select>
+						</fieldset>
+					</form>
+
+				</section>
+
+				<section id="data_tables">
+					<header>
+						<h1>Data table</h1>
+						<ol class="breadcrumb">
+							<li><a href="#data_tables">Data Tables</a></li>
+							<li class="active"><a href="">Blank</a></li>
+						</ol>
+					</header>
+
+					<section class="data-table example">
+						<header class="thead">
+							<div class="th">
+								<div class="column">
+									Time <svg class="active icon">
+										<use xlink:href="#caret-down"></use>
+									</svg>
+								</div>
+								<div class="column">
+									Name <svg class="icon">
+										<use xlink:href="#caret-up-down"></use>
+									</svg>
+								</div>
+								<div class="column">
+									Comment <svg class="icon">
+										<use xlink:href="#caret-up-down"></use>
+									</svg>
+								</div>
+								<div class="action column"></div>
+							</div>
+						</header>
+						<div class="tbody">
+							<section class="empty-message">
+								<p>We didn't find any content.</p>
+							</section>
+						</div>
+					</section>
+
+					<ol class="breadcrumb">
+						<li><a href="#data_tables">Data Tables</a></li>
+						<li class="active"><a href="">Populated</a></li>
+					</ol>
+
+					<section class="data-table">
+						<header class="thead">
+							<div class="th">
+								<div class="column">
+									Time <svg class="active icon">
+										<use xlink:href="#caret-down"></use>
+									</svg>
+								</div>
+								<div class="column">
+									Name <svg class="icon">
+										<use xlink:href="#caret-up-down"></use>
+									</svg>
+								</div>
+								<div class="column">
+									Comment <svg class="icon">
+										<use xlink:href="#caret-up-down"></use>
+									</svg>
+								</div>
+								<div class="action column"></div>
+							</div>
+						</header>
+						<div class="tbody">
+							<div class="tr border">
+								<div class="column">
+									Today
+								</div>
+								<div class="column">
+									<a href="#">Eric</a>
+								</div>
+								<div class="text column">
+									Single action
+								</div>
+								<div class="action column">
+									<a class="action">
+										<svg class="icon">
+											<use xlink:href="#eye"></use>
+										</svg>
+										<span class="mobile-only">Watch</span>
+									</a>
+								</div>
+							</div>
+							<div class="tr border">
+								<div class="column">
+									Yesterday
+								</div>
+								<div class="column">
+									<a href="#">Eric</a>
+								</div>
+								<div class="text column">
+									3 actions
+								</div>
+								<div class="action column">
+									<a class="action">
+										<svg class="icon">
+											<use xlink:href="#eye"></use>
+										</svg>
+										<span class="mobile-only">Watch</span>
+									</a>
+									<a class="action">
+										<svg class="icon">
+											<use xlink:href="#eye"></use>
+										</svg>
+										<span class="mobile-only">Watch</span>
+									</a>
+									<a class="action">
+										<svg class="icon">
+											<use xlink:href="#eye"></use>
+										</svg>
+										<span class="mobile-only">Watch</span>
+									</a>
+								</div>
+							</div>
+							<div class="tr border">
+								<div class="column">
+									A week ago
+								</div>
+								<div class="column">
+									Eric
+								</div>
+								<div class="text column">
+									Maybe more than 4? Dropdown!
+								</div>
+								<div class="action column">
+									<edlio-select class="desktop-only menu" multiple="false">
+										<select-title class="menu">
+											<svg class="icon" viewBox="0 0 1792 1792">
+												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#ellipsis-h"></use>
+											</svg>
+										</select-title>
+										<menu class="right">
+											<item>
+													<svg class="icon" viewBox="0 0 2048 2048">
+														<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#pencil"></use>
+													</svg>
+													Edit
+											</item>
+											<item>
+													<svg class="icon" viewBox="0 0 2048 2048">
+														<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#users"></use>
+													</svg>
+													Users
+											</item>
+											<item>
+													<svg class="icon" viewBox="0 0 2048 2048">
+														<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#files-o"></use>
+													</svg>
+													Copy
+											</item>
+											<item>
+													<svg class="icon" viewBox="0 0 2048 2048">
+														<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#trash-o"></use>
+													</svg>
+													Delete
+											</item>
+										</menu>
+									</edlio-select>
+									<a class="mobile-only action">
+										<svg class="icon">
+											<use xlink:href="#eye"></use>
+										</svg>
+										<span class="mobile-only">Watch</span>
+									</a>
+									<a class="mobile-only action">
+										<svg class="icon">
+											<use xlink:href="#eye"></use>
+										</svg>
+										<span class="mobile-only">Watch</span>
+									</a>
+									<a class="mobile-only action">
+										<svg class="icon">
+											<use xlink:href="#eye"></use>
+										</svg>
+										<span class="mobile-only">Watch</span>
+									</a>
+									<a class="mobile-only action">
+										<svg class="icon">
+											<use xlink:href="#eye"></use>
+										</svg>
+										<span class="mobile-only">Watch</span>
+									</a>
+								</div>
+							</div>
+							<div class="disabled tr border">
+								<div class="column">
+									Yesterday
+								</div>
+								<div class="column">
+									<a href="#">Eric</a>
+								</div>
+								<div class="text column">
+									Disabled, hide the action menu yourself!
+								</div>
+								<div class="action column">
+								</div>
+							</div>
+						</div>
+					</section>
+				</section>
+
+				<!-- <section class="grid">
+					<h1>Flex Grid</h1>
+
+					<section>
+						<h1>Grid View</h1>
+						<div class="grid list">
+							<figure>
+								<svg viewbox="0 0 2048 2048">
+									<use xlink:href="#calendar"></use>
+								</svg>
+								<figcaption>
+									Here is a grid item
+								</figcaption>
+							</figure>
+							<figure>
+								<svg viewbox="0 0 2048 2048">
+									<use xlink:href="#user"></use>
+								</svg>
+								<figcaption>
+									Here is a grid item
+								</figcaption>
+							</figure>
+							<figure>
+								<svg viewbox="0 0 2048 2048">
+									<use xlink:href="#user"></use>
+								</svg>
+								<figcaption>
+									Here is a grid item
+								</figcaption>
+							</figure>
+							<figure>
+								<svg viewbox="0 0 2048 2048">
+									<use xlink:href="#user"></use>
+								</svg>
+								<figcaption>
+									Here is a grid item
+								</figcaption>
+							</figure>
+							<figure>
+								<svg viewbox="0 0 2048 2048">
+									<use xlink:href="#user"></use>
+								</svg>
+								<figcaption>
+									Here is a grid item
+								</figcaption>
+							</figure>
+							<figure>
+								<svg viewbox="0 0 2048 2048">
+									<use xlink:href="#user"></use>
+								</svg>
+								<figcaption>
+									Here is a grid item
+								</figcaption>
+							</figure>
+						</div>
+					</section>
+
+				</section> -->
+
+				<section id="pagination">
+					<header>
+						<h1>Pagination</h1>
+					</header>
+					<div class="mobile pagination example">
+						<a class="disabled skip secondary button"><span class="arrow">&laquo;</span></a>
+						<div class="button-bar">
+							<a class="disabled secondary button"><span class="arrow">&lsaquo;</span></a>
+							<a class="active secondary button">1</a>
+							<a class="secondary button">2</a>
+							<a class="secondary button">3</a>
+							<a class="secondary button">4</a>
+							<a class="secondary button">5</a>
+							<a class="secondary button"><span class="arrow">&rsaquo;</span></a>
+						</div>
+						<a class="skip secondary button"><span class="arrow">&raquo;</span></a>
+					</div>
+
+					<div class="desktop pagination example">
+						<a class="disabled skip secondary button"><span class="arrow">&laquo;</span><span>10</span></a>
+						<div class="button-bar">
+							<a class="disabled secondary button"><span class="arrow">&lsaquo;</span></a>
+							<a class="active secondary button">1</a>
+							<a class="secondary button">2</a>
+							<a class="secondary button">3</a>
+							<a class="secondary button">4</a>
+							<a class="secondary button">5</a>
+							<a class="secondary button">6</a>
+							<a class="secondary button">7</a>
+							<a class="secondary button">8</a>
+							<a class="secondary button">9</a>
+							<a class="secondary button">10</a>
+							<a class="ellipsis secondary button">...</a>
+							<a class="secondary button">43</a>
+							<a class="secondary button"><span class="arrow">&rsaquo;</span></a>
+						</div>
+						<a class="skip secondary button"><span>10</span><span class="arrow">&raquo;</span></a>
+					</div>
+				</section>
+
+			</div> <!-- close .content -->
+		</main>
+
+	</body>
+
+</html>

@@ -1,0 +1,345 @@
+/*** Kitchen Sink ***/
+
+// Import Standard Tools
+@import 'global/feature-tools';
+
+.edlio.cms {
+
+	// Import needed components from 'ui-core/components'
+	@import 'components/accordion';
+	@import 'components/bars';
+	@import 'components/breadcrumbs';
+	@import 'components/buttons';
+	@import 'components/button-bars';
+	@import 'components/drawers';
+	@import 'components/forms';
+	@import 'components/icons';
+	@import 'components/links';
+	@import 'components/lists';
+	@import 'components/notifications';
+	@import 'components/overlays';
+	@import 'components/pagination';
+	@import 'components/select-menus';
+	@import 'components/tables';
+	@import 'components/tags';
+	@import 'components/toggle-selectors';
+	@import 'components/tooltips';
+
+	@import 'components/cms/modals';
+
+	.kitchen-sink {
+
+		button {
+			@extend .button;
+		}
+
+		.content > section {
+			margin-bottom: 3.82em;
+
+			> header {
+				margin-bottom: 1.618em;
+				border: none;
+
+				@include max-screen-size(medium) {
+					text-align: center;
+				}
+
+				h1 {
+					margin-bottom: 0;
+					padding: .382em .618em;
+					background: $grey-2;
+				}
+				.breadcrumb {
+					margin: 0;
+				}
+			}
+
+			.breadcrumb {
+				padding: .382em .618em;
+				border-bottom: 1px solid $grey-2;
+			}
+
+			.example {
+				padding: 0;
+
+				@include min-screen-size(medium) {
+					padding: 0 1em;
+				}
+			}
+		}
+
+		.search.bar {
+			margin-bottom: 3em;
+			padding: 0;
+			border: none;
+
+			.width-constraint {
+				@extend %layout;
+			}
+
+			form {
+				width: 100%;
+
+				.input,
+				input {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		.typography {
+
+			section h1 {
+				@include font-size(large, heading);
+			}
+
+			.breadcrumb {
+				margin-bottom: 2em;
+			}
+
+			.columns {
+				@include layout(4em);
+
+				.helvetica {
+					font-family: Helvetica;
+				}
+
+				.arial {
+					font-family: Arial;
+				}
+
+				.sans-serif {
+					font-family: sans-serif;
+				}
+			}
+		}
+
+		.accordions {
+
+			.description {
+
+				@include min-screen-size(medium) {
+					@include columns(2);
+				}
+
+			}
+
+			edlio-accordion {
+				> section {
+
+					box-shadow:
+						inset 2px 2px 0 0 $light-grey,
+						inset -2px 0 0 0 $light-grey
+					;
+
+					&:last-of-type {
+						box-shadow:
+							inset 2px 2px 0 0 $light-grey,
+							inset -2px -2px 0 0 $light-grey
+						;
+					}
+
+					.content {
+						transition: padding .2s, max-height .15s, opacity .15s;
+					}
+
+					header {
+						@include align-items(center);
+						box-shadow: inset 0 -2px 0 0 $light-grey;
+
+						&:hover {
+							background: $grey-1;
+						}
+					}
+
+					&.collapsed {
+						box-shadow:
+							inset 2px 2px 0 0 $light-grey,
+							inset -2px 0 0 0 $light-grey
+						;
+
+						&:last-of-type {
+							box-shadow:
+								inset 2px 2px 0 0 $light-grey,
+								inset -2px -2px 0 0 $light-grey
+							;
+						}
+
+						header {
+							box-shadow: none;
+						}
+
+						.content {
+							transition: padding .2s, max-height .15s, opacity .15s, visibility 0.1s .3s;
+						}
+					}
+				}
+			}
+		}
+
+		// Code repetition below is intentional. Each grid example is meant to
+		// function as a standalone example which can be copied if needed.
+
+		.flex-layouts {
+			> section {
+				@extend %layout;
+				margin-bottom: 1em;
+				min-height: 10em;
+
+				background: $grey-3;
+				padding: 1em;
+
+				text-align: center;
+
+				&.example-4 {
+
+					.sidebar {
+						background: $white;
+
+						.row {
+							@extend %layout;
+							width: 100%;
+							margin: 0 0 1em;
+
+							&:last-child {
+								margin-bottom: 0;
+							}
+
+							.cell {
+								@extend %flexbox;
+								@include flex-direction(column);
+								@include align-items(center);
+								@include justify-content(center);
+
+								padding: 2em 1em;
+
+								background: $light-grey;
+							}
+						}
+					}
+
+					.workspace {
+						// IE 10-11 require this container to be block-level, not flex
+						display: block;
+
+						.row {
+							@extend %layout;
+
+							margin: 0 0 1em 0;
+
+							&:nth-child(2) .cell {
+								background: $medium-grey;
+								color: $white;
+							}
+
+							&:last-child {
+								margin-bottom: 0;
+							}
+						}
+					}
+				}
+
+				> * {
+					border: 2px solid $grey-n03;
+					padding: 1em;
+				}
+
+				.sidebar {
+					@extend %layout;
+					@include flex-direction(column);
+					@include align-items(center);
+					@include justify-content(center);
+
+					text-align: center;
+
+					background: $white;
+				}
+
+				.workspace {
+					@extend %layout;
+
+					background: $white;
+
+					.cell {
+						@extend %flexbox;
+						@include flex-direction(column);
+						@include align-items(center);
+						@include justify-content(center);
+
+						padding: 2em 1em;
+
+						background: $light-grey;
+
+						&:last-child {
+							margin-bottom: 0;
+						}
+
+					}
+				}
+
+			}
+
+		}
+
+		.icons {
+
+			ul {
+				list-style: none;
+
+				@include min-screen-size(small) {
+					@include columns(2);
+				}
+
+				@include min-screen-size(medium) {
+					@include columns(3);
+				}
+
+				svg {
+					margin-right: .382em;
+				}
+			}
+		}
+
+		.lists {
+
+			section {
+				h1 {
+					@include font-size(large);
+				}
+			}
+
+			.list {
+
+				&.grid {
+
+					@include max-screen-size(medium) {
+						@include grid(2);
+					}
+
+					@include min-screen-size(medium) {
+						@include grid(4);
+					}
+
+					figure {
+						padding: 1em;
+						box-shadow: 0 0 0 2px $light-grey;
+
+						svg {
+							width: 100%;
+							height: auto;
+
+							fill: $dark-grey;
+						}
+
+						figcaption {
+							text-align: center;
+						}
+					}
+				}
+			}
+
+		}
+
+	}
+
+}
