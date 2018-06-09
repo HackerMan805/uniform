@@ -1,0 +1,29 @@
+// COMPONENT : Lists
+
+.list {
+
+	.next.icon {
+
+		width: 4em;
+		height: 4em;
+
+		padding: 1em;
+
+		@include min-screen-size(medium) {
+			display: none;
+		}
+	} 
+
+	&.grid {
+
+		@extend %layout;
+
+		& > * {
+
+			margin-bottom: 1em;
+
+		}
+
+	}
+
+}

@@ -1,0 +1,191 @@
+// COMPONENT : Buttons
+
+// Button height and line-height are determined by typographic rhythm
+// libraries/mixins/typography', and 'ui-core/definitions/typography'
+// for values
+
+//------------------------------------------------------------------------------
+
+.button {
+	display: inline-block;
+
+	color: $primary-button-text-color;
+	font: {
+		weight: $regular;
+		style: normal;
+	}
+	text: {
+		align: center;
+		decoration: none;
+	}
+	cursor: pointer;
+
+	background: $primary-button-bg-color;
+	box-shadow: none;
+
+	border-radius: $default-border-radius;
+	border: none;
+	outline: none;
+
+	@extend %disable-text-selection;
+
+	&:link {
+		color: $primary-button-text-color;
+	}
+
+	&:visited {
+		background: $primary-button-bg-color;
+		color: $primary-button-text-color;
+	}
+
+	&:hover {
+		background: $primary-button-hover-bg-color;
+		text-decoration: none;
+	}
+
+	&.icon:active:not(.secondary),
+	&:active {
+		background: $primary-button-active-bg-color;
+		color: $primary-button-text-color;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
+	&.disabled {
+		background: lighten(desaturate($primary-button-bg-color, 8%), 33%);
+		box-shadow: none;
+
+		color: $primary-button-text-color;
+		@extend %disable-pointer-events;
+	}
+
+	&.secondary {
+		background: $secondary-button-bg-color;
+		color: $secondary-button-text-color;
+		box-shadow: inset 0 0 0 1px $secondary-button-border-color;
+
+		&:link {
+			color: $secondary-button-text-color;
+		}
+
+		&:visited {
+			background: $secondary-button-bg-color;
+			color: $secondary-button-text-color;
+		}
+
+		&:hover {
+			background: $secondary-button-hover-bg-color;
+		}
+
+		&:active {
+			background: $secondary-button-active-bg-color;
+			color: $secondary-button-text-color;
+		}
+		
+		&.selected {
+			background: $secondary-button-selected-bg-color;
+		}
+
+		&.disabled {
+			box-shadow: inset 0 0 0 1px lighten($secondary-button-border-color, 12%);
+			color: lighten($secondary-button-text-color, 40%);
+
+			&.icon svg {
+				fill: lighten($secondary-button-text-color, 40%);
+			}
+		}
+
+		&.bare {
+			&:hover {
+				background: $secondary-button-hover-bg-color;
+				box-shadow: inset 0 0 0 1px $secondary-button-border-color;
+				color: $secondary-button-text-color;
+			}
+
+			&:active {
+				background: $secondary-button-active-bg-color;
+				color: $secondary-button-text-color;
+			}
+		}
+
+		&.icon {
+			svg {
+				fill: $secondary-button-icon-color;
+			}
+			
+			&:hover svg {
+				fill: $secondary-button-hover-icon-color;
+			}
+		}
+
+	}
+
+	&.bare {
+		margin-right: 0;
+
+		box-shadow: none;
+		background: transparent;
+
+		color: $secondary-button-text-color;
+
+		&:hover {
+			background: $primary-button-hover-bg-color;
+
+			&:not(.icon) {
+				background: transparent;
+				color: $secondary-button-text-color;
+				box-shadow: none;
+				text-decoration: underline;
+			}
+		}
+
+		&:active:not(.icon) {
+			background: transparent;
+			color: $secondary-button-text-color;
+			text-decoration: none;
+		}
+	}
+
+	// Icon Button
+
+	&.icon {
+
+		// Reset in case _icons.scss is not included
+		svg {
+			@include svg-icon;
+
+			fill: $primary-button-text-color;
+		}
+
+		&.labeled svg {
+			margin-right: .382em;
+		}
+
+		&.circular {
+			border-radius: 50%;
+		}
+
+		&.bare {
+			svg {
+				fill: $secondary-button-icon-color;
+			}
+
+			&:hover {
+				svg {
+					fill: $primary-button-text-color;
+				}
+			}
+
+			&.secondary {
+				&:hover svg {
+					fill: $secondary-button-hover-icon-color;
+				}
+			}
+
+		}
+
+	}
+
+}

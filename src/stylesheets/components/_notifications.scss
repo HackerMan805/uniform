@@ -1,0 +1,83 @@
+// COMPONENT : Notifications
+
+@mixin notification($color) {
+	color: $color;
+
+	box-shadow:
+		inset 3.5em 0 0 2px $color,
+		inset 0 0 0 2px $color
+	;
+
+	svg.icon {
+		@include svg-icon;
+		fill: $white;
+	}
+
+	.close {
+		// Needed for IE10
+		display: block;
+
+		svg.icon {
+			@include svg-icon;
+			fill: $text-color;
+		}
+	}
+}
+
+edlio-notification,
+.edlio-notification {
+	@extend %flexbox;
+	@include align-items(center);
+
+	border-radius: $default-border-radius;
+
+	color: $white;
+
+	&.alert {
+		@include notification($alert-notification-color);
+	}
+
+	&.confirmation {
+		@include notification($confirmation-notification-color);
+	}
+
+	.message {
+		@include flex(1);
+		margin: 0 1em;
+		padding: 0 0 0 1em;
+
+		text-align: center;
+
+		h1 {
+			margin: 0;
+			@include font-size(normal);
+
+			font-weight: $bold;
+
+			&:not(:only-child) {
+				margin: .5em 0;
+			}
+		}
+
+		p {
+			margin-bottom: .5em;
+
+			color: $notification-secondary-text-color;
+		}
+
+		.disclaimer {
+			@include font-size(small);
+		}
+	}
+
+	.close {
+		@include align-self(flex-start);
+
+		padding: 0;
+		cursor: pointer;
+
+		.icon {
+			border-radius: $default-border-radius;
+		}
+	}
+}

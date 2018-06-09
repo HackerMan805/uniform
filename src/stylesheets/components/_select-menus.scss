@@ -1,0 +1,212 @@
+// COMPONENT : Select Menus
+
+edlio-select,
+.edlio-select {
+	position: relative;
+
+	display: inline-block;
+
+	padding: 0;
+
+	background: $select-menu-bg-color;
+	box-shadow: inset 0 0 0 $default-border-width $select-menu-border-color;
+	outline: none;
+
+	font-weight: $regular;
+
+	cursor: pointer;
+	white-space: nowrap;
+
+	@extend %disable-text-selection;
+
+	&:not(.bare) {
+		@include max-screen-size(small) {
+			display: block;
+			margin-right: 0;
+		}
+	}
+
+	select-title,
+	.select-title {
+		@extend %flexbox;
+		@include justify-content(space-between);
+		@include align-items(center);
+
+		cursor: pointer;
+
+		svg.icon {
+			@include svg-icon;
+
+			margin-left: .382em;
+			fill: $select-menu-icon-fill;
+		}
+
+		&:hover svg.icon {
+			fill: $select-menu-icon-hover-fill;
+		}
+
+		// Needed to avoid staggered appearance when multiple select menus are
+		// placed together
+		&:before {
+			content: "";
+			width: 0;
+			height: 0;
+		}
+	}
+
+	&.bare {
+		box-shadow: none;
+
+		select-title,
+		.select-title {
+			@include justify-content(flex-start);
+
+			svg.icon {
+				margin: 0;
+			}
+		}
+
+		menu {
+			border: $default-border-width solid $select-menu-border-color;
+			margin-top: .618em;
+
+			&:before, &:after {
+				content: "";
+				position: absolute;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-color: transparent;
+				border-top: 0;
+			}
+
+			&:before {
+				top: -1em;
+				left: ( $icon-size-multiplier / 2 ) * 1em;
+				border-bottom-color: $select-menu-border-color;
+				border-width: 1em;
+			}
+
+			&:after {
+				top: calc(-1em + #{$default-border-width});
+				left: calc((( #{$icon-size-multiplier} / 2 ) * 1em) + #{$default-border-width});
+				border-bottom-color: $body-bg-color;
+				border-width: calc(1em - #{$default-border-width});
+			}
+
+			item:hover:first-child:before,
+			.item:hover:first-child:before {
+				content: "";
+				position: absolute;
+				top: calc(-1em + #{$default-border-width});
+				left: calc((( #{$icon-size-multiplier} / 2 ) * 1em) + #{$default-border-width});
+
+				width: 0;
+				height: 0;
+
+				border-style: solid;
+				border-color: transparent;
+				border-top: 0;
+				border-bottom-color: $select-menu-item-hover-color;;
+				border-width: calc(1em - #{$default-border-width});
+
+				z-index: $z-index-front;
+			}
+
+		}
+	}
+
+	&.open {
+
+		box-shadow:
+			inset $default-border-width 0 0 0 $select-menu-border-color,
+			inset (-$default-border-width) 0 0 0 $select-menu-border-color,
+			inset 0 $default-border-width 0 0 $select-menu-border-color
+		;
+
+		> menu {
+			visibility: visible;
+			opacity: 1;
+			top: 100%;
+
+			border: $default-border-width solid $select-menu-border-color;
+		}
+
+		&.bare {
+			box-shadow: none;
+		}
+	}
+
+	> menu {
+		position: absolute;
+		left: 0;
+		top: 50%;
+
+		@include flex(0,1,auto);
+		@include flex-direction(column);
+		@include justify-content(center);
+		max-height: 20em;
+		overflow-y: auto;
+
+		visibility: hidden;
+		opacity: 0;
+
+		min-width: 100%;
+
+		background-color: $select-dropdown-bg-color;
+
+		z-index: $z-index-front;
+
+		@include transition(all,.1s,ease-in-out);
+
+		&.right {
+			left: auto;
+			right: 0;
+		}
+
+		item,
+		.item {
+			position: relative;
+
+			// For IE10 & Safari
+			display: block;
+
+			@include flex(1,0,auto);
+
+			&:hover {
+				background-color: $select-menu-item-hover-color;
+			}
+
+			&.active {
+				background-color: $select-menu-item-active-color;
+			}
+
+			// > menu {
+			// 	position: absolute;
+			// 	left: 4px;
+			// 	top: 0;
+
+			// 	margin-top: 0 !important;
+			// 	margin-left: 2px;
+
+			// 	background-color: $white;
+
+			// 	@include hide;
+
+			// 	z-index: $z-index-front;
+
+			// 	@include flexbox;
+			// 	@include flex-direction(column);
+			// 	@include justify-content(center);
+
+			// 	&:before,
+			// 	&:after,
+			// 	item:hover:first-child:before,
+			//	.item:hover:first-child:before {
+			// 		@include hide;
+			// 	}
+			// }
+
+		}
+	}
+}

@@ -1,0 +1,90 @@
+// Miscellaneous mixins
+
+// ellipsis
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// CSS3 columns
+@mixin columns($quantity, $width: auto) {
+	-webkit-columns: $quantity $width;
+	-moz-columns: $quantity $width;
+	columns: $quantity $width;
+}
+
+// Hide element
+@mixin hide {
+	display: none;
+	visibility: hidden;
+	opacity: 0;
+}
+
+@mixin show($box-model: block) {
+
+	@if $box-model == flex {
+		@include flexbox;
+	} @else {
+		display: $box-model;
+	}
+
+	visibility: visible;
+	opacity: 1;
+}
+
+// Disable Pointer Events
+
+@mixin disable-pointer-events {
+	pointer-events: none;
+}
+
+%disable-pointer-events {
+	@include disable-pointer-events;
+}
+
+// SVG icon mixin- used to avoid duplicating icon code in multiple components
+@mixin svg-icon {
+  // Without this, svgs inside <a> tags will block click events in IE
+	position: relative;
+	pointer-events: none;
+
+	vertical-align: middle;
+
+	fill: $icon-color;
+}
+
+
+// Disable text selection on element
+@mixin disable-text-selection {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+
+%disable-text-selection {
+	@include disable-text-selection;
+}
+
+@mixin disable-link {
+  color: $disabled-link-color;
+  @extend %disable-pointer-events;
+}
+
+%disable-link {
+	@include disable-link;
+}
+
+// min-content height mixin
+@mixin min-content($ie-fallback: false, $fallback-value: 0) {
+	@if $ie-fallback == true {
+		min-height: $fallback-value;
+	}
+	min-height: min-content;
+	min-height: -webkit-min-content;
+	min-height: -moz-min-content;
+}

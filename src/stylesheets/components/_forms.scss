@@ -1,0 +1,254 @@
+// COMPONENT : Forms
+
+legend {
+	display: block;
+	color: $legend-text-color;
+}
+
+label {
+	display: block;
+	color: $label-text-color;
+}
+
+input {
+
+	&[type="text"],
+	&[type="number"],
+	&[type="url"],
+	&[type="date"],
+	&[type="time"],
+	&[type="password"],
+	&[type="file"],
+	&[type="image"],
+	&[type="submit"],
+	&[type="reset"],
+	&[type="button"] {
+		width: auto;
+
+		font: {
+			family: $textfield-font-family;
+			weight: $textfield-font-weight;
+			style: $textfield-font-style;
+		}
+
+		// Fix for Safari cursor-height bug
+		line-height: normal;
+
+		text-decoration: none;
+		color: $textfield-text-color;
+
+		background-color: $textfield-bg-color;
+		border: none;
+		box-shadow: inset 0 0 0 $default-border-width $textfield-border-color;
+		outline: none;
+
+		// iOS Overrides
+		-webkit-appearance: none;
+		-webkit-border-radius: 0;
+	  border-radius: 0;
+
+		// Placeholders
+		&::-webkit-input-placeholder,
+		&:-moz-placeholder,
+		&::-moz-placeholder,
+		&:-ms-input-placeholder {
+			font-family: $textfield-font-family;
+		  color: $textfield-placeholder-color;
+		}
+	}
+
+	&[type="radio"],
+	&[type="checkbox"] {
+		display: none;
+
+		+ label {
+			display: inline;
+			cursor: pointer;
+
+			&:before {
+		    content: "";
+				display: inline-block;
+
+				width: calc(1em - ( 2 * #{$checkbox-border-width} ));
+				height: calc(1em - ( 2 * #{$checkbox-border-width} ));
+
+		    margin: 0 .618em 0 0;
+
+				background: $checkbox-bg-color;
+
+				box-shadow: 0 0 0 $checkbox-border-width $checkbox-border-color;
+
+		    text-align: center;
+		    vertical-align: initial;
+				cursor: pointer;
+			}
+		}
+
+		&:checked + label:before {
+			content: "";
+		}
+	}
+
+	&[type=checkbox] {
+		+ label:before {
+	    border-radius: 2px;
+			background: $checkbox-bg-color;
+			box-shadow: 0 0 0 $checkbox-border-width $checkbox-border-color;
+		}
+
+		&:checked + label {
+			position: relative;
+
+			&:before {
+				background: $checked-checkbox-bg-color;
+				box-shadow: 0 0 0 $checkbox-border-width $checked-checkbox-border-color;
+			}
+
+			&:after {
+				content: "";
+				display: block;
+				width: .382em;
+				height: .742em;
+				border-width: 0 3px 3px 0;
+				border-style: solid;
+				border-color: $checkbox-checkmark-color;
+				position: absolute;
+				top: .15em;
+				left: .2em;
+		    -webkit-transform: rotate(45deg);
+		    -moz-transform: rotate(45deg);
+		    -o-transform: rotate(45deg);
+		    transform: rotate(45deg);
+			}
+		}
+
+		&.toggle {
+			+ label {
+				position: relative;
+
+				&:before {
+					width: 1.382em;
+					border-radius: 1em;
+					border-color: $toggle-border-color;
+					box-shadow: 0 0 0 $toggle-border-width $toggle-border-color;
+				}
+
+				&:after {
+					content: "";
+					position: absolute;
+					top: $toggle-border-width;
+
+					left: -($toggle-border-width);
+					display: block;
+					height: 1em;
+					width: 1em;
+					background: $toggle-switch-color;
+					border-width: $toggle-border-width;
+					border-style: solid;
+					border-color: $toggle-border-color;
+					border-radius: 50%;
+				}
+			}
+
+			&:checked + label {
+				&:before {
+					box-shadow: 0 0 0 $toggle-border-width $checked-toggle-border-color;
+				}
+
+				&:after {
+					background: $checked-toggle-switch-color;
+					border-color: $checked-toggle-border-color;
+					left: calc(.382em + #{$toggle-border-width});
+				}
+			}
+		}
+	}
+
+	&[type=radio] {
+		+ label:before {
+	    border-radius: 50%;
+			background: $radio-bg-color;
+			box-shadow: 0 0 0 $radio-border-width $radio-border-color;
+		}
+
+		&:checked + label:before {
+			background: $checked-radio-bg-color;
+			box-shadow:
+				0 0 0 $radio-border-width $checked-radio-bg-color,
+				inset 0 0 0 3px $radio-bg-color;
+			;
+		}
+	}
+
+	// Override browser default focus styles
+	&[type="file"]:focus,
+	&[type="radio"]:focus,
+	&[type="checkbox"]:focus {
+		outline: thin dotted $grey-n03;
+		outline: 5px auto -webkit-focus-ring-color;
+		outline-offset: -2px;
+	}
+}
+
+textarea {
+	resize: none;
+
+	overflow: auto;
+	vertical-align: middle;
+
+	width: auto;
+
+	font: {
+		family: $textarea-font-family;
+		weight: $textarea-font-weight;
+		style: $textarea-font-style;
+	}
+
+	text-decoration: none;
+	color: $textarea-text-color;
+
+	background-color: $textarea-bg-color;
+	border: none;
+	box-shadow: inset 0 0 0 $default-border-width $textarea-border-color;
+	outline: none;
+
+	&::-webkit-input-placeholder,
+	&:-moz-placeholder,
+	&::-moz-placeholder,
+	&:-ms-input-placeholder {
+		font-family: $textarea-font-family;
+	  color: $textarea-placeholder-color;
+	}
+}
+
+// Container element for inputs with icons
+.icon.input {
+	@extend %flexbox;
+	@include flex-direction(row);
+	@include align-items(center);
+
+
+	> input {
+		@include flex(1,0,auto);
+		@include order(1);
+
+		margin: 0;
+
+		background-color: $textfield-bg-color;
+		box-shadow: inset 0 0 0 $default-border-width $textfield-border-color;
+	}
+
+	> svg {
+		// Keep svg from shrinking below its default width in Firefox
+		@include flex(0,0,auto);
+		@include order(0);
+
+		fill: $textfield-icon-fill;
+
+		background: $textfield-icon-bg-color;
+		box-shadow:
+			inset $default-border-width $default-border-width 0 0 $textfield-border-color,
+			inset 0 (-$default-border-width) 0 0 $textfield-border-color
+		;
+	}
+}

@@ -1,0 +1,137 @@
+//---------------------------------------------------------------------------------------------------
+// EM BASE: Everything in the framework uses this value as a basis for it's
+// sizing, margins/padding, etc.
+//
+// Changing this value will enlarge or shrink EVERYTHING in the CMS.
+// Changing this value will also change the pixel widths of the media queries,
+// which will change the behavior of the CMS on different devices.
+
+// Change at your own risk.
+
+$em-base											: 16px;
+
+//---------------------------------------------------------------------------------------------------
+// Font weight vars
+$light												: 100 !default;
+$regular											: 300 !default;
+$bold													: 600 !default;
+
+//---------------------------------------------------------------------------------------------------
+
+// Typography definitions
+// Golden-ratio Typography
+// Font sizes are calculated at http://www.pearsonified.com/typography/ using font-size: 16px & 85 CPL
+
+// One group of font sizes definitions for each media query
+// $small-typography for mobile devices
+// $normal-typography for average desktops
+// $large-typography for large desktops
+// $x-large-typography for huge monitors
+
+// Definitions:
+// small: use in the event that you need text that is smaller than the base for that screen size
+// normal: base font size for current range of screen sizes, h3
+// large: h2
+// larger: h1
+// largest: only use if you need enormous text for whatever reason
+
+// Group: (
+//		font style semantic name: (
+//			font-size in px
+//			line-height in px
+//		)
+// );
+
+// pixel values will be converted to rems automatically
+
+$small-typography : (
+	small: (
+		14px,
+		24px
+	),
+	normal: (
+		16px,
+		24px
+	),
+	large: (
+		18px,
+		24px
+	),
+	larger: (
+		24px,
+		42px
+	),
+	largest: (
+		42px,
+		50px
+	)
+);
+
+$normal-typography : (
+	small: (
+		14px,
+		24px
+	),
+	normal: (
+		16px,
+		24px
+	),
+	large: (
+		20px,
+		24px
+	),
+	larger: (
+		26px,
+		42px
+	),
+	largest: (
+		42px,
+		50px
+	)
+);
+
+$large-typography : (
+	small: (
+		15px,
+		25.5px
+	),
+	normal: (
+		17px,
+		25.5px
+	),
+	large: (
+		24px,
+		25.5px
+	),
+	larger: (
+		31px,
+		50px
+	),
+	largest: (
+		50px,
+		58px
+	)
+);
+
+$x-large-typography : (
+	small: (
+		16px,
+		27px
+	),
+	normal: (
+		18px,
+		27px
+	),
+	large: (
+		28px,
+		34px
+	),
+	larger: (
+		36px,
+		50px
+	),
+	largest: (
+		58px,
+		66px
+	)
+);

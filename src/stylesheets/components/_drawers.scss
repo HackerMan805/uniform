@@ -1,0 +1,57 @@
+// COMPONENT : Drawer
+
+edlio-drawer {
+
+	position: absolute;
+	z-index: $z-index-drawer;
+
+	width: 20em;
+	height: 100%;
+
+	background-color: $body-bg-color;
+	box-shadow:
+		0 2px 4px -1px rgba(0,0,0,.2),
+		0 4px 5px 0 rgba(0,0,0,.14),
+		0 1px 10px 0 rgba(0,0,0,.12)
+	;
+
+	-webkit-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+
+	transition: transform .3s;
+
+	a {
+		@extend %flexbox;
+		@include align-items(center);
+		@include justify-content(space-around);
+
+		padding: 0 1em;
+
+		color: $text-color;
+
+		&:hover {
+			background: $grey-3;
+
+			text-decoration: none;
+		}
+
+		svg.icon {
+			width: 1.5em;
+			height: 1.5em;
+
+			vertical-align: middle;
+		}
+
+		span {
+			@extend %flex;
+			margin: 0 1em;
+
+			color: $text-color;
+		}
+	}
+
+	&.open {
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+}

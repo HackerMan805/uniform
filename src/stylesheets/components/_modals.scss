@@ -1,0 +1,36 @@
+// COMPONENT : Modals
+
+// Initially hide modal before overlay appears
+edlio-modal {
+	display: none;
+}
+
+edlio-overlay {
+	@extend %flexbox;
+	@include flex(1,0,100%);
+
+	edlio-modal {
+		@extend %flexbox;
+		@include flex(0,1,auto);
+
+		position: relative;
+		z-index: $z-index-modal;
+
+		opacity: 0;
+
+		// Animation States
+		&.transition-in {
+			opacity: 1;
+
+			@include transition(all, .3s, cubic-bezier(0.44, 0.01, 0.37, 0.99));
+			@include transform(translate3d(0,0,0) scale(1.0));
+		}
+
+		&.transition-out {
+			opacity: 0;
+
+			@include transition(all, .3s, cubic-bezier(0.44, 0.01, 0.37, 0.99));
+			@include transform(translate3d(0,-25%,0) scale(0.2));
+		}
+	}
+}

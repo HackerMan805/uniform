@@ -1,0 +1,30 @@
+// COMPONENT : Links
+
+// Don't change the order of pseudo-classes!
+// This order is necessary for correct link states
+
+a {
+	color: $link-color;
+	text-decoration: none;
+
+	&:link {
+		color: $link-color;
+	}
+
+	&:visited {
+		color: $visited-link-color;
+	}
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&:active {
+		color: darken($active-link-color, 10%);
+	}
+
+	&.disabled {
+		color: $disabled-link-color;
+		@extend %disable-link;
+	}
+}

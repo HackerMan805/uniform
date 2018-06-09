@@ -1,0 +1,105 @@
+// COMPONENT : Buttons
+
+.toggle-selector {
+	display: flex;
+
+	.option {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		background: $toggle-selector-option-bg-color;
+		box-shadow:
+			inset -1px 0 0 0 $toggle-selector-option-border-color,
+			inset 0 1px 0 0 $toggle-selector-option-border-color,
+			inset 0 -1px 0 0 $toggle-selector-option-border-color
+		;
+
+		border-radius: 0;
+		border: none;
+		outline: none;
+
+		font: {
+			weight: $regular;
+			style: normal;
+		}
+
+		text: {
+			align: center;
+			decoration: none;
+		}
+
+		color: $toggle-selector-text-color;
+		cursor: pointer;
+
+		@include ellipsis;
+		@extend %disable-text-selection;
+
+		input,
+		label:before {
+			@include hide;
+		}
+
+		label {
+			@include ellipsis;
+		}
+
+		.icon {
+			margin-right: .382em;
+		}
+
+		&:hover {
+			background: $toggle-selector-option-hover-bg-color;
+		}
+		
+		&.selected {
+			background: $toggle-selector-selected-option-bg-color;
+			box-shadow:
+				-1px 0 0 0 $toggle-selector-selected-option-border-color,
+				inset -1px 0 0 0 $toggle-selector-selected-option-border-color,
+				inset 0 1px 0 0 $toggle-selector-selected-option-border-color,
+				inset 0 -1px 0 0 $toggle-selector-selected-option-border-color
+			;
+			
+			label {
+				color: $toggle-selector-selected-option-text-color;
+			}
+		}
+
+		&.disabled {
+			opacity: .382;
+			@include disable-pointer-events;
+
+			+ .option:not(.disabled) {
+				box-shadow:
+					inset -1px 0 0 0 $toggle-selector-option-border-color,
+					-1px 0 0 0 $toggle-selector-option-border-color,
+					inset 0 1px 0 0 $toggle-selector-option-border-color,
+					inset 0 -1px 0 0 $toggle-selector-option-border-color
+				;
+			}
+		}
+
+		&:first-of-type {
+			border-radius: $default-border-radius 0 0 $default-border-radius;
+			box-shadow: inset 0 0 0 1px $toggle-selector-option-border-color;
+			
+			&.selected {
+				box-shadow: inset 0 0 0 1px $toggle-selector-selected-option-border-color;
+			}
+		}
+
+		&:last-of-type {
+			border-radius: 0 $default-border-radius $default-border-radius 0;
+		}
+	}
+
+	&.disabled {
+		opacity: .382;
+
+		.option {
+			opacity: 1;
+			@include disable-pointer-events;
+		}
+	}
+}

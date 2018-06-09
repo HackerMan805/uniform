@@ -1,0 +1,154 @@
+// Blazer Default Theme
+
+// Import Necessary Definitions
+@import 'definitions/colors';
+@import 'definitions/typography';
+
+// Edlio Standard Color Palette
+// -----------------------------------------------------------------------------
+$edlio-red                           : rgb(203,26,16); // #CB1A10
+
+// Blazer Typography Defaults
+// -----------------------------------------------------------------------------
+$font-family : Avenir, Helvetica, Arial, sans-serif !default;
+
+$h1-fonts                           : $font-family !default;
+$h1-transform                       : none         !default;
+$h2-fonts                           : $font-family !default;
+$h2-transform                       : none         !default;
+$h3-fonts                           : $font-family !default;
+$h3-transform                       : none         !default;
+
+
+// Blazer Default Colors
+// -----------------------------------------------------------------------------
+
+$body-bg-color                      : $white       !default;
+
+$text-color                         : $soft-black  !default;
+$icon-color                         : $soft-black  !default;
+$link-color                         : rgb(41,171,226) !default;
+$visited-link-color                 : rgb(41,171,226) !default;
+$active-link-color                  : rgb(41,171,226) !default;
+$disabled-link-color                : $grey-n03    !default;
+
+// Buttons
+$primary-button-bg-color            : rgb(41,171,226)                       !default;
+$primary-button-border-color        : $white                                !default;
+$primary-button-text-color          : $white                                !default;
+$primary-button-hover-bg-color      : darken($primary-button-bg-color, 5%)  !default;
+$primary-button-active-bg-color     : darken($primary-button-bg-color, 10%) !default;
+
+$secondary-button-bg-color          : $white       !default;
+$secondary-button-border-color      : $grey-n04    !default;
+$secondary-button-text-color        : $text-color  !default;
+$secondary-button-icon-color        : $grey-n07    !default;
+$secondary-button-hover-bg-color    : $grey-n01    !default;
+$secondary-button-active-bg-color   : darken($grey-n01, 5%) !default;
+$secondary-button-selected-bg-color : $grey-n00    !default;
+$secondary-button-hover-icon-color  : darken(rgb(41,171,226), 5%) !default;
+
+// Forms
+$checkbox-bg-color                  : $white      !default;
+$checkbox-border-color              : $grey-n03   !default;
+$checkbox-border-width              : 2px         !default;
+$checkbox-checkmark-color           : $white      !default;
+$checked-checkbox-bg-color          : $black      !default;
+$checked-checkbox-border-color      : $black      !default;
+
+$toggle-bg-color                    : $white      !default;
+$toggle-border-color                : $grey-n05   !default;
+$toggle-border-width                : 2px         !default;
+$toggle-switch-color                : $white      !default;
+$checked-toggle-bg-color            : $black      !default;
+$checked-toggle-border-color        : $black      !default;
+$checked-toggle-switch-color        : $white      !default;
+
+$radio-bg-color                     : $white      !default;
+$radio-border-color                 : $grey-n03   !default;
+$radio-border-width                 : 2px         !default;
+$checked-radio-bg-color             : $black      !default;
+
+$legend-text-color                  : $text-color !default;
+$legend-font-family                 : $font-family !default;
+$legend-text-transform              : none        !default;
+
+$label-text-color                   : $grey-n07   !default;
+
+$textfield-bg-color                 : $white      !default;
+$textfield-border-color             : $grey-n03   !default;
+$textfield-placeholder-color        : $grey-n05   !default;
+$textfield-text-color               : $grey-n06   !default;
+
+// Special textfield overrides
+$textfield-font-family              : $font-family !default;
+$textfield-font-weight              : $regular     !default;
+$textfield-font-style               : normal       !default;
+
+$textarea-bg-color                  : $white       !default;
+$textarea-border-color              : $grey-n03    !default;
+$textarea-placeholder-color         : $grey-n05    !default;
+$textarea-text-color                : $grey-n06    !default;
+
+// Special textarea overrides
+$textarea-font-family               : $font-family !default;
+$textarea-font-weight               : $regular     !default;
+$textarea-font-style                : normal       !default;
+
+$textfield-icon-bg-color            : $grey-n02   !default;
+$textfield-icon-fill                : $grey-n05   !default;
+
+$select-menu-bg-color               : $textfield-bg-color     !default;
+$select-menu-border-color           : $textfield-border-color !default;
+$select-menu-text-color             : $textfield-text-color   !default;
+$select-menu-icon-fill              : $textfield-icon-fill    !default;
+$select-menu-icon-hover-fill        : $grey-n06               !default;
+$select-dropdown-bg-color           : $white                  !default;
+$select-menu-item-hover-color       : $grey-n01               !default;
+$select-menu-item-active-color      : lighten($select-menu-item-hover-color, 3%) !default;
+
+// Modals
+$modal-bg-color                     : $white          !default;
+
+// Notifications
+$confirmation-notification-color    : rgb(51,164,104) !default;
+$alert-notification-color           : rgb(224,124,58) !default;
+$notification-secondary-text-color  : $grey-n04       !default;
+
+// Tooltips
+$tooltip-bg-color                   : $grey-n07       !default;
+$tooltip-text-color                 : $white          !default;
+
+// Tags
+$tag-border-color                   : $grey-n02;
+
+// Toggle Selectors
+$toggle-selector-option-bg-color       : $white                 !default;
+$toggle-selector-option-hover-bg-color : $grey-n00              !default;
+$toggle-selector-option-border-color   : $grey-n04              !default;
+$toggle-selector-text-color            : $text-color            !default;
+
+// Layout
+// -----------------------------------------------------------------------------
+
+$ui-gutter-mobile                   : 2rem !default;
+$ui-gutter-desktop                  : 4rem !default;
+
+$default-border-radius              : .240625em !default;
+
+// Effects
+$default-drop-shadow-color          : rgba($grey-t10, .382) !default;
+
+// Reusable elements
+$overlay-color                      : rgba($black, .618) !default;
+$default-divider-color              : $grey-n00   !default;
+
+// Components
+// :: Tooltips
+$tooltip-bg-color                   : $soft-black !default;
+
+// :: Tabs
+$default-tab-color                  : $soft-black !default;
+
+// :: icons
+$icon-size-multiplier               : 1.382 !default;

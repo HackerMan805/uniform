@@ -1,0 +1,63 @@
+// Media Queries
+
+// Generate media query mixins from breakpoints map in breakpoint definitions
+// file (definitions/breakpoints)
+
+// Default Media Queries:
+// screen-size(tiny)
+// screen-size(small)
+// screen-size(medium)
+// screen-size(large)
+// screen-size(huge)
+
+
+
+// target breakpoint by min-width
+@mixin min-screen-size($screen-size) {
+
+	@each $breakpoint in $breakpoints {
+		$alias: nth($breakpoint, 1);
+		$bp: nth($breakpoint, 2);
+
+		@if $alias == $screen-size {
+
+		  @media screen and (min-width: $bp) {
+				@content;
+		  }
+
+		}
+
+	}
+}
+
+// target breakpoint by max-width
+// If breakpoint is between smallest and largest, not including min or max UI
+// widths, add 1px
+@mixin max-screen-size($screen-size) {
+	$index: 1;
+
+	@each $breakpoint in $breakpoints {
+		$alias: nth($breakpoint, 1);
+		$base: nth($breakpoint, 2);
+		$bp: $base;
+
+		@if $index == 1
+			 or $index == length($breakpoints)
+		{
+			$bp: $base;
+		} @else {
+			$bp: $base - .0625rem; // TODO: This should use px-to-rem function in case the default font-size is changed from 16px to something else
+		}
+
+		@if $alias == $screen-size {
+
+		  @media screen and (max-width: $bp) {
+				@content;
+		  }
+
+		}
+
+		$index: $index + 1;
+
+	}
+}

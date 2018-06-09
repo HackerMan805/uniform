@@ -1,0 +1,82 @@
+// Handy functions
+
+// Convert pixels to ems
+@function px-to-em($new-value, $base: $em-base) {
+	@if $base == 0 { @return 0 }
+	@return $new-value / $base * 1em;
+}
+
+@function px-to-rem($new-value, $base: $em-base) {
+	@if $base == 0 { @return 0 }
+	@return $new-value / $base * 1rem;
+}
+
+//------------------------------------------------------------------------------
+// Strip Units
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+
+//------------------------------------------------------------------------------
+// Return current Line-height value
+
+@function get-line-height($element-font-size-category, $screen-size) {
+
+	@if $screen-size == tiny or $screen-size == small {
+
+		@each $key in $small-typography {
+			$font-size-category	: nth($key, 1);
+			$values	: nth($key, 2);
+
+			@if $font-size-category == $element-font-size-category {
+				@return px-to-rem(nth($values, 2));
+			}
+
+		}
+
+	}
+
+	@elseif  $screen-size == medium {
+
+		@each $key in $normal-typography {
+			$font-size-category	: nth($key, 1);
+			$values	: nth($key, 2);
+
+			@if $font-size-category == $element-font-size-category {
+				@return px-to-rem(nth($values, 2));
+			}
+
+		}
+
+	}
+
+	@elseif  $screen-size == large {
+
+		@each $key in $large-typography {
+			$font-size-category	: nth($key, 1);
+			$values	: nth($key, 2);
+
+			@if $font-size-category == $element-font-size-category {
+				@return px-to-rem(nth($values, 2));
+			}
+
+		}
+
+	}
+
+	@elseif  $screen-size == huge {
+
+		@each $key in $x-large-typography {
+			$font-size-category	: nth($key, 1);
+			$values	: nth($key, 2);
+
+			@if $font-size-category == $element-font-size-category {
+				@return px-to-rem(nth($values, 2));
+			}
+
+		}
+
+	}
+
+}

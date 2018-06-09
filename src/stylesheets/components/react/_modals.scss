@@ -1,0 +1,132 @@
+// REACT COMPONENT : Modals
+
+.edlio-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: $z-index-overlay;
+
+	width: 100vw;
+	height: 100vh;
+
+	@extend %flexbox;
+	@include flex(1,0,100%);
+	@include justify-content(center);
+	@include align-items(center);
+	@include flex-flow(row wrap);
+
+	padding: 0;
+
+	@include min-screen-size(medium) {
+		padding: {
+			left: $ui-gutter-desktop;
+			right: $ui-gutter-desktop;
+		}
+	}
+
+	background-color: $overlay-color;
+
+	.edlio-modal {
+		@extend %flexbox;
+		@include flex(0,1,auto);
+		@include flex-direction(column);
+
+		position: relative;
+		z-index: $z-index-modal;
+
+		min-width: ($ui-min-width - ( 2 * $ui-gutter-mobile ));
+		max-width: ($ui-max-width - ( 2 * $ui-gutter-desktop ));
+
+		height: 100%;
+		max-height: 100%;
+
+		overflow: auto;
+
+		background-color: $modal-bg-color;
+		border-radius: 0;
+
+		@include min-screen-size(medium) {
+			height: auto;
+			border-radius: $default-border-radius;
+		}
+
+		> header {
+			@extend %flexbox;
+			@include flex(0,0,auto);
+			@include align-items(center);
+
+			padding: .382em 1em .382em 2.382em;
+
+			background: $grey-3;
+
+			h1 {
+				@include flex(1,1,auto);
+				margin: 0;
+
+				text-align: center;
+
+				@include ellipsis;
+			}
+
+			.close {
+				@include flex(0,0,auto);
+			}
+		}
+
+		// Pagination
+		.page {
+			// For IE10
+			width: 100%;
+
+			padding: 1.618em 2.382em;
+
+			@include transition(transform, .3s, ease-in);
+
+			&.current {
+				@include show;
+				@include transform(translateX(0%));
+			}
+
+			&.past {
+				position: absolute;
+				@include transform(translateX(-150%));
+			}
+
+			&.future {
+				position: absolute;
+				@include transform(translateX(150%));
+			}
+		}
+
+		footer {
+			padding: 1em 2.382em;
+
+			border-top: 1px solid $grey-3;
+
+			text-align: right;
+
+			.button {
+				margin-bottom: 0;
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+
+		// Animation States
+		&.transition-in {
+			opacity: 1;
+
+			@include transition(all, .3s, cubic-bezier(0.44, 0.01, 0.37, 0.99));
+			@include transform(translate3d(0,0,0) scale(1.0));
+		}
+
+		&.transition-out {
+			opacity: 0;
+
+			@include transition(all, .3s, cubic-bezier(0.44, 0.01, 0.37, 0.99));
+			@include transform(translate3d(0,-25%,0) scale(0.2));
+		}
+	}
+}

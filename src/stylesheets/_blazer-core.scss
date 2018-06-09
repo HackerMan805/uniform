@@ -1,0 +1,90 @@
+// Blazer Core
+
+// ALWAYS IMPORT DEFAULT THEME
+@import 'themes/default';
+
+//------------------------------------------------------------------------------
+// Import necessary definitions
+@import 'definitions/typography';
+@import 'definitions/colors';
+@import 'definitions/breakpoints';
+@import 'definitions/z-index';
+
+//------------------------------------------------------------------------------
+// Sass Libraries - use sass globbing for these
+// Update this file when new libraries are added!
+@import 'libraries/functions';
+@import 'libraries/mixins/animations';
+@import 'libraries/mixins/flexbox'; // Basic flexbox mixins with browser prefixes
+@import 'libraries/mixins/flex_layout'; // For page layout (sidebars, toolbars, etc)
+@import 'libraries/mixins/flex_grid'; // For grid-style lists
+@import 'libraries/mixins/media-queries';
+
+// Helper classes
+@import 'libraries/helpers';
+
+@import 'libraries/mixins/misc';
+@import 'libraries/mixins/typography';
+
+
+//------------------------------------------------------------------------------
+
+// DEVELOPMENT MODE
+// When activated, useful information will display in a box
+// at the bottom of the view.
+
+@if variable-exists(devmode) and $devmode {
+
+	// add log to gulp terminal output to indicate that development mode is on
+	@warn 'Blazer Development Mode is ON';
+
+	// Dev 'Console' Output
+	html {
+
+		padding-bottom: 10em;
+
+		&:before {
+
+			// Display semantic screen-size name
+			@each $breakpoint in $breakpoints {
+				$alias: nth($breakpoint, 1);
+
+				@include min-screen-size($alias) {
+					content: 'Screen Size: "#{$alias}"';
+				}
+			}
+
+			// Default 'Dev Console' styles
+			display: block;
+
+			position: fixed;
+			bottom: 1em;
+			right: 1em;
+			z-index: ($z-index-max + 1);
+
+			padding: 1em 1.618em;
+
+			background: $white;
+			opacity: .95;
+			box-shadow: .14em .14em .236em 0 $grey-n02;
+			border-radius: $default-border-radius;
+			border: 1px solid $grey-n03;
+		}
+
+	}
+
+}
+
+@import 'global/reset';
+@import 'libraries/mixins/init';
+
+// -----------------------------------------------------------------------------
+// This sets up the base for the sizing of EVERYTHING, including fonts, margins,
+// padding, media queries.
+html {
+	background: $body-bg-color;
+	font-size: $em-base;
+}
+
+	
+

@@ -1,0 +1,109 @@
+// REACT COMPONENT : Timepicker
+
+.edlio-timepicker {
+  .incremental {
+    @extend %flexbox;
+    
+    box-shadow: inset 0 0 0 1px $textfield-border-color;
+    
+    // Wrapper class is necessary here since inputs don't work consistently as flexboxes
+    .input-width-constraint {
+      @include flex(1,1,auto);
+    }
+    
+    input {
+      @include flex(1,1,auto);
+      width: 100%;
+      margin-bottom: 0;
+      padding-right: 0;
+      
+      box-shadow: none;
+      background-color: transparent;
+      
+      @include ellipsis;
+      
+      @include max-screen-size(tiny) {
+        padding-left: .382em;
+      }
+      
+      &[type=number]::-webkit-inner-spin-button,
+      &[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+    
+    .incrementor {
+      @extend %flexbox;
+      @include flex(0,0,auto);
+      @include flex-direction(column);
+      @include justify-content(center);
+      
+      padding: 0 .382em;
+      
+      @include max-screen-size(tiny) {
+        padding-left: 0;
+      }
+      
+      box-shadow: 1px 0 0 0 $textfield-border-color;
+      
+      .control {
+        @extend %flexbox;
+        @include justify-content(center);
+        
+        border-radius: 2px;
+        cursor: pointer;
+        
+        &:hover {
+          background: $grey-1;
+        }
+        
+        &:active {
+          background: $grey-2;
+        }
+        
+        &.up {
+          @include align-items(flex-end);
+          
+          svg.icon {
+            @include rotate(180);
+          }
+        }
+        
+        &.down {
+          @include align-items(flex-start);
+        }
+        
+        svg.icon {
+          width: 1em;
+          height: 1em;
+          padding: 0;
+        }  
+      }
+    }
+    
+    .edlio-select {
+      margin: 0;
+      box-shadow: 
+        inset -1px 0 0 0 $textfield-border-color,
+        inset 0 1px 0 0 $textfield-border-color,
+        inset 0 -1px 0 0 $textfield-border-color
+      ;
+      
+      background: transparent;
+      
+      .select-title {
+        padding-right: 0;
+      }
+      
+      menu {
+        border-top: none;
+        
+        .item {
+          padding: 0 1em;
+        }
+      }
+
+    }
+  }
+}

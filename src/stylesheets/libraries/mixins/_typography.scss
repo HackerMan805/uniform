@@ -1,0 +1,636 @@
+// Typography Mixins
+
+//------------------------------------------------------------------------------
+// Pre-selected font-size mixin
+
+// Use this to change ANY default font-size. Do not specify a font-size manually
+
+// Choices include:
+// small
+// normal
+// large
+// larger
+// largest
+// ...as specified in 'definitions/typography'
+
+// OPTIONAL: specify type 'heading' to set proper margins on h1s, h2s, and h3s,
+// $ie-fallback: true will specify the font-size in pixels rather than ems. This
+// is to address a bug in IE9-11 that causes text with a font-size in rems to
+// collapse into one line when inside a pseudo-element. Use sparingly.
+
+@mixin font-size($size, $type: unspecified, $ie-fallback: false) {
+
+	@if $size == unset {
+		font-size: initial;
+		line-height: initial;
+		margin-bottom: initial;
+	} @else {
+		@include max-screen-size(medium) {
+
+			@each $key in $small-typography {
+				// Font category (ie small, normal, large, larger, largest)
+				$font-size-category	: nth($key, 1);
+				// is a list. contains rem values for font-size and line-height
+				$values	: nth($key, 2);
+
+				@if $font-size-category == $size {
+
+					@if $ie-fallback == true {
+						font-size: nth($values, 1);
+						line-height: nth($values, 2);
+					} @else {
+						font-size: px-to-rem(nth($values, 1));
+						line-height: px-to-rem(nth($values, 2));
+					}
+
+					@if $type != unspecified and $type == heading {
+						margin-bottom: px-to-rem(nth($values, 2));
+					}
+
+				}
+
+			}
+
+		}
+
+		// NORMAL DESKTOP TYPOGRAPHY
+		@include min-screen-size(medium) {
+
+			@each $key in $normal-typography {
+				$font-size-category	: nth($key, 1);
+				$values	: nth($key, 2);
+
+				@if $font-size-category == $size {
+
+					@if $ie-fallback == true {
+						font-size: nth($values, 1);
+						line-height: nth($values, 2);
+					} @else {
+						font-size: px-to-rem(nth($values, 1));
+						line-height: px-to-rem(nth($values, 2));
+					}
+
+					@if $type != unspecified and $type == heading {
+						margin-bottom: px-to-rem(nth($values, 2));
+					}
+
+				}
+
+			}
+
+		}
+
+		// LARGE DESKTOP TYPOGRAPHY
+		@include min-screen-size(large) {
+
+			@each $key in $large-typography {
+				$font-size-category	: nth($key, 1);
+				$values	: nth($key, 2);
+
+				@if $font-size-category == $size {
+
+					@if $ie-fallback == true {
+						font-size: nth($values, 1);
+						line-height: nth($values, 2);
+					} @else {
+						font-size: px-to-rem(nth($values, 1));
+						line-height: px-to-rem(nth($values, 2));
+					}
+
+					@if $type != unspecified and $type == heading {
+						margin-bottom: px-to-rem(nth($values, 2));
+					}
+
+				}
+
+			}
+
+		}
+
+		// X-LARGE DESKTOP TYPOGRAPHY
+		@include min-screen-size(huge) {
+
+			@each $key in $x-large-typography {
+				$font-size-category	: nth($key, 1);
+				$values	: nth($key, 2);
+
+				@if $font-size-category == $size {
+
+					@if $ie-fallback == true {
+						font-size: nth($values, 1);
+						line-height: nth($values, 2);
+					} @else {
+						font-size: px-to-rem(nth($values, 1));
+						line-height: px-to-rem(nth($values, 2));
+					}
+
+					@if $type != unspecified and $type == heading {
+						margin-bottom: px-to-rem(nth($values, 2));
+					}
+
+				}
+
+			}
+
+		}
+	}
+
+}
+
+
+// Line-height Multiplier mixin
+
+@mixin line-height-multiplier($element-font-size-category, $line-height-multiplier: 1) {
+
+	@include max-screen-size(medium) {
+
+		@each $key in $small-typography {
+			// Font category (ie small, normal, large, larger, largest)
+			$font-size-category	: nth($key, 1);
+			// is a list. contains rem values for font-size and line-height
+			$values	: nth($key, 2);
+
+			@if $font-size-category == $element-font-size-category {
+				$default-line-height: nth($values, 2);
+				$line-height: $default-line-height;
+
+				@if $line-height-multiplier != 1 {
+					$line-height: $line-height-multiplier * $default-line-height;
+				}
+
+				line-height: $line-height;
+
+			}
+
+		}
+
+	}
+
+	// NORMAL DESKTOP TYPOGRAPHY
+	@include min-screen-size(medium) {
+
+		@each $key in $normal-typography {
+			$font-size-category	: nth($key, 1);
+			$values	: nth($key, 2);
+
+			@if $font-size-category == $element-font-size-category {
+				$default-line-height: nth($values, 2);
+				$line-height: $default-line-height;
+
+				@if $line-height-multiplier != 1 {
+					$line-height: $line-height-multiplier * $default-line-height;
+				}
+
+				line-height: $line-height;
+
+			}
+
+		}
+
+	}
+
+	// LARGE DESKTOP TYPOGRAPHY
+	@include min-screen-size(large) {
+
+		@each $key in $large-typography {
+			$font-size-category	: nth($key, 1);
+			$values	: nth($key, 2);
+
+			@if $font-size-category == $element-font-size-category {
+				$default-line-height: nth($values, 2);
+				$line-height: $default-line-height;
+
+				@if $line-height-multiplier != 1 {
+					$line-height: $line-height-multiplier * $default-line-height;
+				}
+
+				line-height: $line-height;
+
+			}
+
+		}
+
+	}
+
+	// X-LARGE DESKTOP TYPOGRAPHY
+	@include min-screen-size(huge) {
+
+		@each $key in $x-large-typography {
+			$font-size-category	: nth($key, 1);
+			$values	: nth($key, 2);
+
+			@if $font-size-category == $element-font-size-category {
+				$default-line-height: nth($values, 2);
+				$line-height: $default-line-height;
+
+				@if $line-height-multiplier != 1 {
+					$line-height: $line-height-multiplier * $default-line-height;
+				}
+
+				line-height: $line-height;
+
+			}
+
+		}
+
+	}
+
+}
+
+
+// override line-height
+// Use this mixin in the event that you need to override the default line-height
+// (as specified in the typography definitions file) for an individual element
+
+@mixin override-line-height($element-font-size-category, $line-height-multiplier: 1, $add-height-rule: false) {
+
+	@include max-screen-size(medium) {
+
+		@each $key in $small-typography {
+			// Font category (ie small, normal, large, larger, largest)
+			$font-size-category	: nth($key, 1);
+			// is a list. contains rem values for font-size and line-height
+			$values	: nth($key, 2);
+
+			@if $font-size-category == $element-font-size-category {
+
+				line-height: $line-height-multiplier * get-line-height($font-size-category, small);
+
+				@if $add-height-rule {
+					height: $line-height-multiplier * get-line-height($font-size-category, small);
+				}
+
+			}
+
+		}
+
+	}
+
+	// NORMAL DESKTOP TYPOGRAPHY
+	@include min-screen-size(medium) {
+
+		@each $key in $normal-typography {
+			$font-size-category	: nth($key, 1);
+			$values	: nth($key, 2);
+
+			@if $font-size-category == $element-font-size-category {
+
+				line-height: $line-height-multiplier * get-line-height($font-size-category, medium);
+
+				@if $add-height-rule {
+					height: $line-height-multiplier * get-line-height($font-size-category, medium);
+				}
+
+			}
+
+		}
+
+	}
+
+	// LARGE DESKTOP TYPOGRAPHY
+	@include min-screen-size(large) {
+
+		@each $key in $large-typography {
+			$font-size-category	: nth($key, 1);
+			$values	: nth($key, 2);
+
+			@if $font-size-category == $element-font-size-category {
+
+				line-height: $line-height-multiplier * get-line-height($font-size-category, large);
+
+				@if $add-height-rule {
+					height: $line-height-multiplier * get-line-height($font-size-category, large);
+				}
+
+			}
+
+		}
+
+	}
+
+	// X-LARGE DESKTOP TYPOGRAPHY
+	@include min-screen-size(huge) {
+
+		@each $key in $x-large-typography {
+			$font-size-category	: nth($key, 1);
+			$values	: nth($key, 2);
+
+			@if $font-size-category == $element-font-size-category {
+
+				line-height: $line-height-multiplier * get-line-height($font-size-category, huge);
+
+				@if $add-height-rule {
+					height: $line-height-multiplier * get-line-height($font-size-category, huge);
+				}
+
+			}
+
+		}
+
+	}
+
+}
+
+
+//------------------------------------------------------------------------------
+// THIS MIXIN IS USED TO SET DEFAULT VERTICAL RHYTHM FOR ALL GUI ELEMENTS.
+// DO NOT call this mixin directly in a feature stylesheet.
+
+// margins/padding and line-height should ALWAYS be specified here,
+// NOT in individual component partials!
+// This allows typography-based layout to remain consistent.
+
+// This mixin saves us the trouble of repeating this large block of code
+// multiple times in 'blazer-core'.
+// It can be reused for additional font-size-categories if they are added to
+// the typography definitions file ('definitions/typography')
+
+@mixin set-typographic-rhythm($font-size-category, $values, $font-size, $line-height) {
+
+	$line-height-multiplier : 2;
+
+	@if $font-size-category == small {
+
+		@content;
+
+	} @else if $font-size-category == normal {
+
+		font-size: $font-size;
+		line-height: $line-height;
+
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin: 0 0 $line-height;
+
+			// avoid repetition of code by only declaring a font-family if it differs
+			// from the default
+			@if $h3-fonts != $font-family {
+				font-family: $h3-fonts;
+			}
+
+			font-size: 1em;
+			line-height: $line-height;
+
+			text-transform: $h3-transform;
+		}
+
+		section {
+			margin-bottom: ($line-height-multiplier * $line-height);
+		}
+
+		p, dl {
+			margin-bottom: $line-height;
+			line-height: $line-height;
+		}
+
+		// Buttons -----------------------------------------------------------------
+
+		.button {
+			margin: {
+				right: .618 * ((($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
+				bottom: $line-height;
+			}
+			// This padding value ensures circular buttons will display properly
+			padding: ((($line-height-multiplier * $line-height) - $line-height) / 2) ( (($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
+
+			font-size: 1em;
+			line-height: $line-height;
+		}
+
+		// Toggle Selectors --------------------------------------------------------
+
+		.toggle-selector {
+			margin: {
+				right: .618 * ((($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
+				bottom: $line-height;
+			}
+
+			.option {
+				padding: 0 ( (($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
+
+				font-size: 1em;
+				line-height: ($line-height-multiplier * $line-height);
+			}
+		}
+
+		// Button Bars -------------------------------------------------------------
+
+		.button-bar {
+			margin: {
+				right: .618 * ((($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
+				bottom: $line-height;
+			}
+
+			.button {
+				padding: 0 ( (($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
+
+				font-size: 1em;
+				line-height: ($line-height-multiplier * $line-height);
+			}
+		}
+
+		// Breadcrumbs -------------------------------------------------------------
+
+		ol.breadcrumb {
+			margin-bottom: $line-height;
+		}
+
+		// Tags --------------------------------------------------------------------
+
+		.tags {
+			> .tag {
+				margin: {
+					right: .618 * ((($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
+					bottom: $line-height;
+				}
+
+				font-size: 1em;
+				line-height: ($line-height-multiplier * $line-height);
+			}
+		}
+
+		// Notifications -----------------------------------------------------------
+
+		edlio-notification,
+		.edlio-notification {
+			min-height: ($line-height-multiplier * $line-height);
+			margin: {
+				bottom: $line-height;
+			}
+			padding: 0 1em;
+
+			font-size: 1em;
+			line-height: ($line-height-multiplier * $line-height);
+		}
+
+		// Forms -------------------------------------------------------------------
+
+		fieldset {
+			padding: $line-height 0;
+		}
+
+		edlio-select,
+		.edlio-select {
+			margin: {
+				right: .618 * ((($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
+				bottom: $line-height;
+			}
+			// This padding value ensures circular buttons will display properly
+			padding: 0 ( (($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
+
+			font-size: 1em;
+			line-height: ($line-height-multiplier * $line-height);
+
+			select-title,
+			.select-title {
+				// height: ($line-height-multiplier * $line-height);
+				padding: 0 1em;
+			}
+
+			item,
+			.item {
+				padding: 0 1em;
+			}
+		}
+
+		input {
+			&[type="text"],
+			&[type="number"],
+			&[type="url"],
+			&[type="date"],
+			&[type="time"],
+			&[type="password"],
+			&[type="file"],
+			&[type="image"],
+			&[type="submit"],
+			&[type="reset"],
+			&[type="button"] {
+				margin: {
+					bottom: $line-height;
+				}
+				// This padding value ensures circular buttons will display properly
+				padding: 0 ( (($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
+
+				font-size: 1em;
+				line-height: ($line-height-multiplier * $line-height);
+
+				// Some browsers do not respect line-height values on textfields.
+				height: ($line-height-multiplier * $line-height);
+			}
+		}
+
+		.icon.input {
+			margin-bottom: $line-height;
+
+			svg {
+				height: ($line-height-multiplier * $line-height);
+				width: ($line-height-multiplier * $line-height);
+
+				padding: ( (($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
+			}
+		}
+
+		textarea {
+			margin: {
+				bottom: $line-height;
+			}
+			// This padding value ensures circular buttons will display properly
+			padding: ( (($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
+
+			font-size: 1em;
+			line-height: $line-height;
+		}
+
+		// Accordions --------------------------------------------------------------
+
+		edlio-accordion,
+		.edlio-accordion {
+			header {
+				line-height: ($line-height-multiplier * $line-height);
+			}
+
+			> section {
+				header {
+					padding: 0 1em;
+				}
+
+				.content {
+					padding: 1em;
+				}
+
+				&:last-child {
+					margin-bottom: $line-height;
+				}
+			}
+		}
+
+		// Tooltips ----------------------------------------------------------------
+
+		[data-tooltip]:after {
+			padding: ( (($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
+		}
+
+		// Icons -------------------------------------------------------------------
+
+		.icon.button svg,
+		svg.icon {
+			height: ( 1em * $icon-size-multiplier );
+			width: ( 1em * $icon-size-multiplier );
+		}
+
+		@content;
+
+	} @else if $font-size-category == large {
+
+		h2 {
+			// avoid repetition of code by only declaring a font-family if it differs
+			// from the default
+			@if $h2-fonts != $font-family {
+				font-family: $h2-fonts;
+			}
+
+			font-size: $font-size;
+			text-transform: $h2-transform;
+			line-height: $line-height;
+			margin: 0 0 $line-height;
+		}
+
+		legend {
+			font-family: $legend-font-family;
+			font-size: $font-size;
+			text-transform: $legend-text-transform;
+			line-height: $line-height;
+		}
+
+		.tab.bar {
+			font-size: $font-size;
+			line-height: (2 * $line-height);
+		}
+
+		@content;
+
+	} @else if $font-size-category == larger {
+
+		h1 {
+			// avoid repetition of code by only declaring a font-family if it differs
+			// from the default
+			@if $h1-fonts != $font-family {
+				font-family: $h1-fonts;
+			}
+
+			font-size: $font-size;
+			text-transform: $h1-transform;
+			line-height: $line-height;
+			margin: 0 0 $line-height;
+		}
+
+		@content;
+
+	} @else if $font-size-category == largest {
+
+		@content;
+
+	}
+}

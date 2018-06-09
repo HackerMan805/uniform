@@ -1,0 +1,44 @@
+// COMPONENT : Button Groups
+
+// Button height and line-height are determined by typographic rhythm
+// libraries/mixins/typography', and 'ui-core/definitions/typography'
+// for values
+
+//------------------------------------------------------------------------------
+
+.button-bar {
+	display: flex;
+	
+	.button {
+		margin: 0;
+		
+		@include ellipsis;
+		
+		box-shadow: 
+			inset 1px 0 0 0 $primary-button-border-color
+		;
+		
+		border-radius: 0;
+		
+		&:first-of-type {
+			border-radius: $default-border-radius 0 0 $default-border-radius;
+		}
+		
+		&:last-of-type {
+			border-radius: 0 $default-border-radius $default-border-radius 0;
+		}
+		
+		&.secondary {
+			box-shadow: 
+				inset 1px 0 0 0 $secondary-button-border-color,
+				inset 0 1px 0 0 $secondary-button-border-color,
+				inset 0 -1px 0 0 $secondary-button-border-color
+			;
+			
+			&:last-of-type {
+				box-shadow: inset 0 0 0 1px $secondary-button-border-color;
+			}
+		}
+		
+	}
+}

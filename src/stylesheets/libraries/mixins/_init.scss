@@ -1,0 +1,108 @@
+@mixin blazer-init() {
+	margin: 0;
+	min-width: $ui-min-width;
+
+	// Font Defaults
+	font: {
+		family: $font-family;
+		weight: $regular;
+		style: normal;
+		variant: none;
+	}
+
+	color: $text-color;
+
+	//----------------------------------------------------------------------------
+	// Core Typography Settings
+	//
+	// Loops through maps in 'definitions/typography' and runs
+	// 'set-typographic-rhythm' mixin found in 'mixins/typography'
+	// This mixin applies font category values to appropriate elements. We could
+	// do this manually, but the code is quite long and would
+	// have to be repeated for every single screen-size.
+	//
+	// For this reason, it has been abstracted into a mixin.
+
+	// MOBILE TYPOGRAPHY
+	@include max-screen-size(medium) {
+
+		@each $key in $small-typography {
+			// Font category (ie small, normal, large, larger, largest)
+			$font-size-category	: nth($key, 1);
+			// is a list. contains rem values for font-size and line-height
+			$values	: nth($key, 2);
+
+			$font-size : px-to-rem(nth($values, 1));
+			$line-height : px-to-rem(nth($values, 2));
+
+			@include set-typographic-rhythm($font-size-category, $values, $font-size, $line-height);
+
+		}
+
+	}
+
+	// NORMAL DESKTOP TYPOGRAPHY
+	@include min-screen-size(medium) {
+
+		@each $key in $normal-typography {
+			$font-size-category	: nth($key, 1);
+			$values	: nth($key, 2);
+
+			$font-size : px-to-rem(nth($values, 1));
+			$line-height : px-to-rem(nth($values, 2));
+
+			@include set-typographic-rhythm($font-size-category, $values, $font-size, $line-height);
+
+		}
+
+	}
+
+	// LARGE DESKTOP TYPOGRAPHY
+	@include min-screen-size(large) {
+
+		@each $key in $large-typography {
+			$font-size-category	: nth($key, 1);
+			$values	: nth($key, 2);
+
+			$font-size : px-to-rem(nth($values, 1));
+			$line-height : px-to-rem(nth($values, 2));
+
+			@include set-typographic-rhythm($font-size-category, $values, $font-size, $line-height) {
+
+				@if $font-size-category == small {
+					header.main nav .dropdown .menu a {
+						font-size: nth($values, 1);
+					}
+				}
+
+			}
+
+		}
+
+	}
+
+	// X-LARGE DESKTOP TYPOGRAPHY
+	@include min-screen-size(huge) {
+
+		@each $key in $x-large-typography {
+			$font-size-category	: nth($key, 1);
+			$values	: nth($key, 2);
+
+			$font-size : px-to-rem(nth($values, 1));
+			$line-height : px-to-rem(nth($values, 2));
+
+			@include set-typographic-rhythm($font-size-category, $values, $font-size, $line-height) {
+
+				@if $font-size-category == small {
+					header.main nav .dropdown .menu a {
+						font-size: nth($values, 1);
+					}
+				}
+
+			}
+
+		}
+
+	}
+
+}

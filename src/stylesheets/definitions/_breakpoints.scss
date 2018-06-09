@@ -1,0 +1,13 @@
+// Breakpoints - (width) based on 16px font-size
+$ui-min-width								: 20rem !default;
+$ui-max-width								: 90rem !default;
+
+// Breakpoints label the range of screen sizes at or above the given width!
+$breakpoints : (
+	tiny: #{$ui-min-width},
+	small: 32rem,
+	medium: 48rem,
+	large: 64rem,
+	huge: 75rem
+) !default;
+

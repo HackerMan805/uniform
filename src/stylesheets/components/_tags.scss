@@ -1,0 +1,17 @@
+// COMPONENT : Tags
+.tags {
+	@include flexbox;
+	@include flex-direction(row);
+	@include flex-wrap(wrap);
+
+	> .tag {
+		@include flexbox;
+		@include align-items(center);
+
+		padding: 0 1em;
+		vertical-align: baseline;
+		// Using border due to the add tag below to keep it consistent
+		box-shadow: inset 0 0 0 $default-border-width $tag-border-color;
+		border-radius: $default-border-radius;
+	}
+}

@@ -1,0 +1,131 @@
+// COMPONENT : Tooltips
+
+[data-tooltip] {
+	position: relative;
+
+	&:before,
+	&:after {
+		position: absolute;
+		z-index: $z-index-tooltip;
+
+		display: inline-block;
+		visibility: hidden;
+		opacity: 0;
+
+		// Do not show tooltips on small screens
+		@include max-screen-size(medium) {
+			@include hide;
+		}
+
+	}
+
+	&:before {
+		content: '';
+		@include transition(all, .1146s, cubic-bezier(0.44, 0.01, 0.37, 0.99) .1146s);
+	}
+
+	&:after {
+		content: attr(data-tooltip);
+
+		width: $tooltip-width;
+		height: auto;
+
+		overflow: hidden;
+
+		background-color: $tooltip-bg-color;
+
+		// Use ie-fallback to keep text inside pseudo-elements from collapsing into
+		// one line. See '/definitions/typography' for usage.
+		@include font-size(small, unspecified, true);
+
+		text-align: center;
+		color: $tooltip-text-color;
+
+		pointer-events: none;
+
+		@include transition(all, .3s, cubic-bezier(0.44, 0.01, 0.37, 0.99) .1854s);
+	}
+
+	&:hover {
+
+		&:before {
+			@include transition(all, .3s, cubic-bezier(0.44, 0.01, 0.37, 0.99) .3s);
+		}
+
+		&:before,
+		&:after {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	// Top Tooltip ---------------------------------------------------------------
+
+	&[data-tooltip-position="top"] {
+
+		&:before {
+			top: -2.5em;
+			left: 50%;
+
+			margin-left: -1.382em;
+
+			border-top: 1.382em solid $tooltip-bg-color;
+			border-left: 1.382em solid transparent;
+			border-right: 1.382em solid transparent;
+		}
+
+		&:after {
+			left: 50%;
+			bottom: 100%;
+
+			margin-left: -( $tooltip-width / 2 );
+		}
+
+		&:hover {
+			&:before {
+				@include transform(translateY(1em));
+			}
+
+			&:after {
+				@include transform(translateY(-1em));
+			}
+		}
+
+	}
+
+	// Bottom Tooltip ------------------------------------------------------------
+
+	&[data-tooltip-position="bottom"] {
+
+		&:before {
+			bottom: -2.5em;
+			right: 50%;
+
+			margin-right: -1.382em;
+
+			border-top: none;
+			border-bottom: 1.382em solid $tooltip-bg-color;
+			border-left: 1.382em solid transparent;
+			border-right: 1.382em solid transparent;
+		}
+
+		&:after {
+			top: 100%;
+			right: 50%;
+
+			margin-right: -( $tooltip-width / 2 );
+		}
+
+		&:hover {
+			&:before {
+				@include transform(translateY(-1em));
+			}
+
+			&:after {
+				@include transform(translateY(1em));
+			}
+		}
+
+	}
+
+}

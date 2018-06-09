@@ -1,0 +1,173 @@
+.data-table {
+	.tr,
+	.th {
+		@include flexbox;
+		@include align-items(center);
+
+		.column {
+			@include flex;
+			padding: 0.5em;
+
+			&.text {
+				@include ellipsis;
+			}
+			&.action {
+				@include flex(0, 0, 6em);
+			}
+		}
+	}
+
+	.empty-message {
+		@include flexbox;
+		@include justify-content(center);
+		@include align-items(center);
+
+		height: 10em;
+		color: $grey-3;
+		font-size: 1.3em;
+	}
+
+	.tr {
+		&.border {
+			border-bottom: 1px solid $grey-3;
+			padding: .5em 0;
+		}
+
+		&.not-clickable,
+		&.disabled {
+			cursor: default;
+		}
+		
+		&.disabled {
+			color: $grey-4;
+			a {
+				color: $grey-4;
+				cursor: default;
+				
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+
+		.action.column {
+			.action {
+				display: none;
+			}
+
+			a:hover .icon {
+				fill: $blue;
+			}
+		}
+
+		&:not(.disabled) .column {
+			a {
+				color: $grey-6;
+				
+				&:hover {
+					color: $blue;
+					text-decoration: none;
+				}
+			}
+		}
+
+		&:hover .action:not(.mobile-only) {
+			display: initial;
+		}
+	}
+
+	.tr:not(.disabled):not(.without-action):hover,
+	.th > .column:not(.action):hover {
+		background-color: $grey-1;
+	}
+
+	.th {
+		border-bottom: 2px solid $grey-3;
+
+		.icon {
+			pointer-events: all;
+			fill: $grey-4;
+
+			&.active {
+				fill: $grey-7;
+				margin-top: -0.4em;
+			}
+		}
+	}
+
+	.action.column {
+		.menu {
+			margin: 0;
+			height: 1.75em;
+			border-radius: $default-border-radius;
+
+			.title {
+				height: 1.75em;
+			}
+
+			& > svg {
+				margin: 0;
+			}
+		}
+	}
+
+	.mobile-only {
+		display: none;
+	}
+
+	@include max-screen-size(small) {
+		.mobile-only {
+			display: initial;
+		}
+		.desktop-only {
+			display: none;
+		}
+
+		.th,
+		.tr {
+			@include align-items(initial);
+		}
+
+		.th {
+			display: none;
+		}
+
+		.tr {
+			@include flex-direction(column);
+
+			&:hover > .action.column {
+				@include flex(1, 0, auto);
+				@include flexbox;
+				@include justify-content(space-around);
+
+				// FIXME: below is over depth of 3 ... kind of too deep, please
+				// find a way to flatten it later
+				.action {
+					@include flexbox;
+					@include flex-direction(column);
+					@include align-items(center);
+
+					background-color: rgba($black, 0.7);
+					border-radius: $default-border-radius;
+					width: 5em;
+					padding: 1em;
+					color: $white;
+
+					svg.icon {
+						fill: $white;
+						min-width: 1em;
+						min-height: 1em;
+					}
+
+					span {
+						font-size: 0.7em;
+					}
+				}
+			}
+
+			.action.column {
+				display: none;
+			}
+		}
+	}
+}

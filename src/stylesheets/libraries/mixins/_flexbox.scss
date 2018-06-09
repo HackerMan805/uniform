@@ -1,0 +1,229 @@
+// Flexbox auto-prefixed mixins
+
+// Prefixes are based on browser support as of April 2015:
+//
+// Chrome, Firefox and Safari back 2 versions:
+// Safari requires -webkit- prefix
+//
+// IE 10 and up:
+// IE 10 requires -ms- prefix and some properties from the 2011 flexbox syntax
+// IE 11 and up support modern syntax
+
+//------------------------------------------------
+// Block-level flex container
+//
+// display: inline-flex is not currently supported.
+//
+// http://w3.org/tr/css3-flexbox/#flex-containers
+//
+
+@mixin flexbox {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+// Placeholder for @extend
+%flexbox { @include flexbox; }
+
+//------------------------------------------------
+// Flexbox Direction
+//
+// The 'flex-direction' property specifies the flex container's
+// main axis. This determines the orientation of items in the container
+// as well as the 'align' and 'justification' properties
+//
+// Values: row, row-reverse, column, column-reverse
+// Default: row
+//
+// http://w3.org/tr/css3-flexbox/#flex-direction-property
+
+@mixin flex-direction($value: row) {
+	-webkit-flex-direction: $value;
+	-ms-flex-direction: $value;
+	flex-direction: $value;
+}
+
+//----------------------------------------------------------------------
+// Flexbox Flow (shorthand)
+//
+// The 'flex-flow' property is a shorthand for setting the 'flex-direction'
+// and 'flex-wrap' properties, which together define the flex container's
+// main and cross axes.
+//
+// Values: <flex-direction> | <flex-wrap>
+// Default: row nowrap
+//
+// http://w3.org/tr/css3-flexbox/#flex-flow-property
+
+@mixin flex-flow($values: (row nowrap)) {
+	-webkit-flex-flow: $values;
+	-ms-flex-flow: $values;
+	flex-flow: $values;
+}
+
+//------------------------------------------------
+// Flexbox Wrap
+//
+// The 'flex-wrap' property controls whether the flex container is single-line
+// or multi-line, and the direction of the cross-axis, which determines
+// the direction new lines are stacked in.
+//
+// Values: nowrap | wrap | wrap-reverse
+// Default: nowrap
+//
+// http://w3.org/tr/css3-flexbox/#flex-wrap-property
+
+@mixin flex-wrap($value: nowrap) {
+	@if $value == nowrap {
+		-ms-flex-wrap: none;
+	} @else {
+		-ms-flex-wrap: $value;
+	}
+
+	-webkit-flex-wrap: $value;
+	flex-wrap: $value;
+}
+
+//------------------------------------------------
+// Flexbox Justify Content
+//
+// The 'justify-content' property aligns flex items along the main axis of the
+// container.
+//
+// Takes into account flexible lengths and auto margins.
+//
+// Values: flex-start | flex-end | center | space-between | space-around
+// Default: flex-start
+//
+// http://w3.org/tr/css3-flexbox/#justify-content-property
+
+@mixin justify-content($value: flex-start) {
+	@if $value == flex-start {
+		-ms-flex-pack: start;
+	} @else if $value == flex-end {
+		-ms-flex-pack: end;
+	} @else if $value == space-between {
+		-ms-flex-pack: justify;
+	} @else if $value == space-around {
+		-ms-flex-pack: distribute;
+	} @else {
+		-ms-flex-pack: $value;
+	}
+
+	-webkit-justify-content: $value;
+	justify-content: $value;
+}
+
+//------------------------------------------------
+// Align Content
+//
+// The 'align-content' property specifies how lines of text should display inside
+// a flex container.
+//
+// This property has no effect when the flexbox has only a single line of text.
+//
+// Values: flex-start, flex-end, center, space-between, space-around, stretch
+// Default: stretch
+//
+// http://w3.org/tr/css3-flexbox/#align-content-property
+//
+// See https://css-tricks.com/almanac/properties/a/align-content/ for more info
+
+@mixin align-content($value: stretch) {
+	@if $value == flex-start {
+		-ms-flex-line-pack: start;
+	} @else if $value == flex-end {
+		-ms-flex-line-pack: end;
+	} @else {
+		-ms-flex-line-pack: $value;
+	}
+
+	-webkit-align-content: $value;
+	align-content: $value;
+}
+
+//------------------------------------------------
+// Align Items
+//
+// 'align-items' aligns contained flex items on the cross axis of the element.
+// Works perpendicularly to 'justify-content'.
+// Sets default alignment for all of the flex items contained in the element.
+//
+// 'align-self' allows this default alignment to be overridden for individual
+// flex items.
+//
+// Anonymous items' 'align-self' value will match container's 'align-self' value
+//
+// Values: initial, flex-start, flex-end, center, baseline, stretch
+// Default: stretch
+//
+// http://w3.org/tr/css3-flexbox/#align-items-property
+
+@mixin align-items($value: stretch) {
+	@if $value == flex-start {
+		-ms-flex-align: start;
+	} @else if $value == flex-end {
+		-ms-flex-align: end;
+	} @else {
+		-ms-flex-align: $value;
+	}
+
+	-webkit-align-items: $value;
+	align-items: $value;
+}
+
+// Align Self
+//
+// Values: auto, flex-start, flex-end, center, baseline, stretch
+// Default: auto
+
+@mixin align-self($value: auto) {
+	@if $value == flex-start {
+		-ms-flex-item-align: start;
+	} @else if $value == flex-end {
+		-ms-flex-item-align: end;
+	} @else {
+		-ms-flex-item-align: $value;
+	}
+	-webkit-align-self: $value;
+	align-self: $value;
+}
+
+
+//------------------------------------------------
+// Flex Order
+//
+// Overrides source-order to display flex items in a custom order
+//
+// Accepts integers. '-1' value ensures that the element will appear at flex-start.
+// Default: 0
+//
+// http://w3.org/tr/css3-flexbox/#order-property
+
+@mixin order($value: 0) {
+	-webkit-order: $value;
+	-ms-flex-order: $value;
+	order: $value;
+}
+
+//------------------------------------------------
+// Flex Shorthand
+//
+// The 'flex' shorthand property specifies flex grow, shrink, and basis properties.
+//
+// Values: none | initial | inherit | auto | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+//
+// Default: 1 1 0% (note this would be '1 1 0' but IE 10-11 require a unit for
+// flex-basis in flex shorthand)
+//
+// http://w3.org/tr/css3-flexbox/#flex-property
+
+@mixin flex($grow: 1, $shrink: 1, $basis: 0%) {
+	-webkit-flex: $grow $shrink $basis;
+	-ms-flex: $grow $shrink $basis;
+	flex: $grow $shrink $basis;
+}
+
+// Placeholder for @extend
+%flex { @include flex; }

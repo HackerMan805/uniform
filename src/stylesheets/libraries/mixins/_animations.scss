@@ -1,0 +1,54 @@
+// Animation Mixins
+
+// Basic Transitions
+// Note you cannot use calc() as a value!
+@mixin transition($transition-property: none, $transition-time: 0, $method: ease-in-out) {
+	@if $transition-property == none {
+		transition: none;
+	} @else {
+		transition: $transition-property $transition-time $method;
+	}
+}
+
+// CSS Transform
+@mixin transform($transforms) {
+	-webkit-transform: $transforms;
+          transform: $transforms;
+}
+// rotate
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($scale) {
+	 @include transform(scale($scale));
+}
+// translate
+@mixin translate ($x, $y) {
+   @include transform(translate($x, $y));
+}
+// skew
+@mixin skew ($x, $y) {
+   @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  animation: #{$str};
+}
+
+@mixin animation-delay($str) {
+  -webkit-animation-delay: #{$str};
+  animation-delay: #{$str};
+}

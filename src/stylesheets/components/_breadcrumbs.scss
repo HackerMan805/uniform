@@ -1,0 +1,20 @@
+// COMPONENT : Breadcrumbs
+
+ol.breadcrumb {
+	list-style: none; // in case standard list styles have been changed
+
+	li {
+		display: inline-block;
+
+		&.active a {
+			@extend %disable-link;
+		}
+
+		& + li:before {
+			content: '/\00a0';
+
+			padding: 0 .382em;
+			color: $default-divider-color;
+		}
+	}
+}

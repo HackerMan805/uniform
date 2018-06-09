@@ -1,0 +1,159 @@
+// Edlio CMS Theme
+
+// Import Necessary Definitions
+@import 'definitions/colors';
+
+$white                              : rgb(255,255,255);	   // #FFFFFF
+$black                              : rgb(0,0,0);          // #000000
+
+// CMS Palette
+// ---------------------------------------------
+$grey-1                          : rgb(244,244,244);    // #F4F4F4
+$grey-2                          : rgb(237,237,237);    // #EDEDED
+$grey-3                          : rgb(204,204,204);    // #CCCCCC
+$grey-4                          : rgb(170,171,173);    // #AAABAD
+$grey-5                          : rgb(136,136,136);    // #888888
+$grey-6                          : rgb(85,85,85);       // #555555
+$grey-7                          : rgb(51,51,51);       // #333333
+
+$selection-blue                  : rgb(59,153,252);     // #3B99FC
+
+$red                             : rgb(230, 64, 23);    // #E64017
+$blue                            : rgb(41,171,226);     // #29ABE2
+$green                           : rgb(51,164,104);     // #33A468
+$yellow                          : rgb(251,213,0);      // #FBD500
+$orange                          : rgb(224,124,58);     // #E07C3A
+
+$light-grey                      : $grey-2;             // #EDEDED
+$medium-grey                     : $grey-5;             // #888888
+$dark-grey                       : $grey-7;             // #333333
+
+// Marketing Material Colors
+// -----------------------------------------------------------------------------
+$light-blue                      : rgb(137,209,212);    // #89D1D4
+$teal                            : rgb(45,188,211);     // #2DBCD3
+$sky-blue                        : rgb(105,204,231);    // #69CCE7
+$blue-green                      : rgb(101,196,185);    // #65C4B9
+$yellow-green                    : rgb(200,222,146);    // #C8DE92
+$pistachio                       : rgb(179,211,107);    // #B3D36B
+$pea-green                       : rgb(151,200,87);     // #97C857
+$light-yellow                    : rgb(245,236,116);    // #F5EC74
+$gold                            : rgb(255,219,92);     // #FFDB5C
+
+
+// CMS Color Scheme Definitions
+// -----------------------------------------------------------------------------
+
+$body-bg-color                      : $white;
+
+// CMS Header
+$header-bg-color                    : $dark-grey;
+$header-border-color                : $edlio-red;
+$header-text-color                  : $white;
+$header-link-color                  : $white;
+$header-dropdown-color              : $white;
+
+// Dropdowns
+$dropdown-font-color                : $medium-grey;
+$dropdown-bg-color                  : $light-grey;
+$dropdown-hover-color               : $edlio-red;
+
+// Links
+$default-link-color                 : $blue;
+$disabled-link-color                : $grey-4;
+
+// Buttons
+$primary-button-bg-color  		      : $blue;
+$primary-button-text-color          : $white;
+$primary-button-hover-bg-color      : darken($primary-button-bg-color, 5%);
+$primary-button-active-bg-color     : darken($primary-button-bg-color, 10%);
+
+$secondary-button-bg-color		      : $body-bg-color;
+$secondary-button-border-color		  : $grey-3;
+$secondary-button-text-color        : $grey-6;
+$secondary-button-hover-bg-color    : $grey-1;
+$secondary-button-active-bg-color   : darken($grey-1, 5%);
+
+// Forms
+$label-color                        : $grey-7;
+
+$textfield-bg-color                 : $body-bg-color;
+$textfield-border-color             : $grey-3;
+$textfield-placeholder-color        : $grey-5;
+$textfield-text-color               : $grey-6;
+
+$textfield-icon-bg-color            : $grey-2;
+$textfield-icon-fill                : $grey-5;
+
+$select-menu-bg-color               : $textfield-bg-color;
+$select-menu-border-color           : $textfield-border-color;
+$select-menu-text-color             : $textfield-text-color;
+$select-menu-icon-fill              : $textfield-icon-fill;
+$select-menu-icon-hover-fill        : $grey-6;
+$select-dropdown-bg-color           : $white;
+$select-menu-item-hover-color       : $grey-1;
+
+// Notifications
+$confirmation-notification-color	  : $green;
+$alert-notification-color  	        : $orange;
+$notification-secondary-text-color  : $medium-grey;
+
+// Tooltips
+$tooltip-width                      : 12em;
+$tooltip-bg-color                   : $grey-7;
+$tooltip-text-color                 : $white;
+
+// Bars
+$bar-border-color                   : $grey-6;
+
+// :: Tabs
+$tab-bg-color                       : transparent;
+$tab-hover-bg-color                 : $light-grey;
+$active-tab-color                   : $text-color;
+
+// :: Modals
+$modal-text-color                   : $grey-6;
+$modal-header-bg-color              : $grey-3;
+
+$modal-footer-button-margin         : .5em;
+$modal-footer-border-color          : $grey-4;
+
+// :: Toggle Selectors
+$toggle-selector-option-bg-color              : $grey-2;
+$toggle-selector-selected-option-bg-color     : $body-bg-color;
+$toggle-selector-selected-option-text-color   : $black;
+$toggle-selector-option-hover-bg-color        : $grey-1;
+$toggle-selector-option-border-color          : $grey-3;
+$toggle-selector-selected-option-border-color : $grey-6;
+$toggle-selector-text-color                   : $grey-6;
+
+// CMS Typography
+// -----------------------------------------------------------------------------
+$font-family                        : Avenir, Helvetica, Arial, sans-serif;
+
+$h1-fonts                           : $font-family;
+$h1-transform                       : none;
+$h2-fonts                           : $font-family;
+$h2-transform                       : none;
+$h3-fonts                           : $font-family;
+$h3-transform                       : none;
+
+
+// Layout
+// -----------------------------------------------------------------------------
+
+// CMS Header
+$header-line-height                 : 3.125em;
+$header-border-width                : 4px;
+
+$default-border-width               : 1px;
+$default-border-radius              : .240625em;
+
+// Miscellaneous
+// -----------------------------------------------------------------------------
+// These variables create a reference to the height of the main header (It does
+// not have a fixed height).
+// Used for secondary sticky headers
+$header-default-font-size           : large;
+$header-line-height-multiplier 	    : 2;
+$header-line-height-multiplier-huge : 1.618;

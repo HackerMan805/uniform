@@ -1,0 +1,129 @@
+// Flex Grid mixins
+
+// These are for situations where you need a grid of fluid, responsive tiles,
+// all the same size.
+// Examples might be for a photo or video gallery, directory, etc.
+//  _ _ _ _
+// |_|_|_|_|
+// |_|_|_|_|
+// |_|_|_|_|
+// |_|_|_|_|
+
+// import necessary libraries
+@import 'flexbox';
+@import 'media-queries';
+
+
+// :: Grid container
+
+// To use:
+// Specify number of columns
+// Gutter uses margins: flex-basis is calculated based on the gutter width and
+// the number of columns you specify.
+// In general, it is best to stick with the default gutter-size of 1em.
+
+// Maximum number of columns is needed to reset the margins when using different
+// numbers of columns in media queries
+
+// NOTE:
+// When using this mixin in media queries, you must specify a media query for
+// each screen-size you want to target. Setting a default and then overriding
+// with a media query will NOT work.
+// This is because nth-child selectors are not reset each time you call the mixin
+
+// For example, if you have this code:
+
+// .grid {
+// 	@include grid(2);
+//
+// 	@include min-screen-size(medium) {
+// 		@include grid(4);
+// 	}
+// }
+
+// At screen-sizes above 'medium', the nth-child selectors from the first mixin
+// still apply to the second one. (nth-child(2n) is not being overwritten in the
+// second mixin, which is specifying nth-child(4n))
+
+// To get around this, you'll need to add a media-query mixin to the first grid
+// mixin as well:
+
+// .grid {
+//
+// 	@include max-screen-size(medium) {
+// 		@include grid(2);
+// 	}
+//
+// 	@include min-screen-size(medium) {
+// 		@include grid(4);
+// 	}
+// }
+
+@mixin grid($columns, $gutter-width: 1em) {
+
+	@include flexbox;
+	@include flex-wrap(wrap);
+	@include flex-direction(row);
+
+	& > * {
+
+		overflow: hidden;
+
+		// Calculate flex-basis. Takes margins into account, as they are not
+		// handled automatically by flexbox
+		$column-width-percentage	: (100 / $columns) * 1%;
+		$gutter-reduction					: strip-units((100% - $column-width-percentage) / 100);
+		$final-gutter-width				: $gutter-width * $gutter-reduction;
+
+		@include flex(0, 0, $column-width-percentage);
+
+		padding: 0 ($gutter-width / 2) $gutter-width;
+
+		@for $i from 0 to ($columns - 1) {
+
+			&:last-child:nth-child(#{$i}n) {
+				padding-right: ($gutter-width / 2);
+			}
+
+			&:nth-child(#{$i}n) {
+				padding-right: ($gutter-width / 2);
+			}
+
+			&:nth-child(#{$i}n + 1) {
+				padding-left: ($gutter-width / 2);
+			}
+
+		}
+
+		// Remove margins on first and last items
+		&:first-child {
+			padding-left: 0;
+		}
+		&:last-child:nth-child(#{$columns}n) {
+			padding-right: 0;
+		}
+
+		// The following allows for this default behavior:
+		// Once more than one row of grid items has been added, they will all
+		// align left by default. Until the first row is filled, items will
+		// display centered and spaced out to fill the whole column width
+
+		&:nth-child(#{$columns}n) {
+			padding-right: 0;
+		}
+
+		&:nth-child(#{$columns}n + 1),
+		&:first-child:not(:only-child) {
+			padding-left: 0;
+		}
+
+		&:only-child,
+		&:nth-child(-n+#{$columns - 1}),
+		&:first-child:nth-last-child(-n+#{$columns - 1}) {
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	@content;
+}
