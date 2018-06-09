@@ -1,0 +1,39 @@
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const open = require('open');
+
+const app = {
+    sassRoot: './src/sass/',
+    sass: './src/sass/**/*.scss',
+    dest: './build'
+};
+const demoApp = {
+    sassRoot: ['./docs/sass/', './src/sass'],
+    sass: './docs/sass/**/*.scss',
+    dest: './docs/css'
+};
+
+function compileSass (app) {
+    return () => {
+        return gulp.src(app.sass)
+            .pipe(sass({
+                includePaths: app.sassRoot
+            }).on('error', sass.logError))
+            .pipe(gulp.dest(app.dest));
+    };
+}
+
+gulp.task('sass:watch', function() {
+    gulp.watch(app.sass, ['sass']);
+});
+
+gulp.task('sass', compileSass(app));
+gulp.task('demo:sass', compileSass(demoApp));
+
+gulp.task('start', (done) => {
+    open('./docs/index.html');
+    done();
+});
+gulp.task('build', gulp.parallel('sass', 'demo:sass'));
+gulp.task('default', gulp.series('build'));
+

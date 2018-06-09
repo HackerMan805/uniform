@@ -1,0 +1,28 @@
+{
+  "name": "uniform",
+  "version": "1.0.0",
+  "description": "Edlio UI Framework",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "gulp build",
+    "start": "gulp start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edlio/uniform.git"
+  },
+  "keywords": [],
+  "author": "Eric Liao <eric@edlio.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edlio/uniform/issues"
+  },
+  "homepage": "https://github.com/edlio/uniform",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-cli": "^2.0.1",
+    "gulp-sass": "^4.0.1",
+    "open": "0.0.5"
+  }
+}
