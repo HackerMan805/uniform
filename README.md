@@ -13,6 +13,14 @@ match a design.
 
 * [Node.js](https://nodejs.org/en/)
 
+### Installing
+
+Once you install Node.js, you can use the following to install all dependencies:
+
+```
+npm install
+```
+
 ### Command
 
 ```
@@ -33,3 +41,19 @@ Kitchen sink is hosted on the Github Pages.
 * [Gulp](https://gulpjs.com/)
 * [SASS](https://sass-lang.com/)
 
+## Contributing
+
+TBD.
+
+## Authors
+
+* [Graham Butler](https://github.com/gbdrummer)
+* [Eric Liao](https://github.com/rcliao)
+
+## License
+
+TBD
+
+## Acknowledgements
+
+* Big credit to Graham Butler for his initiative on the project and getting to where we are
