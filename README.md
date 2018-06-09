@@ -1,1 +1,35 @@
-# uniform
+# Uniform
+
+Uniform is a CSS/SCSS framework that is designed to be modular and streamline
+the development of responsive/fluid UIs.
+
+This is accomplished through the use of _flexbox_ for layout, combined with a
+_typography-based_ layout system that takes the guesswork out of writing CSS to
+match a design.
+
+## Get Started
+
+### Prerequisites
+
+* [Node.js](https://nodejs.org/en/)
+
+### Command
+
+```
+npm run start
+```
+
+> Upon running the start command above, you should be able to see Kitchen Sink
+> running in your browser at http://localhost:33546
+
+## Demo
+
+Kitchen sink is hosted on the Github Pages.
+
+## Development
+
+### Built with
+
+* [Gulp](https://gulpjs.com/)
+* [SASS](https://sass-lang.com/)
+
