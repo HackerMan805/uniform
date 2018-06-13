@@ -1,8 +1,8 @@
 {
-  "name": "uniform",
+  "name": "@edlio/uniform",
   "version": "1.0.0",
   "description": "Edlio UI Framework",
-  "main": "src/index.js",
+  "main": "libs/index.js",
   "scripts": {
     "build": "gulp build",
     "start": "gulp start"
