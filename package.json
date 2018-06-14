@@ -5,7 +5,8 @@
   "main": "libs/index.js",
   "scripts": {
     "build": "gulp build",
-    "start": "gulp start"
+    "start": "gulp start",
+    "publish": "npm publish --access public"
   },
   "repository": {
     "type": "git",
@@ -18,11 +19,17 @@
     "url": "https://github.com/edlio/uniform/issues"
   },
   "homepage": "https://github.com/edlio/uniform",
-  "dependencies": {},
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.0.0"
+  },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
     "gulp": "^4.0.0",
     "gulp-cli": "^2.0.1",
     "gulp-sass": "^4.0.1",
-    "open": "0.0.5"
+    "open": "0.0.5",
+    "webpack-stream": "^4.0.3"
   }
 }
