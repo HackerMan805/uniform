@@ -12,7 +12,8 @@ const app = {
 const demoApp = {
     sassRoot: ['./docs/sass/', './src/sass'],
     sass: './docs/sass/**/*.scss',
-    dest: './docs/css'
+    dest: './docs/css',
+    jsDest: './docs/js'
 };
 
 function compileSass (app) {
@@ -36,11 +37,16 @@ gulp.task('js', () => {
         .pipe(webpack( require('./webpack.config.js') ))
         .pipe(gulp.dest(app.dest));
 });
+gulp.task('demo:js', () => {
+    return gulp.src(app.js)
+        .pipe(webpack( require('./webpack.config.js') ))
+        .pipe(gulp.dest(demoApp.jsDest));
+});
 
 gulp.task('start', (done) => {
     open('./docs/index.html');
     done();
 });
-gulp.task('build', gulp.parallel('sass', 'demo:sass', 'js'));
+gulp.task('build', gulp.parallel('sass', 'demo:sass', 'js', 'demo:js'));
 gulp.task('default', gulp.series('build'));
 

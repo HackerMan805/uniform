@@ -18,13 +18,17 @@ export default class AccordionComponent extends window.HTMLElement {
     }
 
     connectedCallback () {
-        const sections = [...this.querySelector('section')];
+        const sections = [...this.querySelectorAll('section')];
         sections.forEach((section, index) => {
             section.classList.toggle('collapsed', index > 0);
             const header = section.querySelector('header');
+            if (!header) {
+                console.error('Missing header for accordion. Skipping on click event', this);
+                return;
+            }
             onClick(header, () => {
                 section.classList.toggle('collapsed');
-                if (!this.multiple) {
+                if (this.multiple) {
                     return;
                 }
                 sections

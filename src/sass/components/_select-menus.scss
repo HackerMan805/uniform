@@ -1,7 +1,7 @@
 // COMPONENT : Select Menus
 
-edlio-select,
-.edlio-select {
+uniform-select,
+.uniform-select {
 	position: relative;
 
 	display: inline-block;
@@ -66,7 +66,7 @@ edlio-select,
 			}
 		}
 
-		menu {
+		select-menu {
 			border: $default-border-width solid $select-menu-border-color;
 			margin-top: .618em;
 
@@ -94,8 +94,8 @@ edlio-select,
 				border-width: calc(1em - #{$default-border-width});
 			}
 
-			item:hover:first-child:before,
-			.item:hover:first-child:before {
+			select-item:hover:first-child:before,
+			.select-item:hover:first-child:before {
 				content: "";
 				position: absolute;
 				top: calc(-1em + #{$default-border-width});
@@ -117,14 +117,13 @@ edlio-select,
 	}
 
 	&.open {
-
 		box-shadow:
 			inset $default-border-width 0 0 0 $select-menu-border-color,
 			inset (-$default-border-width) 0 0 0 $select-menu-border-color,
 			inset 0 $default-border-width 0 0 $select-menu-border-color
 		;
 
-		> menu {
+		> select-menu {
 			visibility: visible;
 			opacity: 1;
 			top: 100%;
@@ -137,7 +136,7 @@ edlio-select,
 		}
 	}
 
-	> menu {
+	> select-menu {
 		position: absolute;
 		left: 0;
 		top: 50%;
@@ -164,8 +163,8 @@ edlio-select,
 			right: 0;
 		}
 
-		item,
-		.item {
+		select-item,
+		.select-item {
 			position: relative;
 
 			// For IE10 & Safari
@@ -180,33 +179,6 @@ edlio-select,
 			&.active {
 				background-color: $select-menu-item-active-color;
 			}
-
-			// > menu {
-			// 	position: absolute;
-			// 	left: 4px;
-			// 	top: 0;
-
-			// 	margin-top: 0 !important;
-			// 	margin-left: 2px;
-
-			// 	background-color: $white;
-
-			// 	@include hide;
-
-			// 	z-index: $z-index-front;
-
-			// 	@include flexbox;
-			// 	@include flex-direction(column);
-			// 	@include justify-content(center);
-
-			// 	&:before,
-			// 	&:after,
-			// 	item:hover:first-child:before,
-			//	.item:hover:first-child:before {
-			// 		@include hide;
-			// 	}
-			// }
-
 		}
 	}
 }

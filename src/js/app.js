@@ -17,7 +17,7 @@ function main () {
     window.customElements.define('uniform-accordion', AccordionComponent);
     window.customElements.define('uniform-drawer', DrawerComponent);
     window.customElements.define('uniform-example', ExampleComponent);
-    window.customElements.define('uniform-modal', SelectComponent);
+    window.customElements.define('uniform-modal', ModalComponent);
     window.customElements.define('uniform-notification', NotificationComponent);
     window.customElements.define('uniform-select', SelectComponent);
 }

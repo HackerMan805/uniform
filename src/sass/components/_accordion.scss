@@ -1,7 +1,7 @@
 // COMPONENT : Accordion
 
-edlio-accordion,
-.edlio-accordion {
+uniform-accordion,
+.uniform-accordion {
 	> section {
 		@extend %flexbox;
 		@include flex-direction(column);
