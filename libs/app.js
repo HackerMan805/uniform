@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,13 +70,53 @@
 "use strict";
 
 
-__webpack_require__(1);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.onClick = onClick;
+// helper function to bind click event and touch event
+function onClick(node, cb) {
+    node.addEventListener('click', function (event) {
+        event.stopPropagation();
+        cb();
+    });
+    node.addEventListener('touchend', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        cb();
+    });
+};
 
-var _example = __webpack_require__(4);
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+__webpack_require__(2);
+
+var _accordion = __webpack_require__(5);
+
+var _accordion2 = _interopRequireDefault(_accordion);
+
+var _drawer = __webpack_require__(6);
+
+var _drawer2 = _interopRequireDefault(_drawer);
+
+var _example = __webpack_require__(7);
 
 var _example2 = _interopRequireDefault(_example);
 
-var _select = __webpack_require__(5);
+var _modal = __webpack_require__(8);
+
+var _modal2 = _interopRequireDefault(_modal);
+
+var _notification = __webpack_require__(9);
+
+var _notification2 = _interopRequireDefault(_notification);
+
+var _select = __webpack_require__(10);
 
 var _select2 = _interopRequireDefault(_select);
 
@@ -89,330 +129,16 @@ function main() {
         console.error('Failed to detect window.customElements. Did you import webcomponents polyfill?');
         return;
     }
+    window.customElements.define('uniform-accordion', _accordion2.default);
+    window.customElements.define('uniform-drawer', _drawer2.default);
     window.customElements.define('uniform-example', _example2.default);
+    window.customElements.define('uniform-modal', _select2.default);
+    window.customElements.define('uniform-notification', _notification2.default);
     window.customElements.define('uniform-select', _select2.default);
 }
 
-// var EdlioSelectPrototype = Object.create(HTMLElement.prototype);
-// var EdlioModalPrototype = Object.create(HTMLElement.prototype);
-// var EdlioAccordionPrototype = Object.create(HTMLElement.prototype);
-// var EdlioDrawerMenuPrototype = Object.create(HTMLElement.prototype);
-// var EdlioNotificationPrototype = Object.create(HTMLElement.prototype);
-
-// EdlioModalPrototype.createdCallback = function() {
-// };
-
-// /**
-//  * Simply attach a onClose function to clean up anything consumer needs to
-//  * clean up. In AngularJS case, we need to call scope.$destroy();
-//  */
-// EdlioModalPrototype.attachOnClose = function(onClose) {
-//     var self = this;
-//     self.onClose = onClose;
-// };
-
-// EdlioModalPrototype.goToPage = function(index) {
-//     var self = this;
-
-//     if (
-//         index === self.currentPageId ||
-//         index + 1 > self.pages.length ||
-//         index < 0
-//     ) {
-//         return;
-//     }
-
-//     self.pages[index].classList.add('current');
-//     self.previousPageId = self.currentPageId;
-//     self.currentPageId = index;
-
-//     setTimeout(function() {
-//         if (index > self.previousPageId) {
-//             self.pages[self.previousPageId].classList.add('past');
-//         } else {
-//             self.pages[self.previousPageId].classList.add('future');
-//         }
-//         self.pages[index].classList.remove('future');
-//         self.pages[index].classList.remove('past');
-
-//         self.addEventListener('transitionend', function() {
-//             self.pages[self.previousPageId].classList.remove('current');
-//         });
-//     });
-// };
-
-// EdlioModalPrototype.nextPage = function() {
-//     this.goToPage(this.currentPageId + 1);
-// };
-
-// EdlioModalPrototype.previousPage = function() {
-//     this.goToPage(this.currentPageId - 1);
-// };
-
-// /**
-//  * When there is target element, we will start the transition from the
-//  * target element
-//  */
-// EdlioModalPrototype.transformToTargetElement = function(onShow) {
-//     var self = this;
-
-//     var clickRect = self.targetElement.getBoundingClientRect();
-//     var dialogRect = self.getBoundingClientRect();
-
-//     var scaleX = Math.min(0.5, clickRect.width / dialogRect.width);
-//     var scaleY = Math.min(0.5, clickRect.height / dialogRect.height);
-//     var translateY = onShow ?
-//         (-(window.pageYOffset+dialogRect.top) + clickRect.top + clickRect.height/2 - dialogRect.height/2) :
-//         (-dialogRect.top + clickRect.top + clickRect.height/2 - dialogRect.height/2)
-//         ;
-
-//     self.style.webkitTransform = 'translate3d(' +
-//         (-dialogRect.left + clickRect.left + clickRect.width/2 - dialogRect.width/2) + 'px,' + translateY
-//          + 'px,' +
-//         '0) scale(' + scaleX + ',' + scaleY + ')';
-//     self.style.transform = 'translate3d(' +
-//         (-dialogRect.left + clickRect.left + clickRect.width/2 - dialogRect.width/2) + 'px,' + translateY
-//          + 'px,' +
-//         '0) scale(' + scaleX + ',' + scaleY + ')';
-// };
-
-// EdlioModalPrototype.show = function(targetElement, removeOnHide) {
-//     var self = this;
-//     self.removeOnHide = removeOnHide;
-
-//     self.pages = self.querySelectorAll('page');
-
-//     if (self.pages.length) {
-//         self.pages[0].classList.add('current');
-//         self.currentPageId = 0;
-
-//         Array.prototype.slice.call(self.pages).forEach(function(page, index) {
-//             if (index !== self.currentPageId) {
-//                 page.classList.add('future');
-//             }
-//         });
-//     }
-
-//     // move the modal object to be under container and move container to
-//     // be under body
-//     var scrollTop = window.pageYOffset;
-
-//     var container = document.createElement('edlio-overlay');
-//     document.body.appendChild(container);
-//     container.appendChild(self);
-
-//     // make the animation transition (translate) from the targetElement
-//     if (targetElement) {
-//         self.targetElement = targetElement;
-
-//         self.transformToTargetElement(true);
-//     }
-
-//     // use `animationend` event to bind close event listener
-//     self.addEventListener('transitionend', handleTransitionEnd, false);
-
-//     // listen to the scroll event to make modal stay in the view port
-//     container.style.top = scrollTop + 'px';
-
-//     // hack, use setTimeout to execute async animation
-//     setTimeout(function() {
-//         self.classList.add('transition-in');
-//         self.style.webkitTransform = '';
-//         self.style.transform = '';
-//         document.body.style.overflow = 'hidden';
-//     });
-
-//     function handleTransitionEnd (argument) {
-//         // listen to overlay window on click event to cancel the modal
-//         container.addEventListener('mousedown', function(event) {
-//             self.hide();
-//         });
-//         self.addEventListener('mousedown', function(event) {
-//             event.stopPropagation();
-//         });
-
-//         // need to assign the escape call back to be bind to the self because
-//         // we want to remove this function later as the modal dismissed
-//         self.handleEscapeClick = function(event) {
-//             var handled = false;
-
-//             if (event.keyCode !== undefined && event.keyCode === 27) {
-//                 self.hide();
-//                 handled = true;
-//             }
-
-//             if (handled) {
-//                 // Suppress "double action" if event handled
-//                 event.preventDefault();
-//             }
-//         };
-//         window.addEventListener('keydown', self.handleEscapeClick);
-
-//         self.removeEventListener('transitionend', handleTransitionEnd);
-//     }
-// };
-
-// EdlioModalPrototype.hide = function() {
-//     var self = this;
-
-//     if (self.onClose instanceof Function) {
-//         self.onClose();
-//     }
-
-//     var container = document.getElementsByTagName('edlio-overlay')[0];
-
-//     document.body.onscroll = function() { };
-//     window.removeEventListener('keydown', self.handleEscapeClick);
-
-//     setTimeout(function() {
-//         self.classList.add('transition-out');
-//         self.classList.remove('transition-in');
-//         // make the animation transition (translate) from the targetElement
-//         if (self.targetElement) {
-//             self.transformToTargetElement();
-//         }
-
-//         self.addEventListener('transitionend', handleTransitionEnd, false);
-//     });
-
-//     function handleTransitionEnd (argument) {
-//         document.body.appendChild(self);
-//         self.classList.remove('transition-out');
-//         self.style.webkitTransform = '';
-//         self.style.transform = '';
-//         document.body.style.overflow = 'auto';
-
-//         container.remove();
-
-//         if (self && self.removeOnHide) {
-//             self.remove();
-//         }
-
-//         self.removeEventListener('transitionend', handleTransitionEnd);
-//     }
-// };
-
-// EdlioAccordionPrototype.createdCallback = function() {
-//     var self = this;
-
-//     if (self.getAttribute('collapse-others')) {
-//         self.collapseOthers = true;
-//     }
-
-//     var sections =
-//         Array.prototype.slice.call(self.querySelectorAll('section'));
-
-//     sections.forEach(function(section) {
-//         if (self.collapseOthers) {
-//             section.classList.add('collapsed');
-//         }
-
-//         if (section.querySelector('header')) {
-//             section.querySelector('header')
-//                 .addEventListener('click', function() {
-//                     if (self.collapseOthers) {
-//                         sections.filter(function(otherSection) {
-//                             return otherSection !== section;
-//                         }).forEach(function(otherSection) {
-//                             otherSection.classList.add('collapsed');
-//                         });
-//                     }
-
-//                     section.classList.toggle('collapsed');
-//                 });
-//             section.querySelector('header')
-//                 .addEventListener('touchend', function(event) {
-//                     event.preventDefault();
-//                     if (self.collapseOthers) {
-//                         sections.filter(function(otherSection) {
-//                             return otherSection !== section;
-//                         }).forEach(function(otherSection) {
-//                             otherSection.classList.add('collapsed');
-//                         });
-//                     }
-
-//                     section.classList.toggle('collapsed');
-//                 });
-//         }
-//     });
-// };
-
-// EdlioDrawerMenuPrototype.createdCallback = function() {
-//     var self = this;
-// };
-
-// EdlioDrawerMenuPrototype.open = function() {
-//     var self = this;
-
-//     self.style.top = (window.pageYOffset !== 0) ?
-//         window.pageYOffset + 'px' :
-//         '3.125em';
-//     document.body.style.overflow = 'hidden';
-
-//     self.overlay = document.createElement('edlio-overlay');
-//     document.body.appendChild(self.overlay);
-//     self.overlay.style.top = window.pageYOffset + 'px';
-//     self.overlay.addEventListener('click', function() {
-//         self.close();
-//     });
-
-//     self.overlay.addEventListener('touchend', function(event) {
-//         event.preventDefault();
-//         self.close();
-//     });
-
-//     self.classList.add('open');
-// };
-
-// EdlioDrawerMenuPrototype.close = function() {
-//     var self = this;
-
-//     self.overlay.remove();
-
-//     document.body.style.overflow = 'auto';
-//     self.classList.remove('open');
-// };
-
-// EdlioNotificationPrototype.createdCallback = function() {
-//     var self = this;
-
-//     self.classList.add('notification');
-
-//     if (self.querySelector('.close')) {
-//         self.querySelector('.close')
-//             .addEventListener('click', function() {
-//                 self.remove();
-//             });
-//         self.querySelector('.close')
-//             .addEventListener('touchend', function(event) {
-//                 event.preventDefault();
-//                 self.remove();
-//             });
-//     }
-// };
-
-// document.registerElement('edlio-select', {
-//     prototype: EdlioSelectPrototype
-// });
-
-// document.registerElement('edlio-modal', {
-//     prototype: EdlioModalPrototype
-// });
-
-// document.registerElement('edlio-accordion', {
-//     prototype: EdlioAccordionPrototype
-// });
-
-// document.registerElement('edlio-drawer', {
-//     prototype: EdlioDrawerMenuPrototype
-// });
-
-// document.registerElement('edlio-notification', {
-//     prototype: EdlioNotificationPrototype
-// });
-
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {/**
@@ -651,10 +377,10 @@ return e});var th=document.createElement("style");th.textContent="body {transiti
 
 //# sourceMappingURL=webcomponents-bundle.js.map
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(4)))
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports) {
 
 var g;
@@ -681,7 +407,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -871,7 +597,139 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 4 */
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _utils = __webpack_require__(0);
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AccordionComponent = function (_window$HTMLElement) {
+    _inherits(AccordionComponent, _window$HTMLElement);
+
+    function AccordionComponent() {
+        _classCallCheck(this, AccordionComponent);
+
+        return _possibleConstructorReturn(this, (AccordionComponent.__proto__ || Object.getPrototypeOf(AccordionComponent)).call(this));
+    }
+
+    _createClass(AccordionComponent, [{
+        key: 'connectedCallback',
+        value: function connectedCallback() {
+            var _this2 = this;
+
+            var sections = [].concat(_toConsumableArray(this.querySelector('section')));
+            sections.forEach(function (section, index) {
+                section.classList.toggle('collapsed', index > 0);
+                var header = section.querySelector('header');
+                (0, _utils.onClick)(header, function () {
+                    section.classList.toggle('collapsed');
+                    if (!_this2.multiple) {
+                        return;
+                    }
+                    sections.filter(function (otherSection) {
+                        return otherSection !== section;
+                    }).forEach(function (otherSection) {
+                        return otherSection.classList.add('collapsed');
+                    });
+                });
+            });
+        }
+    }, {
+        key: 'multiple',
+        get: function get() {
+            return this.hasAttribute('multiple');
+        },
+        set: function set(val) {
+            if (val) {
+                this.setAttribute('multiple', '');
+            } else {
+                this.removeAttribute('multiple');
+            }
+        }
+    }]);
+
+    return AccordionComponent;
+}(window.HTMLElement);
+
+exports.default = AccordionComponent;
+;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _utils = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var DrawerComponent = function (_window$HTMLElement) {
+    _inherits(DrawerComponent, _window$HTMLElement);
+
+    function DrawerComponent() {
+        _classCallCheck(this, DrawerComponent);
+
+        return _possibleConstructorReturn(this, (DrawerComponent.__proto__ || Object.getPrototypeOf(DrawerComponent)).call(this));
+    }
+
+    _createClass(DrawerComponent, [{
+        key: 'open',
+        value: function open() {
+            this.style.top = window.pageYOffset !== 0 ? window.pageYOffset + 'px' : '3.125em'; // hard-coded topbar height
+            document.body.style.overflow = 'hidden';
+
+            this.overlay = document.createElement('uniform-overlay');
+            document.body.appendChild(uniform.overlay);
+            this.overlay.style.top = window.pageYOffset + 'px';
+            (0, _utils.onClick)(this.overlay, this.close.bind(this));
+
+            this.classList.add('open');
+        }
+    }, {
+        key: 'close',
+        value: function close() {
+            this.overlay.remove();
+            document.body.style.overflow = undefined;
+            this.classList.remove('open');
+        }
+    }]);
+
+    return DrawerComponent;
+}(window.HTMLElement);
+
+exports.default = DrawerComponent;
+;
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -920,7 +778,7 @@ var ExampleComponent = function (_window$HTMLElement) {
 exports.default = ExampleComponent;
 
 /***/ }),
-/* 5 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -932,7 +790,275 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _utils = __webpack_require__(6);
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ModalComponent = function (_window$HTMLElement) {
+    _inherits(ModalComponent, _window$HTMLElement);
+
+    function ModalComponent() {
+        _classCallCheck(this, ModalComponent);
+
+        var _this = _possibleConstructorReturn(this, (ModalComponent.__proto__ || Object.getPrototypeOf(ModalComponent)).call(this));
+
+        _this.closeCallbacks = [];
+        _this.previousPage = 0;
+        _this.currentPage = 0;
+        _this.pages = [];
+        // internal memory
+        _this.previousParent = null;
+        _this.container = null;
+        _this.handleEscapeClick = _this.handleEscapeClick.bind(_this);
+        return _this;
+    }
+
+    _createClass(ModalComponent, [{
+        key: 'onClose',
+        value: function onClose(closeCallback) {
+            this.closeCallbacks.push(closeCallback);
+        }
+    }, {
+        key: 'goToPage',
+        value: function goToPage(index) {
+            var _this2 = this;
+
+            if (index === this.currentPage || index >= self.pages.length || index < 0) {
+                return;
+            }
+            this.pages[index].classList.add('current');
+            this.previousPage = self.currentPage;
+            this.currentPage = index;
+
+            requestAnimationFrame(function () {
+                if (index > self.previousPageId) {
+                    _this2.pages[self.previousPage].classList.add('past');
+                } else {
+                    _this2.pages[self.previousPage].classList.add('future');
+                }
+                _this2.pages[index].classList.remove('future');
+                _this2.pages[index].classList.remove('past');
+
+                _this2.addEventListener('transitionend', { once: true }, function () {
+                    _this2.pages[self.previousPage].classList.remove('current');
+                });
+            });
+        }
+    }, {
+        key: 'nextPage',
+        value: function nextPage() {
+            this.goToPage(this.currentPage + 1);
+        }
+    }, {
+        key: 'previousPage',
+        value: function previousPage() {
+            this.goToPage(this.currentPage - 1);
+        }
+
+        // animate the dialog to target element
+
+    }, {
+        key: 'transformToTargetElement',
+        value: function transformToTargetElement(onShow) {
+            if (!this.targetElement) {
+                return;
+            }
+            var clickedRect = this.targetElement.getBoundingClientRect();
+            var selfRect = this.getBoundingClientRect();
+
+            var scaleX = Math.min(0.5, clickRect.width / selfRect.width);
+            var scaleY = Math.min(0.5, clickRect.height / selfRect.height);
+            var translateY = onShow ? -(window.pageYOffset + selfRect.top) + clickRect.top + clickRect.height / 2 - selfRect.height / 2 : -selfRect.top + clickRect.top + clickRect.height / 2 - selfRect.height / 2;
+
+            this.style.webkitTransform = 'translate3d(' + (-selfRect.left + clickRect.left + clickRect.width / 2 - selfRect.width / 2) + 'px,' + translateY + 'px,' + '0) scale(' + scaleX + ',' + scaleY + ')';
+            this.style.transform = 'translate3d(' + (-selfRect.left + clickRect.left + clickRect.width / 2 - selfRect.width / 2) + 'px,' + translateY + 'px,' + '0) scale(' + scaleX + ',' + scaleY + ')';
+        }
+    }, {
+        key: 'show',
+        value: function show(targetElement, removeOnHide) {
+            var _this3 = this;
+
+            this.removeOnHide = removeOnHide;
+            this.pages = [].concat(_toConsumableArray(self.querySelectorAll('uniform-page')));
+
+            if (this.pages.length) {
+                this.pages[0].classList.add('current');
+            }
+            this.currentPage = 0;
+
+            this.pages.forEach(function (page, index) {
+                if (index > _this3.currentPage) {
+                    page.classList.add('future');
+                }
+            });
+
+            // move the modal object to be under container and move container to
+            // be under body
+            var scrollTop = window.pageYOffset;
+            var container = document.createElement('uniform-overlay');
+            this.container = container;
+            document.body.appendChild(container);
+            container.appendChild(this);
+
+            // make the animation transition (translate) from the targetElement
+            this.targetElement = targetElement;
+            this.transformToTargetElement(true);
+
+            // use `animationend` event to bind close event listener
+            this.addEventListener('transitionend', { once: true }, handleTransitionEnd);
+
+            // listen to the scroll event to make modal stay in the view port
+            container.style.top = scrollTop + 'px';
+
+            // hack, use setTimeout to execute async animation
+            requestAnimationFrame(function () {
+                _this3.classList.add('transition-in');
+                _this3.style.webkitTransform = '';
+                _this3.style.transform = '';
+                // disable scrolling behind the container
+                document.body.style.overflow = 'hidden';
+            });
+
+            function handleTransitionEnd() {
+                // listen to overlay window on click event to cancel the modal
+                container.addEventListener('mousedown', function (event) {
+                    this.hide();
+                });
+                this.addEventListener('mousedown', function (event) {
+                    event.stopPropagation();
+                });
+
+                window.addEventListener('keydown', this.handleEscapeClick);
+            }
+        }
+    }, {
+        key: 'handleEscapeClick',
+        value: function handleEscapeClick(event) {
+            var handled = false;
+            if (event.keyCode !== undefined && event.keyCode === 27) {
+                this.hide();
+                handled = true;
+            }
+
+            if (handled) {
+                // Suppress "double action" if event handled
+                event.preventDefault();
+            }
+        }
+    }, {
+        key: 'hide',
+        value: function hide() {
+            var _this4 = this;
+
+            window.removeEventListener('keydown', this.handleEscapeClick);
+
+            requestAnimationFrame(function () {
+                _this4.classList.add('transition-out');
+                _this4.classList.remove('transition-in');
+                // make the animation transition (translate) from the targetElement
+                _this4.transformToTargetElement();
+
+                _this4.addEventListener('transitionend', { once: true }, handleTransitionEnd);
+            });
+
+            function handleTransitionEnd(argument) {
+                this.previousParent.appendChild(this);
+                this.classList.remove('transition-out');
+                this.style.webkitTransform = '';
+                this.style.transform = '';
+                // reset scrolling event
+                document.body.style.overflow = undefined;
+                container.remove();
+
+                if (this.removeOnHide) {
+                    this.remove();
+                }
+                this.closeCallbacks.forEach(function (cb) {
+                    return cb();
+                });
+            }
+        }
+    }, {
+        key: 'connectedCallback',
+        value: function connectedCallback() {
+            this.previousParent = this.parentNode;
+        }
+    }]);
+
+    return ModalComponent;
+}(window.HTMLElement);
+
+exports.default = ModalComponent;
+;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _utils = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NotificationComponent = function (_window$HTMLElement) {
+    _inherits(NotificationComponent, _window$HTMLElement);
+
+    function NotificationComponent() {
+        _classCallCheck(this, NotificationComponent);
+
+        return _possibleConstructorReturn(this, (NotificationComponent.__proto__ || Object.getPrototypeOf(NotificationComponent)).apply(this, arguments));
+    }
+
+    _createClass(NotificationComponent, [{
+        key: 'connectedCallback',
+        value: function connectedCallback() {
+            var _this2 = this;
+
+            var closeButton = this.querySelector('.close');
+            if (!closeButton) {
+                return;
+            }
+            (0, _utils.onClick)(closeButton, function () {
+                return _this2.remove();
+            });
+        }
+    }]);
+
+    return NotificationComponent;
+}(window.HTMLElement);
+
+exports.default = NotificationComponent;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _utils = __webpack_require__(0);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
@@ -981,7 +1107,6 @@ var SelectComponent = function (_window$HTMLElement) {
     _createClass(SelectComponent, [{
         key: 'toggle',
         value: function toggle() {
-            console.log('toggling');
             this.classList.toggle('open');
         }
     }, {
@@ -999,17 +1124,15 @@ var SelectComponent = function (_window$HTMLElement) {
         value: function connectedCallback() {
             var _this2 = this;
 
-            // create an observer instance
-            // This observer instance will observer for child node changes; we will
-            // need this observer because we need to watch for framework that
-            // dynamically add child node with their templating such as Angular.
-            // With each new node being added, we want to close the select menu when
-            // this select menu does not allow multiple
+            // Observer for child node changes for framework that dynamically add
+            // child node with their templating.  With each new node being added,
+            // we want to close the select menu when this select menu does not
+            // allow multiple
             var observer = new MutationObserver(function (mutations) {
+                if (_this2.allowMultiple) {
+                    return;
+                }
                 mutations.forEach(function (mutation) {
-                    if (mutation.type !== 'childList' || _this2.allowMultiple) {
-                        return;
-                    }
                     Array.prototype.slice.call(mutation.addedNodes).filter(function (n) {
                         return n.nodeName === 'SELECT-ITEM';
                     }).forEach(function (node) {
@@ -1018,9 +1141,7 @@ var SelectComponent = function (_window$HTMLElement) {
                     });
                 });
             });
-            // configuration of the observer:
-            var config = { childList: true, subtree: true };
-            // pass in the target node, as well as the observer options
+            var config = { childList: true };
             observer.observe(this, config);
             // add event listener to existing select-items
             [].concat(_toConsumableArray(this.querySelectorAll('select-item'))).forEach(function (n) {
@@ -1053,30 +1174,6 @@ var SelectComponent = function (_window$HTMLElement) {
 
 exports.default = SelectComponent;
 ;
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.onClick = onClick;
-// helper function to bind click event and touch event
-function onClick(node, cb) {
-    node.addEventListener('click', function (event) {
-        event.stopPropagation();
-        cb();
-    });
-    node.addEventListener('touchend', function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        cb();
-    });
-};
 
 /***/ })
 /******/ ]);

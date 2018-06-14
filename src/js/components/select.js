@@ -44,7 +44,6 @@ export default class SelectComponent extends window.HTMLElement {
     }
 
     toggle () {
-        console.log('toggling');
         this.classList.toggle('open');
     }
 
@@ -57,17 +56,15 @@ export default class SelectComponent extends window.HTMLElement {
     }
 
     connectedCallback () {
-        // create an observer instance
-        // This observer instance will observer for child node changes; we will
-        // need this observer because we need to watch for framework that
-        // dynamically add child node with their templating such as Angular.
-        // With each new node being added, we want to close the select menu when
-        // this select menu does not allow multiple
+        // Observer for child node changes for framework that dynamically add
+        // child node with their templating.  With each new node being added,
+        // we want to close the select menu when this select menu does not
+        // allow multiple
         const observer = new MutationObserver(mutations => {
+            if (this.allowMultiple) {
+                return;
+            }
             mutations.forEach(mutation => {
-                if (mutation.type !== 'childList' || this.allowMultiple) {
-                    return;
-                }
                 Array.prototype.slice.call(mutation.addedNodes)
                     .filter(n => n.nodeName === 'SELECT-ITEM')
                     .forEach(node => {
@@ -76,9 +73,7 @@ export default class SelectComponent extends window.HTMLElement {
                     });
             });
         });
-        // configuration of the observer:
-        var config = { childList: true, subtree: true };
-        // pass in the target node, as well as the observer options
+        var config = { childList: true };
         observer.observe(this, config);
         // add event listener to existing select-items
         [...this.querySelectorAll('select-item')]
