@@ -45,16 +45,23 @@ uniform-notification,
 		@include flex(1);
 		margin: 0 1em;
 		padding: 0 0 0 1em;
+
 		text-align: center;
 
 		h1 {
+			margin: 0;
 			@include font-size(normal);
-			margin: .5em 0;
+
 			font-weight: $bold;
+
+			&:not(:only-child) {
+				margin: .5em 0;
+			}
 		}
 
 		p {
 			margin-bottom: .5em;
+
 			color: $notification-secondary-text-color;
 		}
 

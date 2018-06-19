@@ -567,7 +567,7 @@
     text-align: center; }
     .edlio.cms uniform-notification .message h1,
     .edlio.cms .uniform-notification .message h1 {
-      margin: .5em 0;
+      margin: 0;
       font-weight: 600; }
       @media screen and (max-width: 47.9375rem) {
         .edlio.cms uniform-notification .message h1,
@@ -589,6 +589,9 @@
         .edlio.cms .uniform-notification .message h1 {
           font-size: 1.125rem;
           line-height: 1.6875rem; } }
+      .edlio.cms uniform-notification .message h1:not(:only-child),
+      .edlio.cms .uniform-notification .message h1:not(:only-child) {
+        margin: .5em 0; }
     .edlio.cms uniform-notification .message p,
     .edlio.cms .uniform-notification .message p {
       margin-bottom: .5em;

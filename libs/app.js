@@ -65,17 +65,22 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = onClick;
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.onClick = onClick;
 // helper function to bind click event and touch event
 function onClick(node, cb) {
-    node.addEventListener('click', event => {
+    node.addEventListener('click', function (event) {
         event.stopPropagation();
         cb();
     });
-    node.addEventListener('touchend', event => {
+    node.addEventListener('touchend', function (event) {
         event.preventDefault();
         event.stopPropagation();
         cb();
@@ -84,26 +89,38 @@ function onClick(node, cb) {
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__webcomponents_webcomponentsjs_webcomponents_bundle__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__webcomponents_webcomponentsjs_webcomponents_bundle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__webcomponents_webcomponentsjs_webcomponents_bundle__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_accordion__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_drawer__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_example__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_modal__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_notification__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_select__ = __webpack_require__(10);
 
 
+__webpack_require__(2);
 
+var _accordion = __webpack_require__(5);
 
+var _accordion2 = _interopRequireDefault(_accordion);
 
+var _drawer = __webpack_require__(6);
 
+var _drawer2 = _interopRequireDefault(_drawer);
 
+var _example = __webpack_require__(7);
 
+var _example2 = _interopRequireDefault(_example);
+
+var _modal = __webpack_require__(8);
+
+var _modal2 = _interopRequireDefault(_modal);
+
+var _notification = __webpack_require__(9);
+
+var _notification2 = _interopRequireDefault(_notification);
+
+var _select = __webpack_require__(10);
+
+var _select2 = _interopRequireDefault(_select);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 main();
 
@@ -112,12 +129,12 @@ function main() {
         console.error('Failed to detect window.customElements. Did you import webcomponents polyfill?');
         return;
     }
-    window.customElements.define('uniform-accordion', __WEBPACK_IMPORTED_MODULE_1__components_accordion__["a" /* default */]);
-    window.customElements.define('uniform-drawer', __WEBPACK_IMPORTED_MODULE_2__components_drawer__["a" /* default */]);
-    window.customElements.define('uniform-example', __WEBPACK_IMPORTED_MODULE_3__components_example__["a" /* default */]);
-    window.customElements.define('uniform-modal', __WEBPACK_IMPORTED_MODULE_4__components_modal__["a" /* default */]);
-    window.customElements.define('uniform-notification', __WEBPACK_IMPORTED_MODULE_5__components_notification__["a" /* default */]);
-    window.customElements.define('uniform-select', __WEBPACK_IMPORTED_MODULE_6__components_select__["a" /* default */]);
+    window.customElements.define('uniform-accordion', _accordion2.default);
+    window.customElements.define('uniform-drawer', _drawer2.default);
+    window.customElements.define('uniform-example', _example2.default);
+    window.customElements.define('uniform-modal', _modal2.default);
+    window.customElements.define('uniform-notification', _notification2.default);
+    window.customElements.define('uniform-select', _select2.default);
 }
 
 /***/ }),
@@ -581,310 +598,479 @@ process.umask = function() { return 0; };
 
 /***/ }),
 /* 5 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(0);
 
 
-class AccordionComponent extends window.HTMLElement {
-    constructor() {
-        super();
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _utils = __webpack_require__(0);
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AccordionComponent = function (_window$HTMLElement) {
+    _inherits(AccordionComponent, _window$HTMLElement);
+
+    function AccordionComponent() {
+        _classCallCheck(this, AccordionComponent);
+
+        return _possibleConstructorReturn(this, (AccordionComponent.__proto__ || Object.getPrototypeOf(AccordionComponent)).call(this));
     }
 
-    get multiple() {
-        return this.hasAttribute('multiple');
-    }
+    _createClass(AccordionComponent, [{
+        key: 'connectedCallback',
+        value: function connectedCallback() {
+            var _this2 = this;
 
-    set multiple(val) {
-        if (val) {
-            this.setAttribute('multiple', '');
-        } else {
-            this.removeAttribute('multiple');
-        }
-    }
-
-    connectedCallback() {
-        const sections = [...this.querySelectorAll('section')];
-        sections.forEach((section, index) => {
-            section.classList.toggle('collapsed', index > 0);
-            const header = section.querySelector('header');
-            if (!header) {
-                console.error('Missing header for accordion. Skipping on click event', this);
-                return;
-            }
-            Object(__WEBPACK_IMPORTED_MODULE_0__utils__["a" /* onClick */])(header, () => {
-                section.classList.toggle('collapsed');
-                if (this.multiple) {
+            var sections = [].concat(_toConsumableArray(this.querySelectorAll('section')));
+            sections.forEach(function (section, index) {
+                section.classList.toggle('collapsed', index > 0);
+                var header = section.querySelector('header');
+                if (!header) {
+                    console.error('Missing header for accordion. Skipping on click event', _this2);
                     return;
                 }
-                sections.filter(otherSection => otherSection !== section).forEach(otherSection => otherSection.classList.add('collapsed'));
+                (0, _utils.onClick)(header, function () {
+                    section.classList.toggle('collapsed');
+                    if (_this2.multiple) {
+                        return;
+                    }
+                    sections.filter(function (otherSection) {
+                        return otherSection !== section;
+                    }).forEach(function (otherSection) {
+                        return otherSection.classList.add('collapsed');
+                    });
+                });
             });
-        });
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = AccordionComponent;
+        }
+    }, {
+        key: 'multiple',
+        get: function get() {
+            return this.hasAttribute('multiple');
+        },
+        set: function set(val) {
+            if (val) {
+                this.setAttribute('multiple', '');
+            } else {
+                this.removeAttribute('multiple');
+            }
+        }
+    }]);
+
+    return AccordionComponent;
+}(window.HTMLElement);
+
+exports.default = AccordionComponent;
 ;
 
 /***/ }),
 /* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(0);
 
 
-class DrawerComponent extends window.HTMLElement {
-    constructor() {
-        super();
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _utils = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var DrawerComponent = function (_window$HTMLElement) {
+    _inherits(DrawerComponent, _window$HTMLElement);
+
+    function DrawerComponent() {
+        _classCallCheck(this, DrawerComponent);
+
+        return _possibleConstructorReturn(this, (DrawerComponent.__proto__ || Object.getPrototypeOf(DrawerComponent)).call(this));
     }
 
-    open() {
-        this.style.top = window.pageYOffset !== 0 ? window.pageYOffset + 'px' : '3.125em'; // hard-coded topbar height
-        document.body.style.overflow = 'hidden';
+    _createClass(DrawerComponent, [{
+        key: 'open',
+        value: function open() {
+            this.style.top = window.pageYOffset !== 0 ? window.pageYOffset + 'px' : '3.125em'; // hard-coded topbar height
+            document.body.style.overflow = 'hidden';
 
-        this.overlay = document.createElement('uniform-overlay');
-        document.body.appendChild(uniform.overlay);
-        this.overlay.style.top = window.pageYOffset + 'px';
-        Object(__WEBPACK_IMPORTED_MODULE_0__utils__["a" /* onClick */])(this.overlay, this.close.bind(this));
+            this.overlay = document.createElement('uniform-overlay');
+            document.body.appendChild(uniform.overlay);
+            this.overlay.style.top = window.pageYOffset + 'px';
+            (0, _utils.onClick)(this.overlay, this.close.bind(this));
 
-        this.classList.add('open');
-    }
+            this.classList.add('open');
+        }
+    }, {
+        key: 'close',
+        value: function close() {
+            this.overlay.remove();
+            document.body.style.overflow = undefined;
+            this.classList.remove('open');
+        }
+    }]);
 
-    close() {
-        this.overlay.remove();
-        document.body.style.overflow = undefined;
-        this.classList.remove('open');
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = DrawerComponent;
+    return DrawerComponent;
+}(window.HTMLElement);
+
+exports.default = DrawerComponent;
 ;
 
 /***/ }),
 /* 7 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-class ExampleComponent extends window.HTMLElement {
-    constructor() {
-        super();
-        this.counter = 0;
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ExampleComponent = function (_window$HTMLElement) {
+    _inherits(ExampleComponent, _window$HTMLElement);
+
+    function ExampleComponent() {
+        _classCallCheck(this, ExampleComponent);
+
+        var _this = _possibleConstructorReturn(this, (ExampleComponent.__proto__ || Object.getPrototypeOf(ExampleComponent)).call(this));
+
+        _this.counter = 0;
+        return _this;
     }
 
-    connectedCallback() {
-        this.innerText = `Spikes Example Component. Current counter: ${this.counter}`;
-        this.addEventListener('click', () => {
-            this.counter++;
-            this.innerText = `Spikes Example Component. Current counter: ${this.counter}`;
-        });
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = ExampleComponent;
+    _createClass(ExampleComponent, [{
+        key: 'connectedCallback',
+        value: function connectedCallback() {
+            var _this2 = this;
 
+            this.innerText = 'Spikes Example Component. Current counter: ' + this.counter;
+            this.addEventListener('click', function () {
+                _this2.counter++;
+                _this2.innerText = 'Spikes Example Component. Current counter: ' + _this2.counter;
+            });
+        }
+    }]);
+
+    return ExampleComponent;
+}(window.HTMLElement);
+
+exports.default = ExampleComponent;
 
 /***/ }),
 /* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-class ModalComponent extends window.HTMLElement {
-    constructor() {
-        super();
-        this.closeCallbacks = [];
-        this.previousPage = 0;
-        this.currentPage = 0;
-        this.pages = [];
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var ModalComponent = function (_window$HTMLElement) {
+    _inherits(ModalComponent, _window$HTMLElement);
+
+    function ModalComponent() {
+        _classCallCheck(this, ModalComponent);
+
+        var _this = _possibleConstructorReturn(this, (ModalComponent.__proto__ || Object.getPrototypeOf(ModalComponent)).call(this));
+
+        _this.closeCallbacks = [];
+        _this.previousPage = 0;
+        _this.currentPage = 0;
+        _this.pages = [];
         // internal memory
-        this.previousParent = null;
-        this.container = null;
-        this.handleEscapeClick = this.handleEscapeClick.bind(this);
+        _this.previousParent = null;
+        _this.container = null;
+        _this.handleEscapeClick = _this.handleEscapeClick.bind(_this);
+        return _this;
     }
 
-    onClose(closeCallback) {
-        this.closeCallbacks.push(closeCallback);
-    }
-
-    goToPage(index) {
-        if (index === this.currentPage || index >= self.pages.length || index < 0) {
-            return;
+    _createClass(ModalComponent, [{
+        key: 'onClose',
+        value: function onClose(closeCallback) {
+            this.closeCallbacks.push(closeCallback);
         }
-        this.pages[index].classList.add('current');
-        this.previousPage = self.currentPage;
-        this.currentPage = index;
+    }, {
+        key: 'goToPage',
+        value: function goToPage(index) {
+            var _this2 = this;
 
-        requestAnimationFrame(() => {
-            if (index > self.previousPageId) {
-                this.pages[self.previousPage].classList.add('past');
-            } else {
-                this.pages[self.previousPage].classList.add('future');
+            if (index === this.currentPage || index >= self.pages.length || index < 0) {
+                return;
             }
-            this.pages[index].classList.remove('future');
-            this.pages[index].classList.remove('past');
+            this.pages[index].classList.add('current');
+            this.previousPage = self.currentPage;
+            this.currentPage = index;
 
-            this.addEventListener('transitionend', { once: true }, () => {
-                this.pages[self.previousPage].classList.remove('current');
+            requestAnimationFrame(function () {
+                if (index > self.previousPageId) {
+                    _this2.pages[self.previousPage].classList.add('past');
+                } else {
+                    _this2.pages[self.previousPage].classList.add('future');
+                }
+                _this2.pages[index].classList.remove('future');
+                _this2.pages[index].classList.remove('past');
+
+                _this2.addEventListener('transitionend', { once: true }, function () {
+                    _this2.pages[self.previousPage].classList.remove('current');
+                });
             });
-        });
-    }
-
-    nextPage() {
-        this.goToPage(this.currentPage + 1);
-    }
-
-    previousPage() {
-        this.goToPage(this.currentPage - 1);
-    }
-
-    // animate the dialog to target element
-    transformToTargetElement(onShow) {
-        if (!this.targetElement) {
-            return;
         }
-        const clickedRect = this.targetElement.getBoundingClientRect();
-        const selfRect = this.getBoundingClientRect();
-
-        const scaleX = Math.min(0.5, clickRect.width / selfRect.width);
-        const scaleY = Math.min(0.5, clickRect.height / selfRect.height);
-        const translateY = onShow ? -(window.pageYOffset + selfRect.top) + clickRect.top + clickRect.height / 2 - selfRect.height / 2 : -selfRect.top + clickRect.top + clickRect.height / 2 - selfRect.height / 2;
-
-        this.style.webkitTransform = 'translate3d(' + (-selfRect.left + clickRect.left + clickRect.width / 2 - selfRect.width / 2) + 'px,' + translateY + 'px,' + '0) scale(' + scaleX + ',' + scaleY + ')';
-        this.style.transform = 'translate3d(' + (-selfRect.left + clickRect.left + clickRect.width / 2 - selfRect.width / 2) + 'px,' + translateY + 'px,' + '0) scale(' + scaleX + ',' + scaleY + ')';
-    }
-
-    show(targetElement, removeOnHide) {
-        this.removeOnHide = removeOnHide;
-        this.pages = [...self.querySelectorAll('uniform-page')];
-
-        if (this.pages.length) {
-            this.pages[0].classList.add('current');
+    }, {
+        key: 'nextPage',
+        value: function nextPage() {
+            this.goToPage(this.currentPage + 1);
         }
-        this.currentPage = 0;
+    }, {
+        key: 'previousPage',
+        value: function previousPage() {
+            this.goToPage(this.currentPage - 1);
+        }
 
-        this.pages.forEach((page, index) => {
-            if (index > this.currentPage) {
-                page.classList.add('future');
+        // animate the dialog to target element
+
+    }, {
+        key: 'transformToTargetElement',
+        value: function transformToTargetElement(onShow) {
+            if (!this.targetElement) {
+                return;
             }
-        });
+            var clickedRect = this.targetElement.getBoundingClientRect();
+            var selfRect = this.getBoundingClientRect();
 
-        // move the modal object to be under container and move container to
-        // be under body
-        const scrollTop = window.pageYOffset;
-        const container = document.createElement('uniform-overlay');
-        this.container = container;
-        document.body.appendChild(container);
-        container.appendChild(this);
+            var scaleX = Math.min(0.5, clickRect.width / selfRect.width);
+            var scaleY = Math.min(0.5, clickRect.height / selfRect.height);
+            var translateY = onShow ? -(window.pageYOffset + selfRect.top) + clickRect.top + clickRect.height / 2 - selfRect.height / 2 : -selfRect.top + clickRect.top + clickRect.height / 2 - selfRect.height / 2;
 
-        // make the animation transition (translate) from the targetElement
-        this.targetElement = targetElement;
-        this.transformToTargetElement(true);
+            this.style.webkitTransform = 'translate3d(' + (-selfRect.left + clickRect.left + clickRect.width / 2 - selfRect.width / 2) + 'px,' + translateY + 'px,' + '0) scale(' + scaleX + ',' + scaleY + ')';
+            this.style.transform = 'translate3d(' + (-selfRect.left + clickRect.left + clickRect.width / 2 - selfRect.width / 2) + 'px,' + translateY + 'px,' + '0) scale(' + scaleX + ',' + scaleY + ')';
+        }
+    }, {
+        key: 'show',
+        value: function show(targetElement, removeOnHide) {
+            var _this3 = this;
 
-        // use `animationend` event to bind close event listener
-        this.addEventListener('transitionend', { once: true }, handleTransitionEnd);
+            this.removeOnHide = removeOnHide;
+            this.pages = [].concat(_toConsumableArray(self.querySelectorAll('uniform-page')));
 
-        // listen to the scroll event to make modal stay in the view port
-        container.style.top = scrollTop + 'px';
+            if (this.pages.length) {
+                this.pages[0].classList.add('current');
+            }
+            this.currentPage = 0;
 
-        // hack, use setTimeout to execute async animation
-        requestAnimationFrame(() => {
-            this.classList.add('transition-in');
-            this.style.webkitTransform = '';
-            this.style.transform = '';
-            // disable scrolling behind the container
-            document.body.style.overflow = 'hidden';
-        });
-
-        function handleTransitionEnd() {
-            // listen to overlay window on click event to cancel the modal
-            container.addEventListener('mousedown', function (event) {
-                this.hide();
-            });
-            this.addEventListener('mousedown', function (event) {
-                event.stopPropagation();
+            this.pages.forEach(function (page, index) {
+                if (index > _this3.currentPage) {
+                    page.classList.add('future');
+                }
             });
 
-            window.addEventListener('keydown', this.handleEscapeClick);
-        }
-    }
+            // move the modal object to be under container and move container to
+            // be under body
+            var scrollTop = window.pageYOffset;
+            var container = document.createElement('uniform-overlay');
+            this.container = container;
+            document.body.appendChild(container);
+            container.appendChild(this);
 
-    handleEscapeClick(event) {
-        let handled = false;
-        if (event.keyCode !== undefined && event.keyCode === 27) {
-            this.hide();
-            handled = true;
-        }
-
-        if (handled) {
-            // Suppress "double action" if event handled
-            event.preventDefault();
-        }
-    }
-
-    hide() {
-        window.removeEventListener('keydown', this.handleEscapeClick);
-
-        requestAnimationFrame(() => {
-            this.classList.add('transition-out');
-            this.classList.remove('transition-in');
             // make the animation transition (translate) from the targetElement
-            this.transformToTargetElement();
+            this.targetElement = targetElement;
+            this.transformToTargetElement(true);
 
+            // use `animationend` event to bind close event listener
             this.addEventListener('transitionend', { once: true }, handleTransitionEnd);
-        });
 
-        function handleTransitionEnd(argument) {
-            this.previousParent.appendChild(this);
-            this.classList.remove('transition-out');
-            this.style.webkitTransform = '';
-            this.style.transform = '';
-            // reset scrolling event
-            document.body.style.overflow = undefined;
-            container.remove();
+            // listen to the scroll event to make modal stay in the view port
+            container.style.top = scrollTop + 'px';
 
-            if (this.removeOnHide) {
-                this.remove();
+            // hack, use setTimeout to execute async animation
+            requestAnimationFrame(function () {
+                _this3.classList.add('transition-in');
+                _this3.style.webkitTransform = '';
+                _this3.style.transform = '';
+                // disable scrolling behind the container
+                document.body.style.overflow = 'hidden';
+            });
+
+            function handleTransitionEnd() {
+                // listen to overlay window on click event to cancel the modal
+                container.addEventListener('mousedown', function (event) {
+                    this.hide();
+                });
+                this.addEventListener('mousedown', function (event) {
+                    event.stopPropagation();
+                });
+
+                window.addEventListener('keydown', this.handleEscapeClick);
             }
-            this.closeCallbacks.forEach(cb => cb());
         }
-    }
+    }, {
+        key: 'handleEscapeClick',
+        value: function handleEscapeClick(event) {
+            var handled = false;
+            if (event.keyCode !== undefined && event.keyCode === 27) {
+                this.hide();
+                handled = true;
+            }
 
-    connectedCallback() {
-        this.previousParent = this.parentNode;
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = ModalComponent;
+            if (handled) {
+                // Suppress "double action" if event handled
+                event.preventDefault();
+            }
+        }
+    }, {
+        key: 'hide',
+        value: function hide() {
+            var _this4 = this;
+
+            window.removeEventListener('keydown', this.handleEscapeClick);
+
+            requestAnimationFrame(function () {
+                _this4.classList.add('transition-out');
+                _this4.classList.remove('transition-in');
+                // make the animation transition (translate) from the targetElement
+                _this4.transformToTargetElement();
+
+                _this4.addEventListener('transitionend', { once: true }, handleTransitionEnd);
+            });
+
+            function handleTransitionEnd(argument) {
+                this.previousParent.appendChild(this);
+                this.classList.remove('transition-out');
+                this.style.webkitTransform = '';
+                this.style.transform = '';
+                // reset scrolling event
+                document.body.style.overflow = undefined;
+                container.remove();
+
+                if (this.removeOnHide) {
+                    this.remove();
+                }
+                this.closeCallbacks.forEach(function (cb) {
+                    return cb();
+                });
+            }
+        }
+    }, {
+        key: 'connectedCallback',
+        value: function connectedCallback() {
+            this.previousParent = this.parentNode;
+        }
+    }]);
+
+    return ModalComponent;
+}(window.HTMLElement);
+
+exports.default = ModalComponent;
 ;
 
 /***/ }),
 /* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(0);
 
 
-class NotificationComponent extends window.HTMLElement {
-    constructor() {
-        super();
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _utils = __webpack_require__(0);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var NotificationComponent = function (_window$HTMLElement) {
+    _inherits(NotificationComponent, _window$HTMLElement);
+
+    function NotificationComponent() {
+        _classCallCheck(this, NotificationComponent);
+
+        return _possibleConstructorReturn(this, (NotificationComponent.__proto__ || Object.getPrototypeOf(NotificationComponent)).call(this));
     }
 
-    connectedCallback() {
-        const closeButton = this.querySelector('.close');
-        if (!closeButton) {
-            return;
+    _createClass(NotificationComponent, [{
+        key: 'connectedCallback',
+        value: function connectedCallback() {
+            var _this2 = this;
+
+            var closeButton = this.querySelector('.close');
+            if (!closeButton) {
+                return;
+            }
+            (0, _utils.onClick)(closeButton, function () {
+                return _this2.remove();
+            });
         }
-        Object(__WEBPACK_IMPORTED_MODULE_0__utils__["a" /* onClick */])(closeButton, () => this.remove());
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = NotificationComponent;
+    }]);
 
+    return NotificationComponent;
+}(window.HTMLElement);
+
+exports.default = NotificationComponent;
 
 /***/ }),
 /* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(0);
 
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _utils = __webpack_require__(0);
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
  * # Uniform select menu
@@ -913,66 +1099,84 @@ class NotificationComponent extends window.HTMLElement {
  * </uniform-select>
  * ```
  */
-class SelectComponent extends window.HTMLElement {
-    constructor() {
-        super();
+var SelectComponent = function (_window$HTMLElement) {
+    _inherits(SelectComponent, _window$HTMLElement);
+
+    function SelectComponent() {
+        _classCallCheck(this, SelectComponent);
+
+        return _possibleConstructorReturn(this, (SelectComponent.__proto__ || Object.getPrototypeOf(SelectComponent)).call(this));
     }
 
-    get multiple() {
-        return this.hasAttribute('multiple');
-    }
-    set multiple(val) {
-        if (val) {
-            this.setAttribute('multiple', '');
-        } else {
-            this.removeAttribute('multiple');
+    _createClass(SelectComponent, [{
+        key: 'toggle',
+        value: function toggle() {
+            this.classList.toggle('open');
         }
-    }
+    }, {
+        key: 'close',
+        value: function close() {
+            this.classList.remove('open');
+        }
+    }, {
+        key: 'open',
+        value: function open() {
+            this.classList.add('open');
+        }
+    }, {
+        key: 'connectedCallback',
+        value: function connectedCallback() {
+            var _this2 = this;
 
-    toggle() {
-        this.classList.toggle('open');
-    }
-
-    close() {
-        this.classList.remove('open');
-    }
-
-    open() {
-        this.classList.add('open');
-    }
-
-    connectedCallback() {
-        // Observer for child node changes for framework that dynamically add
-        // child node with their templating.  With each new node being added,
-        // we want to close the select menu when this select menu does not
-        // allow multiple
-        const observer = new MutationObserver(mutations => {
-            if (this.allowMultiple) {
-                return;
-            }
-            mutations.forEach(mutation => {
-                Array.prototype.slice.call(mutation.addedNodes).filter(n => n.nodeName === 'SELECT-ITEM').forEach(node => {
-                    Object(__WEBPACK_IMPORTED_MODULE_0__utils__["a" /* onClick */])(node, this.close.bind(this));
+            // Observer for child node changes for framework that dynamically add
+            // child node with their templating.  With each new node being added,
+            // we want to close the select menu when this select menu does not
+            // allow multiple
+            var observer = new MutationObserver(function (mutations) {
+                if (_this2.allowMultiple) {
                     return;
+                }
+                mutations.forEach(function (mutation) {
+                    Array.prototype.slice.call(mutation.addedNodes).filter(function (n) {
+                        return n.nodeName === 'SELECT-ITEM';
+                    }).forEach(function (node) {
+                        (0, _utils.onClick)(node, _this2.close.bind(_this2));
+                        return;
+                    });
                 });
             });
-        });
-        var config = { childList: true };
-        observer.observe(this, config);
-        // add event listener to existing select-items
-        [...this.querySelectorAll('select-item')].forEach(n => {
-            Object(__WEBPACK_IMPORTED_MODULE_0__utils__["a" /* onClick */])(n, this.close.bind(this));
-        });
+            var config = { childList: true };
+            observer.observe(this, config);
+            // add event listener to existing select-items
+            [].concat(_toConsumableArray(this.querySelectorAll('select-item'))).forEach(function (n) {
+                (0, _utils.onClick)(n, _this2.close.bind(_this2));
+            });
 
-        // add event listener under body to close select menu
-        Object(__WEBPACK_IMPORTED_MODULE_0__utils__["a" /* onClick */])(document.querySelector('body'), this.close.bind(this));
-        [...document.querySelectorAll('uniform-modal')].forEach(modal => {
-            Object(__WEBPACK_IMPORTED_MODULE_0__utils__["a" /* onClick */])(modal, this.close.bind(this));
-        });
-        Object(__WEBPACK_IMPORTED_MODULE_0__utils__["a" /* onClick */])(this.querySelector('select-title'), this.toggle.bind(this));
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = SelectComponent;
+            // add event listener under body to close select menu
+            (0, _utils.onClick)(document.querySelector('body'), this.close.bind(this));
+            [].concat(_toConsumableArray(document.querySelectorAll('uniform-modal'))).forEach(function (modal) {
+                (0, _utils.onClick)(modal, _this2.close.bind(_this2));
+            });
+            (0, _utils.onClick)(this.querySelector('select-title'), this.toggle.bind(this));
+        }
+    }, {
+        key: 'multiple',
+        get: function get() {
+            return this.hasAttribute('multiple');
+        },
+        set: function set(val) {
+            if (val) {
+                this.setAttribute('multiple', '');
+            } else {
+                this.removeAttribute('multiple');
+            }
+        }
+    }]);
+
+    return SelectComponent;
+}(window.HTMLElement);
+
+exports.default = SelectComponent;
 ;
 
 /***/ })
