@@ -4,3 +4,6 @@ build
 node_modules/
 
 .DS_Store
+
+package-lock.json
+docs/css/features/kitchen-sink.css
