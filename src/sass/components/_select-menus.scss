@@ -169,7 +169,7 @@ uniform-select,
 
 			// For IE10 & Safari
 			display: block;
-
+			padding: 0 1em;
 			@include flex(1,0,auto);
 
 			&:hover {
