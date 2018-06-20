@@ -49,14 +49,9 @@ uniform-notification,
 		text-align: center;
 
 		h1 {
-			margin: 0;
 			@include font-size(normal);
-
 			font-weight: $bold;
-
-			&:not(:only-child) {
-				margin: .5em 0;
-			}
+			margin: .5em 0;
 		}
 
 		p {
