@@ -165,22 +165,22 @@ html {
         line-height: 3rem; }
       .edlio.cms fieldset {
         padding: 1.5rem 0; }
-      .edlio.cms edlio-select,
-      .edlio.cms .edlio-select {
+      .edlio.cms uniform-select,
+      .edlio.cms .uniform-select {
         margin-right: 0.49996rem;
         margin-bottom: 1.5rem;
         padding: 0 0.809rem;
         font-size: 1em;
         line-height: 3rem; }
-        .edlio.cms edlio-select select-title,
-        .edlio.cms edlio-select .select-title,
-        .edlio.cms .edlio-select select-title,
-        .edlio.cms .edlio-select .select-title {
+        .edlio.cms uniform-select select-title,
+        .edlio.cms uniform-select .select-title,
+        .edlio.cms .uniform-select select-title,
+        .edlio.cms .uniform-select .select-title {
           padding: 0 1em; }
-        .edlio.cms edlio-select item,
-        .edlio.cms edlio-select .item,
-        .edlio.cms .edlio-select item,
-        .edlio.cms .edlio-select .item {
+        .edlio.cms uniform-select item,
+        .edlio.cms uniform-select .item,
+        .edlio.cms .uniform-select item,
+        .edlio.cms .uniform-select .item {
           padding: 0 1em; }
       .edlio.cms input[type="text"], .edlio.cms input[type="number"], .edlio.cms input[type="url"], .edlio.cms input[type="date"], .edlio.cms input[type="time"], .edlio.cms input[type="password"], .edlio.cms input[type="file"], .edlio.cms input[type="image"], .edlio.cms input[type="submit"], .edlio.cms input[type="reset"], .edlio.cms input[type="button"] {
         margin-bottom: 1.5rem;
@@ -288,22 +288,22 @@ html {
         line-height: 3rem; }
       .edlio.cms fieldset {
         padding: 1.5rem 0; }
-      .edlio.cms edlio-select,
-      .edlio.cms .edlio-select {
+      .edlio.cms uniform-select,
+      .edlio.cms .uniform-select {
         margin-right: 0.49996rem;
         margin-bottom: 1.5rem;
         padding: 0 0.809rem;
         font-size: 1em;
         line-height: 3rem; }
-        .edlio.cms edlio-select select-title,
-        .edlio.cms edlio-select .select-title,
-        .edlio.cms .edlio-select select-title,
-        .edlio.cms .edlio-select .select-title {
+        .edlio.cms uniform-select select-title,
+        .edlio.cms uniform-select .select-title,
+        .edlio.cms .uniform-select select-title,
+        .edlio.cms .uniform-select .select-title {
           padding: 0 1em; }
-        .edlio.cms edlio-select item,
-        .edlio.cms edlio-select .item,
-        .edlio.cms .edlio-select item,
-        .edlio.cms .edlio-select .item {
+        .edlio.cms uniform-select item,
+        .edlio.cms uniform-select .item,
+        .edlio.cms .uniform-select item,
+        .edlio.cms .uniform-select .item {
           padding: 0 1em; }
       .edlio.cms input[type="text"], .edlio.cms input[type="number"], .edlio.cms input[type="url"], .edlio.cms input[type="date"], .edlio.cms input[type="time"], .edlio.cms input[type="password"], .edlio.cms input[type="file"], .edlio.cms input[type="image"], .edlio.cms input[type="submit"], .edlio.cms input[type="reset"], .edlio.cms input[type="button"] {
         margin-bottom: 1.5rem;
@@ -413,22 +413,22 @@ html {
         line-height: 3.1875rem; }
       .edlio.cms fieldset {
         padding: 1.59375rem 0; }
-      .edlio.cms edlio-select,
-      .edlio.cms .edlio-select {
+      .edlio.cms uniform-select,
+      .edlio.cms .uniform-select {
         margin-right: 0.5579rem;
         margin-bottom: 1.59375rem;
         padding: 0 0.90275rem;
         font-size: 1em;
         line-height: 3.1875rem; }
-        .edlio.cms edlio-select select-title,
-        .edlio.cms edlio-select .select-title,
-        .edlio.cms .edlio-select select-title,
-        .edlio.cms .edlio-select .select-title {
+        .edlio.cms uniform-select select-title,
+        .edlio.cms uniform-select .select-title,
+        .edlio.cms .uniform-select select-title,
+        .edlio.cms .uniform-select .select-title {
           padding: 0 1em; }
-        .edlio.cms edlio-select item,
-        .edlio.cms edlio-select .item,
-        .edlio.cms .edlio-select item,
-        .edlio.cms .edlio-select .item {
+        .edlio.cms uniform-select item,
+        .edlio.cms uniform-select .item,
+        .edlio.cms .uniform-select item,
+        .edlio.cms .uniform-select .item {
           padding: 0 1em; }
       .edlio.cms input[type="text"], .edlio.cms input[type="number"], .edlio.cms input[type="url"], .edlio.cms input[type="date"], .edlio.cms input[type="time"], .edlio.cms input[type="password"], .edlio.cms input[type="file"], .edlio.cms input[type="image"], .edlio.cms input[type="submit"], .edlio.cms input[type="reset"], .edlio.cms input[type="button"] {
         margin-bottom: 1.59375rem;
@@ -538,22 +538,22 @@ html {
         line-height: 3.375rem; }
       .edlio.cms fieldset {
         padding: 1.6875rem 0; }
-      .edlio.cms edlio-select,
-      .edlio.cms .edlio-select {
+      .edlio.cms uniform-select,
+      .edlio.cms .uniform-select {
         margin-right: 0.61584rem;
         margin-bottom: 1.6875rem;
         padding: 0 0.9965rem;
         font-size: 1em;
         line-height: 3.375rem; }
-        .edlio.cms edlio-select select-title,
-        .edlio.cms edlio-select .select-title,
-        .edlio.cms .edlio-select select-title,
-        .edlio.cms .edlio-select .select-title {
+        .edlio.cms uniform-select select-title,
+        .edlio.cms uniform-select .select-title,
+        .edlio.cms .uniform-select select-title,
+        .edlio.cms .uniform-select .select-title {
           padding: 0 1em; }
-        .edlio.cms edlio-select item,
-        .edlio.cms edlio-select .item,
-        .edlio.cms .edlio-select item,
-        .edlio.cms .edlio-select .item {
+        .edlio.cms uniform-select item,
+        .edlio.cms uniform-select .item,
+        .edlio.cms .uniform-select item,
+        .edlio.cms .uniform-select .item {
           padding: 0 1em; }
       .edlio.cms input[type="text"], .edlio.cms input[type="number"], .edlio.cms input[type="url"], .edlio.cms input[type="date"], .edlio.cms input[type="time"], .edlio.cms input[type="password"], .edlio.cms input[type="file"], .edlio.cms input[type="image"], .edlio.cms input[type="submit"], .edlio.cms input[type="reset"], .edlio.cms input[type="button"] {
         margin-bottom: 1.6875rem;
