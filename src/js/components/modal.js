@@ -16,25 +16,25 @@ export default class ModalComponent extends window.HTMLElement {
     }
 
     goToPage (index) {
-        if (index === this.currentPage || index >= self.pages.length || index < 0) {
+        if (index === this.currentPage || index >= this.pages.length || index < 0) {
             return;
         }
         this.pages[index].classList.add('current');
-        this.previousPage = self.currentPage;
+        this.previousPage = this.currentPage;
         this.currentPage = index;
 
         requestAnimationFrame(() => {
-            if (index > self.previousPageId) {
-                this.pages[self.previousPage].classList.add('past');
+            if (index > this.previousPageId) {
+                this.pages[this.previousPage].classList.add('past');
             } else {
-                this.pages[self.previousPage].classList.add('future');
+                this.pages[this.previousPage].classList.add('future');
             }
             this.pages[index].classList.remove('future');
             this.pages[index].classList.remove('past');
 
-            this.addEventListener('transitionend', {once: true}, () => {
-                this.pages[self.previousPage].classList.remove('current');
-            });
+            this.addEventListener('transitionend', () => {
+                this.pages[this.previousPage].classList.remove('current');
+            }, {once: true});
         });
     }
 
@@ -51,7 +51,7 @@ export default class ModalComponent extends window.HTMLElement {
         if (!this.targetElement) {
             return;
         }
-        const clickedRect = this.targetElement.getBoundingClientRect();
+        const clickRect = this.targetElement.getBoundingClientRect();
         const selfRect = this.getBoundingClientRect();
 
         const scaleX = Math.min(0.5, clickRect.width / selfRect.width);
@@ -73,7 +73,7 @@ export default class ModalComponent extends window.HTMLElement {
 
     show (targetElement, removeOnHide) {
         this.removeOnHide = removeOnHide;
-        this.pages = [...self.querySelectorAll('uniform-page')];
+        this.pages = [...this.querySelectorAll('page')];
 
         if (this.pages.length) {
             this.pages[0].classList.add('current');
@@ -99,7 +99,7 @@ export default class ModalComponent extends window.HTMLElement {
         this.transformToTargetElement(true);
 
         // use `animationend` event to bind close event listener
-        this.addEventListener('transitionend', {once: true}, handleTransitionEnd);
+        this.addEventListener('transitionend', handleTransitionEnd, {once: true});
 
         // listen to the scroll event to make modal stay in the view port
         container.style.top = scrollTop + 'px';
@@ -115,10 +115,10 @@ export default class ModalComponent extends window.HTMLElement {
 
         function handleTransitionEnd () {
             // listen to overlay window on click event to cancel the modal
-            container.addEventListener('mousedown', function(event) {
+            container.addEventListener('mousedown', (event) => {
                 this.hide();
             });
-            this.addEventListener('mousedown', function(event) {
+            this.addEventListener('mousedown', (event) => {
                 event.stopPropagation();
             });
 
@@ -148,17 +148,17 @@ export default class ModalComponent extends window.HTMLElement {
             // make the animation transition (translate) from the targetElement
             this.transformToTargetElement();
 
-            this.addEventListener('transitionend', {once: true}, handleTransitionEnd);
+            this.addEventListener('transitionend', handleTransitionEnd, {once: true});
         });
 
-        function handleTransitionEnd (argument) {
+        function handleTransitionEnd () {
             this.previousParent.appendChild(this);
             this.classList.remove('transition-out');
             this.style.webkitTransform = '';
             this.style.transform = '';
             // reset scrolling event
             document.body.style.overflow = undefined;
-            container.remove();
+            this.container.remove();
 
             if (this.removeOnHide) {
                 this.remove();
@@ -168,6 +168,7 @@ export default class ModalComponent extends window.HTMLElement {
     }
 
     connectedCallback () {
+        console.log(this.parentNode);
         this.previousParent = this.parentNode;
     }
 };

@@ -453,8 +453,8 @@
 
 		// Notifications -----------------------------------------------------------
 
-		edlio-notification,
-		.edlio-notification {
+		uniform-notification,
+		.uniform-notification {
 			min-height: ($line-height-multiplier * $line-height);
 			margin: {
 				bottom: $line-height;

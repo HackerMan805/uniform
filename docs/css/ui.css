@@ -156,8 +156,8 @@ html {
         margin-bottom: 1.5rem;
         font-size: 1em;
         line-height: 3rem; }
-      .edlio.cms edlio-notification,
-      .edlio.cms .edlio-notification {
+      .edlio.cms uniform-notification,
+      .edlio.cms .uniform-notification {
         min-height: 3rem;
         margin-bottom: 1.5rem;
         padding: 0 1em;
@@ -279,8 +279,8 @@ html {
         margin-bottom: 1.5rem;
         font-size: 1em;
         line-height: 3rem; }
-      .edlio.cms edlio-notification,
-      .edlio.cms .edlio-notification {
+      .edlio.cms uniform-notification,
+      .edlio.cms .uniform-notification {
         min-height: 3rem;
         margin-bottom: 1.5rem;
         padding: 0 1em;
@@ -404,8 +404,8 @@ html {
         margin-bottom: 1.59375rem;
         font-size: 1em;
         line-height: 3.1875rem; }
-      .edlio.cms edlio-notification,
-      .edlio.cms .edlio-notification {
+      .edlio.cms uniform-notification,
+      .edlio.cms .uniform-notification {
         min-height: 3.1875rem;
         margin-bottom: 1.59375rem;
         padding: 0 1em;
@@ -529,8 +529,8 @@ html {
         margin-bottom: 1.6875rem;
         font-size: 1em;
         line-height: 3.375rem; }
-      .edlio.cms edlio-notification,
-      .edlio.cms .edlio-notification {
+      .edlio.cms uniform-notification,
+      .edlio.cms .uniform-notification {
         min-height: 3.375rem;
         margin-bottom: 1.6875rem;
         padding: 0 1em;
