@@ -471,8 +471,8 @@
 			padding: $line-height 0;
 		}
 
-		edlio-select,
-		.edlio-select {
+		uniform-select,
+		.uniform-select {
 			margin: {
 				right: .618 * ((($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
 				bottom: $line-height;

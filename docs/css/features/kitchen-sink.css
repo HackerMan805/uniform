@@ -831,6 +831,7 @@
     .edlio.cms .uniform-select > select-menu .select-item {
       position: relative;
       display: block;
+      padding: 0 1em;
       -webkit-flex: 1 0 auto;
       -ms-flex: 1 0 auto;
       flex: 1 0 auto; }
