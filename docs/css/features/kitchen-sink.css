@@ -1404,26 +1404,26 @@
     -moz-columns: 2 auto;
     columns: 2 auto; } }
 
-.edlio.cms .kitchen-sink .accordions edlio-accordion > section {
+.edlio.cms .kitchen-sink .accordions uniform-accordion > section {
   box-shadow: inset 2px 2px 0 0 #ededed, inset -2px 0 0 0 #ededed; }
-  .edlio.cms .kitchen-sink .accordions edlio-accordion > section:last-of-type {
+  .edlio.cms .kitchen-sink .accordions uniform-accordion > section:last-of-type {
     box-shadow: inset 2px 2px 0 0 #ededed, inset -2px -2px 0 0 #ededed; }
-  .edlio.cms .kitchen-sink .accordions edlio-accordion > section .content {
+  .edlio.cms .kitchen-sink .accordions uniform-accordion > section .content {
     transition: padding .2s, max-height .15s, opacity .15s; }
-  .edlio.cms .kitchen-sink .accordions edlio-accordion > section header {
+  .edlio.cms .kitchen-sink .accordions uniform-accordion > section header {
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
     box-shadow: inset 0 -2px 0 0 #ededed; }
-    .edlio.cms .kitchen-sink .accordions edlio-accordion > section header:hover {
+    .edlio.cms .kitchen-sink .accordions uniform-accordion > section header:hover {
       background: #f4f4f4; }
-  .edlio.cms .kitchen-sink .accordions edlio-accordion > section.collapsed {
+  .edlio.cms .kitchen-sink .accordions uniform-accordion > section.collapsed {
     box-shadow: inset 2px 2px 0 0 #ededed, inset -2px 0 0 0 #ededed; }
-    .edlio.cms .kitchen-sink .accordions edlio-accordion > section.collapsed:last-of-type {
+    .edlio.cms .kitchen-sink .accordions uniform-accordion > section.collapsed:last-of-type {
       box-shadow: inset 2px 2px 0 0 #ededed, inset -2px -2px 0 0 #ededed; }
-    .edlio.cms .kitchen-sink .accordions edlio-accordion > section.collapsed header {
+    .edlio.cms .kitchen-sink .accordions uniform-accordion > section.collapsed header {
       box-shadow: none; }
-    .edlio.cms .kitchen-sink .accordions edlio-accordion > section.collapsed .content {
+    .edlio.cms .kitchen-sink .accordions uniform-accordion > section.collapsed .content {
       transition: padding .2s, max-height .15s, opacity .15s, visibility 0.1s .3s; }
 
 .edlio.cms .kitchen-sink .flex-layouts > section {

@@ -199,17 +199,17 @@ html {
         padding: 0.809rem;
         font-size: 1em;
         line-height: 1.5rem; }
-      .edlio.cms edlio-accordion header,
-      .edlio.cms .edlio-accordion header {
+      .edlio.cms uniform-accordion header,
+      .edlio.cms .uniform-accordion header {
         line-height: 3rem; }
-      .edlio.cms edlio-accordion > section header,
-      .edlio.cms .edlio-accordion > section header {
+      .edlio.cms uniform-accordion > section header,
+      .edlio.cms .uniform-accordion > section header {
         padding: 0 1em; }
-      .edlio.cms edlio-accordion > section .content,
-      .edlio.cms .edlio-accordion > section .content {
+      .edlio.cms uniform-accordion > section .content,
+      .edlio.cms .uniform-accordion > section .content {
         padding: 1em; }
-      .edlio.cms edlio-accordion > section:last-child,
-      .edlio.cms .edlio-accordion > section:last-child {
+      .edlio.cms uniform-accordion > section:last-child,
+      .edlio.cms .uniform-accordion > section:last-child {
         margin-bottom: 1.5rem; }
       .edlio.cms [data-tooltip]:after {
         padding: 0.809rem; }
@@ -322,17 +322,17 @@ html {
         padding: 0.809rem;
         font-size: 1em;
         line-height: 1.5rem; }
-      .edlio.cms edlio-accordion header,
-      .edlio.cms .edlio-accordion header {
+      .edlio.cms uniform-accordion header,
+      .edlio.cms .uniform-accordion header {
         line-height: 3rem; }
-      .edlio.cms edlio-accordion > section header,
-      .edlio.cms .edlio-accordion > section header {
+      .edlio.cms uniform-accordion > section header,
+      .edlio.cms .uniform-accordion > section header {
         padding: 0 1em; }
-      .edlio.cms edlio-accordion > section .content,
-      .edlio.cms .edlio-accordion > section .content {
+      .edlio.cms uniform-accordion > section .content,
+      .edlio.cms .uniform-accordion > section .content {
         padding: 1em; }
-      .edlio.cms edlio-accordion > section:last-child,
-      .edlio.cms .edlio-accordion > section:last-child {
+      .edlio.cms uniform-accordion > section:last-child,
+      .edlio.cms .uniform-accordion > section:last-child {
         margin-bottom: 1.5rem; }
       .edlio.cms [data-tooltip]:after {
         padding: 0.809rem; }
@@ -447,17 +447,17 @@ html {
         padding: 0.90275rem;
         font-size: 1em;
         line-height: 1.59375rem; }
-      .edlio.cms edlio-accordion header,
-      .edlio.cms .edlio-accordion header {
+      .edlio.cms uniform-accordion header,
+      .edlio.cms .uniform-accordion header {
         line-height: 3.1875rem; }
-      .edlio.cms edlio-accordion > section header,
-      .edlio.cms .edlio-accordion > section header {
+      .edlio.cms uniform-accordion > section header,
+      .edlio.cms .uniform-accordion > section header {
         padding: 0 1em; }
-      .edlio.cms edlio-accordion > section .content,
-      .edlio.cms .edlio-accordion > section .content {
+      .edlio.cms uniform-accordion > section .content,
+      .edlio.cms .uniform-accordion > section .content {
         padding: 1em; }
-      .edlio.cms edlio-accordion > section:last-child,
-      .edlio.cms .edlio-accordion > section:last-child {
+      .edlio.cms uniform-accordion > section:last-child,
+      .edlio.cms .uniform-accordion > section:last-child {
         margin-bottom: 1.59375rem; }
       .edlio.cms [data-tooltip]:after {
         padding: 0.90275rem; }
@@ -572,17 +572,17 @@ html {
         padding: 0.9965rem;
         font-size: 1em;
         line-height: 1.6875rem; }
-      .edlio.cms edlio-accordion header,
-      .edlio.cms .edlio-accordion header {
+      .edlio.cms uniform-accordion header,
+      .edlio.cms .uniform-accordion header {
         line-height: 3.375rem; }
-      .edlio.cms edlio-accordion > section header,
-      .edlio.cms .edlio-accordion > section header {
+      .edlio.cms uniform-accordion > section header,
+      .edlio.cms .uniform-accordion > section header {
         padding: 0 1em; }
-      .edlio.cms edlio-accordion > section .content,
-      .edlio.cms .edlio-accordion > section .content {
+      .edlio.cms uniform-accordion > section .content,
+      .edlio.cms .uniform-accordion > section .content {
         padding: 1em; }
-      .edlio.cms edlio-accordion > section:last-child,
-      .edlio.cms .edlio-accordion > section:last-child {
+      .edlio.cms uniform-accordion > section:last-child,
+      .edlio.cms .uniform-accordion > section:last-child {
         margin-bottom: 1.6875rem; }
       .edlio.cms [data-tooltip]:after {
         padding: 0.9965rem; }
