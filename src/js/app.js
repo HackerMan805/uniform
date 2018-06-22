@@ -1,4 +1,5 @@
 import '@webcomponents/webcomponentsjs/webcomponents-bundle';
+import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter';
 
 import AccordionComponent from './components/accordion';
 import DrawerComponent from './components/drawer';
