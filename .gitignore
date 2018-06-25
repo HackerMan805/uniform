@@ -2,8 +2,9 @@ build
 .sass-cache
 
 node_modules/
+libs/
+docs/css/
+docs/js
 
 .DS_Store
-
 package-lock.json
-docs/css/features/kitchen-sink.css
