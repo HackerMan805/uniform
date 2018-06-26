@@ -845,7 +845,6 @@ var ModalComponent = function (_window$HTMLElement) {
         _this.currentPage = 0;
         _this.pages = [];
         // internal memory
-        _this.previousParent = null;
         _this.container = null;
         _this.handleEscapeClick = _this.handleEscapeClick.bind(_this);
         return _this;
@@ -855,6 +854,11 @@ var ModalComponent = function (_window$HTMLElement) {
         key: 'onClose',
         value: function onClose(closeCallback) {
             this.closeCallbacks.push(closeCallback);
+        }
+    }, {
+        key: 'attachOnClose',
+        value: function attachOnClose(closeCallback) {
+            this.onClose(closeCallback);
         }
     }, {
         key: 'goToPage',
@@ -1008,6 +1012,8 @@ var ModalComponent = function (_window$HTMLElement) {
                 this.style.transform = '';
                 // reset scrolling event
                 document.body.style.overflow = undefined;
+                // FIXME: attach the element back to previous parent
+                document.body.appendChild(self);
                 this.container.remove();
 
                 if (this.removeOnHide) {
