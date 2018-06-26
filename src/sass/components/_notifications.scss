@@ -25,7 +25,9 @@
 }
 
 uniform-notification,
-.uniform-notification {
+.uniform-notification,
+edlio-notification,
+.edlio-notification {
 	@extend %flexbox;
 	@include align-items(center);
 
