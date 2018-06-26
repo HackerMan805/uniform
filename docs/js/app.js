@@ -1006,14 +1006,13 @@ var ModalComponent = function (_window$HTMLElement) {
             });
 
             function handleTransitionEnd() {
-                this.previousParent.appendChild(this);
                 this.classList.remove('transition-out');
                 this.style.webkitTransform = '';
                 this.style.transform = '';
                 // reset scrolling event
                 document.body.style.overflow = undefined;
                 // FIXME: attach the element back to previous parent
-                document.body.appendChild(self);
+                document.body.appendChild(this);
                 this.container.remove();
 
                 if (this.removeOnHide) {
@@ -1027,7 +1026,6 @@ var ModalComponent = function (_window$HTMLElement) {
     }, {
         key: 'connectedCallback',
         value: function connectedCallback() {
-            console.log(this.parentNode);
             this.previousParent = this.parentNode;
         }
     }]);
