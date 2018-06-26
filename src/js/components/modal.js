@@ -6,13 +6,15 @@ export default class ModalComponent extends window.HTMLElement {
         this.currentPage = 0;
         this.pages = [];
         // internal memory
-        this.previousParent = null;
         this.container = null;
         this.handleEscapeClick = this.handleEscapeClick.bind(this);
     }
 
     onClose (closeCallback) {
         this.closeCallbacks.push(closeCallback);
+    }
+    attachOnClose (closeCallback) {
+        this.onClose(closeCallback);
     }
 
     goToPage (index) {
@@ -158,6 +160,8 @@ export default class ModalComponent extends window.HTMLElement {
             this.style.transform = '';
             // reset scrolling event
             document.body.style.overflow = undefined;
+            // FIXME: attach the element back to previous parent
+            document.body.appendChild(self);
             this.container.remove();
 
             if (this.removeOnHide) {
