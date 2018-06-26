@@ -1,6 +1,7 @@
 // REACT COMPONENT : Modals
 
-.uniform-overlay {
+.uniform-overlay,
+.edlio-overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -26,7 +27,8 @@
 
 	background-color: $overlay-color;
 
-	.uniform-modal {
+	.uniform-modal,
+	.edlio-modal {
 		@extend %flexbox;
 		@include flex(0,1,auto);
 		@include flex-direction(column);

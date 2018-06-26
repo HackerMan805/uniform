@@ -454,7 +454,9 @@
 		// Notifications -----------------------------------------------------------
 
 		uniform-notification,
-		.uniform-notification {
+		.uniform-notification,
+		edlio-notification,
+		.edlio-notification {
 			min-height: ($line-height-multiplier * $line-height);
 			margin: {
 				bottom: $line-height;
@@ -472,7 +474,9 @@
 		}
 
 		uniform-select,
-		.uniform-select {
+		.uniform-select,
+		edlio-select,
+		.edlio-select {
 			margin: {
 				right: .618 * ((($line-height-multiplier * $line-height) - ( 1rem * $icon-size-multiplier )) / 2 );
 				bottom: $line-height;
@@ -546,7 +550,9 @@
 		// Accordions --------------------------------------------------------------
 
 		uniform-accordion,
-		.uniform-accordion {
+		.uniform-accordion,
+		edlio-accordion,
+		.edlio-accordion {
 			header {
 				line-height: ($line-height-multiplier * $line-height);
 			}
