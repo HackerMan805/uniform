@@ -3,6 +3,7 @@
 // Import Necessary Definitions
 @import 'definitions/colors';
 @import 'definitions/typography';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 // Edlio Standard Color Palette
 // -----------------------------------------------------------------------------
@@ -10,7 +11,7 @@ $edlio-red                           : rgb(203,26,16); // #CB1A10
 
 // Blazer Typography Defaults
 // -----------------------------------------------------------------------------
-$font-family : Avenir, Helvetica, Arial, sans-serif !default;
+$font-family                        : 'Open Sans', Helvetica, Arial, sans-serif !default;
 
 $h1-fonts                           : $font-family !default;
 $h1-transform                       : none         !default;
