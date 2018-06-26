@@ -1,32 +1,72 @@
 /*** Kitchen Sink ***/
 .edlio.cms uniform-accordion > section,
-.edlio.cms .uniform-accordion > section, .edlio.cms uniform-accordion > section header,
-.edlio.cms .uniform-accordion > section header, .edlio.cms .bar.tab .width-constraint, .edlio.cms uniform-drawer a, .edlio.cms .icon.input, .edlio.cms uniform-notification,
-.edlio.cms .uniform-notification, .edlio.cms uniform-select select-title,
+.edlio.cms .uniform-accordion > section,
+.edlio.cms edlio-accordion > section,
+.edlio.cms .edlio-accordion > section, .edlio.cms uniform-accordion > section header,
+.edlio.cms .uniform-accordion > section header,
+.edlio.cms edlio-accordion > section header,
+.edlio.cms .edlio-accordion > section header, .edlio.cms .bar.tab .width-constraint, .edlio.cms uniform-drawer a,
+.edlio.cms edlio-drawer a, .edlio.cms .icon.input, .edlio.cms uniform-notification,
+.edlio.cms .uniform-notification,
+.edlio.cms edlio-notification,
+.edlio.cms .edlio-notification, .edlio.cms uniform-select select-title,
 .edlio.cms uniform-select .select-title,
 .edlio.cms .uniform-select select-title,
-.edlio.cms .uniform-select .select-title, .edlio.cms uniform-overlay, .edlio.cms uniform-overlay uniform-modal, .edlio.cms uniform-overlay uniform-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
+.edlio.cms .uniform-select .select-title,
+.edlio.cms edlio-select select-title,
+.edlio.cms edlio-select .select-title,
+.edlio.cms .edlio-select select-title,
+.edlio.cms .edlio-select .select-title, .edlio.cms uniform-overlay,
+.edlio.cms edlio-overlay, .edlio.cms uniform-overlay uniform-modal,
+.edlio.cms edlio-overlay uniform-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
+.edlio.cms uniform-overlay edlio-modal page.current header,
+.edlio.cms edlio-overlay uniform-modal page.current header,
+.edlio.cms edlio-overlay edlio-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer,
+.edlio.cms uniform-overlay edlio-modal page.current footer,
+.edlio.cms edlio-overlay uniform-modal page.current footer,
+.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
 
-.edlio.cms uniform-drawer a span {
+.edlio.cms uniform-drawer a span,
+.edlio.cms edlio-drawer a span {
   -webkit-flex: 1 1 0%;
   -ms-flex: 1 1 0%;
   flex: 1 1 0%; }
 
 .edlio.cms uniform-accordion > section,
-.edlio.cms .uniform-accordion > section, .edlio.cms uniform-accordion > section header,
-.edlio.cms .uniform-accordion > section header, .edlio.cms .bar.tab .width-constraint, .edlio.cms uniform-drawer a, .edlio.cms .icon.input, .edlio.cms uniform-notification,
-.edlio.cms .uniform-notification, .edlio.cms uniform-select select-title,
+.edlio.cms .uniform-accordion > section,
+.edlio.cms edlio-accordion > section,
+.edlio.cms .edlio-accordion > section, .edlio.cms uniform-accordion > section header,
+.edlio.cms .uniform-accordion > section header,
+.edlio.cms edlio-accordion > section header,
+.edlio.cms .edlio-accordion > section header, .edlio.cms .bar.tab .width-constraint, .edlio.cms uniform-drawer a,
+.edlio.cms edlio-drawer a, .edlio.cms .icon.input, .edlio.cms uniform-notification,
+.edlio.cms .uniform-notification,
+.edlio.cms edlio-notification,
+.edlio.cms .edlio-notification, .edlio.cms uniform-select select-title,
 .edlio.cms uniform-select .select-title,
 .edlio.cms .uniform-select select-title,
-.edlio.cms .uniform-select .select-title, .edlio.cms uniform-overlay, .edlio.cms uniform-overlay uniform-modal, .edlio.cms uniform-overlay uniform-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
+.edlio.cms .uniform-select .select-title,
+.edlio.cms edlio-select select-title,
+.edlio.cms edlio-select .select-title,
+.edlio.cms .edlio-select select-title,
+.edlio.cms .edlio-select .select-title, .edlio.cms uniform-overlay,
+.edlio.cms edlio-overlay, .edlio.cms uniform-overlay uniform-modal,
+.edlio.cms edlio-overlay uniform-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
+.edlio.cms uniform-overlay edlio-modal page.current header,
+.edlio.cms edlio-overlay uniform-modal page.current header,
+.edlio.cms edlio-overlay edlio-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer,
+.edlio.cms uniform-overlay edlio-modal page.current footer,
+.edlio.cms edlio-overlay uniform-modal page.current footer,
+.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
 
-.edlio.cms uniform-drawer a span {
+.edlio.cms uniform-drawer a span,
+.edlio.cms edlio-drawer a span {
   -webkit-flex: 1 1 0%;
   -ms-flex: 1 1 0%;
   flex: 1 1 0%; }
@@ -73,17 +113,37 @@
           margin-right: 0; } }
 
 .edlio.cms uniform-accordion > section,
-.edlio.cms .uniform-accordion > section, .edlio.cms uniform-accordion > section header,
-.edlio.cms .uniform-accordion > section header, .edlio.cms .bar.tab .width-constraint, .edlio.cms uniform-drawer a, .edlio.cms .icon.input, .edlio.cms uniform-notification,
-.edlio.cms .uniform-notification, .edlio.cms uniform-select select-title,
+.edlio.cms .uniform-accordion > section,
+.edlio.cms edlio-accordion > section,
+.edlio.cms .edlio-accordion > section, .edlio.cms uniform-accordion > section header,
+.edlio.cms .uniform-accordion > section header,
+.edlio.cms edlio-accordion > section header,
+.edlio.cms .edlio-accordion > section header, .edlio.cms .bar.tab .width-constraint, .edlio.cms uniform-drawer a,
+.edlio.cms edlio-drawer a, .edlio.cms .icon.input, .edlio.cms uniform-notification,
+.edlio.cms .uniform-notification,
+.edlio.cms edlio-notification,
+.edlio.cms .edlio-notification, .edlio.cms uniform-select select-title,
 .edlio.cms uniform-select .select-title,
 .edlio.cms .uniform-select select-title,
-.edlio.cms .uniform-select .select-title, .edlio.cms uniform-overlay, .edlio.cms uniform-overlay uniform-modal, .edlio.cms uniform-overlay uniform-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
+.edlio.cms .uniform-select .select-title,
+.edlio.cms edlio-select select-title,
+.edlio.cms edlio-select .select-title,
+.edlio.cms .edlio-select select-title,
+.edlio.cms .edlio-select .select-title, .edlio.cms uniform-overlay,
+.edlio.cms edlio-overlay, .edlio.cms uniform-overlay uniform-modal,
+.edlio.cms edlio-overlay uniform-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
+.edlio.cms uniform-overlay edlio-modal page.current header,
+.edlio.cms edlio-overlay uniform-modal page.current header,
+.edlio.cms edlio-overlay edlio-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer,
+.edlio.cms uniform-overlay edlio-modal page.current footer,
+.edlio.cms edlio-overlay uniform-modal page.current footer,
+.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
 
-.edlio.cms uniform-drawer a span {
+.edlio.cms uniform-drawer a span,
+.edlio.cms edlio-drawer a span {
   -webkit-flex: 1 1 0%;
   -ms-flex: 1 1 0%;
   flex: 1 1 0%; }
@@ -94,7 +154,9 @@
 
 .edlio.cms .bar.tab > *:not(.width-constraint),
 .edlio.cms .bar.tab .width-constraint > *, .edlio.cms .button, .edlio.cms .kitchen-sink button, .edlio.cms uniform-select,
-.edlio.cms .uniform-select, .edlio.cms .toggle-selector .option {
+.edlio.cms .uniform-select,
+.edlio.cms edlio-select,
+.edlio.cms .edlio-select, .edlio.cms .toggle-selector .option {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -107,23 +169,33 @@
   color: #aaabad; }
 
 .edlio.cms uniform-accordion > section,
-.edlio.cms .uniform-accordion > section {
+.edlio.cms .uniform-accordion > section,
+.edlio.cms edlio-accordion > section,
+.edlio.cms .edlio-accordion > section {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
   margin-bottom: 0; }
   .edlio.cms uniform-accordion > section .content,
-  .edlio.cms .uniform-accordion > section .content {
+  .edlio.cms .uniform-accordion > section .content,
+  .edlio.cms edlio-accordion > section .content,
+  .edlio.cms .edlio-accordion > section .content {
     max-height: 25em;
     opacity: 1; }
   .edlio.cms uniform-accordion > section header,
-  .edlio.cms .uniform-accordion > section header {
+  .edlio.cms .uniform-accordion > section header,
+  .edlio.cms edlio-accordion > section header,
+  .edlio.cms .edlio-accordion > section header {
     cursor: pointer; }
     .edlio.cms uniform-accordion > section header svg,
-    .edlio.cms .uniform-accordion > section header svg {
+    .edlio.cms .uniform-accordion > section header svg,
+    .edlio.cms edlio-accordion > section header svg,
+    .edlio.cms .edlio-accordion > section header svg {
       margin-left: auto; }
   .edlio.cms uniform-accordion > section.collapsed .content,
-  .edlio.cms .uniform-accordion > section.collapsed .content {
+  .edlio.cms .uniform-accordion > section.collapsed .content,
+  .edlio.cms edlio-accordion > section.collapsed .content,
+  .edlio.cms .edlio-accordion > section.collapsed .content {
     max-height: 0;
     padding: 0;
     visibility: hidden;
@@ -283,7 +355,8 @@
       .edlio.cms .button-bar .button.secondary:last-of-type, .edlio.cms .button-bar .kitchen-sink button.secondary:last-of-type, .edlio.cms .kitchen-sink .button-bar button.secondary:last-of-type {
         box-shadow: inset 0 0 0 1px #cccccc; }
 
-.edlio.cms uniform-drawer {
+.edlio.cms uniform-drawer,
+.edlio.cms edlio-drawer {
   position: absolute;
   z-index: 99;
   width: 20em;
@@ -293,7 +366,8 @@
   -webkit-transform: translate3d(-100%, 0, 0);
   transform: translate3d(-100%, 0, 0);
   transition: transform .3s; }
-  .edlio.cms uniform-drawer a {
+  .edlio.cms uniform-drawer a,
+  .edlio.cms edlio-drawer a {
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
@@ -302,17 +376,21 @@
     justify-content: space-around;
     padding: 0 1em;
     color: #444444; }
-    .edlio.cms uniform-drawer a:hover {
+    .edlio.cms uniform-drawer a:hover,
+    .edlio.cms edlio-drawer a:hover {
       background: #cccccc;
       text-decoration: none; }
-    .edlio.cms uniform-drawer a svg.icon {
+    .edlio.cms uniform-drawer a svg.icon,
+    .edlio.cms edlio-drawer a svg.icon {
       width: 1.5em;
       height: 1.5em;
       vertical-align: middle; }
-    .edlio.cms uniform-drawer a span {
+    .edlio.cms uniform-drawer a span,
+    .edlio.cms edlio-drawer a span {
       margin: 0 1em;
       color: #444444; }
-  .edlio.cms uniform-drawer.open {
+  .edlio.cms uniform-drawer.open,
+  .edlio.cms edlio-drawer.open {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0); }
 
@@ -509,56 +587,76 @@
   margin-bottom: 1em; }
 
 .edlio.cms uniform-notification,
-.edlio.cms .uniform-notification {
+.edlio.cms .uniform-notification,
+.edlio.cms edlio-notification,
+.edlio.cms .edlio-notification {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
   border-radius: 0.24063em;
   color: white; }
   .edlio.cms uniform-notification.alert,
-  .edlio.cms .uniform-notification.alert {
+  .edlio.cms .uniform-notification.alert,
+  .edlio.cms edlio-notification.alert,
+  .edlio.cms .edlio-notification.alert {
     color: #e07c3a;
     box-shadow: inset 3.5em 0 0 2px #e07c3a, inset 0 0 0 2px #e07c3a; }
     .edlio.cms uniform-notification.alert svg.icon,
-    .edlio.cms .uniform-notification.alert svg.icon {
+    .edlio.cms .uniform-notification.alert svg.icon,
+    .edlio.cms edlio-notification.alert svg.icon,
+    .edlio.cms .edlio-notification.alert svg.icon {
       position: relative;
       pointer-events: none;
       vertical-align: middle;
       fill: #444444;
       fill: white; }
     .edlio.cms uniform-notification.alert .close,
-    .edlio.cms .uniform-notification.alert .close {
+    .edlio.cms .uniform-notification.alert .close,
+    .edlio.cms edlio-notification.alert .close,
+    .edlio.cms .edlio-notification.alert .close {
       display: block; }
       .edlio.cms uniform-notification.alert .close svg.icon,
-      .edlio.cms .uniform-notification.alert .close svg.icon {
+      .edlio.cms .uniform-notification.alert .close svg.icon,
+      .edlio.cms edlio-notification.alert .close svg.icon,
+      .edlio.cms .edlio-notification.alert .close svg.icon {
         position: relative;
         pointer-events: none;
         vertical-align: middle;
         fill: #444444;
         fill: #444444; }
   .edlio.cms uniform-notification.confirmation,
-  .edlio.cms .uniform-notification.confirmation {
+  .edlio.cms .uniform-notification.confirmation,
+  .edlio.cms edlio-notification.confirmation,
+  .edlio.cms .edlio-notification.confirmation {
     color: #33a468;
     box-shadow: inset 3.5em 0 0 2px #33a468, inset 0 0 0 2px #33a468; }
     .edlio.cms uniform-notification.confirmation svg.icon,
-    .edlio.cms .uniform-notification.confirmation svg.icon {
+    .edlio.cms .uniform-notification.confirmation svg.icon,
+    .edlio.cms edlio-notification.confirmation svg.icon,
+    .edlio.cms .edlio-notification.confirmation svg.icon {
       position: relative;
       pointer-events: none;
       vertical-align: middle;
       fill: #444444;
       fill: white; }
     .edlio.cms uniform-notification.confirmation .close,
-    .edlio.cms .uniform-notification.confirmation .close {
+    .edlio.cms .uniform-notification.confirmation .close,
+    .edlio.cms edlio-notification.confirmation .close,
+    .edlio.cms .edlio-notification.confirmation .close {
       display: block; }
       .edlio.cms uniform-notification.confirmation .close svg.icon,
-      .edlio.cms .uniform-notification.confirmation .close svg.icon {
+      .edlio.cms .uniform-notification.confirmation .close svg.icon,
+      .edlio.cms edlio-notification.confirmation .close svg.icon,
+      .edlio.cms .edlio-notification.confirmation .close svg.icon {
         position: relative;
         pointer-events: none;
         vertical-align: middle;
         fill: #444444;
         fill: #444444; }
   .edlio.cms uniform-notification .message,
-  .edlio.cms .uniform-notification .message {
+  .edlio.cms .uniform-notification .message,
+  .edlio.cms edlio-notification .message,
+  .edlio.cms .edlio-notification .message {
     -webkit-flex: 1 1 0%;
     -ms-flex: 1 1 0%;
     flex: 1 1 0%;
@@ -566,66 +664,92 @@
     padding: 0 0 0 1em;
     text-align: center; }
     .edlio.cms uniform-notification .message h1,
-    .edlio.cms .uniform-notification .message h1 {
+    .edlio.cms .uniform-notification .message h1,
+    .edlio.cms edlio-notification .message h1,
+    .edlio.cms .edlio-notification .message h1 {
       font-weight: 600;
       margin: .5em 0; }
       @media screen and (max-width: 47.9375rem) {
         .edlio.cms uniform-notification .message h1,
-        .edlio.cms .uniform-notification .message h1 {
+        .edlio.cms .uniform-notification .message h1,
+        .edlio.cms edlio-notification .message h1,
+        .edlio.cms .edlio-notification .message h1 {
           font-size: 1rem;
           line-height: 1.5rem; } }
       @media screen and (min-width: 48rem) {
         .edlio.cms uniform-notification .message h1,
-        .edlio.cms .uniform-notification .message h1 {
+        .edlio.cms .uniform-notification .message h1,
+        .edlio.cms edlio-notification .message h1,
+        .edlio.cms .edlio-notification .message h1 {
           font-size: 1rem;
           line-height: 1.5rem; } }
       @media screen and (min-width: 64rem) {
         .edlio.cms uniform-notification .message h1,
-        .edlio.cms .uniform-notification .message h1 {
+        .edlio.cms .uniform-notification .message h1,
+        .edlio.cms edlio-notification .message h1,
+        .edlio.cms .edlio-notification .message h1 {
           font-size: 1.0625rem;
           line-height: 1.59375rem; } }
       @media screen and (min-width: 75rem) {
         .edlio.cms uniform-notification .message h1,
-        .edlio.cms .uniform-notification .message h1 {
+        .edlio.cms .uniform-notification .message h1,
+        .edlio.cms edlio-notification .message h1,
+        .edlio.cms .edlio-notification .message h1 {
           font-size: 1.125rem;
           line-height: 1.6875rem; } }
     .edlio.cms uniform-notification .message p,
-    .edlio.cms .uniform-notification .message p {
+    .edlio.cms .uniform-notification .message p,
+    .edlio.cms edlio-notification .message p,
+    .edlio.cms .edlio-notification .message p {
       margin-bottom: .5em;
       color: #888888; }
     @media screen and (max-width: 47.9375rem) {
       .edlio.cms uniform-notification .message .disclaimer,
-      .edlio.cms .uniform-notification .message .disclaimer {
+      .edlio.cms .uniform-notification .message .disclaimer,
+      .edlio.cms edlio-notification .message .disclaimer,
+      .edlio.cms .edlio-notification .message .disclaimer {
         font-size: 0.875rem;
         line-height: 1.5rem; } }
     @media screen and (min-width: 48rem) {
       .edlio.cms uniform-notification .message .disclaimer,
-      .edlio.cms .uniform-notification .message .disclaimer {
+      .edlio.cms .uniform-notification .message .disclaimer,
+      .edlio.cms edlio-notification .message .disclaimer,
+      .edlio.cms .edlio-notification .message .disclaimer {
         font-size: 0.875rem;
         line-height: 1.5rem; } }
     @media screen and (min-width: 64rem) {
       .edlio.cms uniform-notification .message .disclaimer,
-      .edlio.cms .uniform-notification .message .disclaimer {
+      .edlio.cms .uniform-notification .message .disclaimer,
+      .edlio.cms edlio-notification .message .disclaimer,
+      .edlio.cms .edlio-notification .message .disclaimer {
         font-size: 0.9375rem;
         line-height: 1.59375rem; } }
     @media screen and (min-width: 75rem) {
       .edlio.cms uniform-notification .message .disclaimer,
-      .edlio.cms .uniform-notification .message .disclaimer {
+      .edlio.cms .uniform-notification .message .disclaimer,
+      .edlio.cms edlio-notification .message .disclaimer,
+      .edlio.cms .edlio-notification .message .disclaimer {
         font-size: 1rem;
         line-height: 1.6875rem; } }
   .edlio.cms uniform-notification .close,
-  .edlio.cms .uniform-notification .close {
+  .edlio.cms .uniform-notification .close,
+  .edlio.cms edlio-notification .close,
+  .edlio.cms .edlio-notification .close {
     -ms-flex-item-align: start;
     -webkit-align-self: flex-start;
     align-self: flex-start;
     padding: 0;
     cursor: pointer; }
     .edlio.cms uniform-notification .close .icon,
-    .edlio.cms .uniform-notification .close .icon {
+    .edlio.cms .uniform-notification .close .icon,
+    .edlio.cms edlio-notification .close .icon,
+    .edlio.cms .edlio-notification .close .icon {
       border-radius: 0.24063em; }
 
 .edlio.cms uniform-overlay,
-.edlio.cms .uniform-overlay {
+.edlio.cms .uniform-overlay,
+.edlio.cms edlio-overlay,
+.edlio.cms .edlio-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -679,7 +803,9 @@
     margin-bottom: .2em; }
 
 .edlio.cms uniform-select,
-.edlio.cms .uniform-select {
+.edlio.cms .uniform-select,
+.edlio.cms edlio-select,
+.edlio.cms .edlio-select {
   position: relative;
   display: inline-block;
   padding: 0;
@@ -691,13 +817,19 @@
   white-space: nowrap; }
   @media screen and (max-width: 31.9375rem) {
     .edlio.cms uniform-select:not(.bare),
-    .edlio.cms .uniform-select:not(.bare) {
+    .edlio.cms .uniform-select:not(.bare),
+    .edlio.cms edlio-select:not(.bare),
+    .edlio.cms .edlio-select:not(.bare) {
       display: block;
       margin-right: 0; } }
   .edlio.cms uniform-select select-title,
   .edlio.cms uniform-select .select-title,
   .edlio.cms .uniform-select select-title,
-  .edlio.cms .uniform-select .select-title {
+  .edlio.cms .uniform-select .select-title,
+  .edlio.cms edlio-select select-title,
+  .edlio.cms edlio-select .select-title,
+  .edlio.cms .edlio-select select-title,
+  .edlio.cms .edlio-select .select-title {
     -ms-flex-pack: justify;
     -webkit-justify-content: space-between;
     justify-content: space-between;
@@ -708,7 +840,11 @@
     .edlio.cms uniform-select select-title svg.icon,
     .edlio.cms uniform-select .select-title svg.icon,
     .edlio.cms .uniform-select select-title svg.icon,
-    .edlio.cms .uniform-select .select-title svg.icon {
+    .edlio.cms .uniform-select .select-title svg.icon,
+    .edlio.cms edlio-select select-title svg.icon,
+    .edlio.cms edlio-select .select-title svg.icon,
+    .edlio.cms .edlio-select select-title svg.icon,
+    .edlio.cms .edlio-select .select-title svg.icon {
       position: relative;
       pointer-events: none;
       vertical-align: middle;
@@ -718,37 +854,61 @@
     .edlio.cms uniform-select select-title:hover svg.icon,
     .edlio.cms uniform-select .select-title:hover svg.icon,
     .edlio.cms .uniform-select select-title:hover svg.icon,
-    .edlio.cms .uniform-select .select-title:hover svg.icon {
+    .edlio.cms .uniform-select .select-title:hover svg.icon,
+    .edlio.cms edlio-select select-title:hover svg.icon,
+    .edlio.cms edlio-select .select-title:hover svg.icon,
+    .edlio.cms .edlio-select select-title:hover svg.icon,
+    .edlio.cms .edlio-select .select-title:hover svg.icon {
       fill: #555555; }
     .edlio.cms uniform-select select-title:before,
     .edlio.cms uniform-select .select-title:before,
     .edlio.cms .uniform-select select-title:before,
-    .edlio.cms .uniform-select .select-title:before {
+    .edlio.cms .uniform-select .select-title:before,
+    .edlio.cms edlio-select select-title:before,
+    .edlio.cms edlio-select .select-title:before,
+    .edlio.cms .edlio-select select-title:before,
+    .edlio.cms .edlio-select .select-title:before {
       content: "";
       width: 0;
       height: 0; }
   .edlio.cms uniform-select.bare,
-  .edlio.cms .uniform-select.bare {
+  .edlio.cms .uniform-select.bare,
+  .edlio.cms edlio-select.bare,
+  .edlio.cms .edlio-select.bare {
     box-shadow: none; }
     .edlio.cms uniform-select.bare select-title,
     .edlio.cms uniform-select.bare .select-title,
     .edlio.cms .uniform-select.bare select-title,
-    .edlio.cms .uniform-select.bare .select-title {
+    .edlio.cms .uniform-select.bare .select-title,
+    .edlio.cms edlio-select.bare select-title,
+    .edlio.cms edlio-select.bare .select-title,
+    .edlio.cms .edlio-select.bare select-title,
+    .edlio.cms .edlio-select.bare .select-title {
       -ms-flex-pack: start;
       -webkit-justify-content: flex-start;
       justify-content: flex-start; }
       .edlio.cms uniform-select.bare select-title svg.icon,
       .edlio.cms uniform-select.bare .select-title svg.icon,
       .edlio.cms .uniform-select.bare select-title svg.icon,
-      .edlio.cms .uniform-select.bare .select-title svg.icon {
+      .edlio.cms .uniform-select.bare .select-title svg.icon,
+      .edlio.cms edlio-select.bare select-title svg.icon,
+      .edlio.cms edlio-select.bare .select-title svg.icon,
+      .edlio.cms .edlio-select.bare select-title svg.icon,
+      .edlio.cms .edlio-select.bare .select-title svg.icon {
         margin: 0; }
     .edlio.cms uniform-select.bare select-menu,
-    .edlio.cms .uniform-select.bare select-menu {
+    .edlio.cms .uniform-select.bare select-menu,
+    .edlio.cms edlio-select.bare select-menu,
+    .edlio.cms .edlio-select.bare select-menu {
       border: 1px solid #cccccc;
       margin-top: .618em; }
       .edlio.cms uniform-select.bare select-menu:before, .edlio.cms uniform-select.bare select-menu:after,
       .edlio.cms .uniform-select.bare select-menu:before,
-      .edlio.cms .uniform-select.bare select-menu:after {
+      .edlio.cms .uniform-select.bare select-menu:after,
+      .edlio.cms edlio-select.bare select-menu:before,
+      .edlio.cms edlio-select.bare select-menu:after,
+      .edlio.cms .edlio-select.bare select-menu:before,
+      .edlio.cms .edlio-select.bare select-menu:after {
         content: "";
         position: absolute;
         width: 0;
@@ -757,13 +917,17 @@
         border-color: transparent;
         border-top: 0; }
       .edlio.cms uniform-select.bare select-menu:before,
-      .edlio.cms .uniform-select.bare select-menu:before {
+      .edlio.cms .uniform-select.bare select-menu:before,
+      .edlio.cms edlio-select.bare select-menu:before,
+      .edlio.cms .edlio-select.bare select-menu:before {
         top: -1em;
         left: 0.691em;
         border-bottom-color: #cccccc;
         border-width: 1em; }
       .edlio.cms uniform-select.bare select-menu:after,
-      .edlio.cms .uniform-select.bare select-menu:after {
+      .edlio.cms .uniform-select.bare select-menu:after,
+      .edlio.cms edlio-select.bare select-menu:after,
+      .edlio.cms .edlio-select.bare select-menu:after {
         top: calc(-1em + 1px);
         left: calc((( 1.382 / 2 ) * 1em) + 1px);
         border-bottom-color: white;
@@ -771,7 +935,11 @@
       .edlio.cms uniform-select.bare select-menu select-item:hover:first-child:before,
       .edlio.cms uniform-select.bare select-menu .select-item:hover:first-child:before,
       .edlio.cms .uniform-select.bare select-menu select-item:hover:first-child:before,
-      .edlio.cms .uniform-select.bare select-menu .select-item:hover:first-child:before {
+      .edlio.cms .uniform-select.bare select-menu .select-item:hover:first-child:before,
+      .edlio.cms edlio-select.bare select-menu select-item:hover:first-child:before,
+      .edlio.cms edlio-select.bare select-menu .select-item:hover:first-child:before,
+      .edlio.cms .edlio-select.bare select-menu select-item:hover:first-child:before,
+      .edlio.cms .edlio-select.bare select-menu .select-item:hover:first-child:before {
         content: "";
         position: absolute;
         top: calc(-1em + 1px);
@@ -785,19 +953,27 @@
         border-width: calc(1em - 1px);
         z-index: 2; }
   .edlio.cms uniform-select.open,
-  .edlio.cms .uniform-select.open {
+  .edlio.cms .uniform-select.open,
+  .edlio.cms edlio-select.open,
+  .edlio.cms .edlio-select.open {
     box-shadow: inset 1px 0 0 0 #cccccc, inset -1px 0 0 0 #cccccc, inset 0 1px 0 0 #cccccc; }
     .edlio.cms uniform-select.open > select-menu,
-    .edlio.cms .uniform-select.open > select-menu {
+    .edlio.cms .uniform-select.open > select-menu,
+    .edlio.cms edlio-select.open > select-menu,
+    .edlio.cms .edlio-select.open > select-menu {
       visibility: visible;
       opacity: 1;
       top: 100%;
       border: 1px solid #cccccc; }
     .edlio.cms uniform-select.open.bare,
-    .edlio.cms .uniform-select.open.bare {
+    .edlio.cms .uniform-select.open.bare,
+    .edlio.cms edlio-select.open.bare,
+    .edlio.cms .edlio-select.open.bare {
       box-shadow: none; }
   .edlio.cms uniform-select > select-menu,
-  .edlio.cms .uniform-select > select-menu {
+  .edlio.cms .uniform-select > select-menu,
+  .edlio.cms edlio-select > select-menu,
+  .edlio.cms .edlio-select > select-menu {
     position: absolute;
     left: 0;
     top: 50%;
@@ -819,13 +995,19 @@
     z-index: 2;
     transition: all 0.1s ease-in-out; }
     .edlio.cms uniform-select > select-menu.right,
-    .edlio.cms .uniform-select > select-menu.right {
+    .edlio.cms .uniform-select > select-menu.right,
+    .edlio.cms edlio-select > select-menu.right,
+    .edlio.cms .edlio-select > select-menu.right {
       left: auto;
       right: 0; }
     .edlio.cms uniform-select > select-menu select-item,
     .edlio.cms uniform-select > select-menu .select-item,
     .edlio.cms .uniform-select > select-menu select-item,
-    .edlio.cms .uniform-select > select-menu .select-item {
+    .edlio.cms .uniform-select > select-menu .select-item,
+    .edlio.cms edlio-select > select-menu select-item,
+    .edlio.cms edlio-select > select-menu .select-item,
+    .edlio.cms .edlio-select > select-menu select-item,
+    .edlio.cms .edlio-select > select-menu .select-item {
       position: relative;
       display: block;
       padding: 0 1em;
@@ -835,12 +1017,20 @@
       .edlio.cms uniform-select > select-menu select-item:hover,
       .edlio.cms uniform-select > select-menu .select-item:hover,
       .edlio.cms .uniform-select > select-menu select-item:hover,
-      .edlio.cms .uniform-select > select-menu .select-item:hover {
+      .edlio.cms .uniform-select > select-menu .select-item:hover,
+      .edlio.cms edlio-select > select-menu select-item:hover,
+      .edlio.cms edlio-select > select-menu .select-item:hover,
+      .edlio.cms .edlio-select > select-menu select-item:hover,
+      .edlio.cms .edlio-select > select-menu .select-item:hover {
         background-color: #f4f4f4; }
       .edlio.cms uniform-select > select-menu select-item.active,
       .edlio.cms uniform-select > select-menu .select-item.active,
       .edlio.cms .uniform-select > select-menu select-item.active,
-      .edlio.cms .uniform-select > select-menu .select-item.active {
+      .edlio.cms .uniform-select > select-menu .select-item.active,
+      .edlio.cms edlio-select > select-menu select-item.active,
+      .edlio.cms edlio-select > select-menu .select-item.active,
+      .edlio.cms .edlio-select > select-menu select-item.active,
+      .edlio.cms .edlio-select > select-menu .select-item.active {
         background-color: #eaebec; }
 
 .edlio.cms .data-table .tr,
@@ -1148,32 +1338,44 @@
     -webkit-transform: translateY(1em);
     transform: translateY(1em); }
 
-.edlio.cms uniform-modal {
+.edlio.cms uniform-modal,
+.edlio.cms edlio-modal {
   display: none; }
 
-.edlio.cms uniform-overlay {
+.edlio.cms uniform-overlay,
+.edlio.cms edlio-overlay {
   -webkit-flex: 1 0 100%;
   -ms-flex: 1 0 100%;
   flex: 1 0 100%; }
-  .edlio.cms uniform-overlay uniform-modal {
+  .edlio.cms uniform-overlay uniform-modal,
+  .edlio.cms uniform-overlay uniform-modal,
+  .edlio.cms edlio-overlay uniform-modal,
+  .edlio.cms edlio-overlay uniform-modal {
     -webkit-flex: 0 1 auto;
     -ms-flex: 0 1 auto;
     flex: 0 1 auto;
     position: relative;
     z-index: 98;
     opacity: 0; }
-    .edlio.cms uniform-overlay uniform-modal.transition-in {
+    .edlio.cms uniform-overlay uniform-modal.transition-in,
+    .edlio.cms uniform-overlay uniform-modal.transition-in,
+    .edlio.cms edlio-overlay uniform-modal.transition-in,
+    .edlio.cms edlio-overlay uniform-modal.transition-in {
       opacity: 1;
       transition: all 0.3s cubic-bezier(0.44, 0.01, 0.37, 0.99);
       -webkit-transform: translate3d(0, 0, 0) scale(1);
       transform: translate3d(0, 0, 0) scale(1); }
-    .edlio.cms uniform-overlay uniform-modal.transition-out {
+    .edlio.cms uniform-overlay uniform-modal.transition-out,
+    .edlio.cms uniform-overlay uniform-modal.transition-out,
+    .edlio.cms edlio-overlay uniform-modal.transition-out,
+    .edlio.cms edlio-overlay uniform-modal.transition-out {
       opacity: 0;
       transition: all 0.3s cubic-bezier(0.44, 0.01, 0.37, 0.99);
       -webkit-transform: translate3d(0, -25%, 0) scale(0.2);
       transform: translate3d(0, -25%, 0) scale(0.2); }
 
-.edlio.cms uniform-overlay {
+.edlio.cms uniform-overlay,
+.edlio.cms edlio-overlay {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
@@ -1183,7 +1385,10 @@
   -webkit-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap; }
-  .edlio.cms uniform-overlay uniform-modal {
+  .edlio.cms uniform-overlay uniform-modal,
+  .edlio.cms uniform-overlay edlio-modal,
+  .edlio.cms edlio-overlay uniform-modal,
+  .edlio.cms edlio-overlay edlio-modal {
     width: 100%;
     height: 100%;
     min-width: 16rem;
@@ -1192,14 +1397,20 @@
     overflow: auto;
     background-color: white;
     color: #555555; }
-    .edlio.cms uniform-overlay uniform-modal page {
+    .edlio.cms uniform-overlay uniform-modal page,
+    .edlio.cms uniform-overlay edlio-modal page,
+    .edlio.cms edlio-overlay uniform-modal page,
+    .edlio.cms edlio-overlay edlio-modal page {
       display: none;
       visibility: hidden;
       opacity: 0;
       height: 100%;
       width: 100%;
       transition: transform 0.3s ease-in; }
-      .edlio.cms uniform-overlay uniform-modal page.current {
+      .edlio.cms uniform-overlay uniform-modal page.current,
+      .edlio.cms uniform-overlay edlio-modal page.current,
+      .edlio.cms edlio-overlay uniform-modal page.current,
+      .edlio.cms edlio-overlay edlio-modal page.current {
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
@@ -1210,9 +1421,15 @@
         flex-direction: column;
         -webkit-transform: translateX(0%);
         transform: translateX(0%); }
-        .edlio.cms uniform-overlay uniform-modal page.current > * {
+        .edlio.cms uniform-overlay uniform-modal page.current > *,
+        .edlio.cms uniform-overlay edlio-modal page.current > *,
+        .edlio.cms edlio-overlay uniform-modal page.current > *,
+        .edlio.cms edlio-overlay edlio-modal page.current > * {
           padding: 0 1.618em; }
-        .edlio.cms uniform-overlay uniform-modal page.current header {
+        .edlio.cms uniform-overlay uniform-modal page.current header,
+        .edlio.cms uniform-overlay edlio-modal page.current header,
+        .edlio.cms edlio-overlay uniform-modal page.current header,
+        .edlio.cms edlio-overlay edlio-modal page.current header {
           -webkit-flex-direction: row;
           -ms-flex-direction: row;
           flex-direction: row;
@@ -1226,28 +1443,46 @@
           -ms-flex: 0 0 auto;
           flex: 0 0 auto;
           background-color: #cccccc; }
-          .edlio.cms uniform-overlay uniform-modal page.current header h1 {
+          .edlio.cms uniform-overlay uniform-modal page.current header h1,
+          .edlio.cms uniform-overlay edlio-modal page.current header h1,
+          .edlio.cms edlio-overlay uniform-modal page.current header h1,
+          .edlio.cms edlio-overlay edlio-modal page.current header h1 {
             -webkit-order: 0;
             -ms-flex-order: 0;
             order: 0;
             margin: 0 auto; }
-          .edlio.cms uniform-overlay uniform-modal page.current header svg.icon {
+          .edlio.cms uniform-overlay uniform-modal page.current header svg.icon,
+          .edlio.cms uniform-overlay edlio-modal page.current header svg.icon,
+          .edlio.cms edlio-overlay uniform-modal page.current header svg.icon,
+          .edlio.cms edlio-overlay edlio-modal page.current header svg.icon {
             pointer-events: all;
             cursor: pointer; }
-            .edlio.cms uniform-overlay uniform-modal page.current header svg.icon.back {
+            .edlio.cms uniform-overlay uniform-modal page.current header svg.icon.back,
+            .edlio.cms uniform-overlay edlio-modal page.current header svg.icon.back,
+            .edlio.cms edlio-overlay uniform-modal page.current header svg.icon.back,
+            .edlio.cms edlio-overlay edlio-modal page.current header svg.icon.back {
               -webkit-order: -1;
               -ms-flex-order: -1;
               order: -1; }
-            .edlio.cms uniform-overlay uniform-modal page.current header svg.icon.close {
+            .edlio.cms uniform-overlay uniform-modal page.current header svg.icon.close,
+            .edlio.cms uniform-overlay edlio-modal page.current header svg.icon.close,
+            .edlio.cms edlio-overlay uniform-modal page.current header svg.icon.close,
+            .edlio.cms edlio-overlay edlio-modal page.current header svg.icon.close {
               -webkit-order: 1;
               -ms-flex-order: 1;
               order: 1;
               margin-left: 0; }
-        .edlio.cms uniform-overlay uniform-modal page.current .content {
+        .edlio.cms uniform-overlay uniform-modal page.current .content,
+        .edlio.cms uniform-overlay edlio-modal page.current .content,
+        .edlio.cms edlio-overlay uniform-modal page.current .content,
+        .edlio.cms edlio-overlay edlio-modal page.current .content {
           padding-top: 1em;
           padding-bottom: 1em;
           overflow: auto; }
-        .edlio.cms uniform-overlay uniform-modal page.current footer {
+        .edlio.cms uniform-overlay uniform-modal page.current footer,
+        .edlio.cms uniform-overlay edlio-modal page.current footer,
+        .edlio.cms edlio-overlay uniform-modal page.current footer,
+        .edlio.cms edlio-overlay edlio-modal page.current footer {
           -webkit-flex-direction: row;
           -ms-flex-direction: row;
           flex-direction: row;
@@ -1261,28 +1496,67 @@
           padding-top: 1em;
           padding-bottom: 1em;
           border-top: 2px solid #aaabad; }
-          .edlio.cms uniform-overlay uniform-modal page.current footer .button, .edlio.cms uniform-overlay uniform-modal page.current footer .kitchen-sink button, .edlio.cms .kitchen-sink uniform-overlay uniform-modal page.current footer button {
+          .edlio.cms uniform-overlay uniform-modal page.current footer .button, .edlio.cms uniform-overlay uniform-modal page.current footer .kitchen-sink button, .edlio.cms .kitchen-sink uniform-overlay uniform-modal page.current footer button,
+          .edlio.cms uniform-overlay edlio-modal page.current footer .button,
+          .edlio.cms uniform-overlay edlio-modal page.current footer .kitchen-sink button,
+          .edlio.cms .kitchen-sink uniform-overlay edlio-modal page.current footer button,
+          .edlio.cms edlio-overlay uniform-modal page.current footer .button,
+          .edlio.cms edlio-overlay uniform-modal page.current footer .kitchen-sink button,
+          .edlio.cms .kitchen-sink edlio-overlay uniform-modal page.current footer button,
+          .edlio.cms edlio-overlay edlio-modal page.current footer .button,
+          .edlio.cms edlio-overlay edlio-modal page.current footer .kitchen-sink button,
+          .edlio.cms .kitchen-sink edlio-overlay edlio-modal page.current footer button {
             margin-bottom: 0; }
-            .edlio.cms uniform-overlay uniform-modal page.current footer .button:last-of-type, .edlio.cms uniform-overlay uniform-modal page.current footer .kitchen-sink button:last-of-type, .edlio.cms .kitchen-sink uniform-overlay uniform-modal page.current footer button:last-of-type {
+            .edlio.cms uniform-overlay uniform-modal page.current footer .button:last-of-type, .edlio.cms uniform-overlay uniform-modal page.current footer .kitchen-sink button:last-of-type, .edlio.cms .kitchen-sink uniform-overlay uniform-modal page.current footer button:last-of-type,
+            .edlio.cms uniform-overlay edlio-modal page.current footer .button:last-of-type,
+            .edlio.cms uniform-overlay edlio-modal page.current footer .kitchen-sink button:last-of-type,
+            .edlio.cms .kitchen-sink uniform-overlay edlio-modal page.current footer button:last-of-type,
+            .edlio.cms edlio-overlay uniform-modal page.current footer .button:last-of-type,
+            .edlio.cms edlio-overlay uniform-modal page.current footer .kitchen-sink button:last-of-type,
+            .edlio.cms .kitchen-sink edlio-overlay uniform-modal page.current footer button:last-of-type,
+            .edlio.cms edlio-overlay edlio-modal page.current footer .button:last-of-type,
+            .edlio.cms edlio-overlay edlio-modal page.current footer .kitchen-sink button:last-of-type,
+            .edlio.cms .kitchen-sink edlio-overlay edlio-modal page.current footer button:last-of-type {
               margin-right: 0; }
             @media screen and (max-width: 31.9375rem) {
-              .edlio.cms uniform-overlay uniform-modal page.current footer .button:not(:last-of-type), .edlio.cms uniform-overlay uniform-modal page.current footer .kitchen-sink button:not(:last-of-type), .edlio.cms .kitchen-sink uniform-overlay uniform-modal page.current footer button:not(:last-of-type) {
+              .edlio.cms uniform-overlay uniform-modal page.current footer .button:not(:last-of-type), .edlio.cms uniform-overlay uniform-modal page.current footer .kitchen-sink button:not(:last-of-type), .edlio.cms .kitchen-sink uniform-overlay uniform-modal page.current footer button:not(:last-of-type),
+              .edlio.cms uniform-overlay edlio-modal page.current footer .button:not(:last-of-type),
+              .edlio.cms uniform-overlay edlio-modal page.current footer .kitchen-sink button:not(:last-of-type),
+              .edlio.cms .kitchen-sink uniform-overlay edlio-modal page.current footer button:not(:last-of-type),
+              .edlio.cms edlio-overlay uniform-modal page.current footer .button:not(:last-of-type),
+              .edlio.cms edlio-overlay uniform-modal page.current footer .kitchen-sink button:not(:last-of-type),
+              .edlio.cms .kitchen-sink edlio-overlay uniform-modal page.current footer button:not(:last-of-type),
+              .edlio.cms edlio-overlay edlio-modal page.current footer .button:not(:last-of-type),
+              .edlio.cms edlio-overlay edlio-modal page.current footer .kitchen-sink button:not(:last-of-type),
+              .edlio.cms .kitchen-sink edlio-overlay edlio-modal page.current footer button:not(:last-of-type) {
                 margin-right: 0.5em; } }
-      .edlio.cms uniform-overlay uniform-modal page.past {
+      .edlio.cms uniform-overlay uniform-modal page.past,
+      .edlio.cms uniform-overlay edlio-modal page.past,
+      .edlio.cms edlio-overlay uniform-modal page.past,
+      .edlio.cms edlio-overlay edlio-modal page.past {
         position: absolute;
         -webkit-transform: translateX(-150%);
         transform: translateX(-150%); }
-      .edlio.cms uniform-overlay uniform-modal page.future {
+      .edlio.cms uniform-overlay uniform-modal page.future,
+      .edlio.cms uniform-overlay edlio-modal page.future,
+      .edlio.cms edlio-overlay uniform-modal page.future,
+      .edlio.cms edlio-overlay edlio-modal page.future {
         position: absolute;
         -webkit-transform: translateX(150%);
         transform: translateX(150%); }
     @media screen and (min-width: 48rem) {
-      .edlio.cms uniform-overlay uniform-modal {
+      .edlio.cms uniform-overlay uniform-modal,
+      .edlio.cms uniform-overlay edlio-modal,
+      .edlio.cms edlio-overlay uniform-modal,
+      .edlio.cms edlio-overlay edlio-modal {
         max-width: 40em;
         width: auto;
         height: auto;
         border-radius: 0.24063em; }
-        .edlio.cms uniform-overlay uniform-modal.full {
+        .edlio.cms uniform-overlay uniform-modal.full,
+        .edlio.cms uniform-overlay edlio-modal.full,
+        .edlio.cms edlio-overlay uniform-modal.full,
+        .edlio.cms edlio-overlay edlio-modal.full {
           max-width: 100vw;
           width: 100%;
           height: 100%;
