@@ -160,7 +160,7 @@ export default class ModalComponent extends window.HTMLElement {
             // reset scrolling event
             document.body.style.overflow = undefined;
             // FIXME: attach the element back to previous parent
-            document.body.appendChild(self);
+            document.body.appendChild(this);
             this.container.remove();
 
             if (this.removeOnHide) {
@@ -171,7 +171,6 @@ export default class ModalComponent extends window.HTMLElement {
     }
 
     connectedCallback () {
-        console.log(this.parentNode);
         this.previousParent = this.parentNode;
     }
 };
