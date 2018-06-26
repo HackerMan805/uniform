@@ -89,7 +89,7 @@ export default class ModalComponent extends window.HTMLElement {
         // move the modal object to be under container and move container to
         // be under body
         const scrollTop = window.pageYOffset;
-        const container = document.createElement('uniform-overlay');
+        const container = document.createElement('edlio-overlay');
         this.container = container;
         document.body.appendChild(container);
         container.appendChild(this);
