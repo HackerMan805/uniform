@@ -154,7 +154,6 @@ export default class ModalComponent extends window.HTMLElement {
         });
 
         function handleTransitionEnd () {
-            this.previousParent.appendChild(this);
             this.classList.remove('transition-out');
             this.style.webkitTransform = '';
             this.style.transform = '';
