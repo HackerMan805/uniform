@@ -11,6 +11,12 @@
     </head>
 
     <body class="edlio cms unset-all">
+
+        <!-- SVG store generated -->
+		<div style="height: 0; width: 0; position: absolute; visibility: hidden">
+        <!-- inject:svg --><!-- endinject -->
+        </div>
+        
         <header class="main" role="banner">
             <div class="width-constraint">
                 <h1 class="school-name">
@@ -218,6 +224,28 @@
                     </section>
 
                 </section>
+
+                <section id="icons" class="icons">
+                    <header>
+                        <h1>Icons</h1>
+
+                        <ol class="breadcrumb">
+                            <li><a href="#icons">Icons</a></li>
+                            <li class="active"><a href="">Fonts</a></li>
+                        </ol>
+                    </header>
+
+                    <ul class="example">                            
+                        {{#list iconSprite}}                           
+                            <li class="item">
+                                <svg viewbox="0 0 2048 2048" class="icon">
+                                    <use xlink:href="#{{icon}}"/>
+                                </svg>
+                                {{icon}}
+                            </li> 
+                        {{/list}}
+                    </ul>      
+                </section>  
 
                 <section id="buttons" class="buttons">
                     <header>
@@ -545,207 +573,6 @@
                             }
                         })();
                     </script>
-                </section>
-
-                <section id="icons" class="icons">
-                    <header>
-                        <h1>Icons</h1>
-
-                        <ol class="breadcrumb">
-
-                            <li><a href="#icons">Icons</a></li>
-                            <li class="active"><a href="">Font Awesome</a></li>
-                        </ol>
-                    </header>
-
-                    <ul class="example">
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#bars"></use>
-                            </svg>
-                            Hamburger Menu
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#question-circle"></use>
-                            </svg>
-                            Help Menu
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#user"></use>
-                            </svg>
-                            User/ Account Menu
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#caret-down"></use>
-                            </svg>
-                            Select / Dropdown Menu
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#line-chart"></use>
-                            </svg>
-                            Web Status
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#bullhorn"></use>
-                            </svg>
-                            Announce
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#calendar-o"></use>
-                            </svg>
-                            Plan
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#files-o"></use>
-                            </svg>
-                            Departments & Pages
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#play-circle"></use>
-                            </svg>
-                            Media
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#heart"></use>
-                            </svg>
-                            Community
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#cog"></use>
-                            </svg>
-                            Site Management
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#ellipsis-h"></use>
-                            </svg>
-                            More
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#calendar"></use>
-                            </svg>
-                            Calendars
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#cutlery"></use>
-                            </svg>
-                            Food Menu
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#clock-o"></use>
-                            </svg>
-                            Bell Schedules
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#university"></use>
-                            </svg>
-                            Facilities
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#picture-o"></use>
-                            </svg>
-                            Photos / Images
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#film"></use>
-                            </svg>
-                            Videos / Film
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#users"></use>
-                            </svg>
-                            Users & Staff
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#shopping-cart"></use>
-                            </svg>
-                            Store
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#gift"></use>
-                            </svg>
-                            Donations
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#heart-o"></use>
-                            </svg>
-                            Sponsors
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#graduation-cap"></use>
-                            </svg>
-                            Alumni
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#camera"></use>
-                            </svg>
-                            Take a picture
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#video-camera"></use>
-                            </svg>
-                            Record a video
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#play"></use>
-                            </svg>
-                            Play a video
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#share"></use>
-                            </svg>
-                            Share
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#pencil"></use>
-                            </svg>
-                            Edit
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#trash-o"></use>
-                            </svg>
-                            Delete
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#link"></use>
-                            </svg>
-                            Attach
-                        </li>
-                        <li>
-                            <svg viewbox="0 0 2048 2048" class="icon">
-                                <use xlink:href="#undo"></use>
-                            </svg>
-                            Undo
-                        </li>
-                    </ul>
                 </section>
 
                 <!-- <section class="flex-layouts">

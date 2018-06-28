@@ -5,6 +5,7 @@ node_modules/
 libs/
 docs/css/
 docs/js
+docs/index.html
 
 .DS_Store
 package-lock.json
