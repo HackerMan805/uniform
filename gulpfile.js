@@ -35,24 +35,23 @@ function compileSass (app) {
 }
 
 function compileHtml(iconSprite) {
-    let svgs = gulp.src(app.icons)
+    const svgs = gulp.src(app.icons)
     .pipe(svgstore({inlineSvg: true}));
 
     function fileContents (filePath, file) {
         return file.contents.toString();
     }
 
-    let templateData = {          
+    const templateData = {          
         iconSprite
     },        
     options = {
         helpers : {
             list : function(context, options) {
-                var ret = "";
-                for(var i=0, j=context.length; i<j; i++) {
-                    ret = ret + options.fn(context[i]);
-                }
-                
+                let ret = "";
+                for (let value of context) {
+                    ret += options.fn(value);
+                }                
                 return ret;
             }
         }
@@ -83,18 +82,13 @@ gulp.task('demo:js', () => {
 
 gulp.task('html', (done) => {
     glob(app.icons, function (err, icons) {
-        icons = icons.map(function(icon){
+        const svgIconPath = icons.map(function(icon){
             return { icon: path.basename(icon, '.svg') };
         }); 
-
-        if (err) {
-            console.log(err);
-            return;
-        }   
-
-        compileHtml(icons); 
-    });
-    done();
+        
+        compileHtml(svgIconPath); 
+        done(err);
+    });    
 });
 
 gulp.task('start', (done) => {
