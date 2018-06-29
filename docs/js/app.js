@@ -158,6 +158,12 @@ function main() {
         console.error('Failed to detect window.customElements. Did you import webcomponents polyfill?');
         return;
     }
+    // Backward compatibility definition
+    window.customElements.define('edlio-accordion', _accordion2.default);
+    window.customElements.define('edlio-drawer', _drawer2.default);
+    window.customElements.define('edlio-modal', _modal2.default);
+    window.customElements.define('edlio-notification', _notification2.default);
+    window.customElements.define('edlio-select', _select2.default);
     window.customElements.define('uniform-accordion', _accordion2.default);
     window.customElements.define('uniform-drawer', _drawer2.default);
     window.customElements.define('uniform-example', _example2.default);

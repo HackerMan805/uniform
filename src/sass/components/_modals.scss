@@ -1,14 +1,17 @@
 // COMPONENT : Modals
 
 // Initially hide modal before overlay appears
-uniform-modal {
+uniform-modal,
+edlio-modal {
 	display: none;
 }
 
-uniform-overlay {
+uniform-overlay,
+edlio-overlay {
 	@extend %flexbox;
 	@include flex(1,0,100%);
 
+	uniform-modal,
 	uniform-modal {
 		@extend %flexbox;
 		@include flex(0,1,auto);
