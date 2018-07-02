@@ -16,6 +16,7 @@
 	.close {
 		// Needed for IE10
 		display: block;
+		@include flexbox;
 
 		svg.icon {
 			@include svg-icon;
@@ -68,7 +69,7 @@ edlio-notification,
 	}
 
 	.close {
-		@include align-self(flex-start);
+		@include align-self(center);
 
 		padding: 0;
 		cursor: pointer;
