@@ -113,7 +113,7 @@ input {
 				border-style: solid;
 				border-color: $checkbox-checkmark-color;
 				position: absolute;
-				top: .15em;
+				top: .25em;
 				left: .2em;
 		    -webkit-transform: rotate(45deg);
 		    -moz-transform: rotate(45deg);
@@ -130,13 +130,14 @@ input {
 					width: 1.382em;
 					border-radius: 1em;
 					border-color: $toggle-border-color;
+					background-color: $toggle-bg-color;
 					box-shadow: 0 0 0 $toggle-border-width $toggle-border-color;
 				}
 
 				&:after {
 					content: "";
 					position: absolute;
-					top: $toggle-border-width;
+					top: .2em;;
 
 					left: -($toggle-border-width);
 					display: block;
@@ -152,6 +153,7 @@ input {
 
 			&:checked + label {
 				&:before {
+					background-color: $checked-toggle-bg-color;
 					box-shadow: 0 0 0 $toggle-border-width $checked-toggle-border-color;
 				}
 
