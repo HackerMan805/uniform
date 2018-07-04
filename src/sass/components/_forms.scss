@@ -91,7 +91,7 @@ input {
 
 	&[type=checkbox] {
 		+ label:before {
-	    border-radius: 2px;
+	   		border-radius: 2px;
 			background: $checkbox-bg-color;
 			box-shadow: 0 0 0 $checkbox-border-width $checkbox-border-color;
 		}
@@ -107,14 +107,14 @@ input {
 			&:after {
 				content: "";
 				display: block;
-				width: .382em;
-				height: .742em;
+				width: .32em;
+				height: .72em;
 				border-width: 0 3px 3px 0;
 				border-style: solid;
 				border-color: $checkbox-checkmark-color;
 				position: absolute;
-				top: .25em;
-				left: .2em;
+				top: .2em;
+				left: .25em;
 		    -webkit-transform: rotate(45deg);
 		    -moz-transform: rotate(45deg);
 		    -o-transform: rotate(45deg);
@@ -137,7 +137,7 @@ input {
 				&:after {
 					content: "";
 					position: absolute;
-					top: .2em;;
+					top: .15em;;
 
 					left: -($toggle-border-width);
 					display: block;
@@ -164,11 +164,70 @@ input {
 				}
 			}
 		}
+
+		&[disabled],
+		.disabled{
+			+ label{
+				cursor:default;
+				&:before {
+					cursor: default;
+					background-color: $inactive-checkbox-bg-color;
+					border-color: $inactive-checkbox-border-color;
+					box-shadow: 0 0 0 $checkbox-border-width $inactive-checkbox-border-color;
+				}
+
+			}
+			&:checked{
+				+ label{
+					cursor:default;
+					&:before {
+						background-color: $inactive-checked-checkbox-bg-color;
+						border-color: $inactive-checked-checkbox-border-color;
+						box-shadow: 0 0 0 $checkbox-border-width $inactive-checked-checkbox-border-color;
+					}
+					&:after{
+						border-color: $inactive-checked-checkbox-checkmark-color;
+					}
+				}
+			}
+
+			&.toggle {
+				+ label {
+					cursor:default;
+					&:before {
+						cursor: default;
+						border-color: $inactive-toggle-border-color;
+						background-color: $inactive-toggle-bg-color;
+						box-shadow: 0 0 0 $toggle-border-width $inactive-toggle-border-color;
+					}
+
+					&:after {
+						cursor: default;
+						background: $inactive-toggle-switch-color;
+						border-color: $inactive-toggle-border-color;
+					}
+				}
+				&:checked{ 
+					&+ label {
+						cursor:default;
+						&:before {
+							background-color: $inactive-checked-toggle-bg-color;
+							box-shadow: 0 0 0 $toggle-border-width $inactive-checked-toggle-border-color;
+						}
+		
+						&:after {
+							background: $inactive-checked-toggle-switch-color;
+							border-color: $inactive-checked-toggle-border-color;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	&[type=radio] {
 		+ label:before {
-	    border-radius: 50%;
+	    	border-radius: 50%;
 			background: $radio-bg-color;
 			box-shadow: 0 0 0 $radio-border-width $radio-border-color;
 		}
@@ -178,7 +237,29 @@ input {
 			box-shadow:
 				0 0 0 $radio-border-width $checked-radio-bg-color,
 				inset 0 0 0 3px $radio-bg-color;
-			;
+		}
+
+		&.disabled, 
+		&[disabled]{
+			+label{
+				cursor: default;
+				&:before{
+					cursor: default;
+					background: $inactive-radio-bg-color;
+					box-shadow: 0 0 0 $radio-border-width $inactive-radio-border-color;
+				}
+			}
+			&:checked{
+				+label{
+					cursor: default;
+					&:before{
+						background: $inactive-checked-radio-bg-color;
+						box-shadow:
+							0 0 0 $radio-border-width $inactive-checked-radio-bg-color,
+							inset 0 0 0 3px $inactive-checked-radio-border-color;
+					}
+				}
+			}
 		}
 	}
 
