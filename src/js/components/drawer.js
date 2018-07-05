@@ -12,7 +12,7 @@ export default class DrawerComponent extends window.HTMLElement {
         document.body.style.overflow = 'hidden';
 
         this.overlay = document.createElement('uniform-overlay');
-        document.body.appendChild(uniform.overlay);
+        document.body.appendChild(this.overlay);
         this.overlay.style.top = window.pageYOffset + 'px';
         onClick(this.overlay, this.close.bind(this));
 
@@ -21,7 +21,7 @@ export default class DrawerComponent extends window.HTMLElement {
 
     close () {
         this.overlay.remove();
-        document.body.style.overflow = undefined;
+        document.body.style.overflow = null;
         this.classList.remove('open');
     }
 };
