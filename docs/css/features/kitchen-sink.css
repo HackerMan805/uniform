@@ -376,8 +376,10 @@
     -ms-flex-pack: distribute;
     -webkit-justify-content: space-around;
     justify-content: space-around;
-    padding: 0 1em;
-    color: #444444; }
+    padding: 0 1em 0 1.382em;
+    color: #444444;
+    align-items: center;
+    line-height: 3em; }
     .edlio.cms uniform-drawer a:hover,
     .edlio.cms edlio-drawer a:hover {
       background: #cccccc;

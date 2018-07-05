@@ -1072,6 +1072,11 @@
                 <h1 class="school-name">
                     <a href="javascript:;">Edlio CMS GUI Elements</a>
                 </h1>
+                <a class="hamburger" id="hamburger_menu_opener" onclick="document.getElementById('main-menu').open();">
+                    <svg class="icon" viewBox="0 0 2048 2048">
+                        <use xlink:href="#bars"></use>
+                    </svg>
+                </a>
 
                 <nav>
                     <a href="javascript:;">Basic Link</a>
@@ -2903,12 +2908,15 @@
 
                 <!-- Build separate system that allows any element to be a drawer -->
                 <!-- Should provide horizontal and vertical drawers that come in from all sides -->
-                <!-- <section class="drawers">
-                    <h1>Drawer Menu</h1>
-
-                    <a class="button" id="drawer-opener">
-                        Open Drawer Menu
-                    </a>
+                <section class="drawers" id="drawer">
+                    <header>
+                        <h1>Drawer Menu</h1>
+                    </header>
+                    <div class="example">
+                        <a class="button" id="drawer-opener">
+                            Open Drawer Menu
+                        </a>
+                    </div>
 
                     <script>
                         (function() {
@@ -2919,7 +2927,7 @@
                                 });
                         })();
                     </script>
-                </section> -->
+                </section>
 
                 <section class="accordions">
                     <header>

@@ -741,7 +741,7 @@ var DrawerComponent = function (_window$HTMLElement) {
             document.body.style.overflow = 'hidden';
 
             this.overlay = document.createElement('uniform-overlay');
-            document.body.appendChild(uniform.overlay);
+            document.body.appendChild(this.overlay);
             this.overlay.style.top = window.pageYOffset + 'px';
             (0, _utils.onClick)(this.overlay, this.close.bind(this));
 
@@ -751,7 +751,7 @@ var DrawerComponent = function (_window$HTMLElement) {
         key: 'close',
         value: function close() {
             this.overlay.remove();
-            document.body.style.overflow = undefined;
+            document.body.style.overflow = null;
             this.classList.remove('open');
         }
     }]);
