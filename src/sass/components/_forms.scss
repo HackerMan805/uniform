@@ -45,15 +45,29 @@ input {
 		// iOS Overrides
 		-webkit-appearance: none;
 		-webkit-border-radius: 0;
-	  border-radius: 0;
+	  	border-radius: 0;
 
 		// Placeholders
-		&::-webkit-input-placeholder,
-		&:-moz-placeholder,
-		&::-moz-placeholder,
-		&:-ms-input-placeholder {
+		// comma separated selectors do not work with placeholder.
+		// https://stackoverflow.com/questions/44971077/why-do-comma-separated-placeholder-rules-not-get-applied-in-css
+
+		&::-webkit-input-placeholder{
+			color: $textfield-placeholder-color;
 			font-family: $textfield-font-family;
-		  color: $textfield-placeholder-color;
+		}
+		&::-moz-placeholder{
+			color: $textfield-placeholder-color;
+			font-family: $textfield-font-family;
+			opacity:1;
+		}
+
+		&::-ms-input-placeholder{
+			color: $textfield-placeholder-color;
+			font-family: $textfield-font-family;
+		}
+		&::placeholder {
+			color: $textfield-placeholder-color;
+			font-family: $textfield-font-family;
 		}
 	}
 
@@ -295,12 +309,24 @@ textarea {
 	box-shadow: inset 0 0 0 $default-border-width $textarea-border-color;
 	outline: none;
 
-	&::-webkit-input-placeholder,
-	&:-moz-placeholder,
-	&::-moz-placeholder,
-	&:-ms-input-placeholder {
+	// comma separated selectors do not work with placeholder.
+	// https://stackoverflow.com/questions/44971077/why-do-comma-separated-placeholder-rules-not-get-applied-in-css
+	&::-webkit-input-placeholder{
+		color: $textarea-placeholder-color;
 		font-family: $textarea-font-family;
-	  color: $textarea-placeholder-color;
+	}
+	&::-moz-placeholder{
+		color: $textarea-placeholder-color;
+		font-family: $textarea-font-family;
+		opacity:1;
+	}
+	&::-ms-input-placeholder{
+		color: $textarea-placeholder-color;
+		font-family: $textarea-font-family;
+	}
+	&::placeholder {
+		color: $textarea-placeholder-color;
+		font-family: $textarea-font-family;
 	}
 }
 
