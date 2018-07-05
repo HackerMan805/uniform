@@ -7,7 +7,6 @@ const inject = require('gulp-inject');
 const glob = require('glob');
 const path = require('path');
 const handlebars = require('gulp-compile-handlebars');
-const concat = require('gulp-concat');
 
 const app = {
     sassRoot: './src/sass/',
