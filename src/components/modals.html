@@ -1,0 +1,160 @@
+<section id="modals" class="modals">
+    <header>
+        <h1>Modals</h1>
+    </header>
+
+    <div class="example">
+        <a class="button" id="simple-modal-opener">
+            Open Modal Window
+        </a>
+        <a class="button" id="multipage-modal-opener">
+            Open Multi-Page Modal
+        </a>
+    </div>
+
+    <uniform-modal id="simple-modal">
+        <page>
+            <header>
+                <h1>Modal Title</h1>
+                <svg viewbox="0 0 2048 2048" class="close icon">
+                    <use xlink:href="#times"></use>
+                </svg>
+            </header>
+
+            <div class="content">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                </p>
+            </div>
+
+            <footer>
+                <a class="secondary button">Secondary Button</a>
+                <a class="finish button">Primary Action</a>
+            </footer>
+        </page>
+    </uniform-modal>
+
+    <script>
+        (function() {
+            document.getElementById('simple-modal-opener')
+                .addEventListener('click', function() {
+                    document.getElementById('simple-modal')
+                        .show(document.getElementById('simple-modal-opener'));
+                });
+
+            document.getElementById('simple-modal')
+                .querySelector('footer > .secondary.button')
+                .addEventListener('click', function() {
+                    document.getElementById('simple-modal')
+                        .hide();
+                });
+
+            document.getElementById('simple-modal')
+                .querySelector('header > .close')
+                .addEventListener('click', function() {
+                    document.getElementById('simple-modal')
+                        .hide();
+                });
+
+        })();
+    </script>
+
+    <uniform-modal id="multipage-modal" class="full">
+        <page>
+            <header>
+                <h1>Modal Page 1</h1>
+                <svg viewbox="0 0 2048 2048" class="close icon">
+                    <use xlink:href="#times"></use>
+                </svg>
+            </header>
+            <div class="content">
+                <p>
+                    This modal has a lot of text in it to show that it will be scrollable if there is too much content to display.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                </p>
+            </div>
+            <footer>
+                <a href="javascript:;" class="next-page button">Next</a>
+            </footer>
+        </page>
+        <page>
+            <header>
+                <h1>Modal Page 2</h1>
+                <svg viewbox="0 0 2048 2048" class="back icon">
+                    <use xlink:href="#chevron-left"></use>
+                </svg>
+                <svg viewbox="0 0 2048 2048" class="close icon">
+                    <use xlink:href="#times"></use>
+                </svg>
+            </header>
+            <div class="content">
+                <p>
+                    The modal component is entirely functional- Styling should be
+                    added on a project basis. This component simply displays a
+                    a modal window on click. It includes code to open and close
+                    the modal window, with basic overridable styling.
+                </p>
+            </div>
+            <footer>
+                <a href="javascript:;" class="secondary button">Secondary Action</a>
+                <a href="javascript:;" class="finish button">Primary Action</a>
+            </footer>
+        </page>
+    </uniform-modal>
+
+    <script>
+        (function() {
+            document.getElementById('multipage-modal-opener')
+                .addEventListener('click', function() {
+                    document.getElementById('multipage-modal')
+                        .show(document.getElementById('multipage-modal-opener'));
+                });
+
+            document.getElementById('multipage-modal')
+                .querySelector('footer > .secondary.button')
+                .addEventListener('click', function() {
+                    document.getElementById('multipage-modal')
+                        .hide();
+                });
+
+            document.getElementById('multipage-modal')
+                .querySelector('footer > .next-page.button')
+                .addEventListener('click', function() {
+                    document.getElementById('multipage-modal')
+                        .nextPage();
+                });
+
+            var closeButton = document.getElementById('multipage-modal')
+                .querySelectorAll('header > .close.icon');
+
+            for (var i = 0; i < closeButton.length; i++) {
+                closeButton[i].addEventListener('click', function() {
+                    document.getElementById('multipage-modal')
+                        .hide();
+                });
+            }
+
+            document.getElementById('multipage-modal')
+                .querySelector('header > .back.icon')
+                .addEventListener('click', function() {
+                    document.getElementById('multipage-modal')
+                        .previousPage();
+                })
+        })();
+    </script>
+
+</section>

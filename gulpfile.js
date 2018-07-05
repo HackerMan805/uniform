@@ -7,6 +7,7 @@ const inject = require('gulp-inject');
 const glob = require('glob');
 const path = require('path');
 const handlebars = require('gulp-compile-handlebars');
+const concat = require('gulp-concat');
 
 const app = {
     sassRoot: './src/sass/',
@@ -14,8 +15,10 @@ const app = {
     sass: './src/sass/**/*.scss',
     dest: './libs',
     icons: './src/icons/*.svg',
-    html: './src/*.html'
+    html: './src/*.html',
+    components: './src/components'
 };
+
 const demoApp = {
     sassRoot: ['./docs/sass/', './src/sass'],
     sass: './docs/sass/**/*.scss',
@@ -54,7 +57,8 @@ function compileHtml(iconSprite) {
                 }                
                 return ret;
             }
-        }
+        },
+        batch: [app.components]
     }                
 
     return gulp.src(app.html)
@@ -86,9 +90,9 @@ gulp.task('html', (done) => {
             return { icon: path.basename(icon, '.svg') };
         }); 
         
-        compileHtml(svgIconPath); 
+        compileHtml(svgIconPath, app.components);
         done(err);
-    });    
+    });
 });
 
 gulp.task('start', (done) => {
