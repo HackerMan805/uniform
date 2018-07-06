@@ -26,9 +26,10 @@ edlio-drawer {
 		@include align-items(center);
 		@include justify-content(space-around);
 
-		padding: 0 1em;
-
+		padding: 0 1em 0 1.382em;
 		color: $text-color;
+		align-items: center;
+		line-height: 3em;
 
 		&:hover {
 			background: $grey-3;

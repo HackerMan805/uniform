@@ -53,9 +53,14 @@ $secondary-button-hover-icon-color  : darken(rgb(41,171,226), 5%) !default;
 $checkbox-bg-color                  : $white      !default;
 $checkbox-border-color              : $grey-n03   !default;
 $checkbox-border-width              : 2px         !default;
-$checkbox-checkmark-color           : $white      !default;
-$checked-checkbox-bg-color          : $black      !default;
+$checkbox-checkmark-color           : $black      !default;
+$checked-checkbox-bg-color          : $white      !default;
 $checked-checkbox-border-color      : $black      !default;
+$inactive-checkbox-bg-color         : $grey-n01   !default;
+$inactive-checkbox-border-color     : $grey-n03   !default;
+$inactive-checked-checkbox-bg-color         : $grey-n01   !default;
+$inactive-checked-checkbox-border-color     : $grey-n03   !default;
+$inactive-checked-checkbox-checkmark-color  : $grey-n03   !default;
 
 $toggle-bg-color                    : $white      !default;
 $toggle-border-color                : $grey-n05   !default;
@@ -64,11 +69,21 @@ $toggle-switch-color                : $white      !default;
 $checked-toggle-bg-color            : $black      !default;
 $checked-toggle-border-color        : $black      !default;
 $checked-toggle-switch-color        : $white      !default;
+$inactive-toggle-bg-color           : $grey-n01   !default;
+$inactive-toggle-border-color       : $grey-n03   !default;
+$inactive-toggle-switch-color       : $grey-n03   !default;
+$inactive-checked-toggle-bg-color         : $grey-n01   !default;
+$inactive-checked-toggle-border-color     : $grey-n03   !default;
+$inactive-checked-toggle-switch-color     : $grey-n03   !default;
 
 $radio-bg-color                     : $white      !default;
 $radio-border-color                 : $grey-n03   !default;
 $radio-border-width                 : 2px         !default;
 $checked-radio-bg-color             : $black      !default;
+$inactive-radio-bg-color            : $grey-n01      !default;
+$inactive-radio-border-color        : $grey-n03   !default;
+$inactive-checked-radio-bg-color    : $grey-n03      !default;
+$inactive-checked-radio-border-color      : $white   !default;
 
 $legend-text-color                  : $text-color !default;
 $legend-font-family                 : $font-family !default;
@@ -78,7 +93,7 @@ $label-text-color                   : $grey-n07   !default;
 
 $textfield-bg-color                 : $white      !default;
 $textfield-border-color             : $grey-n03   !default;
-$textfield-placeholder-color        : $grey-n05   !default;
+$textfield-placeholder-color        : $grey-n04   !default;
 $textfield-text-color               : $grey-n06   !default;
 
 // Special textfield overrides
@@ -88,7 +103,7 @@ $textfield-font-style               : normal       !default;
 
 $textarea-bg-color                  : $white       !default;
 $textarea-border-color              : $grey-n03    !default;
-$textarea-placeholder-color         : $grey-n05    !default;
+$textarea-placeholder-color         : $grey-n04    !default;
 $textarea-text-color                : $grey-n06    !default;
 
 // Special textarea overrides

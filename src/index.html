@@ -22,6 +22,11 @@
                 <h1 class="school-name">
                     <a href="javascript:;">Edlio CMS GUI Elements</a>
                 </h1>
+                <a class="hamburger" id="hamburger_menu_opener" onclick="document.getElementById('main-menu').open();">
+                    <svg class="icon" viewBox="0 0 2048 2048">
+                        <use xlink:href="#bars"></use>
+                    </svg>
+                </a>
 
                 <nav>
                     <a href="javascript:;">Basic Link</a>
@@ -134,26 +139,12 @@
                         <section class="message">
                             <h1>Important Note to Designers and Developers</h1>
                             <p>
-                                The CMS Kitchen Sink is a showroom for all CURRENTLY IMPLEMENTED
-                                features in the CMS. The Kitchen sink is NOT meant to be an
-                                accurate reflection of all component specs as they appear in
-                                <a href="https://edlioinc.atlassian.net/wiki/display/UX/UX" target="_blank">Confluence</a>,
-                                but rather an up-to-date representation of components which are
-                                already being used in production.
+                                Uniform's Kitchen Sink is a showroom of all currently implemented 
+                                features in this framework. 
                             </p>
                             <p>
                                 Developers should continuously add to the Kitchen Sink as they develop
-                                new components or make modifcations to existing ones. The appearance
-                                and behavior of components should reasonably reflect the specs defined
-                                in Confluence, with some notable differences: The UX/Design team uses
-                                pixel values in their designs to maintain consistency. Since Blazer
-                                uses rems as the base unit, it will not be possible to guarantee
-                                pixel-perfect accuracy, however the UX team specs are built on top
-                                of the
-                                <a href="https://edlioinc.atlassian.net/wiki/display/UX/Typography" target="_blank">core typography definitions</a>
-                                which also form the basis for Blazer's layout engine. This will
-                                provide for a close match to the Confluence specs while maintaining
-                                consistent and automatic responsive behavior in all browsers.
+                                new components or make modifcations to existing ones. 
                             </p>
                         </section>
                     </uniform-notification>
@@ -182,19 +173,14 @@
                     </header>
 
                     <div class="example columns">
-                        <section class="avenir">
-                            <h1>Avenir</h1>
+                        <section class="open-sans">
+                            <h1>Open Sans</h1>
                             <p>
-                                Designed by Adrian Frutiger in 1988, Avenir&trade; is a
-                                linear sans in the tradition of Erbar and Futura. Unlike Futura,
-                                Avenir is not purely geometric; It has vertical strokes that are
-                                thicker than the horizontals, an "o" that is not a perfect circle,
-                                and shortened ascenders. These nuances aid in legibility and give
-                                Avenir a harmonious and sensible appearance for both texts and
-                                headlines.
-                            </p>
-                            <p>
-                                Avenir&trade; is available on most Macs and some Windows machines.
+                                Open Sans is a humanist sans serif typeface
+                                designed by Steve Matteson, Type Director of
+                                Ascender Corp.  It was designed with an upright
+                                stress, open forms and a neutral, yet friendly
+                                appearance.
                             </p>
                         </section>
                         <section class="helvetica">
@@ -396,6 +382,18 @@
                                 </svg>
                             </a>
                         </uniform-notification>
+
+                        <uniform-notification class="confirmation">
+                            <svg viewbox="0 0 2048 2048" class="icon">
+                                <use xlink:href="#check"></use>
+                            </svg>
+                            <section class="message">
+                                <h1>This is a Confirmation notification</h1>
+                                <p>
+                                    But there's  no way of closing this one.
+                                </p>
+                            </section>
+                        </uniform-notification>
                     </div>
 
                     <ol class="breadcrumb">
@@ -411,6 +409,20 @@
                             </svg>
                             <section class="message">
                                 <h1>Here's a lovely Alert notification</h1>
+                            </section>
+                            <a class="close">
+                                <svg viewbox="0 0 2048 2048" class="icon">
+                                    <use xlink:href="#times"></use>
+                                </svg>
+                            </a>
+                        </uniform-notification>
+
+                        <uniform-notification class="alert">
+                            <svg viewbox="0 0 2048 2048" class="icon">
+                                <use xlink:href="#exclamation-triangle"></use>
+                            </svg>
+                            <section class="message">
+                                <h1>Here's a more permanent Alert notification</h1>
                             </section>
                             <a class="close">
                                 <svg viewbox="0 0 2048 2048" class="icon">
@@ -846,12 +858,15 @@
 
                 <!-- Build separate system that allows any element to be a drawer -->
                 <!-- Should provide horizontal and vertical drawers that come in from all sides -->
-                <!-- <section class="drawers">
-                    <h1>Drawer Menu</h1>
-
-                    <a class="button" id="drawer-opener">
-                        Open Drawer Menu
-                    </a>
+                <section class="drawers" id="drawer">
+                    <header>
+                        <h1>Drawer Menu</h1>
+                    </header>
+                    <div class="example">
+                        <a class="button" id="drawer-opener">
+                            Open Drawer Menu
+                        </a>
+                    </div>
 
                     <script>
                         (function() {
@@ -862,7 +877,7 @@
                                 });
                         })();
                     </script>
-                </section> -->
+                </section>
 
                 <section class="accordions">
                     <header>
@@ -1026,17 +1041,41 @@
 
                             <input id="checkbox" type="checkbox">
                             <label for="checkbox">Checkbox</label>
+                            <br>
+                            <input id="checkbox-disabled" type="checkbox" disabled="disabled"/>
+                            <label for="checkbox-disabled">Checkbox (disabled)</label>
+                            <br>
+                            <input id="checkbox-disabled2" type="checkbox" checked="checked" disabled="disabled"/>
+                            <label for="checkbox-disabled2">Checkbox (disabled and selected)</label>
 
+                            <br>
                             <br>
 
                             <input id="toggle" class="toggle" type="checkbox">
                             <label for="toggle">Toggle</label>
+                            <br>
+                            <input id="toggle-disabled" class="toggle" type="checkbox" disabled="disabled"/>
+                            <label for="toggle-disabled">Toggle (disabled)</label>
+                            <br>
+                            <input id="toggle-disabled2" class="toggle" type="checkbox" checked="checked" disabled="disabled"/>
+                            <label for="toggle-disabled2">Toggle (disabled and selected)</label>
 
                             <br>
+                            <br>
 
-                            <input id="radio" type="radio">
-                            <label for="radio">Radio Button</label>
+                            <input id="radio" type="radio" name="radio">
+                            <label for="radio">Radio Button 1</label>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <input id="radio2" type="radio" name="radio">
+                            <label for="radio2">Radio Button 2</label>
+                            <br>
+                            <input id="radio-disabled" type="radio" disabled="disabled">
+                            <label for="radio-disabled">Radio Button (disabled)</label>
+                            <br>
+                            <input id="radio-disabled2" type="radio" checked="checked" disabled="disabled">
+                            <label for="radio-disabled2">Radio Button (disabled and selected)</label>
 
+                            <br>
                             <br>
 
                             <uniform-select>
@@ -1119,7 +1158,7 @@
                         <header class="thead">
                             <div class="th">
                                 <div class="column">
-                                    Time <svg class="active icon">
+                                    DateTime <svg class="active icon">
                                         <use xlink:href="#caret-down"></use>
                                     </svg>
                                 </div>
@@ -1138,8 +1177,8 @@
                         </header>
                         <div class="tbody">
                             <div class="tr border">
-                                <div class="column">
-                                    Today
+                                <div class="column" title="Fri Apr 27 2018 11:07:00 GMT-0700 (Pacific Daylight Time)">
+                                    Apr 27th, 2018 11:07 am
                                 </div>
                                 <div class="column">
                                     <a href="#">Eric</a>
@@ -1157,8 +1196,8 @@
                                 </div>
                             </div>
                             <div class="tr border">
-                                <div class="column">
-                                    Yesterday
+                                <div class="column" title="Tue May 01 2018 13:37:00 GMT-0700 (Pacific Daylight Time)">
+                                    May 1st, 2018 1:37 pm
                                 </div>
                                 <div class="column">
                                     <a href="#">Eric</a>
@@ -1188,8 +1227,8 @@
                                 </div>
                             </div>
                             <div class="tr border">
-                                <div class="column">
-                                    A week ago
+                                <div class="column" title="Mon Dec 25 2017 12:02:00 GMT-0800 (Pacific Standard Time)">
+                                    Jun 3rd, 2018 6:57 pm
                                 </div>
                                 <div class="column">
                                     Eric
@@ -1258,8 +1297,8 @@
                                 </div>
                             </div>
                             <div class="disabled tr border">
-                                <div class="column">
-                                    Yesterday
+                                <div class="column" title="Mon Dec 25 2017 12:02:00 GMT-0800 (Pacific Standard Time)">
+                                    Dec 25th, 2017 12:02 am
                                 </div>
                                 <div class="column">
                                     <a href="#">Eric</a>

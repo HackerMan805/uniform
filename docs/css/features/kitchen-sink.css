@@ -376,8 +376,10 @@
     -ms-flex-pack: distribute;
     -webkit-justify-content: space-around;
     justify-content: space-around;
-    padding: 0 1em;
-    color: #444444; }
+    padding: 0 1em 0 1.382em;
+    color: #444444;
+    align-items: center;
+    line-height: 3em; }
     .edlio.cms uniform-drawer a:hover,
     .edlio.cms edlio-drawer a:hover {
       background: #cccccc;
@@ -419,9 +421,19 @@
   -webkit-appearance: none;
   -webkit-border-radius: 0;
   border-radius: 0; }
-  .edlio.cms input[type="text"]::-webkit-input-placeholder, .edlio.cms input[type="text"]:-moz-placeholder, .edlio.cms input[type="text"]::-moz-placeholder, .edlio.cms input[type="text"]:-ms-input-placeholder, .edlio.cms input[type="number"]::-webkit-input-placeholder, .edlio.cms input[type="number"]:-moz-placeholder, .edlio.cms input[type="number"]::-moz-placeholder, .edlio.cms input[type="number"]:-ms-input-placeholder, .edlio.cms input[type="url"]::-webkit-input-placeholder, .edlio.cms input[type="url"]:-moz-placeholder, .edlio.cms input[type="url"]::-moz-placeholder, .edlio.cms input[type="url"]:-ms-input-placeholder, .edlio.cms input[type="date"]::-webkit-input-placeholder, .edlio.cms input[type="date"]:-moz-placeholder, .edlio.cms input[type="date"]::-moz-placeholder, .edlio.cms input[type="date"]:-ms-input-placeholder, .edlio.cms input[type="time"]::-webkit-input-placeholder, .edlio.cms input[type="time"]:-moz-placeholder, .edlio.cms input[type="time"]::-moz-placeholder, .edlio.cms input[type="time"]:-ms-input-placeholder, .edlio.cms input[type="password"]::-webkit-input-placeholder, .edlio.cms input[type="password"]:-moz-placeholder, .edlio.cms input[type="password"]::-moz-placeholder, .edlio.cms input[type="password"]:-ms-input-placeholder, .edlio.cms input[type="file"]::-webkit-input-placeholder, .edlio.cms input[type="file"]:-moz-placeholder, .edlio.cms input[type="file"]::-moz-placeholder, .edlio.cms input[type="file"]:-ms-input-placeholder, .edlio.cms input[type="image"]::-webkit-input-placeholder, .edlio.cms input[type="image"]:-moz-placeholder, .edlio.cms input[type="image"]::-moz-placeholder, .edlio.cms input[type="image"]:-ms-input-placeholder, .edlio.cms input[type="submit"]::-webkit-input-placeholder, .edlio.cms input[type="submit"]:-moz-placeholder, .edlio.cms input[type="submit"]::-moz-placeholder, .edlio.cms input[type="submit"]:-ms-input-placeholder, .edlio.cms input[type="reset"]::-webkit-input-placeholder, .edlio.cms input[type="reset"]:-moz-placeholder, .edlio.cms input[type="reset"]::-moz-placeholder, .edlio.cms input[type="reset"]:-ms-input-placeholder, .edlio.cms input[type="button"]::-webkit-input-placeholder, .edlio.cms input[type="button"]:-moz-placeholder, .edlio.cms input[type="button"]::-moz-placeholder, .edlio.cms input[type="button"]:-ms-input-placeholder {
+  .edlio.cms input[type="text"]::-webkit-input-placeholder, .edlio.cms input[type="number"]::-webkit-input-placeholder, .edlio.cms input[type="url"]::-webkit-input-placeholder, .edlio.cms input[type="date"]::-webkit-input-placeholder, .edlio.cms input[type="time"]::-webkit-input-placeholder, .edlio.cms input[type="password"]::-webkit-input-placeholder, .edlio.cms input[type="file"]::-webkit-input-placeholder, .edlio.cms input[type="image"]::-webkit-input-placeholder, .edlio.cms input[type="submit"]::-webkit-input-placeholder, .edlio.cms input[type="reset"]::-webkit-input-placeholder, .edlio.cms input[type="button"]::-webkit-input-placeholder {
+    color: #aaabad;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+  .edlio.cms input[type="text"]::-moz-placeholder, .edlio.cms input[type="number"]::-moz-placeholder, .edlio.cms input[type="url"]::-moz-placeholder, .edlio.cms input[type="date"]::-moz-placeholder, .edlio.cms input[type="time"]::-moz-placeholder, .edlio.cms input[type="password"]::-moz-placeholder, .edlio.cms input[type="file"]::-moz-placeholder, .edlio.cms input[type="image"]::-moz-placeholder, .edlio.cms input[type="submit"]::-moz-placeholder, .edlio.cms input[type="reset"]::-moz-placeholder, .edlio.cms input[type="button"]::-moz-placeholder {
+    color: #aaabad;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    color: #888888; }
+    opacity: 1; }
+  .edlio.cms input[type="text"]::-ms-input-placeholder, .edlio.cms input[type="number"]::-ms-input-placeholder, .edlio.cms input[type="url"]::-ms-input-placeholder, .edlio.cms input[type="date"]::-ms-input-placeholder, .edlio.cms input[type="time"]::-ms-input-placeholder, .edlio.cms input[type="password"]::-ms-input-placeholder, .edlio.cms input[type="file"]::-ms-input-placeholder, .edlio.cms input[type="image"]::-ms-input-placeholder, .edlio.cms input[type="submit"]::-ms-input-placeholder, .edlio.cms input[type="reset"]::-ms-input-placeholder, .edlio.cms input[type="button"]::-ms-input-placeholder {
+    color: #aaabad;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+  .edlio.cms input[type="text"]::placeholder, .edlio.cms input[type="number"]::placeholder, .edlio.cms input[type="url"]::placeholder, .edlio.cms input[type="date"]::placeholder, .edlio.cms input[type="time"]::placeholder, .edlio.cms input[type="password"]::placeholder, .edlio.cms input[type="file"]::placeholder, .edlio.cms input[type="image"]::placeholder, .edlio.cms input[type="submit"]::placeholder, .edlio.cms input[type="reset"]::placeholder, .edlio.cms input[type="button"]::placeholder {
+    color: #aaabad;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif; }
 
 .edlio.cms input[type="radio"], .edlio.cms input[type="checkbox"] {
   display: none; }
@@ -450,19 +462,19 @@
 .edlio.cms input[type=checkbox]:checked + label {
   position: relative; }
   .edlio.cms input[type=checkbox]:checked + label:before {
-    background: black;
+    background: white;
     box-shadow: 0 0 0 2px black; }
   .edlio.cms input[type=checkbox]:checked + label:after {
     content: "";
     display: block;
-    width: .382em;
-    height: .742em;
+    width: .32em;
+    height: .72em;
     border-width: 0 3px 3px 0;
     border-style: solid;
-    border-color: white;
+    border-color: black;
     position: absolute;
-    top: .15em;
-    left: .2em;
+    top: .2em;
+    left: .25em;
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
@@ -474,11 +486,12 @@
     width: 1.382em;
     border-radius: 1em;
     border-color: #a9aaae;
+    background-color: white;
     box-shadow: 0 0 0 2px #a9aaae; }
   .edlio.cms input[type=checkbox].toggle + label:after {
     content: "";
     position: absolute;
-    top: 2px;
+    top: .15em;
     left: -2px;
     display: block;
     height: 1em;
@@ -490,12 +503,62 @@
     border-radius: 50%; }
 
 .edlio.cms input[type=checkbox].toggle:checked + label:before {
+  background-color: black;
   box-shadow: 0 0 0 2px black; }
 
 .edlio.cms input[type=checkbox].toggle:checked + label:after {
   background: white;
   border-color: black;
   left: calc(.382em + 2px); }
+
+.edlio.cms input[type=checkbox][disabled] + label,
+.edlio.cms input[type=checkbox] .disabled + label {
+  cursor: default; }
+  .edlio.cms input[type=checkbox][disabled] + label:before,
+  .edlio.cms input[type=checkbox] .disabled + label:before {
+    cursor: default;
+    background-color: #e2e3e5;
+    border-color: #d1d2d4;
+    box-shadow: 0 0 0 2px #d1d2d4; }
+
+.edlio.cms input[type=checkbox][disabled]:checked + label,
+.edlio.cms input[type=checkbox] .disabled:checked + label {
+  cursor: default; }
+  .edlio.cms input[type=checkbox][disabled]:checked + label:before,
+  .edlio.cms input[type=checkbox] .disabled:checked + label:before {
+    background-color: #e2e3e5;
+    border-color: #d1d2d4;
+    box-shadow: 0 0 0 2px #d1d2d4; }
+  .edlio.cms input[type=checkbox][disabled]:checked + label:after,
+  .edlio.cms input[type=checkbox] .disabled:checked + label:after {
+    border-color: #d1d2d4; }
+
+.edlio.cms input[type=checkbox][disabled].toggle + label,
+.edlio.cms input[type=checkbox] .disabled.toggle + label {
+  cursor: default; }
+  .edlio.cms input[type=checkbox][disabled].toggle + label:before,
+  .edlio.cms input[type=checkbox] .disabled.toggle + label:before {
+    cursor: default;
+    border-color: #d1d2d4;
+    background-color: #e2e3e5;
+    box-shadow: 0 0 0 2px #d1d2d4; }
+  .edlio.cms input[type=checkbox][disabled].toggle + label:after,
+  .edlio.cms input[type=checkbox] .disabled.toggle + label:after {
+    cursor: default;
+    background: #d1d2d4;
+    border-color: #d1d2d4; }
+
+.edlio.cms input[type=checkbox][disabled].toggle:checked + label,
+.edlio.cms input[type=checkbox] .disabled.toggle:checked + label {
+  cursor: default; }
+  .edlio.cms input[type=checkbox][disabled].toggle:checked + label:before,
+  .edlio.cms input[type=checkbox] .disabled.toggle:checked + label:before {
+    background-color: #e2e3e5;
+    box-shadow: 0 0 0 2px #d1d2d4; }
+  .edlio.cms input[type=checkbox][disabled].toggle:checked + label:after,
+  .edlio.cms input[type=checkbox] .disabled.toggle:checked + label:after {
+    background: #d1d2d4;
+    border-color: #d1d2d4; }
 
 .edlio.cms input[type=radio] + label:before {
   border-radius: 50%;
@@ -505,6 +568,19 @@
 .edlio.cms input[type=radio]:checked + label:before {
   background: black;
   box-shadow: 0 0 0 2px black, inset 0 0 0 3px white; }
+
+.edlio.cms input[type=radio].disabled + label, .edlio.cms input[type=radio][disabled] + label {
+  cursor: default; }
+  .edlio.cms input[type=radio].disabled + label:before, .edlio.cms input[type=radio][disabled] + label:before {
+    cursor: default;
+    background: #e2e3e5;
+    box-shadow: 0 0 0 2px #d1d2d4; }
+
+.edlio.cms input[type=radio].disabled:checked + label, .edlio.cms input[type=radio][disabled]:checked + label {
+  cursor: default; }
+  .edlio.cms input[type=radio].disabled:checked + label:before, .edlio.cms input[type=radio][disabled]:checked + label:before {
+    background: #d1d2d4;
+    box-shadow: 0 0 0 2px #d1d2d4, inset 0 0 0 3px white; }
 
 .edlio.cms input[type="file"]:focus, .edlio.cms input[type="radio"]:focus, .edlio.cms input[type="checkbox"]:focus {
   outline: thin dotted #d1d2d4;
@@ -525,9 +601,19 @@
   border: none;
   box-shadow: inset 0 0 0 1px #d1d2d4;
   outline: none; }
-  .edlio.cms textarea::-webkit-input-placeholder, .edlio.cms textarea:-moz-placeholder, .edlio.cms textarea::-moz-placeholder, .edlio.cms textarea:-ms-input-placeholder {
+  .edlio.cms textarea::-webkit-input-placeholder {
+    color: #bcbdc1;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+  .edlio.cms textarea::-moz-placeholder {
+    color: #bcbdc1;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    color: #a9aaae; }
+    opacity: 1; }
+  .edlio.cms textarea::-ms-input-placeholder {
+    color: #bcbdc1;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+  .edlio.cms textarea::placeholder {
+    color: #bcbdc1;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif; }
 
 .edlio.cms .icon.input {
   -webkit-flex-direction: row;
