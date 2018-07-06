@@ -157,7 +157,7 @@ export default class ModalComponent extends window.HTMLElement {
             this.style.webkitTransform = '';
             this.style.transform = '';
             // reset scrolling event
-            document.body.style.overflow = "visible";
+            document.body.style.overflow = null;
 
             document.body.appendChild(this);
             this.container.remove();
