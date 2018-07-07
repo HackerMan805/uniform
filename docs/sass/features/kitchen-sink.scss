@@ -345,6 +345,26 @@
 
 		}
 
-	}
+		// Cards ---------------------------------------------------------------
 
+		.dashboard-card-container {
+			@extend %flexbox;
+			@include flex-direction(column);
+			@include justify-content(center);
+			@include align-items(center);
+			min-width: 13.875em;
+			max-width: 17.556em;
+
+			>* {
+				margin-bottom: 1.389em;
+			}
+
+			@include max-screen-size(medium) {
+				@include flex-direction(row);
+				width: 100%;
+				min-width: unset;
+				max-width: unset;
+			}
+		}
+	}
 }

@@ -1,165 +1,142 @@
 // COMPONENT : Cards
 
-#cards {
+.card {
+	@extend %flexbox;
+	@include flex-direction(row);
+	@include justify-content(left);
+	@include align-items(center);
+	width: 100%;
+	padding: 0.75em;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+	font-family: Avenir, Helvetica, Arial, sans-serif;
+	color: #555555;
 
-	.sidebar {
-		@extend %flexbox;
-		@include flex-direction(column);
-		@include justify-content(center);
-		@include align-items(center);
-		min-width: 13.875em;
-		max-width: 17.556em;
+	&:hover {
+		text-decoration: none;
+	}
+	&:visited {
+		color: #555555;
+	}
+	&:link {
+		color: #555555;
+	}
 
-		>* {
-			margin-bottom: 1.389em;
+// Thumbnail Cards ---------------------------------------------------------------
+
+	&.thumbnail {
+		@include max-screen-size(medium) {
+			margin: 0 0.75em;
+			padding: 0;
 		}
 
-		@include max-screen-size(medium) {
+		&.greeting {
+			background-color: #F4F4F4;
+			@include max-screen-size(medium) {
+				display: none;
+			}
+
+			> span {
+				@include font-size(large);
+			}
+		}
+
+		.profile-photo {
+		    min-width: 4em;
+		    height: 4em;
+		    border-radius: 50%;
+		    margin-right: 1em;
+		}
+
+		.name {
+			display: block;	
+		}
+
+		.graphic {
+			@extend %flexbox;
 			@include flex-direction(row);
-			width: 100%;
-			min-width: unset;
-			max-width: unset;
+			@include justify-content(center);
+			@include align-items(center);
+			min-width: 4em;
+		    height: 4em;
+		    margin-right: 1em;
+		    border-radius: 50%;
+
+		    @include max-screen-size(medium) {
+				width: 50%;
+				margin-right: 0;
+				border-radius: unset;
+				border-top-left-radius: 3px;
+				border-bottom-left-radius: 3px;
+			}
+		    svg {
+		    	width: 2em;
+		    	height: 2em;
+		    	fill: #FFFFFF;
+		    }
+			&.users {
+				background: #2DBCD3;
+			}
+			&.eye {
+				background: #B3D36B;
+			}
+		}
+
+		aside.info {
+			text-align: center;
+			text-decoration: none;
+			@include font-size(small);
+			
+			@include max-screen-size(medium) {
+				width: 50%;
+				padding: 0 0.75em;
+
+				> div {
+					display: none;
+				}
+			}
+
+			@include max-screen-size(small) {
+				padding: 0 0.6em;
+			}
+
+			.title {
+				display: block;
+				@include font-size(large);
+
+				@include max-screen-size(small) {
+					@include font-size(unset);
+					font-size: 1em;						
+				}
+			}
+			.count {
+				font-weight: 700;
+			}
 		}
 	}
 
-	.card {
-		@extend %flexbox;
-		@include flex-direction(row);
-		@include justify-content(left);
-		@include align-items(center);
-		width: 100%;
-		padding: 0.75em;
-		border: none;
-		border-radius: 3px;
-		box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
-		font-family: Avenir, Helvetica, Arial, sans-serif;
-		color: #555555;
+// No-Thumbnail Cards ------------------------------------------------------------
 
-		&:hover {
-			text-decoration: none;
+	&.no-thumbnail {
+
+	}
+
+// Info Cards --------------------------------------------------------------------
+
+	&.info {
+		@include align-items(flex-start);
+		margin-bottom: 1.389em;
+		background-color: #F4F4F4;
+
+		svg {
+			min-width: 1.5em;
+			fill: #555555;
 		}
 
-	// Dashboard Cards ---------------------------------------------------------------
-
-		&.dashboard {
-			@include max-screen-size(medium) {
-				margin: 0 0.75em;
-				padding: 0;
-			}
-
-			&.greeting {
-				background-color: #F4F4F4;
-				@include max-screen-size(medium) {
-					display: none;
-				}
-
-				> span {
-					@include font-size(large);
-				}
-			}
-
-			.profile-photo {
-			    min-width: 4em;
-			    height: 4em;
-			    border-radius: 50%;
-			    margin-right: 1em;
-			}
-
-			.name {
-				display: block;	
-			}
-
-			.graphic {
-				@extend %flexbox;
-				@include flex-direction(row);
-				@include justify-content(center);
-				@include align-items(center);
-				min-width: 4em;
-			    height: 4em;
-			    margin-right: 1em;
-			    border-radius: 50%;
-
-			    @include max-screen-size(medium) {
-					width: 50%;
-					margin-right: 0;
-					border-radius: unset;
-					border-top-left-radius: 3px;
-					border-bottom-left-radius: 3px;
-				}
-			    svg {
-			    	width: 2em;
-			    	height: 2em;
-			    	fill: #FFFFFF;
-			    }
-				&.users {
-					background: #2DBCD3;
-				}
-				&.eye {
-					background: #B3D36B;
-				}
-			}
-
-			aside.info {
-				text-align: center;
-				text-decoration: none;
-				@include font-size(small);
-				
-				@include max-screen-size(medium) {
-					width: 50%;
-					padding: 0 0.75em;
-
-					> div {
-						display: none;
-					}
-				}
-
-				@include max-screen-size(small) {
-					padding: 0 0.6em;
-				}
-
-				.title {
-					display: block;
-					@include font-size(large);
-
-					@include max-screen-size(small) {
-						@include font-size(unset);
-						font-size: 1em;						
-					}
-				}
-				.count {
-					font-weight: 700;
-				}
-			}
-		}
-
-	// Web Stat Cards ----------------------------------------------------------------
-
-		&.web-stat {
-
-		}
-
-	// Info Box Cards ----------------------------------------------------------------
-
-		&.info-box {
-			@include align-items(flex-start);
-			margin-bottom: 1.389em;
-			background-color: #F4F4F4;
-
-			svg {
-				min-width: 1.5em;
-				fill: #555555;
-			}
-
-			p {
-				margin-left: 0.5em;
-				margin-bottom: 0;
-			}
-		}
-
-	// Warning/Confirmation Message Box Cards ----------------------------------------
-
-		&.message-box {
-
+		p {
+			margin-left: 0.5em;
+			margin-bottom: 0;
 		}
 	}
 }
