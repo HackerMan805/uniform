@@ -354,6 +354,7 @@
 			@include align-items(center);
 			min-width: 13.875em;
 			max-width: 17.556em;
+			margin-bottom: 1em;
 
 			>* {
 				margin-bottom: 1.389em;
@@ -364,6 +365,18 @@
 				width: 100%;
 				min-width: unset;
 				max-width: unset;
+			}
+		}
+
+		.card:not(.thumbnail):not(.info) {
+			display: inline-block;
+			width: unset;
+			margin-bottom: 1em;
+		}
+
+		.card {
+			&.info {
+				margin-bottom: 1em;
 			}
 		}
 	}

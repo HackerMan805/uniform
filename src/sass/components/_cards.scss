@@ -11,46 +11,31 @@
 	border-radius: 3px;
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 	font-family: Avenir, Helvetica, Arial, sans-serif;
-	color: #555555;
+	color: $soft-black;
 
 	&:hover {
 		text-decoration: none;
 	}
 	&:visited {
-		color: #555555;
+		color: $soft-black;
 	}
 	&:link {
-		color: #555555;
+		color: $soft-black;
 	}
 
 // Thumbnail Cards ---------------------------------------------------------------
 
 	&.thumbnail {
-		@include max-screen-size(medium) {
-			margin: 0 0.75em;
-			padding: 0;
-		}
-
-		&.greeting {
-			background-color: #F4F4F4;
-			@include max-screen-size(medium) {
-				display: none;
-			}
+		&.user-welcome {
+			background-color: $grey-n00;
 
 			> span {
 				@include font-size(large);
 			}
-		}
 
-		.profile-photo {
-		    min-width: 4em;
-		    height: 4em;
-		    border-radius: 50%;
-		    margin-right: 1em;
-		}
-
-		.name {
-			display: block;	
+			.username {
+				display: block;	
+			}
 		}
 
 		.graphic {
@@ -62,33 +47,43 @@
 		    height: 4em;
 		    margin-right: 1em;
 		    border-radius: 50%;
+		    background: $soft-black;
 
-		    @include max-screen-size(medium) {
-				width: 50%;
-				margin-right: 0;
-				border-radius: unset;
-				border-top-left-radius: 3px;
-				border-bottom-left-radius: 3px;
-			}
 		    svg {
 		    	width: 2em;
 		    	height: 2em;
-		    	fill: #FFFFFF;
+		    	fill: $white;
 		    }
-			&.users {
-				background: #2DBCD3;
-			}
-			&.eye {
-				background: #B3D36B;
-			}
 		}
 
 		aside.info {
 			text-align: center;
 			text-decoration: none;
 			@include font-size(small);
-			
-			@include max-screen-size(medium) {
+
+			.title {
+				display: block;
+				@include font-size(large);
+			}
+		}
+
+		@include max-screen-size(medium) {
+			margin: 0 0.75em;
+			padding: 0;
+
+			&.user-welcome {
+				display: none;
+			}
+
+			.graphic {
+				width: 50%;
+				margin-right: 0;
+				border-radius: unset;
+				border-top-left-radius: 3px;
+				border-bottom-left-radius: 3px;
+			}
+
+			aside.info {
 				width: 50%;
 				padding: 0 0.75em;
 
@@ -96,42 +91,29 @@
 					display: none;
 				}
 			}
+		}
 
-			@include max-screen-size(small) {
+		@include max-screen-size(small) {
+			aside.info {
 				padding: 0 0.6em;
-			}
 
-			.title {
-				display: block;
-				@include font-size(large);
-
-				@include max-screen-size(small) {
+				.title {
 					@include font-size(unset);
-					font-size: 1em;						
+					font-size: 1em;	
 				}
 			}
-			.count {
-				font-weight: 700;
-			}
 		}
-	}
-
-// No-Thumbnail Cards ------------------------------------------------------------
-
-	&.no-thumbnail {
-
 	}
 
 // Info Cards --------------------------------------------------------------------
 
 	&.info {
 		@include align-items(flex-start);
-		margin-bottom: 1.389em;
-		background-color: #F4F4F4;
+		background-color: $grey-n00;
 
 		svg {
 			min-width: 1.5em;
-			fill: #555555;
+			fill: $soft-black;
 		}
 
 		p {
