@@ -12,15 +12,15 @@
 	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 	color: $soft-black;
 
+	.card-title {
+		@include font-size(large);
+	}
+
 // Thumbnail Cards ---------------------------------------------------------------
 
 	&.thumbnail {
 		&.user-welcome {
 			background-color: $grey-n00;
-			
-			> div {
-				@include font-size(large);
-			}
 		}
 
 		.graphic {
@@ -44,10 +44,6 @@
 		aside.details {
 			text-align: center;
 			@include font-size(small);
-
-			.title {
-				@include font-size(large);
-			}
 		}
 
 		@include max-screen-size(medium) {
@@ -70,7 +66,7 @@
 				width: 50%;
 				padding: 0 0.75em;
 
-				div:not(.title) {
+				div:not(.card-title) {
 					display: none;
 				}
 			}
@@ -80,7 +76,7 @@
 			aside.details {
 				padding: 0 0.6em;
 
-				.title {
+				.card-title {
 					@include font-size(unset);
 					font-size: 1em;	
 				}
