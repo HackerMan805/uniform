@@ -45,7 +45,7 @@
 		    }
 		}
 
-		aside.info {
+		aside.details {
 			text-align: center;
 			@include font-size(small);
 
@@ -71,7 +71,7 @@
 				border-bottom-left-radius: 3px;
 			}
 
-			aside.info {
+			aside.details {
 				width: 50%;
 				padding: 0 0.75em;
 
@@ -82,7 +82,7 @@
 		}
 
 		@include max-screen-size(small) {
-			aside.info {
+			aside.details {
 				padding: 0 0.6em;
 
 				.title {
