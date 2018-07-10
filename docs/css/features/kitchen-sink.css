@@ -1474,11 +1474,11 @@
     height: 4em;
     margin-right: 1em;
     border-radius: 50%;
-    background: #444444; }
+    background: #444444;
+    overflow: hidden; }
     .edlio.cms .uniform-card.thumbnail .graphic img {
       min-width: 4em;
-      height: 4em;
-      border-radius: 50%; }
+      height: 4em; }
     .edlio.cms .uniform-card.thumbnail .graphic svg {
       width: 2em;
       height: 2em;
