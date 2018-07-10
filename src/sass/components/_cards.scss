@@ -1,0 +1,108 @@
+// COMPONENT : Cards
+
+.uniform-card {
+	@extend %flexbox;
+	@include flex-direction(row);
+	@include justify-content(left);
+	@include align-items(center);
+	width: 100%;
+	padding: 0.75em;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+	color: $soft-black;
+
+	.card-title {
+		@include font-size(large);
+	}
+
+// Thumbnail Cards ---------------------------------------------------------------
+
+	&.thumbnail {
+		&.user-welcome {
+			background-color: $grey-n00;
+		}
+
+		.graphic {
+			@extend %flexbox;
+			@include flex-direction(row);
+			@include justify-content(center);
+			@include align-items(center);
+			min-width: 4em;
+		    height: 4em;
+		    margin-right: 1em;
+		    border-radius: 50%;
+		    background: $soft-black;
+
+		    img {
+		    	min-width: 4em;
+		    	height: 4em;
+		    	border-radius: 50%;
+		    }
+
+		    svg {
+		    	width: 2em;
+		    	height: 2em;
+		    	fill: $white;
+		    }
+		}
+
+		aside.details {
+			text-align: center;
+			@include font-size(small);
+		}
+
+		@include max-screen-size(medium) {
+			margin: 0 0.75em;
+			padding: 0;
+
+			&.user-welcome {
+				display: none;
+			}
+
+			.graphic {
+				width: 50%;
+				margin-right: 0;
+				border-radius: unset;
+				border-top-left-radius: 3px;
+				border-bottom-left-radius: 3px;
+			}
+
+			aside.details {
+				width: 50%;
+				padding: 0 0.75em;
+
+				div:not(.card-title) {
+					display: none;
+				}
+			}
+		}
+
+		@include max-screen-size(small) {
+			aside.details {
+				padding: 0 0.6em;
+
+				.card-title {
+					@include font-size(unset);
+					font-size: 1em;	
+				}
+			}
+		}
+	}
+
+// Info Cards --------------------------------------------------------------------
+
+	&.info {
+		@include align-items(flex-start);
+		background-color: $grey-n00;
+
+		svg {
+			min-width: 1.5em;
+			fill: $soft-black;
+		}
+
+		div {
+			margin-left: 0.5em;
+		}
+	}
+}
