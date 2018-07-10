@@ -18,7 +18,7 @@
 .edlio.cms edlio-select select-title,
 .edlio.cms edlio-select .select-title,
 .edlio.cms .edlio-select select-title,
-.edlio.cms .edlio-select .select-title, .edlio.cms uniform-overlay,
+.edlio.cms .edlio-select .select-title, .edlio.cms .uniform-card, .edlio.cms .uniform-card.thumbnail .graphic, .edlio.cms uniform-overlay,
 .edlio.cms edlio-overlay, .edlio.cms uniform-overlay uniform-modal,
 .edlio.cms edlio-overlay uniform-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
 .edlio.cms uniform-overlay edlio-modal page.current header,
@@ -26,7 +26,7 @@
 .edlio.cms edlio-overlay edlio-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer,
 .edlio.cms uniform-overlay edlio-modal page.current footer,
 .edlio.cms edlio-overlay uniform-modal page.current footer,
-.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
+.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell, .edlio.cms .kitchen-sink .dashboard-card-container {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
@@ -54,7 +54,7 @@
 .edlio.cms edlio-select select-title,
 .edlio.cms edlio-select .select-title,
 .edlio.cms .edlio-select select-title,
-.edlio.cms .edlio-select .select-title, .edlio.cms uniform-overlay,
+.edlio.cms .edlio-select .select-title, .edlio.cms .uniform-card, .edlio.cms .uniform-card.thumbnail .graphic, .edlio.cms uniform-overlay,
 .edlio.cms edlio-overlay, .edlio.cms uniform-overlay uniform-modal,
 .edlio.cms edlio-overlay uniform-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
 .edlio.cms uniform-overlay edlio-modal page.current header,
@@ -62,7 +62,7 @@
 .edlio.cms edlio-overlay edlio-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer,
 .edlio.cms uniform-overlay edlio-modal page.current footer,
 .edlio.cms edlio-overlay uniform-modal page.current footer,
-.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
+.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell, .edlio.cms .kitchen-sink .dashboard-card-container {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
@@ -131,7 +131,7 @@
 .edlio.cms edlio-select select-title,
 .edlio.cms edlio-select .select-title,
 .edlio.cms .edlio-select select-title,
-.edlio.cms .edlio-select .select-title, .edlio.cms uniform-overlay,
+.edlio.cms .edlio-select .select-title, .edlio.cms .uniform-card, .edlio.cms .uniform-card.thumbnail .graphic, .edlio.cms uniform-overlay,
 .edlio.cms edlio-overlay, .edlio.cms uniform-overlay uniform-modal,
 .edlio.cms edlio-overlay uniform-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
 .edlio.cms uniform-overlay edlio-modal page.current header,
@@ -139,7 +139,7 @@
 .edlio.cms edlio-overlay edlio-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer,
 .edlio.cms uniform-overlay edlio-modal page.current footer,
 .edlio.cms edlio-overlay uniform-modal page.current footer,
-.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
+.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell, .edlio.cms .kitchen-sink .dashboard-card-container {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
@@ -1426,6 +1426,117 @@
     -webkit-transform: translateY(1em);
     transform: translateY(1em); }
 
+.edlio.cms .uniform-card {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: left;
+  -webkit-justify-content: left;
+  justify-content: left;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.75em;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  color: #444444; }
+  @media screen and (max-width: 47.9375rem) {
+    .edlio.cms .uniform-card .card-title {
+      font-size: 1.125rem;
+      line-height: 1.5rem; } }
+  @media screen and (min-width: 48rem) {
+    .edlio.cms .uniform-card .card-title {
+      font-size: 1.25rem;
+      line-height: 1.5rem; } }
+  @media screen and (min-width: 64rem) {
+    .edlio.cms .uniform-card .card-title {
+      font-size: 1.5rem;
+      line-height: 1.59375rem; } }
+  @media screen and (min-width: 75rem) {
+    .edlio.cms .uniform-card .card-title {
+      font-size: 1.75rem;
+      line-height: 2.125rem; } }
+  .edlio.cms .uniform-card.thumbnail.user-welcome {
+    background-color: #ededed; }
+  .edlio.cms .uniform-card.thumbnail .graphic {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    min-width: 4em;
+    height: 4em;
+    margin-right: 1em;
+    border-radius: 50%;
+    background: #444444; }
+    .edlio.cms .uniform-card.thumbnail .graphic img {
+      min-width: 4em;
+      height: 4em;
+      border-radius: 50%; }
+    .edlio.cms .uniform-card.thumbnail .graphic svg {
+      width: 2em;
+      height: 2em;
+      fill: white; }
+  .edlio.cms .uniform-card.thumbnail aside.details {
+    text-align: center; }
+    @media screen and (max-width: 47.9375rem) {
+      .edlio.cms .uniform-card.thumbnail aside.details {
+        font-size: 0.875rem;
+        line-height: 1.5rem; } }
+    @media screen and (min-width: 48rem) {
+      .edlio.cms .uniform-card.thumbnail aside.details {
+        font-size: 0.875rem;
+        line-height: 1.5rem; } }
+    @media screen and (min-width: 64rem) {
+      .edlio.cms .uniform-card.thumbnail aside.details {
+        font-size: 0.9375rem;
+        line-height: 1.59375rem; } }
+    @media screen and (min-width: 75rem) {
+      .edlio.cms .uniform-card.thumbnail aside.details {
+        font-size: 1rem;
+        line-height: 1.6875rem; } }
+  @media screen and (max-width: 47.9375rem) {
+    .edlio.cms .uniform-card.thumbnail {
+      margin: 0 0.75em;
+      padding: 0; }
+      .edlio.cms .uniform-card.thumbnail.user-welcome {
+        display: none; }
+      .edlio.cms .uniform-card.thumbnail .graphic {
+        width: 50%;
+        margin-right: 0;
+        border-radius: unset;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px; }
+      .edlio.cms .uniform-card.thumbnail aside.details {
+        width: 50%;
+        padding: 0 0.75em; }
+        .edlio.cms .uniform-card.thumbnail aside.details div:not(.card-title) {
+          display: none; } }
+  @media screen and (max-width: 31.9375rem) {
+    .edlio.cms .uniform-card.thumbnail aside.details {
+      padding: 0 0.6em; }
+      .edlio.cms .uniform-card.thumbnail aside.details .card-title {
+        font-size: initial;
+        line-height: initial;
+        margin-bottom: initial;
+        font-size: 1em; } }
+  .edlio.cms .uniform-card.info {
+    -ms-flex-align: start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    background-color: #ededed; }
+    .edlio.cms .uniform-card.info svg {
+      min-width: 1.5em;
+      fill: #444444; }
+    .edlio.cms .uniform-card.info div {
+      margin-left: 0.5em; }
+
 .edlio.cms uniform-modal,
 .edlio.cms edlio-modal {
   display: none; }
@@ -1979,3 +2090,35 @@
     fill: #333333; }
   .edlio.cms .kitchen-sink .lists .list.grid figure figcaption {
     text-align: center; }
+
+.edlio.cms .kitchen-sink .dashboard-card-container {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  min-width: 13.875em;
+  max-width: 17.556em;
+  margin-bottom: 1em; }
+  .edlio.cms .kitchen-sink .dashboard-card-container > * {
+    margin-bottom: 1.389em; }
+  @media screen and (max-width: 47.9375rem) {
+    .edlio.cms .kitchen-sink .dashboard-card-container {
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      width: 100%;
+      min-width: unset;
+      max-width: unset; } }
+
+.edlio.cms .kitchen-sink .uniform-card:not(.thumbnail):not(.info) {
+  display: inline-block;
+  width: unset;
+  margin-bottom: 1em; }
+
+.edlio.cms .kitchen-sink .uniform-card.info {
+  margin-bottom: 1em; }
