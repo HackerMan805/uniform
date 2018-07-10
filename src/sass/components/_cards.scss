@@ -1,6 +1,6 @@
 // COMPONENT : Cards
 
-.card {
+.uniform-card {
 	@extend %flexbox;
 	@include flex-direction(row);
 	@include justify-content(left);

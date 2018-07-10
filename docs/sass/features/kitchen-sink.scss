@@ -368,13 +368,13 @@
 			}
 		}
 
-		.card:not(.thumbnail):not(.info) {
+		.uniform-card:not(.thumbnail):not(.info) {
 			display: inline-block;
 			width: unset;
 			margin-bottom: 1em;
 		}
 
-		.card {
+		.uniform-card {
 			&.info {
 				margin-bottom: 1em;
 			}
