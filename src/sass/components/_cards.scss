@@ -62,7 +62,7 @@
 			@include font-size(small);
 
 			.title {
-				display: block;
+				margin-bottom: 0;
 				@include font-size(large);
 			}
 		}
