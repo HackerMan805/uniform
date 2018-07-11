@@ -1007,7 +1007,9 @@ var ModalComponent = function (_window$HTMLElement) {
                 this.style.webkitTransform = '';
                 this.style.transform = '';
                 // reset scrolling event
-                document.body.style.overflow = undefined;
+                document.body.style.overflow = null;
+
+                document.body.appendChild(this);
                 this.container.remove();
 
                 if (this.removeOnHide) {
@@ -1021,7 +1023,6 @@ var ModalComponent = function (_window$HTMLElement) {
     }, {
         key: 'connectedCallback',
         value: function connectedCallback() {
-            console.log(this.parentNode);
             this.previousParent = this.parentNode;
         }
     }]);
