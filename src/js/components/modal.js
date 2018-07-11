@@ -157,7 +157,9 @@ export default class ModalComponent extends window.HTMLElement {
             this.style.webkitTransform = '';
             this.style.transform = '';
             // reset scrolling event
-            document.body.style.overflow = undefined;
+            document.body.style.overflow = null;
+
+            document.body.appendChild(this);
             this.container.remove();
 
             if (this.removeOnHide) {
@@ -168,7 +170,6 @@ export default class ModalComponent extends window.HTMLElement {
     }
 
     connectedCallback () {
-        console.log(this.parentNode);
         this.previousParent = this.parentNode;
     }
 };
