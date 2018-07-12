@@ -24,6 +24,7 @@
 	@import 'components/tags';
 	@import 'components/toggle-selectors';
 	@import 'components/tooltips';
+	@import 'components/cards';
 
 	@import 'components/cms/modals';
 
@@ -344,6 +345,39 @@
 
 		}
 
-	}
+		// Cards ---------------------------------------------------------------
 
+		.dashboard-card-container {
+			@extend %flexbox;
+			@include flex-direction(column);
+			@include justify-content(center);
+			@include align-items(center);
+			min-width: 13.875em;
+			max-width: 17.556em;
+			margin-bottom: 1em;
+
+			>* {
+				margin-bottom: 1.389em;
+			}
+
+			@include max-screen-size(medium) {
+				@include flex-direction(row);
+				width: 100%;
+				min-width: unset;
+				max-width: unset;
+			}
+		}
+
+		.uniform-card:not(.thumbnail):not(.info) {
+			display: inline-block;
+			width: unset;
+			margin-bottom: 1em;
+		}
+
+		.uniform-card {
+			&.info {
+				margin-bottom: 1em;
+			}
+		}
+	}
 }
