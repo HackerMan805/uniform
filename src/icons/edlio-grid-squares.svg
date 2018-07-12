@@ -3,7 +3,7 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 2048 2048" enable-background="new 0 0 2048 2048" xml:space="preserve">
 <g id="grid-squares">
-	<path fill="#231F20" d="M2,2h511v511H2V2z M768.5,2h511v511h-511V2z M1535,2h511v511h-511V2z M2,768.5h511v511H2V768.5z
+	<path  231F20" d="M2,2h511v511H2V2z M768.5,2h511v511h-511V2z M1535,2h511v511h-511V2z M2,768.5h511v511H2V768.5z
 		 M768.5,768.5h511v511h-511V768.5z M1535,768.5h511v511h-511V768.5z M2,1535h511v511H2V1535z M768.5,1535h511v511h-511V1535z
 		 M1535,1535h511v511h-511V1535z"/>
 </g>
