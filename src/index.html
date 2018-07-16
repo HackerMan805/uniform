@@ -1481,6 +1481,60 @@
                     </div>
                 </section>
 
+                <section id="uploader">
+                    <header>
+                        <h1>Uploader</h1>
+                    </header>
+
+                    <uniform-uploader>
+                        <div class="drop-area">
+                            <div class="drag-message">
+                                <svg viewBox="0 0 2048 2048">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#file-o"></use>
+                                </svg>
+                                <span class="file-upload-button">Upload</span> or drop your file(s) here
+                                <div class="picker-container">
+                                    <div id="computer_picker" class="picker">
+                                        <svg viewBox="0 0 2048 2048">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#desktop"></use>
+                                        </svg>
+                                        My Computer
+                                    </div>
+                                    <div id="dropbox_picker" class="picker disabled">
+                                        <svg viewBox="0 0 2048 2048">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#desktop"></use>
+                                        </svg>
+                                        Dropbox
+                                    </div>
+                                    <div id="google_drive_picker" class="picker disabled">
+                                        <svg viewBox="0 0 2048 2048">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#desktop"></use>
+                                        </svg>
+                                        Google Drive
+                                    </div>
+                                    <div id="ms_onedrive_picker" class="picker disabled">
+                                        <svg viewBox="0 0 2048 2048">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#desktop"></use>
+                                        </svg>
+                                        Microsoft OneDrive
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </uniform-uploader>
+                    <script>
+                        (function() {
+                            var a = document.getElementsByClassName('file-upload-button');
+                            for (var i=0; i<a.length; i++) {
+                                a[i].addEventListener('click', function(e) {
+                                    if (e.target !== this) { return; }
+                                    this.closest("uniform-uploader").toggleOpen();
+                                });
+                            }
+                        })();
+                    </script>
+                </section>
+
             </div> <!-- close .content -->
         </main>
         <script src="js/app.js"></script>
