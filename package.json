@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/edlio/uniform",
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.0.0"
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "aws-sdk": "^2.275.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

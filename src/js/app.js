@@ -30,4 +30,3 @@ function main () {
     window.customElements.define('uniform-select', SelectComponent);
     window.customElements.define('uniform-uploader', UploaderComponent);
 }
-
