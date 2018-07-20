@@ -233,6 +233,28 @@
                     </ul>      
                 </section>  
 
+                <section id="colors" class="colors">
+                    <header>
+                        <h1>Colors</h1>
+
+                        <ol class="breadcrumb">
+
+                            <li><a href="#typography">Colors</a></li>
+                            <li class="active"><a href="">Base Colors</a></li>
+                        </ol>
+                    </header>
+
+                    <div class="example columns">
+                        {{#list colorList}}
+                        <div class="item">
+                            <div class="color-block" style="background-color: {{hex}};" title="{{name}}"></div>
+                            <span class="color-name">{{name}}</span>
+                            <span class="color-hex">{{hex}}</span>
+                        </div>
+                        {{/list}}
+                    </div>
+                </section>
+
                 <section id="buttons" class="buttons">
                     <header>
                         <h1>Buttons</h1>
