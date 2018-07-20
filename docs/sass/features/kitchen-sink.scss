@@ -305,6 +305,38 @@
 			}
 		}
 
+		.colors {
+			.columns {
+				@include min-screen-size(small) {
+					@include columns(2);
+				}
+
+				@include min-screen-size(medium) {
+					@include columns(3);
+				}
+
+				@include min-screen-size(large) {
+					@include columns(4);
+				}
+			}
+
+			.item {				
+				margin-bottom: 20px;
+				max-width: 250px;
+			}
+
+			.color-block {			
+				height: 3.125rem;
+				box-shadow: $light-grey 0 0 0 1px inset;
+			}
+
+			.color-hex {
+				color: $medium-grey;
+				font-size: 14px;
+				float: right;
+			}
+		}
+
 		.lists {
 
 			section {

@@ -7,6 +7,8 @@ const inject = require('gulp-inject');
 const glob = require('glob');
 const path = require('path');
 const handlebars = require('gulp-compile-handlebars');
+const fs = require('fs');
+const split = require('split');
 
 const app = {
     sassRoot: './src/sass/',
@@ -34,7 +36,7 @@ function compileSass (app) {
     };
 }
 
-function compileHtml(iconSprite) {
+function compileHtml(iconSprite, colorList) {
     const svgs = gulp.src(app.icons)
     .pipe(svgstore({inlineSvg: true}));
 
@@ -42,8 +44,10 @@ function compileHtml(iconSprite) {
         return file.contents.toString();
     }
 
+
     const templateData = {          
-        iconSprite
+        iconSprite,
+        colorList
     },        
     options = {
         helpers : {
@@ -61,6 +65,26 @@ function compileHtml(iconSprite) {
         .pipe(inject(svgs, { transform: fileContents }))
         .pipe(handlebars(templateData, options))
         .pipe(gulp.dest(demoApp.destFolder));
+}
+
+async function generateColors() {    
+    const charStream = fs.createReadStream('./src/sass/themes/cms/_edlio.scss');
+    const lineStream = charStream.pipe(split());
+    let colors = [];
+
+    await lineStream.on('data', function(line) {
+        const regVarName = new RegExp('\\$(.+?)(?=\\s*:)');
+        const regHexValue = new RegExp('(#[0-9a-fA-F]{3,6})');
+        let name = line.match(regVarName);
+        let color = line.match(regHexValue);
+        
+        if (name !== null && color !== null) {
+            colors.push({"name": name[0] , "hex": color[0]});
+            
+        }    
+    });
+
+    return colors;   
 }
 
 gulp.task('sass:watch', function() {
@@ -81,13 +105,22 @@ gulp.task('demo:js', () => {
 });
 
 gulp.task('html', (done) => {
-    glob(app.icons, function (err, icons) {
+    glob(app.icons, function (globErr, icons) {
+        if(globErr){
+            done(globErr);
+            return;
+        }
         const svgIconPath = icons.map(function(icon){
             return { icon: path.basename(icon, '.svg') };
-        }); 
-        
-        compileHtml(svgIconPath); 
-        done(err);
+        });
+
+        generateColors().then(function(colors) {
+            compileHtml(svgIconPath, colors);   
+            done();
+        }).catch (function(colorErr) {
+            done(colorErr);
+        });        
+    
     });    
 });
 
