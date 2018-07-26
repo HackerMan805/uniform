@@ -1,82 +1,79 @@
-var AWS = require('aws-sdk');
-
-var bucketName = 'upload.edlio.rocks';
-var bucketRegion = 'us-west-2';
-var identityPoolId = 'us-west-2:1d4cf1e2-f16b-42d3-aed5-390603de4c07';
-
-AWS.config.update({
-    region: bucketRegion,
-    credentials: new AWS.CognitoIdentityCredentials({
-        IdentityPoolId: identityPoolId
-    })
-});
-
-var s3 = new AWS.S3({
-    apiVersion: '2006-03-01',
-    params: {Bucket: bucketName}
-});
-
 export default class UploaderComponent extends window.HTMLElement {
     constructor() {
         super();
-    }
+        this.fileInput = this.getElementsByClassName("uploader-file-input")[0];
+        this.picker = this.getElementsByClassName("picker-container")[0];
+        this.uploadBtn = this.getElementsByClassName("file-upload-button")[0];
+        // S3 Config
+        this.AWS = require('aws-sdk');
+        this.bucketName = 'upload.edlio.rocks';
+        this.bucketRegion = 'us-west-2';
+        this.identityPoolId = 'us-west-2:1d4cf1e2-f16b-42d3-aed5-390603de4c07';
 
-    toggleOpen() {
-        var uploader = this;
-        uploader.picker = uploader.getElementsByClassName("picker-container")[0];
-        uploader.picker.classList.toggle("open");
+        this.AWS.config.update({
+            region: this.bucketRegion,
+            credentials: new this.AWS.CognitoIdentityCredentials({
+                IdentityPoolId: this.identityPoolId
+            })
+        });
+        this.s3 = new this.AWS.S3({
+            apiVersion: '2006-03-01',
+            params: {Bucket: this.bucketName}
+        });
+        // Event Listeners
+        this.querySelectorAll("#computer_picker")[0]
+            .addEventListener('click', this.pickMyComputer.bind(this), false);
+        this.querySelectorAll("#dropbox_picker")[0]
+            .addEventListener('click', this.pickDropbox.bind(this), false);
+        this.querySelectorAll("#google_drive_picker")[0]
+            .addEventListener('click', this.pickGoogleDrive.bind(this), false);
+        this.querySelectorAll("#ms_onedrive_picker")[0]
+            .addEventListener('click', this.pickMSOneDrive.bind(this), false);
 
-        if (uploader.picker.classList.contains("open")) {
-            if (!uploader.picker.listenersOn) {
-                uploader.picker.listenersOn = true;
-
-                uploader.querySelectorAll("#computer_picker")[0]
-                    .addEventListener('click', uploader.pickMyComputer);
-
-                uploader.querySelectorAll("#dropbox_picker")[0]
-                    .addEventListener('click', uploader.pickDropbox);
-
-                uploader.querySelectorAll("#google_drive_picker")[0]
-                    .addEventListener('click', uploader.pickGoogleDrive);
-
-                uploader.querySelectorAll("#ms_onedrive_picker")[0]
-                    .addEventListener('click', uploader.pickMSOneDrive);
-            }
-        }
+        this.uploadBtn.addEventListener('click', this.toggleOpen.bind(this), false);
+        this.fileInput.addEventListener('change', this.uploadFile.bind(this, 'testAlbum'), false);
     }
 
     uploadFile(albumName) {
-        var files = document.getElementById('file_test').files;
+        var files = this.fileInput.files;
         
         if (!files.length) {
             return alert('Please choose a file to upload first.');
         }
-        
-        var file = files[0];
-        var fileName = file.name;
-        var albumPhotosKey = encodeURIComponent(albumName) + '/';
 
-        var photoKey = albumPhotosKey + fileName;
-        
-        s3.upload({
-            Key: photoKey,
-            Body: file,
-            ACL: 'public-read'
-        }, function(err, data) {
-            if (err) {
-                return alert('There was an error uploading your photo: ', err.message);
-            }
-            alert('Successfully uploaded photo.');
-            console.log(data);
-        });
+        for (var i=0; i<files.length; i++) {
+            var file = files[i];
+            var fileName = file.name;
+            var albumPhotosKey = encodeURIComponent(albumName) + '/';
+            var timeStamp = new Date().getTime().toString();
+
+            var photoKey = albumPhotosKey + timeStamp + "-" + fileName;
+            
+            this.s3.upload({
+                Key: photoKey,
+                Body: file,
+                ContentType: file.type,
+                ACL: 'public-read',
+                Metadata: { 
+                    school: 'school',
+                    timeStamp: timeStamp
+                }
+            }, function(err, data) {
+                if (err) {
+                    return console.log('There was an error uploading your file: ', err.message);
+                }
+                console.log('Successfully uploaded file: ', data);
+            });
+        }
+        this.fileInput.value = null;
+    }
+
+    toggleOpen() {
+        this.picker.classList.toggle("open");
     }
 
     pickMyComputer() {
-        console.log("pick - My Computer");
-
-        // OPEN my computer file picker and choose file
-
-        // File chosen gets sent to AWS SDK to upload to S3
+        this.fileInput.click();
     }
 
     pickDropbox() {

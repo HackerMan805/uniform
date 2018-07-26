@@ -1493,8 +1493,7 @@
                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#file-o"></use>
                                 </svg>
                                 <span class="file-upload-button">Upload</span> or drop your file(s) here
-                                <input type="file" id="file_test">
-                                <div style="background: red;" onclick="this.closest('uniform-uploader').uploadFile('testAlbum')">upload!</div>
+                                <input type="file" class="uploader-file-input" style="display: none;" multiple>
                                 <div class="picker-container">
                                     <div id="computer_picker" class="picker">
                                         <svg viewBox="0 0 2048 2048">
@@ -1524,17 +1523,6 @@
                             </div>                            
                         </div>
                     </uniform-uploader>
-                    <script>
-                        (function() {
-                            var a = document.getElementsByClassName('file-upload-button');
-                            for (var i=0; i<a.length; i++) {
-                                a[i].addEventListener('click', function(e) {
-                                    if (e.target !== this) { return; }
-                                    this.closest("uniform-uploader").toggleOpen();
-                                });
-                            }
-                        })();
-                    </script>
                 </section>
 
             </div> <!-- close .content -->
