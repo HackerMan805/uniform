@@ -9,7 +9,18 @@ module.exports = {
     devtool: 'source-map',
     module: {
         rules: [
-            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
+            { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+            {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            includePaths: ['./src/sass']
+                        }
+                    }
+                ]
+            }
         ]
     }
 };

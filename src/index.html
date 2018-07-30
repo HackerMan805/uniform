@@ -1525,8 +1525,20 @@
                         </div>
                     </uniform-uploader>
                     -->
-                    <uniform-uploader id="uploader">
+                    <uniform-uploader id="file_uploader">
                     </uniform-uploader>
+                    <div id="file_uploader_list">
+                    </div>
+
+                    <script>
+                         const uploaderDOM = document.querySelector('#file_uploader');
+                         const uploaderListDOM = document.querySelector('#file_uploader_list');
+                         uploaderDOM.addEventListener('uploaded', (e) => {
+                             console.log(e, e.detail);
+                             // add this to a variable
+                             uploaderListDOM.innerHTML = `<img src="${e.detail.Location}" />`;
+                         });
+                    </script>
 
                     <template id="file">
                         <div class="file">
