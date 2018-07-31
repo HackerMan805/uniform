@@ -1,6 +1,5 @@
 const AWS = require('aws-sdk');
 const isIE = /*@cc_on!@*/false || !!document.documentMode;
-const compiledStyle = '' + require('../../sass/components/file-uploader.scss');
 
 /**
  * Hosted file is a strong type file sending to server for downloading file from 3rd party picker
@@ -694,7 +693,7 @@ export default class UploaderComponent extends window.HTMLElement {
         this._shadowRoot = this.attachShadow({mode: 'open'});
         this._shadowRoot.innerHTML = `
 <style>
-${compiledStyle}
+${require('../../sass/components/file-uploader.scss').toString()}
 </style>
 <div class="errors"></div>
             <div class="dropzone">

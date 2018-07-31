@@ -13,8 +13,9 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [
+                    { loader: 'css-loader' },
                     {
-                        loader: "sass-loader",
+                        loader: 'sass-loader',
                         options: {
                             includePaths: ['./src/sass']
                         }
