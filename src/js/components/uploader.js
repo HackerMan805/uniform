@@ -1,6 +1,6 @@
 const AWS = require('aws-sdk');
 const isIE = /*@cc_on!@*/false || !!document.documentMode;
-const compiledStyle = '' + require('../../sass/components/file-uploader.scss');
+//const compiledStyle = require('../../sass/components/file-uploader.scss');
 
 /**
  * Hosted file is a strong type file sending to server for downloading file from 3rd party picker
@@ -388,20 +388,41 @@ export default class UploaderComponent extends window.HTMLElement {
         this.fileItem.multiple = (this.maxItems === 0 || this.maxItems > 0);
     }
 
-    upload(files) {
+    uploadAll (files) {
+        const uploadStartEvent = new CustomEvent('upload-start', {
+            'detail': data
+        });
+        this.dispatchEvent(uploadStartEvent);
+        console.log("beginning bulk upload");
+
         if (!files.length) {
             return alert('Please choose a file to upload first.');
         }
+        files = Array.from(files);
+        let promiseFiles = files.map(file => 
+            this.uploadFile(file)
+        );
 
-        for (let i=0; i<files.length; i++) {
-            const file = files[i];
+        Promise.all(promiseFiles).then(values => {
+            console.log("files uploaded!");
+            const uploadFinishEvent = new CustomEvent('upload-finish', {
+                'detail': data
+            });
+            this.dispatchEvent(uploadFinishEvent);
+            this.fileItem.value = null;
+        });
+    }
+
+    uploadFile (file) {
+        return new Promise((resolve, reject) => {
             const fileName = file.name;
             // TODO: change key
             const albumPhotosKey = encodeURIComponent('testAlbum') + '/';
             const timeStamp = new Date().getTime().toString();
 
             const photoKey = albumPhotosKey + timeStamp + "-" + fileName;
-
+        
+            console.log("uploading file");
             this.s3.upload({
                 Key: photoKey,
                 Body: file,
@@ -413,17 +434,14 @@ export default class UploaderComponent extends window.HTMLElement {
                 }
             }, (err, data) => {
                 if (err) {
-                    return console.log('There was an error uploading your file: ', err.message);
+                    console.log('There was an error uploading your file: ', err.message)
+                    return reject(err);
                 }
-                // TODO: might need to change data format
-                var uploadedEvent = new CustomEvent('uploaded', {
-                    'detail': data
-                });
-                this.dispatchEvent(uploadedEvent);
-                console.log('Successfully uploaded file: ', data);
+                resolve(data);
+                console.log("uploaded", data);
             });
-        }
-        this.fileItem.value = null;
+        });  
+
     }
 
     connectedCallback () {
@@ -694,7 +712,272 @@ export default class UploaderComponent extends window.HTMLElement {
         this._shadowRoot = this.attachShadow({mode: 'open'});
         this._shadowRoot.innerHTML = `
 <style>
-${compiledStyle}
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+:host {
+  font-size: 16px;
+  color: #888;
+  /* for Blazer global style overwrite woot woot */ }
+  :host .dropzone,
+  :host .loadingzone {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    -webkit-align-content: center;
+    align-content: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    height: 10em;
+    border: 2px dashed #ccc;
+    border-radius: 0.24063em;
+    margin-bottom: 1em;
+    text-align: center; }
+  :host .dropzone {
+    padding: 0 1em; }
+  :host .dropzone.dragover {
+    background-color: #e4f4fc;
+    border-color: #2ca9e1; }
+    :host .dropzone.dragover span,
+    :host .dropzone.dragover .type.file-icon {
+      display: none; }
+  :host .dropzone span,
+  :host .dropzone svg,
+  :host .loadingzone .progress,
+  :host .loadingzone .cancel {
+    -ms-flex-item-align: center;
+    -webkit-align-self: center;
+    align-self: center; }
+  :host .dropzone span {
+    font-weight: bold; }
+  :host .dropzone header a {
+    color: #29abe2;
+    text-decoration: none; }
+  :host .dropzone svg.type.file-icon {
+    -webkit-flex: 1 1 100%;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+    height: 3em !important;
+    fill: #ccc !important;
+    margin-bottom: 1em; }
+  :host .dropzone .dropdown {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 0; }
+  :host .dropzone .dropdown .file-icon {
+    vertical-align: middle;
+    width: 1.382em;
+    height: 1.382em;
+    margin-right: 1em; }
+  :host .dropzone .dropdown .menu {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-weight: normal;
+    position: absolute;
+    top: 0;
+    display: none;
+    opacity: 0;
+    transition: all 0.3s;
+    min-width: 15em;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px; }
+    :host .dropzone .dropdown .menu.open {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      top: 2em;
+      visibility: visible;
+      opacity: 1;
+      height: auto;
+      z-index: 101; }
+      :host .dropzone .dropdown .menu.open a {
+        -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        line-height: 3em;
+        padding: 0 1.382em 0 1em;
+        color: #888888;
+        text-decoration: none; }
+  :host .dropzone .dropdown .menu a:hover {
+    background-color: #eee;
+    text-decoration: none; }
+  :host .dropzone .dropdown a:not(:last-child) {
+    border-bottom: 1px solid #ccc; }
+  :host .loadingzone {
+    padding: 1em; }
+    :host .loadingzone .progress {
+      -webkit-flex: 1 1 0%;
+      -ms-flex: 1 1 0%;
+      flex: 1 1 0%;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      height: 40px;
+      margin: 1em;
+      background-color: #f4f4f4;
+      color: #2ca9e1;
+      border-radius: 2px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; }
+    :host .loadingzone .progress .progress-bar {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: end;
+      -webkit-justify-content: flex-end;
+      justify-content: flex-end;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      transition: width 0.3s ease-in-out;
+      background-color: #3BA16A;
+      height: 100%;
+      color: #fff;
+      padding-right: 1em; }
+      :host .loadingzone .progress .progress-bar.indeterminate {
+        position: relative;
+        overflow: hidden; }
+      :host .loadingzone .progress .progress-bar.indeterminate:before {
+        display: block;
+        position: absolute;
+        content: "";
+        top: 0;
+        left: -200px;
+        width: 30%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        -webkit-animation: loading 2s linear infinite;
+        animation: loading 2s linear infinite; }
+
+@-webkit-keyframes loading {
+  from {
+    left: -200px;
+    width: 30%; }
+  50% {
+    width: 30%; }
+  70% {
+    width: 70%; }
+  80% {
+    left: 50%; }
+  95% {
+    left: 120%; }
+  to {
+    left: 100%; } }
+
+@keyframes loading {
+  from {
+    left: -200px;
+    width: 30%; }
+  50% {
+    width: 30%; }
+  70% {
+    width: 70%; }
+  80% {
+    left: 50%; }
+  95% {
+    left: 120%; }
+  to {
+    left: 100%; } }
+    :host .loadingzone .cancel {
+      color: #e07c3a;
+      cursor: pointer; }
+      :host .loadingzone .cancel:hover {
+        text-decoration: none; }
+      :host .loadingzone .cancel:active {
+        color: #ff6500; }
+    :host .loadingzone .status {
+      -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+      flex: 1 1 100%;
+      text-align: center; }
+  :host .files {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+    margin-top: .382em; }
+    :host .files .file {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      width: 12em;
+      height: 6.667em;
+      padding: .3em;
+      border: 1px solid #cccccc;
+      margin: .382em; }
+    :host .files .file .icons {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -ms-flex-pack: justify;
+      -webkit-justify-content: space-between;
+      justify-content: space-between;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center; }
+      :host .files .file .icons a {
+        padding: .2em;
+        box-shadow: 0 0px 1px rgba(0, 0, 0, 0.6);
+        border-radius: 2px; }
+        :host .files .file .icons a:hover {
+          pointer-events: all;
+          cursor: pointer; }
+          :host .files .file .icons a:hover .icon {
+            fill: #29abe2; }
+    :host .files .file .name {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #888888;
+      text-align: center;
+      margin-top: .618em; }
+  :host .row,
+  :host .dropzone .menu a {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+  :host .hidden {
+    display: none; }
+  :host .errors {
+    color: #e07c3a;
+    font-weight: bold; }
+    :host .errors div {
+      margin-bottom: 0.3em; }
+    :host .errors .hint {
+      color: #888;
+      font-weight: normal; }
+  :host section {
+    margin-bottom: 0 !important;
+    vertical-align: middle !important; }
+  :host .mobile-only {
+    display: none; }
+  @media screen and (max-width: 31.9375rem) {
+    :host .dropzone {
+      height: 5em; }
+    :host .dropzone svg.type.file-icon {
+      display: none; }
+    :host .dropzone .mobile-only {
+      display: block; }
+    :host .dropzone .desktop-only {
+      display: none; } }
+
 </style>
 <div class="errors"></div>
             <div class="dropzone">
@@ -777,7 +1060,7 @@ ${compiledStyle}
         this.nativeFilePicker = this._shadowRoot.querySelector('.native-file-picker');
         this.fileItem.onchange = (evt) => {
             const files = evt.target.files;
-            this.upload(files);
+            this.uploadAll(files);
         }
         // this._closeDropdownRef = this.closeDropdownmenu.bind(this);
         document.body.addEventListener('click', this._closeDropdownRef);
@@ -833,7 +1116,7 @@ ${compiledStyle}
             evt.preventDefault();
             this.dropzone.classList.remove('dragover');
             var files = evt.dataTransfer.files; // FileList object.
-            this.upload(files);
+            this.uploadAll(files);
         });
         this.cancel.addEventListener('click', (evt) => {
             evt.stopPropagation();
