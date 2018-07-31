@@ -1979,6 +1979,37 @@
   .edlio.cms .kitchen-sink .icons ul svg {
     margin-right: .382em; }
 
+@media screen and (min-width: 32rem) {
+  .edlio.cms .kitchen-sink .colors .columns {
+    -webkit-columns: 2 auto;
+    -moz-columns: 2 auto;
+    columns: 2 auto; } }
+
+@media screen and (min-width: 48rem) {
+  .edlio.cms .kitchen-sink .colors .columns {
+    -webkit-columns: 3 auto;
+    -moz-columns: 3 auto;
+    columns: 3 auto; } }
+
+@media screen and (min-width: 64rem) {
+  .edlio.cms .kitchen-sink .colors .columns {
+    -webkit-columns: 4 auto;
+    -moz-columns: 4 auto;
+    columns: 4 auto; } }
+
+.edlio.cms .kitchen-sink .colors .item {
+  margin-bottom: 20px;
+  max-width: 250px; }
+
+.edlio.cms .kitchen-sink .colors .color-block {
+  height: 3.125rem;
+  box-shadow: #ededed 0 0 0 1px inset; }
+
+.edlio.cms .kitchen-sink .colors .color-hex {
+  color: #888888;
+  font-size: 14px;
+  float: right; }
+
 @media screen and (max-width: 47.9375rem) {
   .edlio.cms .kitchen-sink .lists section h1 {
     font-size: 1.125rem;
