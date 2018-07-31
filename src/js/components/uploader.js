@@ -1,9 +1,5 @@
 const AWS = require('aws-sdk');
 const isIE = /*@cc_on!@*/false || !!document.documentMode;
-<<<<<<< HEAD
-//const compiledStyle = require('../../sass/components/file-uploader.scss');
-=======
->>>>>>> 2f9630976974d226b685a00a3bd74203de6d11e6
 
 /**
  * Hosted file is a strong type file sending to server for downloading file from 3rd party picker
@@ -393,7 +389,7 @@ export default class UploaderComponent extends window.HTMLElement {
 
     uploadAll (files) {
         const uploadStartEvent = new CustomEvent('upload-start', {
-            'detail': data
+            //'detail': data
         });
         this.dispatchEvent(uploadStartEvent);
         console.log("beginning bulk upload");
@@ -409,7 +405,7 @@ export default class UploaderComponent extends window.HTMLElement {
         Promise.all(promiseFiles).then(values => {
             console.log("files uploaded!");
             const uploadFinishEvent = new CustomEvent('upload-finish', {
-                'detail': data
+                //'detail': data
             });
             this.dispatchEvent(uploadFinishEvent);
             this.fileItem.value = null;
