@@ -425,10 +425,13 @@ export default class UploaderComponent extends window.HTMLElement {
         );
 
         Promise.all(promiseFiles).then(values => {
+            console.log(values);
             const uploadFinishEvent = new CustomEvent('upload-finish', {
                 detail: values
             });
             this.dispatchEvent(uploadFinishEvent);
+        }).catch( e => {
+            console.log(e);
         });
     }
 
@@ -454,10 +457,9 @@ export default class UploaderComponent extends window.HTMLElement {
             }, (err, data) => {
                 if (err) {
                     console.log('There was an error uploading your file: ', err.message)
-                    return reject(err);
+                    reject(err);
                 }
                 resolve(data);
-                console.log("uploaded", data);
             })
             .on('httpUploadProgress', (evt) => {
                 this.updateProgress(uploadObj, evt);
@@ -838,6 +840,7 @@ ${require('../../sass/components/file-uploader.scss').toString()}
         });
 
         this.addEventListener('upload-finish', (e) => {
+            console.log("Upload Finished!");
             this.fileItem.value = null;
             this.totalFiles = 0;
             this.uploadProgress = 0;
