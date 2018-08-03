@@ -387,28 +387,42 @@ export default class UploaderComponent extends window.HTMLElement {
         this.fileItem.multiple = (this.maxItems === 0 || this.maxItems > 0);
     }
 
-    uploadAll (files) {
-        const uploadStartEvent = new CustomEvent('upload-start', {
-            //'detail': data
-        });
-        this.dispatchEvent(uploadStartEvent);
-        console.log("beginning bulk upload");
+    updateProgress (uploadEvt) {
+        const updateKey = uploadEvt.key;
+        let sumProgress = 0;
+        this.uploadKeys[updateKey] = parseInt((uploadEvt.loaded * 100) / uploadEvt.total);
 
+        for (let key in this.uploadKeys) {
+            sumProgress += this.uploadKeys[key];
+        }
+        const avgProgress = sumProgress / Object.keys(this.uploadKeys).length;
+        
+        const uploadProgressEvent = new CustomEvent('upload-progress', {
+            'detail': avgProgress
+        });
+        this.dispatchEvent(uploadProgressEvent);
+        
+        return avgProgress;
+    }
+
+    uploadAll (files) {
         if (!files.length) {
             return alert('Please choose a file to upload first.');
         }
+        const uploadStartEvent = new CustomEvent('upload-start', {});
+        this.dispatchEvent(uploadStartEvent);
+        this.totalFiles = files.length;
+
         files = Array.from(files);
         let promiseFiles = files.map(file => 
             this.uploadFile(file)
         );
 
         Promise.all(promiseFiles).then(values => {
-            console.log("files uploaded!");
             const uploadFinishEvent = new CustomEvent('upload-finish', {
-                //'detail': data
+                detail: values
             });
             this.dispatchEvent(uploadFinishEvent);
-            this.fileItem.value = null;
         });
     }
 
@@ -438,6 +452,9 @@ export default class UploaderComponent extends window.HTMLElement {
                 }
                 resolve(data);
                 console.log("uploaded", data);
+            })
+            .on('httpUploadProgress', (evt) => {
+                this.updateProgress(evt);
             });
         });  
 
@@ -796,6 +813,43 @@ ${require('../../sass/components/file-uploader.scss').toString()}
             const files = evt.target.files;
             this.uploadAll(files);
         }
+
+        this.addEventListener('upload-start', (e) => {
+            this.progressBar.value = 0;
+            this.dropzone.classList.add('hidden');
+            this.loadingzone.classList.remove('hidden');
+        });
+
+        this.addEventListener('upload-progress', (e) => {
+            const percentage = e.detail;
+            this.progressBar.style.width = percentage + '%';
+            this.progressBar.textContent = percentage + '%';
+            if (percentage === 100) { // for firefox
+                this.progressBar.textContent = '';
+                this.cancel.classList.add('hidden');
+                this.progressBar.classList.add('indeterminate');
+            }
+        });
+
+        this.addEventListener('upload-finish', (e) => {
+            this.fileItem.value = null;
+            this.totalFiles = 0;
+            this.uploadProgress = 0;
+            this.uploadKeys = {};
+
+            this.progressBar.style.width = 100 + '%';
+            this.progressBar.textContent = '';
+            this.cancel.classList.add('hidden');
+            this.progressBar.classList.add('indeterminate');
+            this.dropzone.classList.remove('hidden');
+            this.loadingzone.classList.add('hidden');
+
+            console.log(e.values);
+            this.progressBar.style.width = 0 + '%';
+            this.cancel.classList.remove('hidden');
+            this.progressBar.classList.remove('indeterminate');
+        });
+
         // this._closeDropdownRef = this.closeDropdownmenu.bind(this);
         document.body.addEventListener('click', this._closeDropdownRef);
         this.dropdown.addEventListener('click', (evt) => {
@@ -887,5 +941,10 @@ ${require('../../sass/components/file-uploader.scss').toString()}
         this.setMaxSize();
         this.setAccept();
         this.setMaxItems();
+
+        //track upload progress
+        this.totalFiles = 0;
+        this.uploadProgress = 0;
+        this.uploadKeys = {};
     }
 }
