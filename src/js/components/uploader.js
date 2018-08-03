@@ -258,14 +258,16 @@ export default class UploaderComponent extends window.HTMLElement {
     }
 
     abort () {
-        if (this.request) {
-            this.request.abort();
-            this.dropzone.classList.remove('hidden');
-            this.loadingzone.classList.add('hidden');
-            this.progressBar.style.width = 0 + '%';
-            this.cancel.classList.remove('hidden');
-            this.progressBar.classList.remove('indeterminate');
-        }
+        for (let key in this.currUploads) {
+            this.currUploads[key][0].abort();
+        }    
+        this.currUploads = {};
+        this.fileItem.value = null;
+        this.dropzone.classList.remove('hidden');
+        this.loadingzone.classList.add('hidden');
+        this.progressBar.style.width = 0 + '%';
+        this.cancel.classList.remove('hidden');
+        this.progressBar.classList.remove('indeterminate');
     }
 
     setUploadStatus (files) {
@@ -387,15 +389,19 @@ export default class UploaderComponent extends window.HTMLElement {
         this.fileItem.multiple = (this.maxItems === 0 || this.maxItems > 0);
     }
 
-    updateProgress (uploadEvt) {
+    updateProgress (uploadObj, uploadEvt) {
         const updateKey = uploadEvt.key;
         let sumProgress = 0;
-        this.uploadKeys[updateKey] = parseInt((uploadEvt.loaded * 100) / uploadEvt.total);
+        let partialProgress = 0;
 
-        for (let key in this.uploadKeys) {
-            sumProgress += this.uploadKeys[key];
+        // this.currUploads[updateKey] = parseInt((uploadEvt.loaded * 100) / uploadEvt.total);
+        this.currUploads[updateKey] = [uploadObj, uploadEvt];
+
+        for (let key in this.currUploads) {
+            partialProgress = parseInt((this.currUploads[key][1].loaded * 100) / this.currUploads[key][1].total);
+            sumProgress += partialProgress;
         }
-        const avgProgress = sumProgress / Object.keys(this.uploadKeys).length;
+        const avgProgress = sumProgress / Object.keys(this.currUploads).length;
         
         const uploadProgressEvent = new CustomEvent('upload-progress', {
             'detail': avgProgress
@@ -436,7 +442,7 @@ export default class UploaderComponent extends window.HTMLElement {
             const photoKey = albumPhotosKey + timeStamp + "-" + fileName;
         
             console.log("uploading file");
-            this.s3.upload({
+            const uploadObj = this.s3.putObject({
                 Key: photoKey,
                 Body: file,
                 ContentType: file.type,
@@ -454,7 +460,7 @@ export default class UploaderComponent extends window.HTMLElement {
                 console.log("uploaded", data);
             })
             .on('httpUploadProgress', (evt) => {
-                this.updateProgress(evt);
+                this.updateProgress(uploadObj, evt);
             });
         });  
 
@@ -835,7 +841,7 @@ ${require('../../sass/components/file-uploader.scss').toString()}
             this.fileItem.value = null;
             this.totalFiles = 0;
             this.uploadProgress = 0;
-            this.uploadKeys = {};
+            this.currUploads = {};
 
             this.progressBar.style.width = 100 + '%';
             this.progressBar.textContent = '';
@@ -844,7 +850,6 @@ ${require('../../sass/components/file-uploader.scss').toString()}
             this.dropzone.classList.remove('hidden');
             this.loadingzone.classList.add('hidden');
 
-            console.log(e.values);
             this.progressBar.style.width = 0 + '%';
             this.cancel.classList.remove('hidden');
             this.progressBar.classList.remove('indeterminate');
@@ -945,6 +950,6 @@ ${require('../../sass/components/file-uploader.scss').toString()}
         //track upload progress
         this.totalFiles = 0;
         this.uploadProgress = 0;
-        this.uploadKeys = {};
+        this.currUploads = {};
     }
 }
