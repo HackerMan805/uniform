@@ -390,11 +390,10 @@ export default class UploaderComponent extends window.HTMLElement {
     }
 
     updateProgress (uploadObj, uploadEvt) {
-        const updateKey = uploadEvt.key;
+        const updateKey = uploadObj.params.Key;
         let sumProgress = 0;
         let partialProgress = 0;
 
-        // this.currUploads[updateKey] = parseInt((uploadEvt.loaded * 100) / uploadEvt.total);
         this.currUploads[updateKey] = [uploadObj, uploadEvt];
 
         for (let key in this.currUploads) {
@@ -402,36 +401,59 @@ export default class UploaderComponent extends window.HTMLElement {
             sumProgress += partialProgress;
         }
         const avgProgress = sumProgress / Object.keys(this.currUploads).length;
-        
         const uploadProgressEvent = new CustomEvent('upload-progress', {
             'detail': avgProgress
         });
-        this.dispatchEvent(uploadProgressEvent);
-        
-        return avgProgress;
+        this.dispatchEvent(uploadProgressEvent);      
     }
 
     uploadAll (files) {
         if (!files.length) {
             return alert('Please choose a file to upload first.');
         }
+        let validFiles = [];
+        for (let i = 0; i < files.length; i ++) {
+            // Check if filetype is accepted
+            const file = files[i];
+            const mimeType = ((file.type !== '') ? file.type.match(/^[^\/]*\//)[0] : null);
+            const fileType = file.name.match(/\.[^\.]*$/)[0];
+            const fileSize = file.size;
+            if (this.accept !== '' && !(this.accept.indexOf(mimeType) > -1 || this.accept.indexOf(fileType) > -1)) {
+                this.errors.push({
+                    filename: file.name,
+                    type: 'extensions'
+                });
+                continue;
+            }
+            if (this.fileSize > 0 && fileSize >= this.maxSize) {
+                this.errors.push({
+                    filename: file.name,
+                    type: 'size',
+                    size: file.size
+                });
+                continue;
+            }
+            validFiles.push(file);
+        }
+        this.setErrors();
+        if (!validFiles.length) {
+            return;
+        }
+
         const uploadStartEvent = new CustomEvent('upload-start', {});
         this.dispatchEvent(uploadStartEvent);
-        this.totalFiles = files.length;
 
-        files = Array.from(files);
-        let promiseFiles = files.map(file => 
+        let promiseFiles = validFiles.map(file => 
             this.uploadFile(file)
         );
-
         Promise.all(promiseFiles).then(values => {
-            console.log(values);
             const uploadFinishEvent = new CustomEvent('upload-finish', {
-                detail: values
+                "detail": values
             });
             this.dispatchEvent(uploadFinishEvent);
         }).catch( e => {
             console.log(e);
+            this.setErrors();
         });
     }
 
@@ -441,10 +463,8 @@ export default class UploaderComponent extends window.HTMLElement {
             // TODO: change key
             const albumPhotosKey = encodeURIComponent('testAlbum') + '/';
             const timeStamp = new Date().getTime().toString();
-
             const photoKey = albumPhotosKey + timeStamp + "-" + fileName;
-        
-            console.log("uploading file");
+
             const uploadObj = this.s3.putObject({
                 Key: photoKey,
                 Body: file,
@@ -459,13 +479,12 @@ export default class UploaderComponent extends window.HTMLElement {
                     console.log('There was an error uploading your file: ', err.message)
                     reject(err);
                 }
-                resolve(data);
+                resolve(fileName);
             })
             .on('httpUploadProgress', (evt) => {
                 this.updateProgress(uploadObj, evt);
             });
         });  
-
     }
 
     connectedCallback () {
@@ -840,9 +859,8 @@ ${require('../../sass/components/file-uploader.scss').toString()}
         });
 
         this.addEventListener('upload-finish', (e) => {
-            console.log("Upload Finished!");
+            console.log("Upload Finished!", e.detail);
             this.fileItem.value = null;
-            this.totalFiles = 0;
             this.uploadProgress = 0;
             this.currUploads = {};
 
@@ -951,7 +969,6 @@ ${require('../../sass/components/file-uploader.scss').toString()}
         this.setMaxItems();
 
         //track upload progress
-        this.totalFiles = 0;
         this.uploadProgress = 0;
         this.currUploads = {};
     }
