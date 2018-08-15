@@ -7,7 +7,10 @@ import ExampleComponent from './components/example';
 import ModalComponent from './components/modal';
 import NotificationComponent from './components/notification';
 import SelectComponent from './components/select';
+// TODO: Replace with more sustainable solution
+import './libraries/dropbox';
 import UploaderComponent from './components/uploader';
+
 
 main();
 
