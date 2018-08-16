@@ -152,117 +152,6 @@ export default class UploaderComponent extends window.HTMLElement {
         }));
     }
 
-    /*
-    uploadToServer (files) {
-        if (!files.length) {
-            return;
-        }
-        this.errors = [];
-        if (this.maxItems !== 0 && files.length > this.maxItems) {
-            this.errors.push({
-                type: 'multiple'
-            });
-            this.setErrors();
-            return;
-        }
-        // reset errors
-        const formData = new FormData();
-        const validFiles = [];
-        for (let i = 0; i < files.length; i ++) {
-            // Check if filetype is accepted
-            // TODO: might need to refactor into multiple XMLHttpRequest
-            //       to track multiple progress bar
-            const file = files[i];
-            const mimeType = ((file.type !== '') ? file.type.match(/^[^\/]*\//)[0] : null);
-            const fileType = file.name.match(/\.[^\.]*$/)[0];
-            const fileSize = file.size;
-            if (this.accept !== '' && !(this.accept.indexOf(mimeType) > -1 || this.accept.indexOf(fileType) > -1)) {
-                this.errors.push({
-                    filename: file.name,
-                    type: 'extensions'
-                });
-                continue;
-            }
-            if (this.fileSize > 0 && fileSize >= this.maxSize) {
-                this.errors.push({
-                    filename: file.name,
-                    type: 'size',
-                    size: file.size
-                });
-                continue;
-            }
-            validFiles.push(file);
-        }
-        this.setUploadingStatus(files);
-        this.setErrors();
-        if (!validFiles.length) {
-            return;
-        }
-        for (var i = 0; i < validFiles.length; i ++) {
-            formData.append('files', validFiles[i], validFiles[i].name);
-        }
-        this.request = new XMLHttpRequest();
-        this.request.upload.onprogress = (e) => {
-            if (e.lengthComputable) {
-                this.progressBar.max = e.total;
-                this.progressBar.value = e.loaded;
-                var percentage = parseInt((e.loaded / e.total) * 100);
-                this.progressBar.style.width = percentage + '%';
-                this.progressBar.textContent = percentage + '%';
-                if (percentage === 100) { // for firefox
-                    this.progressBar.textContent = '';
-                    this.cancel.classList.add('hidden');
-                    this.progressBar.classList.add('indeterminate');
-                }
-            }
-        };
-        this.request.upload.onloadstart = (e) => {
-            this.progressBar.value = 0;
-            this.dropzone.classList.add('hidden');
-            this.loadingzone.classList.remove('hidden');
-        };
-        this.request.upload.onloadend = (e) => {
-            this.progressBar.style.width = 100 + '%';
-            this.progressBar.textContent = '';
-            this.cancel.classList.add('hidden');
-            this.progressBar.classList.add('indeterminate');
-        };
-        this.request.open(this.method, this.url, true);
-        this.request.onreadystatechange = () => {
-            this.dropzone.classList.remove('hidden');
-            this.loadingzone.classList.add('hidden');
-            if (this.request.readyState == XMLHttpRequest.DONE) {
-                if (this.request.status >= 200 && this.request.status < 300) {
-                    var responseData = JSON.parse(this.request.response);
-                    this.files = this.files.concat(responseData);
-                    var uploadedEvent = new CustomEvent('uploaded', {
-                        'detail': responseData
-                    });
-                    this.dispatchEvent(uploadedEvent);
-                } else if (this.request.status > 0) {
-                    // if aborted, status will be zero which is not
-                    // an error
-                    var errorEvent = new CustomEvent('error', {
-                        'detail': this.request
-                    });
-                    this.dispatchEvent(errorEvent);
-                    var error = {type: 'unknown'};
-                    if (files.length === 1) {
-                        error.filename = files[0].name;
-                    }
-                    this.errors.push(error);
-                    this.setErrors();
-                }
-                this.progressBar.style.width = 0 + '%';
-                this.cancel.classList.remove('hidden');
-                this.progressBar.classList.remove('indeterminate');
-                this.request = null; // reset the request
-            }
-        };
-        this.request.send(formData);
-    }
-    */
-
     abort () {
         for (let key in this.currUploads) {
             this.currUploads[key][0].abort();
@@ -276,7 +165,7 @@ export default class UploaderComponent extends window.HTMLElement {
         this.progressBar.classList.remove('indeterminate');
     }
 
-    setUploadStatus (files) {
+    setUploadingStatus (files) {
         if (files.length === 1) {
             this._shadowRoot.querySelector('.loadingzone .status .summary')
                 .textContent = '\'' + files[0].name + '\'';
@@ -497,7 +386,7 @@ export default class UploaderComponent extends window.HTMLElement {
         this.dropboxService = new HostedFileService();
         this.dropboxService.name = 'dropbox';
         //TODO: fetch Dropbox appKey from properties instead
-        Dropbox.appKey = 'hqsb4kb9ie9tz8q';
+        Dropbox.appKey = '97sppcccs2i1pwh';
         this.dropboxService.openPicker = function() {
             Dropbox.choose({
                 success: (files) => {

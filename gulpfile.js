@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const connect = require('gulp-connect');
 const open = require('open');
 const sass = require('gulp-sass');
 const webpack = require('webpack-stream');
@@ -125,7 +126,11 @@ gulp.task('html', (done) => {
 });
 
 gulp.task('start', (done) => {
-    open('./docs/index.html');
+    connect.server({
+        root: process.env.PWD + "/docs/",
+        port: 33546
+    });
+    open("http://localhost:33546");
     done();
 });
 gulp.task('build', gulp.parallel('sass', 'demo:sass', 'html', 'js', 'demo:js'));
