@@ -128,7 +128,7 @@ export default class UploaderComponent extends window.HTMLElement {
         this.maxSize = 0; // default to 5MB | 0 indicated no limit
         this.errors = [];
         this._files = [];
-        this.maxItems = 1; // 0 for unlimitted
+        this.maxItems = 0; // 0 for unlimitted
 
         AWS.config.update({
             region: this.bucketRegion,
@@ -338,6 +338,7 @@ export default class UploaderComponent extends window.HTMLElement {
         const uploadStartEvent = new CustomEvent('upload-start', {});
         this.dispatchEvent(uploadStartEvent);
 
+
         let promiseFiles = validFiles.map(file => 
             this.uploadFile(file)
         );
@@ -387,7 +388,7 @@ export default class UploaderComponent extends window.HTMLElement {
         this.dropboxService.name = 'dropbox';
         //TODO: fetch Dropbox appKey from properties instead
         Dropbox.appKey = '97sppcccs2i1pwh';
-        this.dropboxService.openPicker = function() {
+        this.dropboxService.openPicker = () => {
             Dropbox.choose({
                 success: (files) => {
                     // since Dropbox api doesn't allow us to specify
@@ -402,68 +403,27 @@ export default class UploaderComponent extends window.HTMLElement {
                         this.setErrors();
                         return;
                     }
-                    this.setUploadingStatus(files);
-                    this.request = this.dropboxService.callback(files, this.fetchUrl, function(err, type, data) {
-                        this.errors = [];
+                    console.log(files);
+                    //this.setUploadingStatus(files);
+
+                    let fetchPromises = files.map(file =>
+                        fetch(file.link)
+                        .then(res => res.blob())
+                        .then(blob => {
+                            blob.name = file.name;
+                            return blob;
+                        })
+                    );
+                    Promise.all(fetchPromises).then(values => {
+                        console.log(values);
+                        this.uploadAll(values);
+                    }).catch( e => {
+                        console.log(e);
                         this.setErrors();
-                        if (err) {
-                            this.dropzone.classList.remove('hidden');
-                            this.loadingzone.classList.add('hidden');
-                            var errorEvent = new CustomEvent('error', {
-                                'detail': err
-                            });
-                            this.dispatchEvent(errorEvent);
-                            this.errors.push({type: 'unknown'});
-                            this.setErrors();
-                            this.request = null;
-                            this.progressBar.style.width = 0 + '%';
-                            this.cancel.classList.remove('hidden');
-                            this.progressBar.classList.remove('indeterminate');
-                            return;
-                        }
-                        switch (type) {
-                            case 'done':
-                                this.dropzone.classList.remove('hidden');
-                                this.loadingzone.classList.add('hidden');
-                                this.files = this.files.concat(data);
-                                var uploadedEvent = new CustomEvent('uploaded', {
-                                    'detail': data
-                                });
-                                this.dispatchEvent(uploadedEvent);
-                                this.request = null;
-                                this.progressBar.style.width = 0 + '%';
-                                this.cancel.classList.remove('hidden');
-                                this.progressBar.classList.remove('indeterminate');
-                                break;
-                            case 'onprogess':
-                                if (data.lengthComputable) {
-                                    this.progressBar.max = data.total;
-                                    this.progressBar.value = data.loaded;
-                                    var percentage = parseInt((data.loaded / data.total) * 100);
-                                    this.progressBar.style.width = percentage + '%';
-                                    this.progressBar.textContent = percentage + '%';
-                                    if (percentage === 100) { // for firefox
-                                        this.progressBar.textContent = '';
-                                        this.cancel.classList.add('hidden');
-                                        this.progressBar.classList.add('indeterminate');
-                                    }
-                                }
-                                break;
-                            case 'onloadstart':
-                                this.progressBar.value = 0;
-                                this.dropzone.classList.add('hidden');
-                                this.loadingzone.classList.remove('hidden');
-                            case 'onloadend':
-                                this.progressBar.style.width = 100 + '%';
-                                this.progressBar.textContent = '';
-                                this.cancel.classList.add('hidden');
-                                this.progressBar.classList.add('indeterminate');
-                                break;
-                        }
                     });
                 },
                 linkType: 'direct',
-                multiselect: this.maxItems === 0 || this.maxItems > 1,
+                multiselect: true,//this.maxItems === 0 || this.maxItems > 1
                 extensions:
                     (this.imagesOnly) ?
                         ['images'] :
