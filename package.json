@@ -32,6 +32,7 @@
     "gulp": "^4.0.0",
     "gulp-cli": "^2.0.1",
     "gulp-compile-handlebars": "^0.6.1",
+    "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.5.0",
     "gulp-filelist": "^1.0.2",
     "gulp-inject": "^4.3.2",

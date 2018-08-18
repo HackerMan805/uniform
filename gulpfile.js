@@ -10,6 +10,7 @@ const path = require('path');
 const handlebars = require('gulp-compile-handlebars');
 const fs = require('fs');
 const split = require('split');
+const concat = require('gulp-concat');
 
 const app = {
     sassRoot: './src/sass/',
@@ -45,7 +46,6 @@ function compileHtml(iconSprite, colorList) {
         return file.contents.toString();
     }
 
-
     const templateData = {          
         iconSprite,
         colorList
@@ -61,7 +61,6 @@ function compileHtml(iconSprite, colorList) {
             }
         }
     }                
-
     return gulp.src(app.html)
         .pipe(inject(svgs, { transform: fileContents }))
         .pipe(handlebars(templateData, options))
@@ -81,10 +80,8 @@ async function generateColors() {
         
         if (name !== null && color !== null) {
             colors.push({"name": name[0] , "hex": color[0]});
-            
         }    
     });
-
     return colors;   
 }
 
@@ -125,6 +122,12 @@ gulp.task('html', (done) => {
     });    
 });
 
+gulp.task('concat:uploader:js', function () {
+    return gulp.src(['./src/js/libraries/Dropbox.js', './src/js/libraries/uploader/*.js'])
+      .pipe(concat('uploader.js'))
+      .pipe(gulp.dest('./src/js/components'));
+});
+
 gulp.task('start', (done) => {
     connect.server({
         root: process.env.PWD + "/docs/",
@@ -133,6 +136,6 @@ gulp.task('start', (done) => {
     open("http://localhost:33546");
     done();
 });
-gulp.task('build', gulp.parallel('sass', 'demo:sass', 'html', 'js', 'demo:js'));
+gulp.task('build', gulp.series('concat:uploader:js', gulp.parallel('sass', 'demo:sass', 'html', 'js', 'demo:js')));
 gulp.task('default', gulp.series('build'));
 
