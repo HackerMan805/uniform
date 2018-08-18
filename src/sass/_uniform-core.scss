@@ -1,4 +1,4 @@
-// Blazer Core
+// Uniform Core
 
 // ALWAYS IMPORT DEFAULT THEME
 @import 'themes/default';
@@ -36,7 +36,7 @@
 @if variable-exists(devmode) and $devmode {
 
 	// add log to gulp terminal output to indicate that development mode is on
-	@warn 'Blazer Development Mode is ON';
+	@warn 'Uniform Development Mode is ON';
 
 	// Dev 'Console' Output
 	html {

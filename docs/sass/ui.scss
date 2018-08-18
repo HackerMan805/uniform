@@ -8,9 +8,9 @@
 $devmode: false;
 
 //------------------------------------------------------------------------------
-// Blazer Core Assets
+// Uniform Core Assets
 
-@import 'blazer-core';
+@import 'uniform-core';
 
 //------------------------------------------------------------------------------
 // Import Custom Theme
@@ -27,7 +27,7 @@ $devmode: false;
 // Edlio CMS Layout
 
 .edlio.cms {
-	@include blazer-init;
+	@include uniform-init;
 
 	// Import header, header navigation, and footer styles
 	@import 'partials/header';
