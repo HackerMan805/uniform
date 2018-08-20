@@ -118,7 +118,6 @@ gulp.task('html', (done) => {
         }).catch (function(colorErr) {
             done(colorErr);
         });        
-    
     });    
 });
 

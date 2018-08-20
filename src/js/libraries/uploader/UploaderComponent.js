@@ -11,10 +11,15 @@ export default class UploaderComponent extends window.HTMLElement {
             this.bucketName = settings.bucketName;
             this.bucketRegion = settings.bucketRegion;
             this.identityPoolId = settings.identityPoolId;
+            this.serverAddress = settings.serverAddress;
         }
 
         this.url = 'http://localhost:20010/v1/upload';
         this.fetchUrl = 'http://localhost:20010/v1/fetch';
+        if (this.serverAddress) {
+        	this.url = this.serverAddress + "/v1/upload";
+        	this.fetchUrl = this.serverAddress + "/v1/fetch";
+        }
         this.method = 'POST';
         this.accept = "";
         this.maxSize = 0; // default to 5MB | 0 indicated no limit
