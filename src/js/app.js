@@ -7,6 +7,7 @@ import ExampleComponent from './components/example';
 import ModalComponent from './components/modal';
 import NotificationComponent from './components/notification';
 import SelectComponent from './components/select';
+import TimeComponent from './components/time';
 
 main();
 
@@ -27,5 +28,6 @@ function main () {
     window.customElements.define('uniform-modal', ModalComponent);
     window.customElements.define('uniform-notification', NotificationComponent);
     window.customElements.define('uniform-select', SelectComponent);
+    window.customElements.define('uniform-time', TimeComponent);
 }
 

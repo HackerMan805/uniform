@@ -20,11 +20,11 @@
   },
   "homepage": "https://github.com/edlio/uniform",
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.0.0"
+    "@webcomponents/webcomponentsjs": "^2.0.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
+    "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "glob": "^7.1.2",
     "gulp": "^4.0.0",
