@@ -4,22 +4,29 @@ export default class UploaderComponent extends window.HTMLElement {
     constructor() {
         super();
         // For Kitchen Sink - Retrieve sensitive values from localStorage
-        // retrieve uploader settings from localStorage
         const settings = JSON.parse(localStorage.getItem('uploader-settings'));
-        // S3 Config
         if (settings) {
-            this.bucketName = settings.bucketName;
-            this.bucketRegion = settings.bucketRegion;
-            this.identityPoolId = settings.identityPoolId;
-            this.serverAddress = settings.serverAddress;
-            this.googleCallback = settings.googleCallback;
+        	// Edlio Config.
+            this.s3BucketName = settings.s3BucketName;
+            this.s3BucketRegion = settings.s3BucketRegion;
+            this.s3IdentityPoolId = settings.s3IdentityPoolId;
+            this.filesMicroserviceURL = settings.filesMicroserviceURL;
+            // Google Config.
+            this.googlePickerCallback = settings.googlePickerCallback;
+            this.googleAPIKey = settings.googleAPIKey;
+            this.googleOAuthClientId = settings.googleOAuthClientId;
+            // Dropbox Config.
+            this.dropboxAppKey = settings.dropboxAppKey;
+            // MS OneDrive Config. ???
         }
+        // For Production - Retrieve sensitive values from Catalina Properties
+        // UNDER CONSTRUCTION
 
         this.url = 'http://localhost:20010/v1/upload';
         this.fetchUrl = 'http://localhost:20010/v1/fetch';
-        if (this.serverAddress) {
-        	this.url = this.serverAddress + "/v1/upload";
-        	this.fetchUrl = this.serverAddress + "/v1/fetch";
+        if (this.filesMicroserviceURL) {
+        	this.url = this.filesMicroserviceURL + "/v1/upload";
+        	this.fetchUrl = this.filesMicroserviceURL + "/v1/fetch";
         }
         this.method = 'POST';
         this.accept = "";
@@ -29,14 +36,14 @@ export default class UploaderComponent extends window.HTMLElement {
         this.maxItems = 0; // 0 for unlimitted
 
         AWS.config.update({
-            region: this.bucketRegion,
+            region: this.s3BucketRegion,
             credentials: new AWS.CognitoIdentityCredentials({
-                IdentityPoolId: this.identityPoolId
+                IdentityPoolId: this.s3IdentityPoolId
             })
         });
         this.s3 = new AWS.S3({
             apiVersion: '2006-03-01',
-            params: {Bucket: this.bucketName}
+            params: {Bucket: this.s3BucketName}
         });
     }
 
@@ -182,6 +189,7 @@ export default class UploaderComponent extends window.HTMLElement {
         this.fileItem.multiple = (this.maxItems === 0 || this.maxItems > 0);
     }
 
+    /*
     handleOneDriveMessage (event) {
         var response = JSON.parse(event.data);
         if (!response || !response.value) {
@@ -258,6 +266,7 @@ export default class UploaderComponent extends window.HTMLElement {
             return !file.name.match(/\.(jpg|jpeg|png|gif|bmp)$/);
         }
     };
+    */
 
     updateProgress (uploadObj, uploadEvt) {
         const updateKey = uploadObj.params.Key;
@@ -361,7 +370,7 @@ export default class UploaderComponent extends window.HTMLElement {
     connectedCallback () {
     	const self = this;
 
-        Dropbox.appKey = 'hqsb4kb9ie9tz8q';
+        Dropbox.appKey = this.dropboxAppKey;
         this.dropboxService = new HostedFileService();
         this.dropboxService.name = 'dropbox';
         this.dropboxService.openPicker = () => {
@@ -447,25 +456,26 @@ export default class UploaderComponent extends window.HTMLElement {
                         self.accept
             });
         };
+
         this.googleService = new HostedFileService();
         this.googleService.name = 'google';
         this.googleService.openPicker = function() {
             var googleDriveSelf = this;
             // TODO: get from attribute
-            var OAUTH_SESSION_KEY = 'AIzaSyDfuPKytWzSzmGfxSwZBMZLEr2vSkdZDX8';
+            var GOOGLE_API_KEY = self.googleAPIKey;
             // The Client ID obtained from the Google Developers Console.
-            var clientId = '232235877050-637ift6pdbkfea9ueg0097ege1eh701f.apps.googleusercontent.com';
+            var GOOGLE_OAUTH_CLIENT_ID = self.googleOAuthClientId;
             // Scope to use to read user's drive data.
             var scope = ['https://www.googleapis.com/auth/drive.readonly'];
             var pickerApiLoaded = false;
             var oauthToken = JSON.parse(
-                window.sessionStorage.getItem(OAUTH_SESSION_KEY)
+                window.sessionStorage.getItem(GOOGLE_API_KEY)
             );
             // note that expireAt provided by Google is in second as unit
             if (oauthToken && new Date(parseInt(oauthToken.expireAt) * 1000) > new Date()) {
                 googleDriveSelf.oauthToken = oauthToken;
             } else {
-                window.sessionStorage.removeItem(OAUTH_SESSION_KEY);
+                window.sessionStorage.removeItem(GOOGLE_API_KEY);
             }
             onApiLoad();
             // Use the API Loader script to load google.picker and gapi.auth.
@@ -482,9 +492,9 @@ export default class UploaderComponent extends window.HTMLElement {
                 //var callbackDomain = 'https://callbacks.edlio.com';
                 var url = 'https://accounts.google.com/o/oauth2/auth' +
                     '?response_type=token' +
-                    '&client_id=' + encodeURIComponent(clientId) +
+                    '&client_id=' + encodeURIComponent(GOOGLE_OAUTH_CLIENT_ID) +
                     '&scope=' + encodeURIComponent(scope) +
-                    '&redirect_uri=' + encodeURIComponent(self.googleCallback);
+                    '&redirect_uri=' + encodeURIComponent(self.googlePickerCallback);
                 window.open(url, '_blank', 'width=500,height=500');
             }
             function onPickerApiLoad() {
@@ -498,7 +508,7 @@ export default class UploaderComponent extends window.HTMLElement {
                 if (token.token && !googleDriveSelf.oauthToken.token) {
                     googleDriveSelf.oauthToken = token;
                     window.sessionStorage.setItem(
-                        OAUTH_SESSION_KEY,
+                        GOOGLE_API_KEY,
                         JSON.stringify(googleDriveSelf.oauthToken)
                     );
                     createPicker();
@@ -598,10 +608,88 @@ export default class UploaderComponent extends window.HTMLElement {
         // not removing correct handleOneDriveMessage
         // this.handleOneDriveMessageInstance = this.handleOneDriveMessage.bind(this);
         this.oneDriveService.openPicker = () => {
-            window.removeEventListener('message', this.handleOneDriveMessageInstance);
-            window.addEventListener('message', this.handleOneDriveMessageInstance);
+            window.removeEventListener('message', handleOneDriveMessageInstance);
+            window.addEventListener('message', handleOneDriveMessageInstance);
             var url ='https://callbacks.edlio.com/apps/files/onedrive';
             window.open(url, '_blank', 'width=800,height=600');
+
+            function handleOneDriveMessage (event) {
+		        var response = JSON.parse(event.data);
+		        if (!response || !response.value) {
+		            return;
+		        }
+		        if (this.imagesOnly) {
+		            // validate files to only images only
+		            if (response.value.some(isNotImage)) {
+		                alert('Please upload only image files (like .jpg, jpeg, .png or .gif)');
+		                window.removeEventListener('message', this.handleOneDriveMessageInstance);
+		                return;
+		            }
+		        }
+		        this.setUploadingStatus(response.value);
+		        this.request = this.oneDriveService.callback(response.value, this.fetchUrl, function(err, type, data) {
+		            this.errors = [];
+		            this.setErrors();
+		            if (err) {
+		                this.dropzone.classList.remove('hidden');
+		                this.loadingzone.classList.add('hidden');
+		                var errorEvent = new CustomEvent('error', {
+		                    'detail': err
+		                });
+		                this.dispatchEvent(errorEvent);
+		                this.errors.push({type: 'unknown'});
+		                this.setErrors();
+		                this.request = null;
+		                this.progressBar.style.width = 0 + '%';
+		                this.cancel.classList.remove('hidden');
+		                this.progressBar.classList.remove('indeterminate');
+		                return;
+		            }
+		            switch (type) {
+		                case 'done':
+		                    this.dropzone.classList.remove('hidden');
+		                    this.loadingzone.classList.add('hidden');
+		                    this.files = this.files.concat(data);
+		                    var uploadedEvent = new CustomEvent('uploaded', {
+		                        'detail': data
+		                    });
+		                    this.dispatchEvent(uploadedEvent);
+		                    this.request = null;
+		                    this.progressBar.style.width = 0 + '%';
+		                    this.cancel.classList.remove('hidden');
+		                    this.progressBar.classList.remove('indeterminate');
+		                    break;
+		                case 'onprogess':
+		                    if (data.lengthComputable) {
+		                        this.progressBar.max = data.total;
+		                        this.progressBar.value = data.loaded;
+		                        var percentage = parseInt((data.loaded / data.total) * 100);
+		                        this.progressBar.style.width = percentage + '%';
+		                        this.progressBar.textContent = percentage + '%';
+		                        if (percentage === 100) { // for firefox
+		                            this.progressBar.textContent = '';
+		                            this.cancel.classList.add('hidden');
+		                            this.progressBar.classList.add('indeterminate');
+		                        }
+		                    }
+		                    break;
+		                case 'onloadstart':
+		                    this.progressBar.value = 0;
+		                    this.dropzone.classList.add('hidden');
+		                    this.loadingzone.classList.remove('hidden');
+		                case 'onloadend':
+		                    this.progressBar.style.width = 100 + '%';
+		                    this.progressBar.textContent = '';
+		                    this.cancel.classList.add('hidden');
+		                    this.progressBar.classList.add('indeterminate');
+		                    break;
+		            }
+		        });
+		    };
+
+		    function isNotImage (file) {
+	            return !file.name.match(/\.(jpg|jpeg|png|gif|bmp)$/);
+	        }
         };
         /**
          * Due to webcomponents not supporting svg>use tag, we will have to

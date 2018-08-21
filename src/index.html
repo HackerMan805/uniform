@@ -1509,14 +1509,25 @@
                     </header>
 
                     <div id="uploader_settings">
-                        <div>S3 Bucket Name: <input type="text" class="uploader-setting" name="bucketName" /></div>
-                        <div>S3 Bucket Region: <input type="text" class="uploader-setting" name="bucketRegion" /></div>
-                        <div>S3 IdentityPoolId: <input type="text" class="uploader-setting" name="identityPoolId" /></div>
-                        <div>Files MS URL: <input type="text" placeholder="i.e: http://localhost:20010" class="uploader-setting" name="serverAddress" /></div>
-                        <div>Google Picker CB: <input type="text" class="uploader-setting" name="googleCallback" /></div>
-
-                        <div><input type="button" value="Save Uploader Settings" id="save_uploader_settings"></div>
+                        <div>
+                            <div class="uploader-config-header">Edlio Config.</div>
+                            <div>S3 Bucket Name: <input type="text" class="uploader-setting" name="s3BucketName" /></div>
+                            <div>S3 Bucket Region: <input type="text" class="uploader-setting" name="s3BucketRegion" /></div>
+                            <div>S3 IdentityPoolId: <input type="text" class="uploader-setting" name="s3IdentityPoolId" /></div>
+                            <div>Files Microservice URL: <input type="text" placeholder="i.e: http://localhost:20010" class="uploader-setting" name="filesMicroserviceURL" /></div>
+                        </div>
+                        <div>
+                            <div class="uploader-config-header">Google Config.</div>
+                            <div>Google Picker Callback: <input type="text" class="uploader-setting" name="googlePickerCallback" /></div>
+                            <div>Google API Key: <input type="text" class="uploader-setting" name="googleAPIKey" /></div>
+                            <div>Google OAuth Client ID: <input type="text" class="uploader-setting" name="googleOAuthClientId" /></div>
+                        </div>
+                        <div>
+                            <div class="uploader-config-header">Dropbox Config.</div>
+                            <div>Dropbox App Key: <input type="text" class="uploader-setting" name="dropboxAppKey" /></div>
+                        </div>
                     </div>
+                    <div><input type="button" value="Save Uploader Settings" id="save_uploader_settings"></div>
                     <script type="text/javascript">
                         const settings = JSON.parse(localStorage.getItem('uploader-settings'));
                         if (settings) {
@@ -1540,8 +1551,7 @@
                         });
                     </script>
 
-                    <uniform-uploader id="file_uploader">
-                    </uniform-uploader>
+                    <uniform-uploader id="file_uploader"></uniform-uploader>
                     <div id="file_uploader_list">
                     </div>
 

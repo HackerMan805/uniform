@@ -122,7 +122,7 @@ gulp.task('html', (done) => {
 });
 
 gulp.task('concat:uploader:js', function () {
-    return gulp.src(['./src/js/libraries/Dropbox.js', './src/js/libraries/uploader/*.js'])
+    return gulp.src(['./src/js/libraries/Dropbox.js', './src/js/libraries/google-api.js', './src/js/libraries/uploader/*.js'])
       .pipe(concat('uploader.js'))
       .pipe(gulp.dest('./src/js/components'));
 });
