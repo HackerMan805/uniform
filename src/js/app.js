@@ -7,7 +7,7 @@ import ExampleComponent from './components/example';
 import ModalComponent from './components/modal';
 import NotificationComponent from './components/notification';
 import SelectComponent from './components/select';
-import TimeComponent from './components/time';
+import DateTimeComponent from './components/datetime';
 
 main();
 
@@ -17,17 +17,17 @@ function main () {
         return;
     }
     // Backward compatibility definition
-    window.customElements.define('edlio-accordion', AccordionComponent);
-    window.customElements.define('edlio-drawer', DrawerComponent);
-    window.customElements.define('edlio-modal', ModalComponent);
-    window.customElements.define('edlio-notification', NotificationComponent);
-    window.customElements.define('edlio-select', SelectComponent);
+    // window.customElements.define('edlio-accordion', AccordionComponent);
+    // window.customElements.define('edlio-drawer', DrawerComponent);
+    // window.customElements.define('edlio-modal', ModalComponent);
+    // window.customElements.define('edlio-notification', NotificationComponent);
+    // window.customElements.define('edlio-select', SelectComponent);
     window.customElements.define('uniform-accordion', AccordionComponent);
     window.customElements.define('uniform-drawer', DrawerComponent);
     window.customElements.define('uniform-example', ExampleComponent);
     window.customElements.define('uniform-modal', ModalComponent);
     window.customElements.define('uniform-notification', NotificationComponent);
     window.customElements.define('uniform-select', SelectComponent);
-    window.customElements.define('uniform-time', TimeComponent);
+    window.customElements.define('uniform-datetime', DateTimeComponent);
 }
 
