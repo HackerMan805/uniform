@@ -380,7 +380,6 @@
 		}
 
 		// Cards ---------------------------------------------------------------
-
 		.dashboard-card-container {
 			@extend %flexbox;
 			@include flex-direction(column);
@@ -411,6 +410,44 @@
 		.uniform-card {
 			&.info {
 				margin-bottom: 1em;
+			}
+		}
+
+		// Uploader ---------------------------------------------------------------
+		#uploader_settings {
+			@extend %flexbox;
+			@include flex-wrap(wrap);
+
+			&>div {
+				max-width: 375px;
+				width: 100%;
+				margin-bottom: 15px;
+				.uploader-config-header {
+					margin-bottom: 10px;
+					font-size: 1.1em;
+					font-weight: bold;
+				}
+				div {
+					font-size: 0.9em;
+				}
+			}
+
+			input {
+				height: 35px;
+				width: 95%;
+				font-size: 0.9em;
+				margin-bottom: 5px;
+			}
+		}
+		
+		#save_uploader_settings {
+			cursor: pointer;
+			border: 1px solid black;
+		}
+
+		#file_uploader_list {
+			&> * {
+				max-width: 200px;
 			}
 		}
 	}
