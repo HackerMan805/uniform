@@ -12,6 +12,7 @@ export default class UploaderComponent extends window.HTMLElement {
             this.bucketRegion = settings.bucketRegion;
             this.identityPoolId = settings.identityPoolId;
             this.serverAddress = settings.serverAddress;
+            this.googleCallback = settings.googleCallback;
         }
 
         this.url = 'http://localhost:20010/v1/upload';
@@ -358,6 +359,8 @@ export default class UploaderComponent extends window.HTMLElement {
     }
 
     connectedCallback () {
+    	const self = this;
+
         Dropbox.appKey = 'hqsb4kb9ie9tz8q';
         this.dropboxService = new HostedFileService();
         this.dropboxService.name = 'dropbox';
@@ -446,12 +449,12 @@ export default class UploaderComponent extends window.HTMLElement {
         };
         this.googleService = new HostedFileService();
         this.googleService.name = 'google';
-        this.googleService.openPicker = () => {
+        this.googleService.openPicker = function() {
             var googleDriveSelf = this;
             // TODO: get from attribute
-            var OAUTH_SESSION_KEY = '';
+            var OAUTH_SESSION_KEY = 'AIzaSyDfuPKytWzSzmGfxSwZBMZLEr2vSkdZDX8';
             // The Client ID obtained from the Google Developers Console.
-            var clientId = '';
+            var clientId = '232235877050-637ift6pdbkfea9ueg0097ege1eh701f.apps.googleusercontent.com';
             // Scope to use to read user's drive data.
             var scope = ['https://www.googleapis.com/auth/drive.readonly'];
             var pickerApiLoaded = false;
@@ -476,19 +479,13 @@ export default class UploaderComponent extends window.HTMLElement {
             }
             function onAuthApiLoad() {
                 // TODO: get from attribute
-                var callbackDomain = '';
+                //var callbackDomain = 'https://callbacks.edlio.com';
                 var url = 'https://accounts.google.com/o/oauth2/auth' +
                     '?response_type=token' +
                     '&client_id=' + encodeURIComponent(clientId) +
                     '&scope=' + encodeURIComponent(scope) +
-                    '&redirect_uri=' + '';
-                window.open(
-                    (isIE) ?
-                        '/apps/files/redirect?url=' + encodeURIComponent(url) :
-                        url,
-                    '_blank',
-                    'width=500,height=500'
-                );
+                    '&redirect_uri=' + encodeURIComponent(self.googleCallback);
+                window.open(url, '_blank', 'width=500,height=500');
             }
             function onPickerApiLoad() {
                 pickerApiLoaded = true;
@@ -513,13 +510,13 @@ export default class UploaderComponent extends window.HTMLElement {
                     var builder = new google.picker.PickerBuilder()
                         .setOAuthToken(googleDriveSelf.oauthToken.token)
                         .setCallback(pickerCallback);
-                    if (this.maxItems === 0 || this.maxItems > 1) {
+                    if (self.maxItems === 0 || self.maxItems > 1) {
                         builder = builder.enableFeature(google.picker.Feature.MULTISELECT_ENABLED);
                     }
-                    if (this.maxItems > 1) {
-                        builder.setMaxItems(this.maxItems);
+                    if (self.maxItems > 1) {
+                        builder.setMaxItems(self.maxItems);
                     }
-                    if (this.imagesOnly) {
+                    if (self.imagesOnly) {
                         builder.addView(google.picker.ViewId.DOCS_IMAGES);
                     } else {
                         builder.addView(google.picker.ViewId.DOCS);
@@ -531,63 +528,63 @@ export default class UploaderComponent extends window.HTMLElement {
             // A simple callback implementation.
             function pickerCallback(data) {
                 // reset errors
-                this.errors = [];
+                self.errors = [];
                 if (data.action == google.picker.Action.PICKED) {
-                    this.setUploadingStatus(data.docs);
-                    this.request = this.googleService.callback(data.docs, this.fetchUrl, function(err, type, data) {
-                        this.setErrors();
+                    self.setUploadingStatus(data.docs);
+                    self.request = self.googleService.callback(data.docs, self.fetchUrl, function(err, type, data) {
+                        self.setErrors();
                         if (err) {
-                            this.dropzone.classList.remove('hidden');
-                            this.loadingzone.classList.add('hidden');
+                            self.dropzone.classList.remove('hidden');
+                            self.loadingzone.classList.add('hidden');
                             var errorEvent = new CustomEvent('error', {
                                 'detail': err
                             });
-                            this.dispatchEvent(errorEvent);
-                            this.errors.push({type: 'unknown'});
-                            this.setErrors();
-                            this.request = null;
-                            this.progressBar.style.width = 0 + '%';
-                            this.cancel.classList.remove('hidden');
-                            this.progressBar.classList.remove('indeterminate');
+                            self.dispatchEvent(errorEvent);
+                            self.errors.push({type: 'unknown'});
+                            self.setErrors();
+                            self.request = null;
+                            self.progressBar.style.width = 0 + '%';
+                            self.cancel.classList.remove('hidden');
+                            self.progressBar.classList.remove('indeterminate');
                             return;
                         }
                         switch (type) {
                             case 'done':
-                                this.dropzone.classList.remove('hidden');
-                                this.loadingzone.classList.add('hidden');
-                                this.files = this.files.concat(data);
+                                self.dropzone.classList.remove('hidden');
+                                self.loadingzone.classList.add('hidden');
+                                self.files = self.files.concat(data);
                                 var uploadedEvent = new CustomEvent('uploaded', {
                                     'detail': data
                                 });
-                                this.dispatchEvent(uploadedEvent);
-                                this.request = null;
-                                this.progressBar.style.width = 0 + '%';
-                                this.cancel.classList.remove('hidden');
-                                this.progressBar.classList.remove('indeterminate');
+                                self.dispatchEvent(uploadedEvent);
+                                self.request = null;
+                                self.progressBar.style.width = 0 + '%';
+                                self.cancel.classList.remove('hidden');
+                                self.progressBar.classList.remove('indeterminate');
                                 break;
                             case 'onprogess':
                                 if (data.lengthComputable) {
-                                    this.progressBar.max = data.total;
-                                    this.progressBar.value = data.loaded;
+                                    self.progressBar.max = data.total;
+                                    self.progressBar.value = data.loaded;
                                     var percentage = parseInt((data.loaded / data.total) * 100);
-                                    this.progressBar.style.width = percentage + '%';
-                                    this.progressBar.textContent = percentage + '%';
+                                    self.progressBar.style.width = percentage + '%';
+                                    self.progressBar.textContent = percentage + '%';
                                     if (percentage === 100) { // for firefox
-                                        this.progressBar.textContent = '';
-                                        this.cancel.classList.add('hidden');
-                                        this.progressBar.classList.add('indeterminate');
+                                        self.progressBar.textContent = '';
+                                        self.cancel.classList.add('hidden');
+                                        self.progressBar.classList.add('indeterminate');
                                     }
                                 }
                                 break;
                             case 'onloadstart':
-                                this.progressBar.value = 0;
-                                this.dropzone.classList.add('hidden');
-                                this.loadingzone.classList.remove('hidden');
+                                self.progressBar.value = 0;
+                                self.dropzone.classList.add('hidden');
+                                self.loadingzone.classList.remove('hidden');
                             case 'onloadend':
-                                this.progressBar.style.width = 100 + '%';
-                                this.progressBar.textContent = '';
-                                this.cancel.classList.add('hidden');
-                                this.progressBar.classList.add('indeterminate');
+                                self.progressBar.style.width = 100 + '%';
+                                self.progressBar.textContent = '';
+                                self.cancel.classList.add('hidden');
+                                self.progressBar.classList.add('indeterminate');
                                 break;
                         }
                     });
@@ -600,17 +597,11 @@ export default class UploaderComponent extends window.HTMLElement {
         // management that causes the window.removeEventListener func
         // not removing correct handleOneDriveMessage
         // this.handleOneDriveMessageInstance = this.handleOneDriveMessage.bind(this);
-        this.oneDriveService.openPicker = function() {
+        this.oneDriveService.openPicker = () => {
             window.removeEventListener('message', this.handleOneDriveMessageInstance);
             window.addEventListener('message', this.handleOneDriveMessageInstance);
             var url ='https://callbacks.edlio.com/apps/files/onedrive';
-            window.open(
-                (isIE) ?
-                    '/apps/files/redirect?url=' + encodeURIComponent(url) :
-                    url,
-                '_blank',
-                'width=800,height=600'
-            );
+            window.open(url, '_blank', 'width=800,height=600');
         };
         /**
          * Due to webcomponents not supporting svg>use tag, we will have to
