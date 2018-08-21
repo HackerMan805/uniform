@@ -302,11 +302,15 @@
 				svg {
 					margin-right: .382em;
 				}
+
+				.item {
+					position: relative;
+				}
 			}
 		}
 
 		.colors {
-			.columns {
+			.columns {			
 				@include min-screen-size(small) {
 					@include columns(2);
 				}
@@ -321,8 +325,11 @@
 			}
 
 			.item {				
+				position: relative;
 				margin-bottom: 20px;
 				max-width: 250px;
+				break-inside: avoid;
+				page-break-inside: avoid;
 			}
 
 			.color-block {			
@@ -411,5 +418,55 @@
 				margin-bottom: 1em;
 			}
 		}
+
+		.code-example {
+			position: relative;
+			
+			.code {
+				text-align: right;
+				opacity: 0;
+				position: absolute;
+				right: 0;
+				top: 0;
+
+				.button.secondary {
+					line-height: 0.3rem;
+					display: inline-block;
+				}				
+			}
+			
+			&:focus .code,
+			&:hover .code {
+				opacity: 1;
+			}	
+		}		
+	}
+
+	.code-modal {
+		max-width: calc(100% - 50px);
+		background-color: #333;
+	}
+
+	.prettyprint {
+		font-size: 14px;
+		padding: 2rem;
 	}
 }
+
+.copy-to-clipboard.button.secondary {
+	line-height: 0.3rem;
+	position: absolute;
+	padding-top: 0;
+	padding-bottom: 0;
+	margin-right: 0;
+    margin-bottom: 0;
+	right: 0;
+	top: 0;	
+	opacity: 0;
+
+	.item:focus &,
+	.item:hover & {
+		opacity: 1;
+	}
+
+ }

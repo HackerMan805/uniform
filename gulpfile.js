@@ -15,12 +15,14 @@ const app = {
     js: './src/js/app.js',
     sass: './src/sass/**/*.scss',
     dest: './libs',
+    jsDest: './libs',
     icons: './src/icons/*.svg',
-    html: './src/*.html'
+    html: './src/docs/*.html'
 };
 const demoApp = {
-    sassRoot: ['./docs/sass/', './src/sass'],
-    sass: './docs/sass/**/*.scss',
+    sassRoot: ['./src/docs/sass/', './src/sass'],
+    sass: './src/docs/sass/**/*.scss',
+    js: ['./src/js/app.js', './src/docs/js/kitchen_sink.js'],
     dest: './docs/css',
     jsDest: './docs/js',
     destFolder: './docs/'
@@ -36,6 +38,25 @@ function compileSass (app) {
     };
 }
 
+function compileJs (app) {
+    return () => {
+        return gulp.src(app.js)
+        .pipe(webpack({
+            entry: app.js,
+            output: {
+                filename: 'app.js',
+            },            
+            devtool: 'source-map',
+            module: {
+                rules: [
+                    { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
+                ]
+            }
+        }))
+        .pipe(gulp.dest(app.jsDest));            
+    };
+}
+
 function compileHtml(iconSprite, colorList) {
     const svgs = gulp.src(app.icons)
     .pipe(svgstore({inlineSvg: true}));
@@ -43,7 +64,6 @@ function compileHtml(iconSprite, colorList) {
     function fileContents (filePath, file) {
         return file.contents.toString();
     }
-
 
     const templateData = {          
         iconSprite,
@@ -93,16 +113,8 @@ gulp.task('sass:watch', function() {
 gulp.task('sass', compileSass(app));
 gulp.task('demo:sass', compileSass(demoApp));
 
-gulp.task('js', () => {
-    return gulp.src(app.js)
-        .pipe(webpack( require('./webpack.config.js') ))
-        .pipe(gulp.dest(app.dest));
-});
-gulp.task('demo:js', () => {
-    return gulp.src(app.js)
-        .pipe(webpack( require('./webpack.config.js') ))
-        .pipe(gulp.dest(demoApp.jsDest));
-});
+gulp.task('js', compileJs(app));
+gulp.task('demo:js', compileJs(demoApp));
 
 gulp.task('html', (done) => {
     glob(app.icons, function (globErr, icons) {

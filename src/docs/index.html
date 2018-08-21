@@ -228,6 +228,11 @@
                                     <use xlink:href="#{{icon}}"/>
                                 </svg>
                                 {{icon}}
+                                <a class="button secondary copy-to-clipboard" onclick="copyToClipboard('<svg viewBox=\'0 0 2048 2048\' class=\'icon\'><use xlink:href=\'#{{icon}}\'></use></svg>')">
+                                    <svg viewBox="0 0 2048 2048" class="icon">
+                                        <use xlink:href="#files-o"></use>
+                                    </svg>
+                                </a>
                             </li> 
                         {{/list}}
                     </ul>      
@@ -250,6 +255,11 @@
                             <div class="color-block" style="background-color: {{hex}};" title="{{name}}"></div>
                             <span class="color-name">{{name}}</span>
                             <span class="color-hex">{{hex}}</span>
+                            <a class="button secondary copy-to-clipboard" onclick="copyToClipboard('{{name}}')">
+                                <svg viewBox="0 0 2048 2048" class="icon">
+                                    <use xlink:href="#files-o"></use>
+                                </svg>
+                            </a>
                         </div>
                         {{/list}}
                     </div>
@@ -265,7 +275,7 @@
                         </ol>
                     </header>
 
-                    <section class="primary example">
+                    <section class="primary example code-example">
                         <a class="button">
                             Primary Action Button
                         </a>
@@ -317,7 +327,7 @@
                         <li class="active"><a href="">Secondary Action Buttons</a></li>
                     </ol>
 
-                    <section class="secondary example">
+                    <section class="secondary example code-example">
                         <a class="secondary button">
                             Secondary Action Button
                         </a>
@@ -368,7 +378,7 @@
                         <h1>Tabs</h1>
                     </header>
 
-                    <div class="example">
+                    <div class="example code-example">
                         <aside class="tab bar">
                           <a href="">Inactive Tab</a>
                             <a class="selected" href="">Active Tab</a>
@@ -387,7 +397,7 @@
                         </ol>
                     </header>
 
-                    <div class="example">
+                    <div class="example code-example">
                         <uniform-notification class="confirmation">
                             <svg viewbox="0 0 2048 2048" class="icon">
                                 <use xlink:href="#check"></use>
@@ -424,7 +434,7 @@
                         <li class="active"><a href="">Alert</a></li>
                     </ol>
 
-                    <div class="example">
+                    <div class="example code-example">
                         <uniform-notification class="alert">
                             <svg viewbox="0 0 2048 2048" class="icon">
                                 <use xlink:href="#exclamation-triangle"></use>
@@ -455,7 +465,7 @@
                         <h1>Toggle Selectors</h1>
                     </header>
 
-                    <div class="toggle-selector example-1">
+                    <div class="toggle-selector example-1 code-example">
                         <div class="on option">
                             <svg viewbox="0 0 2048 2048" class="icon">
                                 <use xlink:href="#eye"></use>
@@ -472,7 +482,7 @@
                         </div>
                     </div>
 
-                    <div class="toggle-selector example-2">
+                    <div class="toggle-selector example-2 code-example">
                         <div class="option 1">
                             <input type="radio" id="toggle_selector_2_option_1" name="toggle_selector_1" value="option-1" checked>
                             <label for="toggle_selector_option_1">Option 1</label>
@@ -688,7 +698,7 @@
                         <h1>Tooltips</h1>
                     </header>
 
-                    <div class="example">
+                    <div class="example code-example">
                         <a class="labeled icon button" data-tooltip="Top Tooltip has a long message in it" data-tooltip-position="top" data-tooltip-alignment="left">
                             <svg viewbox="0 0 2048 2048" class="icon">
                                 <use xlink:href="#question-circle"></use>
@@ -717,159 +727,162 @@
                         <h1>Modals</h1>
                     </header>
 
-                    <div class="example">
+                    <div class="example code-example">
                         <a class="button" id="simple-modal-opener">
                             Open Modal Window
                         </a>
+                        <uniform-modal id="simple-modal">
+                            <page>
+                                <header>
+                                    <h1>Modal Title</h1>
+                                    <svg viewbox="0 0 2048 2048" class="close icon">
+                                        <use xlink:href="#times"></use>
+                                    </svg>
+                                </header>
+
+                                <div class="content">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                                    </p>
+                                </div>
+
+                                <footer>
+                                    <a class="secondary button">Secondary Button</a>
+                                    <a class="finish button">Primary Action</a>
+                                </footer>
+                            </page>
+                        </uniform-modal>                    
+
+                        <script>
+                            (function() {
+                                document.getElementById('simple-modal-opener')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('simple-modal')
+                                            .show(document.getElementById('simple-modal-opener'));
+                                    });
+
+                                document.getElementById('simple-modal')
+                                    .querySelector('footer > .secondary.button')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('simple-modal')
+                                            .hide();
+                                    });
+
+                                document.getElementById('simple-modal')
+                                    .querySelector('header > .close')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('simple-modal')
+                                            .hide();
+                                    });
+
+                            })();
+                        </script>
+                    </div>
+
+                    <div class="example code-example">
+
                         <a class="button" id="multipage-modal-opener">
                             Open Multi-Page Modal
                         </a>
+
+                        <uniform-modal id="multipage-modal" class="full">
+                            <page>
+                                <header>
+                                    <h1>Modal Page 1</h1>
+                                    <svg viewbox="0 0 2048 2048" class="close icon">
+                                        <use xlink:href="#times"></use>
+                                    </svg>
+                                </header>
+                                <div class="content">
+                                    <p>
+                                        This modal has a lot of text in it to show that it will be scrollable if there is too much content to display.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                                    </p>
+                                </div>
+                                <footer>
+                                    <a href="javascript:;" class="next-page button">Next</a>
+                                </footer>
+                            </page>
+                            <page>
+                                <header>
+                                    <h1>Modal Page 2</h1>
+                                    <svg viewbox="0 0 2048 2048" class="back icon">
+                                        <use xlink:href="#chevron-left"></use>
+                                    </svg>
+                                    <svg viewbox="0 0 2048 2048" class="close icon">
+                                        <use xlink:href="#times"></use>
+                                    </svg>
+                                </header>
+                                <div class="content">
+                                    <p>
+                                        The modal component is entirely functional- Styling should be
+                                        added on a project basis. This component simply displays a
+                                        a modal window on click. It includes code to open and close
+                                        the modal window, with basic overridable styling.
+                                    </p>
+                                </div>
+                                <footer>
+                                    <a href="javascript:;" class="secondary button">Secondary Action</a>
+                                    <a href="javascript:;" class="finish button">Primary Action</a>
+                                </footer>
+                            </page>
+                        </uniform-modal>
+
+                        <script>
+                            (function() {
+                                document.getElementById('multipage-modal-opener')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('multipage-modal')
+                                            .show(document.getElementById('multipage-modal-opener'));
+                                    });
+
+                                document.getElementById('multipage-modal')
+                                    .querySelector('footer > .secondary.button')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('multipage-modal')
+                                            .hide();
+                                    });
+
+                                document.getElementById('multipage-modal')
+                                    .querySelector('footer > .next-page.button')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('multipage-modal')
+                                            .nextPage();
+                                    });
+
+                                var closeButton = document.getElementById('multipage-modal')
+                                    .querySelectorAll('header > .close.icon');
+
+                                for (var i = 0; i < closeButton.length; i++) {
+                                    closeButton[i].addEventListener('click', function() {
+                                        document.getElementById('multipage-modal')
+                                            .hide();
+                                    });
+                                }
+
+                                document.getElementById('multipage-modal')
+                                    .querySelector('header > .back.icon')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('multipage-modal')
+                                            .previousPage();
+                                    })
+                            })();
+                        </script>
                     </div>
-
-                    <uniform-modal id="simple-modal">
-                        <page>
-                            <header>
-                                <h1>Modal Title</h1>
-                                <svg viewbox="0 0 2048 2048" class="close icon">
-                                    <use xlink:href="#times"></use>
-                                </svg>
-                            </header>
-
-                            <div class="content">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
-                                </p>
-                            </div>
-
-                            <footer>
-                                <a class="secondary button">Secondary Button</a>
-                                <a class="finish button">Primary Action</a>
-                            </footer>
-                        </page>
-                    </uniform-modal>
-
-                    <script>
-                        (function() {
-                            document.getElementById('simple-modal-opener')
-                                .addEventListener('click', function() {
-                                    document.getElementById('simple-modal')
-                                        .show(document.getElementById('simple-modal-opener'));
-                                });
-
-                            document.getElementById('simple-modal')
-                                .querySelector('footer > .secondary.button')
-                                .addEventListener('click', function() {
-                                    document.getElementById('simple-modal')
-                                        .hide();
-                                });
-
-                            document.getElementById('simple-modal')
-                                .querySelector('header > .close')
-                                .addEventListener('click', function() {
-                                    document.getElementById('simple-modal')
-                                        .hide();
-                                });
-
-                        })();
-                    </script>
-
-                    <uniform-modal id="multipage-modal" class="full">
-                        <page>
-                            <header>
-                                <h1>Modal Page 1</h1>
-                                <svg viewbox="0 0 2048 2048" class="close icon">
-                                    <use xlink:href="#times"></use>
-                                </svg>
-                            </header>
-                            <div class="content">
-                                <p>
-                                    This modal has a lot of text in it to show that it will be scrollable if there is too much content to display.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
-                                </p>
-                            </div>
-                            <footer>
-                                <a href="javascript:;" class="next-page button">Next</a>
-                            </footer>
-                        </page>
-                        <page>
-                            <header>
-                                <h1>Modal Page 2</h1>
-                                <svg viewbox="0 0 2048 2048" class="back icon">
-                                    <use xlink:href="#chevron-left"></use>
-                                </svg>
-                                <svg viewbox="0 0 2048 2048" class="close icon">
-                                    <use xlink:href="#times"></use>
-                                </svg>
-                            </header>
-                            <div class="content">
-                                <p>
-                                    The modal component is entirely functional- Styling should be
-                                    added on a project basis. This component simply displays a
-                                    a modal window on click. It includes code to open and close
-                                    the modal window, with basic overridable styling.
-                                </p>
-                            </div>
-                            <footer>
-                                <a href="javascript:;" class="secondary button">Secondary Action</a>
-                                <a href="javascript:;" class="finish button">Primary Action</a>
-                            </footer>
-                        </page>
-                    </uniform-modal>
-
-                    <script>
-                        (function() {
-                            document.getElementById('multipage-modal-opener')
-                                .addEventListener('click', function() {
-                                    document.getElementById('multipage-modal')
-                                        .show(document.getElementById('multipage-modal-opener'));
-                                });
-
-                            document.getElementById('multipage-modal')
-                                .querySelector('footer > .secondary.button')
-                                .addEventListener('click', function() {
-                                    document.getElementById('multipage-modal')
-                                        .hide();
-                                });
-
-                            document.getElementById('multipage-modal')
-                                .querySelector('footer > .next-page.button')
-                                .addEventListener('click', function() {
-                                    document.getElementById('multipage-modal')
-                                        .nextPage();
-                                });
-
-                            var closeButton = document.getElementById('multipage-modal')
-                                .querySelectorAll('header > .close.icon');
-
-                            for (var i = 0; i < closeButton.length; i++) {
-                                closeButton[i].addEventListener('click', function() {
-                                    document.getElementById('multipage-modal')
-                                        .hide();
-                                });
-                            }
-
-                            document.getElementById('multipage-modal')
-                                .querySelector('header > .back.icon')
-                                .addEventListener('click', function() {
-                                    document.getElementById('multipage-modal')
-                                        .previousPage();
-                                })
-                        })();
-                    </script>
 
                 </section>
 
@@ -879,21 +892,21 @@
                     <header>
                         <h1>Drawer Menu</h1>
                     </header>
-                    <div class="example">
+                    <div class="example code-example">
                         <a class="button" id="drawer-opener">
                             Open Drawer Menu
                         </a>
-                    </div>
 
-                    <script>
-                        (function() {
-                            document.getElementById('drawer-opener')
-                                .addEventListener('click', function() {
-                                    document.getElementById('main-menu')
-                                        .open();
-                                });
-                        })();
-                    </script>
+                        <script>
+                            (function() {
+                                document.getElementById('drawer-opener')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('main-menu')
+                                            .open();
+                                    });
+                            })();
+                        </script>
+                    </div>
                 </section>
 
                 <section class="accordions">
@@ -919,7 +932,7 @@
                         </p>
                     </section>
 
-                    <div class="example">
+                    <div class="example code-example">
                         <uniform-accordion multiple>
                             <section>
                                 <header>
@@ -966,7 +979,7 @@
                         <li class="active"><a href="">Collapsing</a></li>
                     </ol>
 
-                    <div class="example">
+                    <div class="example code-example">
                         <uniform-accordion>
                             <section>
                                 <header>
@@ -1013,7 +1026,7 @@
                         <h1>Forms</h1>
                     </header>
 
-                    <form class="example">
+                    <form class="example code-example">
                         <fieldset>
                             <legend>Fieldset Legend</legend>
 
@@ -1138,7 +1151,7 @@
                         </ol>
                     </header>
 
-                    <section class="data-table example">
+                    <section class="data-table example code-example">
                         <header class="thead">
                             <div class="th">
                                 <div class="column">
@@ -1171,7 +1184,7 @@
                         <li class="active"><a href="">Populated</a></li>
                     </ol>
 
-                    <section class="data-table">
+                    <section class="data-table code-example">
                         <header class="thead">
                             <div class="th">
                                 <div class="column">
@@ -1393,7 +1406,7 @@
                     <header>
                         <h1>Pagination</h1>
                     </header>
-                    <div class="mobile pagination example">
+                    <div class="mobile pagination example code-example">
                         <a class="disabled skip secondary button"><span class="arrow">&laquo;</span></a>
                         <div class="button-bar">
                             <a class="disabled secondary button"><span class="arrow">&lsaquo;</span></a>
@@ -1407,7 +1420,7 @@
                         <a class="skip secondary button"><span class="arrow">&raquo;</span></a>
                     </div>
 
-                    <div class="desktop pagination example">
+                    <div class="desktop pagination example code-example">
                         <a class="disabled skip secondary button"><span class="arrow">&laquo;</span><span>10</span></a>
                         <div class="button-bar">
                             <a class="disabled secondary button"><span class="arrow">&lsaquo;</span></a>
@@ -1505,6 +1518,27 @@
 
             </div> <!-- close .content -->
         </main>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
         <script src="js/app.js"></script>
+        <script type="text/javascript">
+            function copyToClipboard(text) {
+                ///copy-to-clipboard
+                var el = document.createElement('textarea');
+                el.value = text;
+                el.setAttribute('readonly', '');
+                el.style.position = 'absolute';
+                el.style.left = '-9999px';
+                document.body.appendChild(el);
+                var selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
+                el.select();
+                document.execCommand('copy');
+                document.body.removeChild(el);
+
+                if (selected) {
+                    document.getSelection().removeAllRanges();
+                    document.getSelection().addRange(selected);
+                }
+            }
+        </script>
     </body>
 </html>

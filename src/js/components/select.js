@@ -82,7 +82,10 @@ export default class SelectComponent extends window.HTMLElement {
             });
 
         // add event listener under body to close select menu
-        onClick(document.querySelector('body'), this.close.bind(this));
+        //onClick(document.querySelector('body'), this.close.bind(this));
+        document.querySelector('body')
+            .addEventListener('click', this.close.bind(this));
+
         [...document.querySelectorAll('uniform-modal')]
             .forEach((modal) => {
                 onClick(modal, this.close.bind(this));
