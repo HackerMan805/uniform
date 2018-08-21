@@ -17,11 +17,11 @@ function main () {
         return;
     }
     // Backward compatibility definition
-    // window.customElements.define('edlio-accordion', AccordionComponent);
-    // window.customElements.define('edlio-drawer', DrawerComponent);
-    // window.customElements.define('edlio-modal', ModalComponent);
-    // window.customElements.define('edlio-notification', NotificationComponent);
-    // window.customElements.define('edlio-select', SelectComponent);
+    window.customElements.define('edlio-accordion', AccordionComponent);
+    window.customElements.define('edlio-drawer', DrawerComponent);
+    window.customElements.define('edlio-modal', ModalComponent);
+    window.customElements.define('edlio-notification', NotificationComponent);
+    window.customElements.define('edlio-select', SelectComponent);
     window.customElements.define('uniform-accordion', AccordionComponent);
     window.customElements.define('uniform-drawer', DrawerComponent);
     window.customElements.define('uniform-example', ExampleComponent);
