@@ -122,10 +122,6 @@ var _select = __webpack_require__(11);
 
 var _select2 = _interopRequireDefault(_select);
 
-var _time = __webpack_require__(12);
-
-var _time2 = _interopRequireDefault(_time);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 main();
@@ -147,7 +143,6 @@ function main() {
     window.customElements.define('uniform-modal', _modal2.default);
     window.customElements.define('uniform-notification', _notification2.default);
     window.customElements.define('uniform-select', _select2.default);
-    window.customElements.define('uniform-time', _time2.default);
 }
 
 /***/ }),
@@ -1217,122 +1212,6 @@ var SelectComponent = function (_window$HTMLElement) {
 
 exports.default = SelectComponent;
 ;
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _utils = __webpack_require__(0);
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TimeComponent = function (_window$HTMLElement) {
-    _inherits(TimeComponent, _window$HTMLElement);
-
-    function TimeComponent() {
-        _classCallCheck(this, TimeComponent);
-
-        var _this = _possibleConstructorReturn(this, (TimeComponent.__proto__ || Object.getPrototypeOf(TimeComponent)).call(this));
-
-        _this.months = {
-            0: "Jan",
-            1: "Feb",
-            2: "Mar",
-            3: "Apr",
-            4: "May",
-            5: "Jun",
-            6: "Jul",
-            7: "Aug",
-            8: "Sep",
-            9: "Oct",
-            10: "Nov",
-            11: "Dec"
-        };
-        return _this;
-    }
-
-    _createClass(TimeComponent, [{
-        key: "connectedCallback",
-        value: function connectedCallback() {
-            var inputFormat = this.getAttribute("inputFormat");
-            var timestamp = this.innerText;
-
-            //Makes for easier conversion to Date object
-            timestamp = timestamp.replace(/[&\/\\#,\-+()$~%.'":*?<>{}]/g, ' ').replace("st", "").replace("nd", "").replace("rd", "").replace("th", "");
-            console.log(timestamp);
-
-            timestamp = timestamp.split(" ");
-            timestamp = timestamp.filter(function (e) {
-                return e !== "";
-            });
-
-            //Check if it's a UTC Timestamp and convert it to non-string
-            if (!isNaN(timestamp)) {
-                if (timestamp.length === 1) {
-                    timestamp = parseInt(timestamp[0]);
-                }
-            }
-
-            if (inputFormat) {
-                var temp = timestamp[0];
-                timestamp[0] = timestamp[1];
-                timestamp[1] = temp;
-            }
-
-            console.log(timestamp);
-
-            // First 3
-            if (timestamp.length > 1) {
-                timestamp = timestamp.slice(0, 3).join(" ");
-            }
-
-            timestamp = new Date(timestamp);
-
-            console.log(timestamp instanceof Date);
-
-            var month = this.months[timestamp.getMonth()],
-                day = timestamp.getDate(),
-                year = timestamp.getFullYear();
-
-            switch (day) {
-                case 1:
-                case 21:
-                case 31:
-                    day += "st,";
-                    break;
-                case 2:
-                case 22:
-                    day += "nd,";
-                    break;
-                case 3:
-                case 23:
-                    day += "rd,";
-                    break;
-                default:
-                    day += "th,";
-            }
-
-            this.innerText = [month, day, year].join(" ");
-        }
-    }]);
-
-    return TimeComponent;
-}(window.HTMLElement);
-
-exports.default = TimeComponent;
 
 /***/ })
 /******/ ]);
