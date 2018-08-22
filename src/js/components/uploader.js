@@ -123,7 +123,6 @@ export default class UploaderComponent extends window.HTMLElement {
     constructor() {
         super();
         // For Kitchen Sink - Retrieve sensitive values from localStorage
-        // retrieve uploader settings from localStorage
         const settings = JSON.parse(localStorage.getItem('uploader-settings'));
         if (settings) {
         	// Edlio Config.
@@ -137,8 +136,11 @@ export default class UploaderComponent extends window.HTMLElement {
             this.googleOAuthClientId = settings.googleOAuthClientId;
             // Dropbox Config.
             this.dropboxAppKey = settings.dropboxAppKey;
-            // MS OneDrive Config. ???
+            // MS OneDrive Config.
+            this.oneDrivePickerCallback = settings.oneDrivePickerCallback;
         }
+        // For Production - Retrieve sensitive values from Catalina Properties
+        // UNDER CONSTRUCTION
 
         this.url = 'http://localhost:20010/v1/upload';
         this.fetchUrl = 'http://localhost:20010/v1/fetch';
@@ -306,85 +308,6 @@ export default class UploaderComponent extends window.HTMLElement {
     setMaxItems () {
         this.fileItem.multiple = (this.maxItems === 0 || this.maxItems > 0);
     }
-
-    /*
-    handleOneDriveMessage (event) {
-        var response = JSON.parse(event.data);
-        if (!response || !response.value) {
-            return;
-        }
-        if (this.imagesOnly) {
-            // validate files to only images only
-            if (response.value.some(isNotImage)) {
-                alert('Please upload only image files (like .jpg, jpeg, .png or .gif)');
-                window.removeEventListener('message', this.handleOneDriveMessageInstance);
-                return;
-            }
-        }
-        this.setUploadingStatus(response.value);
-        this.request = this.oneDriveService.callback(response.value, this.fetchUrl, function(err, type, data) {
-            this.errors = [];
-            this.setErrors();
-            if (err) {
-                this.dropzone.classList.remove('hidden');
-                this.loadingzone.classList.add('hidden');
-                var errorEvent = new CustomEvent('error', {
-                    'detail': err
-                });
-                this.dispatchEvent(errorEvent);
-                this.errors.push({type: 'unknown'});
-                this.setErrors();
-                this.request = null;
-                this.progressBar.style.width = 0 + '%';
-                this.cancel.classList.remove('hidden');
-                this.progressBar.classList.remove('indeterminate');
-                return;
-            }
-            switch (type) {
-                case 'done':
-                    this.dropzone.classList.remove('hidden');
-                    this.loadingzone.classList.add('hidden');
-                    this.files = this.files.concat(data);
-                    var uploadedEvent = new CustomEvent('uploaded', {
-                        'detail': data
-                    });
-                    this.dispatchEvent(uploadedEvent);
-                    this.request = null;
-                    this.progressBar.style.width = 0 + '%';
-                    this.cancel.classList.remove('hidden');
-                    this.progressBar.classList.remove('indeterminate');
-                    break;
-                case 'onprogess':
-                    if (data.lengthComputable) {
-                        this.progressBar.max = data.total;
-                        this.progressBar.value = data.loaded;
-                        var percentage = parseInt((data.loaded / data.total) * 100);
-                        this.progressBar.style.width = percentage + '%';
-                        this.progressBar.textContent = percentage + '%';
-                        if (percentage === 100) { // for firefox
-                            this.progressBar.textContent = '';
-                            this.cancel.classList.add('hidden');
-                            this.progressBar.classList.add('indeterminate');
-                        }
-                    }
-                    break;
-                case 'onloadstart':
-                    this.progressBar.value = 0;
-                    this.dropzone.classList.add('hidden');
-                    this.loadingzone.classList.remove('hidden');
-                case 'onloadend':
-                    this.progressBar.style.width = 100 + '%';
-                    this.progressBar.textContent = '';
-                    this.cancel.classList.add('hidden');
-                    this.progressBar.classList.add('indeterminate');
-                    break;
-            }
-        });
-        function isNotImage (file) {
-            return !file.name.match(/\.(jpg|jpeg|png|gif|bmp)$/);
-        }
-    };
-    */
 
     updateProgress (uploadObj, uploadEvt) {
         const updateKey = uploadObj.params.Key;
@@ -726,12 +649,7 @@ export default class UploaderComponent extends window.HTMLElement {
         // not removing correct handleOneDriveMessage
         // this.handleOneDriveMessageInstance = this.handleOneDriveMessage.bind(this);
         this.oneDriveService.openPicker = () => {
-            window.removeEventListener('message', handleOneDriveMessageInstance);
-            window.addEventListener('message', handleOneDriveMessageInstance);
-            var url ='https://callbacks.edlio.com/apps/files/onedrive';
-            window.open(url, '_blank', 'width=800,height=600');
-
-            function handleOneDriveMessage (event) {
+            const handleOneDriveMessage = (event) => {
 		        var response = JSON.parse(event.data);
 		        if (!response || !response.value) {
 		            return;
@@ -740,12 +658,12 @@ export default class UploaderComponent extends window.HTMLElement {
 		            // validate files to only images only
 		            if (response.value.some(isNotImage)) {
 		                alert('Please upload only image files (like .jpg, jpeg, .png or .gif)');
-		                window.removeEventListener('message', this.handleOneDriveMessageInstance);
+		                window.removeEventListener('message', handleOneDriveMessage);
 		                return;
 		            }
 		        }
 		        this.setUploadingStatus(response.value);
-		        this.request = this.oneDriveService.callback(response.value, this.fetchUrl, function(err, type, data) {
+		        this.request = this.oneDriveService.callback(response.value, this.fetchUrl, (err, type, data) => {
 		            this.errors = [];
 		            this.setErrors();
 		            if (err) {
@@ -804,10 +722,14 @@ export default class UploaderComponent extends window.HTMLElement {
 		            }
 		        });
 		    };
-
-		    function isNotImage (file) {
+		    
+		    const isNotImage = (file) => {
 	            return !file.name.match(/\.(jpg|jpeg|png|gif|bmp)$/);
 	        }
+        	
+            window.removeEventListener('message', handleOneDriveMessage);
+            window.addEventListener('message', handleOneDriveMessage);
+            window.open(this.oneDrivePickerCallback, '_blank', 'width=800,height=600');
         };
         /**
          * Due to webcomponents not supporting svg>use tag, we will have to
