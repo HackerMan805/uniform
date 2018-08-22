@@ -140,7 +140,7 @@ export default class UploaderComponent extends window.HTMLElement {
             this.oneDrivePickerCallback = settings.oneDrivePickerCallback;
         }
         // For Production - Retrieve sensitive values from Catalina Properties
-        // UNDER CONSTRUCTION
+        // UNDER CONSTRUCTION? Maybe pass in the same kind of object from Java rather than from localStorage?
 
         this.url = 'http://localhost:20010/v1/upload';
         this.fetchUrl = 'http://localhost:20010/v1/fetch';
@@ -249,7 +249,7 @@ export default class UploaderComponent extends window.HTMLElement {
         if (this.maxItems === 0 || this.maxItems > 1) {
             allowedFileType += '(s)';
         }
-        for (var i = 0; i < this.allowedFileTypes.length; i ++) {
+        for (let i = 0; i < this.allowedFileTypes.length; i ++) {
             this.allowedFileTypes[i].textContent = allowedFileType;
         }
     }
@@ -436,7 +436,7 @@ export default class UploaderComponent extends window.HTMLElement {
                         if (err) {
                             this.dropzone.classList.remove('hidden');
                             this.loadingzone.classList.add('hidden');
-                            var errorEvent = new CustomEvent('error', {
+                            const errorEvent = new CustomEvent('error', {
                                 'detail': err
                             });
                             this.dispatchEvent(errorEvent);
@@ -453,7 +453,7 @@ export default class UploaderComponent extends window.HTMLElement {
                                 this.dropzone.classList.remove('hidden');
                                 this.loadingzone.classList.add('hidden');
                                 this.files = this.files.concat(data);
-                                var uploadedEvent = new CustomEvent('uploaded', {
+                                const uploadedEvent = new CustomEvent('uploaded', {
                                     'detail': data
                                 });
                                 this.dispatchEvent(uploadedEvent);
@@ -466,7 +466,7 @@ export default class UploaderComponent extends window.HTMLElement {
                                 if (data.lengthComputable) {
                                     this.progressBar.max = data.total;
                                     this.progressBar.value = data.loaded;
-                                    var percentage = parseInt((data.loaded / data.total) * 100);
+                                    const percentage = parseInt((data.loaded / data.total) * 100);
                                     this.progressBar.style.width = percentage + '%';
                                     this.progressBar.textContent = percentage + '%';
                                     if (percentage === 100) { // for firefox
@@ -650,7 +650,7 @@ export default class UploaderComponent extends window.HTMLElement {
         // this.handleOneDriveMessageInstance = this.handleOneDriveMessage.bind(this);
         this.oneDriveService.openPicker = () => {
             const handleOneDriveMessage = (event) => {
-		        var response = JSON.parse(event.data);
+		        const response = JSON.parse(event.data);
 		        if (!response || !response.value) {
 		            return;
 		        }
@@ -669,7 +669,7 @@ export default class UploaderComponent extends window.HTMLElement {
 		            if (err) {
 		                this.dropzone.classList.remove('hidden');
 		                this.loadingzone.classList.add('hidden');
-		                var errorEvent = new CustomEvent('error', {
+		                const errorEvent = new CustomEvent('error', {
 		                    'detail': err
 		                });
 		                this.dispatchEvent(errorEvent);
@@ -686,7 +686,7 @@ export default class UploaderComponent extends window.HTMLElement {
 		                    this.dropzone.classList.remove('hidden');
 		                    this.loadingzone.classList.add('hidden');
 		                    this.files = this.files.concat(data);
-		                    var uploadedEvent = new CustomEvent('uploaded', {
+		                    const uploadedEvent = new CustomEvent('uploaded', {
 		                        'detail': data
 		                    });
 		                    this.dispatchEvent(uploadedEvent);
@@ -699,7 +699,7 @@ export default class UploaderComponent extends window.HTMLElement {
 		                    if (data.lengthComputable) {
 		                        this.progressBar.max = data.total;
 		                        this.progressBar.value = data.loaded;
-		                        var percentage = parseInt((data.loaded / data.total) * 100);
+		                        const percentage = parseInt((data.loaded / data.total) * 100);
 		                        this.progressBar.style.width = percentage + '%';
 		                        this.progressBar.textContent = percentage + '%';
 		                        if (percentage === 100) { // for firefox
@@ -780,7 +780,8 @@ export default class UploaderComponent extends window.HTMLElement {
         });
 
         this.addEventListener('upload-progress', (e) => {
-            const percentage = e.detail;
+            const percentage = Math.floor(e.detail);
+            console.log(percentage);
             this.progressBar.style.width = percentage + '%';
             this.progressBar.textContent = percentage + '%';
             if (percentage === 100) { // for firefox
@@ -793,7 +794,6 @@ export default class UploaderComponent extends window.HTMLElement {
         this.addEventListener('upload-finish', (e) => {
             console.log("Upload Finished!", e.detail);
             this.fileItem.value = null;
-            this.uploadProgress = 0;
             this.currUploads = {};
 
             this.progressBar.style.width = 100 + '%';
@@ -808,7 +808,6 @@ export default class UploaderComponent extends window.HTMLElement {
             this.progressBar.classList.remove('indeterminate');
         });
 
-        // this._closeDropdownRef = this.closeDropdownmenu.bind(this);
         document.body.addEventListener('click', this._closeDropdownRef);
         this.dropdown.addEventListener('click', (evt) => {
             evt.stopPropagation();
@@ -861,7 +860,7 @@ export default class UploaderComponent extends window.HTMLElement {
             evt.stopPropagation();
             evt.preventDefault();
             this.dropzone.classList.remove('dragover');
-            var files = evt.dataTransfer.files; // FileList object.
+            const files = evt.dataTransfer.files; // FileList object.
             this.uploadAll(files);
         });
         this.cancel.addEventListener('click', (evt) => {
@@ -899,9 +898,6 @@ export default class UploaderComponent extends window.HTMLElement {
         this.setMaxSize();
         this.setAccept();
         this.setMaxItems();
-
-        //track upload progress
-        this.uploadProgress = 0;
         this.currUploads = {};
     }
 }
