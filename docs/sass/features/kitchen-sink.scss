@@ -419,11 +419,11 @@
 			@include flex-wrap(wrap);
 
 			&>div {
-				max-width: 375px;
+				max-width: 21em;
 				width: 100%;
-				margin-bottom: 15px;
+				margin-bottom: 1em;
 				.uploader-config-header {
-					margin-bottom: 10px;
+					margin-bottom: 0.5em;
 					font-size: 1.1em;
 					font-weight: bold;
 				}
@@ -433,10 +433,10 @@
 			}
 
 			input {
-				height: 35px;
+				height: 3em;
 				width: 95%;
 				font-size: 0.9em;
-				margin-bottom: 5px;
+				margin-bottom: 0.5em;
 			}
 		}
 		
@@ -447,7 +447,7 @@
 
 		#file_uploader_list {
 			&> * {
-				max-width: 200px;
+				max-width: 20em;
 			}
 		}
 	}
