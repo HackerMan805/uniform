@@ -56,3 +56,5 @@ class HostedFile {
         }
     }
 }
+
+module.exports = HostedFile;

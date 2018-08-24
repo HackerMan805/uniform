@@ -121,12 +121,6 @@ gulp.task('html', (done) => {
     });    
 });
 
-gulp.task('concat:uploader:js', function () {
-    return gulp.src(['./src/js/libraries/Dropbox.js', './src/js/libraries/google-api.js', './src/js/libraries/uploader/*.js'])
-      .pipe(concat('uploader.js'))
-      .pipe(gulp.dest('./src/js/components'));
-});
-
 gulp.task('start', (done) => {
     connect.server({
         root: process.env.PWD + "/docs/",
@@ -135,6 +129,5 @@ gulp.task('start', (done) => {
     open("http://localhost:33546");
     done();
 });
-gulp.task('build', gulp.series('concat:uploader:js', gulp.parallel('sass', 'demo:sass', 'html', 'js', 'demo:js')));
+gulp.task('build', gulp.parallel('sass', 'demo:sass', 'html', 'js', 'demo:js'));
 gulp.task('default', gulp.series('build'));
-

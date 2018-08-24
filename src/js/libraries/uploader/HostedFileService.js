@@ -1,3 +1,5 @@
+const HostedFile = require('./HostedFile');
+
 class HostedFileService {
     constructor () {
         this.name = 'undefined';
@@ -46,3 +48,5 @@ class HostedFileService {
         return request;
     }
 }
+
+module.exports = HostedFileService;
