@@ -21,7 +21,8 @@
   "homepage": "https://github.com/edlio/uniform",
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.0.0",
-    "aws-sdk": "^2.275.1"
+    "aws-sdk": "^2.275.1",
+    "html-loader": "^0.5.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -32,14 +33,11 @@
     "gulp": "^4.0.0",
     "gulp-cli": "^2.0.1",
     "gulp-compile-handlebars": "^0.6.1",
-    "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.5.0",
     "gulp-filelist": "^1.0.2",
     "gulp-inject": "^4.3.2",
     "gulp-sass": "^4.0.1",
     "gulp-svgstore": "^6.1.1",
-    "html-loader": "^0.5.5",
-    "node-sass": "^4.9.2",
     "open": "0.0.5",
     "path": "^0.12.7",
     "sass-loader": "^7.0.3",

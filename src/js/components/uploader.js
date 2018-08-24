@@ -312,7 +312,6 @@ export default class UploaderComponent extends window.HTMLElement {
                 if (!response || !response.value) {
                     return;
                 }
-                console.log(this.imagesOnly);
                 if (this.imagesOnly) {
                     console.log("this should not print");
                     // validate files to only images only

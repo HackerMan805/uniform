@@ -10,7 +10,6 @@ const path = require('path');
 const handlebars = require('gulp-compile-handlebars');
 const fs = require('fs');
 const split = require('split');
-const concat = require('gulp-concat');
 
 const app = {
     sassRoot: './src/sass/',
