@@ -34,16 +34,27 @@ export default class UploaderComponent extends window.HTMLElement {
         this.allowedFileTypes = this._shadowRoot.querySelectorAll('.allowed-file-type');
         this.nativeFilePicker = this._shadowRoot.querySelector('.native-file-picker');
 
-        // Defaults
+        /**
+         * Due to webcomponents not supporting svg>use tag, we will have to
+         * create these svg element internally and insert into DOM ourselves
+         * so that these SVG can be properly rendered in Firefox.
+         */
+        const div = document.createElement('div');
+        div.innerHTML = '<svg class="type file-icon" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1724 508q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280z"/></svg>';
+        this.fileIcon = div.firstChild;
+        div.innerHTML = '<svg class="type file-icon" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M704 704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm1024 384v448h-1408v-192l320-320 160 160 512-512zm96-704h-1600q-13 0-22.5 9.5t-9.5 22.5v1216q0 13 9.5 22.5t22.5 9.5h1600q13 0 22.5-9.5t9.5-22.5v-1216q0-13-9.5-22.5t-22.5-9.5zm160 32v1216q0 66-47 113t-113 47h-1600q-66 0-113-47t-47-113v-1216q0-66 47-113t113-47h1600q66 0 113 47t47 113z"/></svg>';
+        this.pictureIcon = div.firstChild;
+
+        this.currUploads = {};
+        this.allowFileTypeConfig = {};
+        // Defaults & Attribute side effects
         this.fetchUrl = 'http://localhost:20010/v1/fetch';
-        this.method = 'POST';
-        this.accept = ""; // default: "Any" | valid values -> 'image/*' | 'video/*' | 'audio/*'
+        this.method = "POST";
+        this.imagesOnly = "false";
         this.maxSize = "0"; // default to 5MB | 0 indicates no limit
         this.errors = [];
         this._files = [];
         this.maxItems = "0"; // 0 for unlimited
-
-        this.currUploads = {};
 
         AWS.config.update({
             region: this.s3BucketRegion,
@@ -149,10 +160,7 @@ export default class UploaderComponent extends window.HTMLElement {
                 },
                 linkType: 'direct',
                 multiselect: this.maxItems === 0 || this.maxItems > 1,
-                extensions:
-                    (this.imagesOnly) ?
-                        ['images'] :
-                        this.accept
+                extensions: this.allowFileTypeConfig.dropbox
             });
         };
 
@@ -225,10 +233,19 @@ export default class UploaderComponent extends window.HTMLElement {
                     if (self.maxItems > 1) {
                         builder.setMaxItems(self.maxItems);
                     }
-                    if (self.imagesOnly) {
-                        builder.addView(google.picker.ViewId.DOCS_IMAGES);
-                    } else {
-                        builder.addView(google.picker.ViewId.DOCS);
+                    switch(self.allowFileTypeConfig.google) {
+                        case 'image':
+                            builder.addView(google.picker.ViewId.DOCS_IMAGES);
+                            break;
+                        case 'video':
+                            builder.addView(google.picker.ViewId.DOCS_VIDEOS);
+                            break;
+                        case 'audio':
+                            builder.addView(google.picker.ViewId.DOCS_VIDEOS);
+                            break;
+                        default:
+                            builder.addView(google.picker.ViewId.DOCS);
+                            break;
                     }
                     var picker = builder.build();
                     picker.setVisible(true);
@@ -312,14 +329,30 @@ export default class UploaderComponent extends window.HTMLElement {
                 if (!response || !response.value) {
                     return;
                 }
-                if (this.imagesOnly) {
-                    console.log("this should not print");
-                    // validate files to only images only
-                    if (response.value.some(isNotImage)) {
-                        alert('Please upload only image files (like .jpg, jpeg, .png or .gif)');
-                        window.removeEventListener('message', handleOneDriveMessage);
-                        return;
-                    }
+                switch (this.accept) {
+                    case 'image/*':
+                        if (response.value.some(isNotImage)) {
+                            alert('Please upload only image files (.jpg, jpeg, .png, .gif or .bmp)');
+                            window.removeEventListener('message', handleOneDriveMessage);
+                            return;
+                        }
+                        break;
+                    case 'video/*':
+                        if (response.value.some(isNotVideo)) {
+                            alert('Please upload only video files (.mp4, .m4v, .mov, .wmv or .avi)');
+                            window.removeEventListener('message', handleOneDriveMessage);
+                            return;
+                        }
+                        break;
+                    case 'audio/*':
+                        if (response.value.some(isNotAudio)) {
+                            alert('Please upload only audio files (.mp3 or .wav)');
+                            window.removeEventListener('message', handleOneDriveMessage);
+                            return;
+                        }
+                        break;
+                    case 'default':
+                        break;
                 }
                 this.setUploadingStatus(response.value);
                 this.request = this.oneDriveService.callback(response.value, this.fetchUrl, (err, type, data) => {
@@ -385,21 +418,17 @@ export default class UploaderComponent extends window.HTMLElement {
             const isNotImage = (file) => {
                 return !file.name.match(/\.(jpg|jpeg|png|gif|bmp)$/);
             }
-            
+            const isNotVideo = (file) => {
+                return !file.name.match(/\.(mp4|m4v|mov|wmv|avi)$/);
+            }
+            const isNotAudio = (file) => {
+                return !file.name.match(/\.(mp3|wav)$/);
+            }
+
             window.removeEventListener('message', handleOneDriveMessage);
             window.addEventListener('message', handleOneDriveMessage);
             window.open(this.oneDrivePickerCallback, '_blank', 'width=800,height=600');
         };
-        /**
-         * Due to webcomponents not supporting svg>use tag, we will have to
-         * create these svg element internally and insert into DOM ourselves
-         * so that these SVG can be properly rendered in Firefox.
-         */
-        const div = document.createElement('div');
-        div.innerHTML = '<svg class="type file-icon" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1724 508q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280z"/></svg>';
-        this.fileIcon = div.firstChild;
-        div.innerHTML = '<svg class="type file-icon" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M704 704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm1024 384v448h-1408v-192l320-320 160 160 512-512zm96-704h-1600q-13 0-22.5 9.5t-9.5 22.5v1216q0 13 9.5 22.5t22.5 9.5h1600q13 0 22.5-9.5t9.5-22.5v-1216q0-13-9.5-22.5t-22.5-9.5zm160 32v1216q0 66-47 113t-113 47h-1600q-66 0-113-47t-47-113v-1216q0-66 47-113t113-47h1600q66 0 113 47t47 113z"/></svg>';
-        this.pictureIcon = div.firstChild;
 
         this.fileItem.onchange = (evt) => {
             const files = evt.target.files;
@@ -498,24 +527,6 @@ export default class UploaderComponent extends window.HTMLElement {
         });
     }
 
-    updateProgress (uploadObj, uploadEvt) {
-        const updateKey = uploadObj.params.Key;
-        let sumProgress = 0;
-        let partialProgress = 0;
-
-        this.currUploads[updateKey] = [uploadObj, uploadEvt];
-
-        for (let key in this.currUploads) {
-            partialProgress = parseInt((this.currUploads[key][1].loaded * 100) / this.currUploads[key][1].total);
-            sumProgress += partialProgress;
-        }
-        const avgProgress = sumProgress / Object.keys(this.currUploads).length;
-        const uploadProgressEvent = new CustomEvent('upload-progress', {
-            'detail': avgProgress
-        });
-        this.dispatchEvent(uploadProgressEvent);      
-    }
-
     uploadAll (files) {
         if (!files.length) {
             return alert('Please choose a file to upload first.');
@@ -561,6 +572,7 @@ export default class UploaderComponent extends window.HTMLElement {
         const uploadStartEvent = new CustomEvent('upload-start', {});
         this.dispatchEvent(uploadStartEvent);
 
+        this.setUploadingStatus(validFiles);
         let promiseFiles = validFiles.map(file => 
             this.uploadFile(file)
         );
@@ -603,6 +615,24 @@ export default class UploaderComponent extends window.HTMLElement {
                 this.updateProgress(uploadObj, evt);
             });
         });  
+    }
+
+    updateProgress (uploadObj, uploadEvt) {
+        const updateKey = uploadObj.params.Key;
+        let sumProgress = 0;
+        let partialProgress = 0;
+
+        this.currUploads[updateKey] = [uploadObj, uploadEvt];
+
+        for (let key in this.currUploads) {
+            partialProgress = parseInt((this.currUploads[key][1].loaded * 100) / this.currUploads[key][1].total);
+            sumProgress += partialProgress;
+        }
+        const avgProgress = sumProgress / Object.keys(this.currUploads).length;
+        const uploadProgressEvent = new CustomEvent('upload-progress', {
+            'detail': avgProgress
+        });
+        this.dispatchEvent(uploadProgressEvent);      
     }
 
     abort () {
@@ -699,111 +729,156 @@ export default class UploaderComponent extends window.HTMLElement {
         ];
     }
 
-    attributeChangedCallback(attr, oldVal, newVal) {
+    attributeChangedCallback(attr, oldValue, newValue) {
         switch (attr) {
             case 's3-bucket-name':
-                // this.s3BucketName = newVal;
                 break;
             case 's3-bucket-region':
-                // this.s3BucketRegion = newVal;
                 break;
             case 's3-identity-pool-id':
-                // this.s3IdentityPoolId = newVal;
                 break;
             case 'files-microservice-url':
-                // this.filesMicroserviceURL = newVal;              
+                this.fetchUrl = newValue + "/v1/fetch";             
                 break;
             case 'google-picker-callback-url':
-                // this.googlePickerCallback = newVal;
                 break;
             case 'google-api-key':
-                // this.googleAPIKey = newVal;
                 break;
             case 'google-oauth-client-id':
-                // this.googleOAuthClientId = newVal;
                 break;
             case 'dropbox-app-key':
-                // this.dropboxAppKey = newVal;
                 break;
             case 'onedrive-picker-callback-url':
-                // this.oneDrivePickerCallback = newVal;
                 break;
             case 'method':
-                // this.method = newVal;
                 break;
             case 'accept':
-                // this.accept = newVal;
+                // Checks for valid newValue and assigns allowedFileType
+                let allowedFileType = '';
+                switch (newValue) {
+                    case 'image/*':
+                        if (!this.imagesOnly) { this.imagesOnly = "true"; }
+                        allowedFileType = 'photo';
+                        this.allowFileTypeConfig = {
+                            dropbox : ['images'],
+                            google : 'image'
+                        }
+                        break;
+                    case 'video/*':
+                        if (this.imagesOnly) { this.imagesOnly = "false"; }
+                        allowedFileType = 'video';
+                        this.allowFileTypeConfig = {
+                            dropbox : ['video'],
+                            google : 'video'
+                        }
+                        break;
+                    case 'audio/*':
+                        if (this.imagesOnly) { this.imagesOnly = "false"; }
+                        allowedFileType = 'audio file';
+                        this.allowFileTypeConfig = {
+                            dropbox : ['audio'],
+                            google : 'audio'
+                        }
+                        break;
+                    default:
+                        if (this.imagesOnly) { this.imagesOnly = "false"; }
+                        newValue = "";
+                        allowedFileType = 'file';
+                        this.allowFileTypeConfig = {
+                            dropbox : [],
+                            google : 'all'
+                        }
+                        break;
+                }
+                if (this.maxItems === 0 || this.maxItems > 1) {
+                    allowedFileType += '(s)';
+                }
+                for (let i = 0; i < this.allowedFileTypes.length; i++) {
+                    this.allowedFileTypes[i].textContent = allowedFileType;
+                }
+
+                // Sets hidden file input's accept property
+                this.fileItem.accept = newValue;
+
+                // Sets 'Accepted file types' text based on newValue
+                const formattedAcceptMessage = {
+                    'image/*': '.jpg, jpeg, .png, .gif, .bmp',
+                    'video/*': '.mp4, .m4v, .mov, .wmv, .avi',
+                    'audio/*': '.mp3, wav',
+                    '' : 'Any'
+                };
+                this.allowedExtensions.textContent = formattedAcceptMessage[newValue];
                 break;
             case 'max-size':
-                // this.maxSize = newVal;
+                if (newValue > 0) {
+                    this.sizeLimitItem.classList.remove('hidden');
+                    this.maxSizeItem.textContent = parseFloat((parseInt(newValue) / 1000000).toFixed(2));
+                } else {
+                    this.sizeLimitItem.classList.add('hidden');
+                }
                 break;
             case 'max-items':
-                // this.maxItems = newVal;
+                if (newValue < 0) {
+                    newValue = 0;
+                }
+                this.fileItem.multiple = (newValue !== 1);
                 break;
             case 'images-only':
-                // this.imagesOnly = newVal;
+                if (this.imagesOnly) {
+                    if (this.accept !== 'image/*') { this.accept = 'image/*'; }
+                } else {
+                    if (this.accept === 'image/*') { this.accept = ''; }
+                }
+                const fileIconHolder = this._shadowRoot.querySelector('.type.file-icon');
+                const svg = (this.imagesOnly) ? this.pictureIcon : this.fileIcon;
+                fileIconHolder.parentNode.replaceChild(svg, fileIconHolder);
                 break;
         }
     }
-
     // GETTERS
     get s3BucketName () {
         return this.getAttribute('s3-bucket-name');
     }
-
     get s3BucketRegion () {
         return this.getAttribute('s3-bucket-region');
     }
-
     get s3IdentityPoolId () {
         return this.getAttribute('s3-identity-pool-id');
     }
-
     get filesMicroserviceURL () {
         return this.getAttribute('files-microservice-url');
     }
-
     get googlePickerCallback () {
         return this.getAttribute('google-picker-callback-url');
     }
-
     get googleAPIKey () {
         return this.getAttribute('google-api-key');
     }
-
     get googleOAuthClientId () {
         return this.getAttribute('google-oauth-client-id');
     }
-
     get dropboxAppKey () {
         return this.getAttribute('dropbox-app-key');
     }
-
     get oneDrivePickerCallback () {
         return this.getAttribute('onedrive-picker-callback-url');
     }
-
     get maxItems () {
         return parseInt(this.getAttribute('max-items'));
     }
-
     get maxSize () {
         return parseInt(this.getAttribute('max-size')); 
     }
-
     get accept () {
         return this.getAttribute('accept');
     }
-
     get method () {
         return this.getAttribute('method');
     }
-
     get imagesOnly () {
         let val = this.getAttribute('images-only');
-        return val = val === "true" ? true : false;
+        return val === "true" ? true : false;
     }
-
     get files () {
         return this._files;
     }
@@ -811,115 +886,45 @@ export default class UploaderComponent extends window.HTMLElement {
     set s3BucketName (newValue) {
         this.setAttribute('s3-bucket-name', newValue);
     }
-
     set s3BucketRegion (newValue) {
         this.setAttribute('s3-bucket-region', newValue);
     }
-
     set s3IdentityPoolId (newValue) {
         this.setAttribute('s3-identity-pool-id', newValue);
     }
-
     set filesMicroserviceURL (newValue) {
-        this.setAttribute('files-microservice-url', newValue);
-        this.fetchUrl = newValue + "/v1/fetch";
+        this.setAttribute('files-microservice-url', newValue);        
     }
-
     set googlePickerCallback (newValue) {
         this.setAttribute('google-picker-callback-url', newValue);
     }
-
     set googleAPIKey (newValue) {
         this.setAttribute('google-api-key', newValue);
     }
-
     set googleOAuthClientId (newValue) {
         this.setAttribute('google-oauth-client-id', newValue);
     }
-
     set dropboxAppKey (newValue) {
         this.setAttribute('dropbox-app-key', newValue);
     }
-
     set oneDrivePickerCallback (newValue) {
         this.setAttribute('onedrive-picker-callback-url', newValue);
     }
-
     set maxItems (newValue) {
-        if (newValue < 0) {
-            newValue = 0;
-        }
-        this.fileItem.multiple = (newValue !== 1);
-
         this.setAttribute('max-items', newValue);
     }
-
     set maxSize (newValue) {
-        if (newValue > 0) {
-            this.sizeLimitItem.classList.remove('hidden');
-            this.maxSizeItem.textContent = parseFloat((parseInt(newValue) / 1000000).toFixed(2));
-        } else {
-            this.sizeLimitItem.classList.add('hidden');
-        }
-
         this.setAttribute('max-size', newValue);
     }
-
     set accept (newValue) {
-        this.fileItem.accept = newValue;
-        const formattedAcceptMessage = {
-            'image/*': '.jpg, jpeg, .png, .gif',
-            'video/*': '.mp4, .m4v, .mov, .wmv, .avi',
-            'audio/*': '.mp3, wav'
-        };
-        if (!newValue) {
-            this.allowedExtensions.textContent = 'Any';
-        } else {
-            this.allowedExtensions.textContent =
-                formattedAcceptMessage[newValue] ?
-                    formattedAcceptMessage[newValue] :
-                    newValue;
-        }
-        let allowedFileType = '';
-        switch (newValue) {
-            case 'image/*':
-                allowedFileType = 'photo';
-                break;
-            case 'video/*':
-                allowedFileType = 'video';
-                break;
-            case 'audio/*':
-                allowedFileType = 'audio file';
-                break;
-            default:
-                allowedFileType = 'file';
-                break;
-        }
-        if (this.maxItems === 0 || this.maxItems > 1) {
-            allowedFileType += '(s)';
-        }
-        for (let i = 0; i < this.allowedFileTypes.length; i ++) {
-            this.allowedFileTypes[i].textContent = allowedFileType;
-        }
-
         this.setAttribute('accept', newValue);
     }
-
     set method (newValue) {
         this.setAttribute('method', newValue);
     }
-
     set imagesOnly (newValue) {
-        if (newValue) {
-            this.accept = 'image/*';
-        }
-        const fileIconHolder = this._shadowRoot.querySelector('.type.file-icon');
-        const svg = (this.imagesOnly) ? this.pictureIcon : this.fileIcon;
-        fileIconHolder.parentNode.replaceChild(svg, fileIconHolder);
-
         this.setAttribute('images-only', newValue);
     }
-
     set files (newValue) {
         this._files = newValue;
         this.dispatchEvent(new CustomEvent('change', {

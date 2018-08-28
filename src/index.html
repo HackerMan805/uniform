@@ -1526,6 +1526,15 @@
                             <div>Dropbox App Key: <input type="text" class="uploader-setting" name="dropboxAppKey" /></div>
                             <div class="uploader-config-header" style="margin-top: 15px;">OneDrive Config.</div>
                             <div>OneDrive Picker Callback URL: <input type="text" class="uploader-setting" name="oneDrivePickerCallback" /></div>
+                            <div class="uploader-config-header" style="margin-top: 15px;">Accept</div>
+                            <div>
+                                <select id="accept_select" class="uploader-setting" name="accept">
+                                    <option value="All" selected>All</option>
+                                    <option value="image/*">Images</option>
+                                    <option value="video/*">Videos</option>
+                                    <option value="audio/*">Audio</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div><input type="button" value="Save Uploader Settings" id="save_uploader_settings"></div>
@@ -1540,10 +1549,10 @@
                         dropbox-app-key=""
                         onedrive-picker-callback-url=""
                         method=""
-                        accept=""
+                        accept="audio/*"
                         max-size=""
                         max-items="0"
-                        images-only="false">
+                        images-only="">
                     </uniform-uploader>
                     <div id="file_uploader_list"></div>
                     <script type="text/javascript">
@@ -1551,6 +1560,7 @@
                         const uploaderDOM = document.querySelector('uniform-uploader');
                         const uploaderListDOM = document.querySelector('#file_uploader_list');
                         const saveSettingsBtn = document.getElementById('save_uploader_settings');
+                        const acceptSelect = document.getElementById('accept_select');
 
                         if (settingsObj) {
                             let settingFields = document.getElementsByClassName('uploader-setting');
@@ -1567,6 +1577,7 @@
                             uploaderDOM.setAttribute('google-oauth-client-id', settingsObj.googleOAuthClientId);
                             uploaderDOM.setAttribute('dropbox-app-key', settingsObj.dropboxAppKey);
                             uploaderDOM.setAttribute('onedrive-picker-callback-url', settingsObj.oneDrivePickerCallback);
+                            uploaderDOM.setAttribute('accept', settingsObj.accept);
                         }
 
                         saveSettingsBtn.addEventListener('click', () => {
@@ -1579,7 +1590,7 @@
                             // save on localStorage
                             localStorage.setItem('uploader-settings', JSON.stringify(settingsObj));
                             // reload page so settings take effect
-                            location.reload()
+                            location.reload();
                         });
 
                         uploaderDOM.addEventListener('uploaded', (e) => {
@@ -1589,6 +1600,10 @@
                             for (let i=0; i<e.detail.length; i++) {
                                 uploaderListDOM.innerHTML += `<img src="${e.detail[i].sourceUrl}" />`;
                             }
+                        });
+
+                        acceptSelect.addEventListener('change', () => {
+                            saveSettingsBtn.click();
                         });
                     </script>
                 </section>
