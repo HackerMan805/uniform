@@ -609,6 +609,7 @@ export default class UploaderComponent extends window.HTMLElement {
                 "detail": values
             });
             this.dispatchEvent(uploadFinishEvent);
+            this.files = this.files.concat(values);
         }).catch( e => {
             console.log(e);
             this.setErrors();
@@ -637,7 +638,8 @@ export default class UploaderComponent extends window.HTMLElement {
                     console.log('There was an error uploading your file: ', err.message)
                     reject(err);
                 }
-                resolve(fileName);
+                file.mimetype = file.type;
+                resolve(file);
             })
             .on('httpUploadProgress', (evt) => {
                 this.updateProgress(uploadObj, evt);
@@ -754,11 +756,14 @@ export default class UploaderComponent extends window.HTMLElement {
             var pictureIcon = div.firstChild;
             var clone = document.importNode(this.fileTemplate, true);
             var nameAnchor = clone.querySelector('a.name');
-            var fileIcon = clone.querySelector('.icons svg');
-            var iconSvg = (file.mimetype.indexOf('image') > -1) ? pictureIcon : fileIcon;
+            var fileIcon = clone.querySelector('.icons svg');    
+            var iconSvg = (file.mimetype.indexOf('image') > -1) || (file.type.indexOf('image') > -1) ? pictureIcon : fileIcon;
             fileIcon.parentNode.replaceChild(iconSvg, fileIcon);
             nameAnchor.textContent = file.name;
-            nameAnchor.setAttribute('href', (file.url.indexOf('http') > -1) ? file.url : domain + file.url);
+            // Excluding local uploads for now until solution is decided on
+            if (file.url) {
+                nameAnchor.setAttribute('href', (file.url.indexOf('http') > -1) ? file.url : domain + file.url);
+            }
             clone.querySelector('.delete')
                 .addEventListener('click', () => {
                     this.files = this.files.filter(function(f, i) {
