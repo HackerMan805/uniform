@@ -1550,9 +1550,10 @@
                         onedrive-picker-callback-url=""
                         method=""
                         accept="audio/*"
-                        max-size=""
+                        max-size="0"
                         max-items="0"
-                        images-only="">
+                        images-only=""
+                        default-list-view="true">
                     </uniform-uploader>
                     <div id="file_uploader_list"></div>
                     <script type="text/javascript">
@@ -1595,11 +1596,6 @@
 
                         uploaderDOM.addEventListener('uploaded', (e) => {
                             console.log(e, e.detail);
-                            uploaderListDOM.innerHTML = "";
-
-                            for (let i=0; i<e.detail.length; i++) {
-                                uploaderListDOM.innerHTML += `<img src="${e.detail[i].sourceUrl}" />`;
-                            }
                         });
 
                         acceptSelect.addEventListener('change', () => {

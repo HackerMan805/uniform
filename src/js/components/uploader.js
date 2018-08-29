@@ -13,6 +13,11 @@ export default class UploaderComponent extends window.HTMLElement {
             ${require('../../templates/uploader.html').toString()}
         `;
 
+        this.fileTemplate = document.createElement("div");
+        this.fileTemplate.innerHTML = `
+            ${require('../../templates/uploader-file.html').toString()}
+        `;
+
         // Caches DOM query
         this.dropzone = this._shadowRoot.querySelector('.dropzone');
         this.loadingzone = this._shadowRoot.querySelector('.loadingzone');
@@ -48,13 +53,13 @@ export default class UploaderComponent extends window.HTMLElement {
         this.currUploads = {};
         this.allowFileTypeConfig = {};
         // Defaults & Attribute side effects
+        this.url = 'http://localhost:20010/v1/upload';
         this.fetchUrl = 'http://localhost:20010/v1/fetch';
         this.method = "POST";
         this.imagesOnly = "false";
         this.maxSize = "0"; // default to 5MB | 0 indicates no limit
         this.errors = [];
         this._files = [];
-        this.maxItems = "0"; // 0 for unlimited
 
         AWS.config.update({
             region: this.s3BucketRegion,
@@ -70,11 +75,22 @@ export default class UploaderComponent extends window.HTMLElement {
         if (this.filesMicroserviceURL) {
             this.fetchUrl = this.filesMicroserviceURL + "/v1/fetch";
         }
-        /*
-        if (this.hasAttribute('default-list-view')) {
-            this.defaultListView = this.getAttribute('default-list-view');
-        }
-        */
+
+        // Creates this.files with getter/setter
+        Object.defineProperty(this, 'files', {
+            get: function() {
+                return this._files;
+            },
+            set: function(value) {
+                this._files = value;
+                this.dispatchEvent(new CustomEvent('change', {
+                    'detail': value
+                }));
+                if (this.defaultListView) {
+                    this.addFilesToDom();
+                }
+            }
+        });   
     }
 
     connectedCallback () {
@@ -306,6 +322,7 @@ export default class UploaderComponent extends window.HTMLElement {
                                 self.progressBar.value = 0;
                                 self.dropzone.classList.add('hidden');
                                 self.loadingzone.classList.remove('hidden');
+                                break;
                             case 'onloadend':
                                 self.progressBar.style.width = 100 + '%';
                                 self.progressBar.textContent = '';
@@ -430,6 +447,9 @@ export default class UploaderComponent extends window.HTMLElement {
             window.open(this.oneDrivePickerCallback, '_blank', 'width=800,height=600');
         };
 
+        this._closeDropdownRef = this.closeDropdownMenu.bind(this);
+        document.body.addEventListener('click', this._closeDropdownRef);
+
         this.fileItem.onchange = (evt) => {
             const files = evt.target.files;
             this.uploadAll(files);
@@ -465,7 +485,7 @@ export default class UploaderComponent extends window.HTMLElement {
             this.cancel.classList.remove('hidden');
             this.progressBar.classList.remove('indeterminate');
         });
-        document.body.addEventListener('click', this._closeDropdownRef);
+
         this.dropdown.addEventListener('click', (evt) => {
             evt.stopPropagation();
             evt.preventDefault();
@@ -525,6 +545,14 @@ export default class UploaderComponent extends window.HTMLElement {
             evt.preventDefault();
             this.abort();
         });
+    }
+
+    disconnectedCallback () {
+        document.body.removeEventListener('click', this._closeDropdownRef);
+        // window.removeEventListener('message', this.handleOneDriveMessageInstance);
+        while (this.firstChild) {
+            this.removeChild(this.firstChild);
+        }
     }
 
     uploadAll (files) {
@@ -710,6 +738,41 @@ export default class UploaderComponent extends window.HTMLElement {
         });
     }
 
+    addFilesToDom () {
+        while (this.filesItem.firstChild) {
+            this.filesItem.removeChild(this.filesItem.firstChild);
+        }
+        // extract domain from url
+        var matches = this.url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
+        var domain = matches && matches[1];
+        this.files.forEach((file, index) => {
+            // TODO: probably there is better way to cache this dom
+            var div = document.createElement('div');
+            div.innerHTML = '<svg class="type icon" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M1724 508q28 28 48 76t20 88v1152q0 40-28 68t-68 28h-1344q-40 0-68-28t-28-68v-1600q0-40 28-68t68-28h896q40 0 88 20t76 48zm-444-244v376h376q-10-29-22-41l-313-313q-12-12-41-22zm384 1528v-1024h-416q-40 0-68-28t-28-68v-416h-768v1536h1280z"/></svg>';
+            var fileIcon = div.firstChild;
+            div.innerHTML = '<svg class="type icon" viewBox="0 0 2048 2048" xmlns="http://www.w3.org/2000/svg"><path d="M704 704q0 80-56 136t-136 56-136-56-56-136 56-136 136-56 136 56 56 136zm1024 384v448h-1408v-192l320-320 160 160 512-512zm96-704h-1600q-13 0-22.5 9.5t-9.5 22.5v1216q0 13 9.5 22.5t22.5 9.5h1600q13 0 22.5-9.5t9.5-22.5v-1216q0-13-9.5-22.5t-22.5-9.5zm160 32v1216q0 66-47 113t-113 47h-1600q-66 0-113-47t-47-113v-1216q0-66 47-113t113-47h1600q66 0 113 47t47 113z"/></svg>';
+            var pictureIcon = div.firstChild;
+            var clone = document.importNode(this.fileTemplate, true);
+            var nameAnchor = clone.querySelector('a.name');
+            var fileIcon = clone.querySelector('.icons svg');
+            var iconSvg = (file.mimetype.indexOf('image') > -1) ? pictureIcon : fileIcon;
+            fileIcon.parentNode.replaceChild(iconSvg, fileIcon);
+            nameAnchor.textContent = file.name;
+            nameAnchor.setAttribute('href', (file.url.indexOf('http') > -1) ? file.url : domain + file.url);
+            clone.querySelector('.delete')
+                .addEventListener('click', () => {
+                    this.files = this.files.filter(function(f, i) {
+                        return i !== index;
+                    });
+                });
+            this.filesItem.appendChild(clone);
+        });
+    }
+
+    closeDropdownMenu () {
+        this.dropdownMenu.classList.remove('open');
+    }
+
     static get observedAttributes() {
         return [
             's3-bucket-name',
@@ -879,8 +942,9 @@ export default class UploaderComponent extends window.HTMLElement {
         let val = this.getAttribute('images-only');
         return val === "true" ? true : false;
     }
-    get files () {
-        return this._files;
+    get defaultListView () {
+        let val = this.getAttribute('default-list-view');
+        return val === "true" ? true : false;
     }
     // SETTERS
     set s3BucketName (newValue) {
@@ -925,10 +989,7 @@ export default class UploaderComponent extends window.HTMLElement {
     set imagesOnly (newValue) {
         this.setAttribute('images-only', newValue);
     }
-    set files (newValue) {
-        this._files = newValue;
-        this.dispatchEvent(new CustomEvent('change', {
-            'detail': newValue
-        }));
-    }
+    set defaultListView (newValue) {
+        this.setAttribute('default-list-view', newValue);
+    }    
 }
