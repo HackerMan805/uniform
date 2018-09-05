@@ -1556,7 +1556,7 @@
                         default-list-view="true">
                     </uniform-uploader>
                     <div id="file_uploader_list"></div>
-                    <script type="text/javascript">
+                    <script>
                         const settingsObj = JSON.parse(localStorage.getItem('uploader-settings'));
                         const uploaderDOM = document.querySelector('uniform-uploader');
                         const uploaderListDOM = document.querySelector('#file_uploader_list');
@@ -1607,5 +1607,8 @@
             </div> <!-- close .content -->
         </main>
         <script src="js/app.js"></script>
+        <!-- uniform-uploader 3rd party picker APIs -->
+        <script src="https://www.dropbox.com/static/api/2/dropins.js"></script>
+        <script src="https://apis.google.com/js/api.js"></script>
     </body>
 </html>

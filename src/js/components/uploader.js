@@ -1,8 +1,6 @@
 const AWS = require('aws-sdk');
-const Dropbox = require('../libraries/Dropbox');
 const HostedFileService = require('../libraries/uploader/HostedFileService');
 const HostedFile = require('../libraries/uploader/HostedFile');
-require('../libraries/google-api');
 
 export default class UploaderComponent extends window.HTMLElement {
     constructor() {
@@ -12,12 +10,10 @@ export default class UploaderComponent extends window.HTMLElement {
             <style>${require('../../sass/components/file-uploader.scss').toString()}</style>
             ${require('../../templates/uploader.html').toString()}
         `;
-
         this.fileTemplate = document.createElement("div");
         this.fileTemplate.innerHTML = `
             ${require('../../templates/uploader-file.html').toString()}
         `;
-
         // Caches DOM query
         this.dropzone = this._shadowRoot.querySelector('.dropzone');
         this.loadingzone = this._shadowRoot.querySelector('.loadingzone');
@@ -38,7 +34,6 @@ export default class UploaderComponent extends window.HTMLElement {
         this.sizeLimitItem = this._shadowRoot.querySelector('.size-limit');
         this.allowedFileTypes = this._shadowRoot.querySelectorAll('.allowed-file-type');
         this.nativeFilePicker = this._shadowRoot.querySelector('.native-file-picker');
-
         /**
          * Due to webcomponents not supporting svg>use tag, we will have to
          * create these svg element internally and insert into DOM ourselves
@@ -96,10 +91,14 @@ export default class UploaderComponent extends window.HTMLElement {
     connectedCallback () {
         const self = this;
 
-        Dropbox.appKey = this.dropboxAppKey;
         this.dropboxService = new HostedFileService();
         this.dropboxService.name = 'dropbox';
         this.dropboxService.openPicker = () => {
+            if (typeof Dropbox === 'undefined') {
+                console.error("Dropbox Chooser API not found. See https://www.dropbox.com/developers/chooser");
+                return;
+            }
+            Dropbox.appKey = this.dropboxAppKey;
             Dropbox.choose({
                 success: (files) => {
                     // since Dropbox api doesn't allow us to specify
@@ -183,6 +182,10 @@ export default class UploaderComponent extends window.HTMLElement {
         this.googleService = new HostedFileService();
         this.googleService.name = 'google';
         this.googleService.openPicker = function() {
+            if (typeof gapi === 'undefined') {
+                console.error("Google API Loader script not found. See https://developers.google.com/picker/docs/");
+                return;
+            }
             var googleDriveSelf = this;
             // TODO: get from attribute
             var GOOGLE_API_KEY = self.googleAPIKey;
@@ -334,12 +337,9 @@ export default class UploaderComponent extends window.HTMLElement {
                 }
             }
         };
+
         this.oneDriveService = new HostedFileService();
         this.oneDriveService.name = 'microsoft';
-        // because IE is pain in the butt and has its own memory
-        // management that causes the window.removeEventListener func
-        // not removing correct handleOneDriveMessage
-        // this.handleOneDriveMessageInstance = this.handleOneDriveMessage.bind(this);
         this.oneDriveService.openPicker = () => {
             const handleOneDriveMessage = (event) => {
                 const response = JSON.parse(event.data);
@@ -549,7 +549,6 @@ export default class UploaderComponent extends window.HTMLElement {
 
     disconnectedCallback () {
         document.body.removeEventListener('click', this._closeDropdownRef);
-        // window.removeEventListener('message', this.handleOneDriveMessageInstance);
         while (this.firstChild) {
             this.removeChild(this.firstChild);
         }
@@ -793,7 +792,8 @@ export default class UploaderComponent extends window.HTMLElement {
             'accept',
             'max-size',
             'max-items',
-            'images-only'
+            'images-only',
+            'default-list-view'
         ];
     }
 
@@ -900,6 +900,11 @@ export default class UploaderComponent extends window.HTMLElement {
                 const fileIconHolder = this._shadowRoot.querySelector('.type.file-icon');
                 const svg = (this.imagesOnly) ? this.pictureIcon : this.fileIcon;
                 fileIconHolder.parentNode.replaceChild(svg, fileIconHolder);
+                break;
+            case 'default-list-view':
+                if (this.defaultListView) {
+                    this.addFilesToDom();
+                }
                 break;
         }
     }
