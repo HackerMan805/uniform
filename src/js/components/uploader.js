@@ -47,14 +47,18 @@ export default class UploaderComponent extends window.HTMLElement {
 
         this.currUploads = {};
         this.allowFileTypeConfig = {};
-        // Defaults & Attribute side effects
         this.url = 'http://localhost:20010/v1/upload';
         this.fetchUrl = 'http://localhost:20010/v1/fetch';
         this.method = "POST";
         this.imagesOnly = "false";
-        this.maxSize = "0"; // default to 5MB | 0 indicates no limit
+        if (!this.maxSize) {
+            this.maxSize = "0"; // 0 indicates no limit | Units - MB
+        }
         this.errors = [];
         this._files = [];
+        if (this.filesMicroserviceURL) {
+            this.fetchUrl = this.filesMicroserviceURL + "/v1/fetch";
+        }
 
         AWS.config.update({
             region: this.s3BucketRegion,
@@ -66,10 +70,6 @@ export default class UploaderComponent extends window.HTMLElement {
             apiVersion: '2006-03-01',
             params: {Bucket: this.s3BucketName}
         });
-
-        if (this.filesMicroserviceURL) {
-            this.fetchUrl = this.filesMicroserviceURL + "/v1/fetch";
-        }
 
         // Creates this.files with getter/setter
         Object.defineProperty(this, 'files', {
@@ -107,6 +107,7 @@ export default class UploaderComponent extends window.HTMLElement {
                     if (this.maxItems !== 0 && files.length > this.maxItems) {
                         this.dropzone.classList.remove('hidden');
                         this.loadingzone.classList.add('hidden');
+                        this.errors = [];
                         this.errors.push({
                             type: 'multiple'
                         });
@@ -175,7 +176,8 @@ export default class UploaderComponent extends window.HTMLElement {
                 },
                 linkType: 'direct',
                 multiselect: this.maxItems === 0 || this.maxItems > 1,
-                extensions: this.allowFileTypeConfig.dropbox
+                extensions: this.allowFileTypeConfig.dropbox,
+                sizeLimit: this.maxSize > 0 ? this.maxSize * 1000000 : false
             });
         };
 
@@ -240,7 +242,7 @@ export default class UploaderComponent extends window.HTMLElement {
                     createPicker();
                 }
             }
-            // Create and render a Picker object for picking user Photos.
+            // Create and render a Picker object for picking user files.
             function createPicker() {
                 if (pickerApiLoaded && googleDriveSelf.oauthToken.token) {
                     var builder = new google.picker.PickerBuilder()
@@ -272,8 +274,25 @@ export default class UploaderComponent extends window.HTMLElement {
             }
             // A simple callback implementation.
             function pickerCallback(data) {
-                // reset errors
+                if (!data.docs) { return; }
+
                 self.errors = [];
+                var file;
+                // maxSize check
+                for (var i = data.docs.length - 1; i>=0; i--) {
+                    file = data.docs[i];
+                    if (self.maxSize > 0 && file.sizeBytes > self.maxSize * 1000000) {
+                        self.errors.push({
+                            filename: file.name,
+                            type: 'size',
+                            size: file.sizeBytes
+                        });
+                        data.docs.splice(i,1);
+                    }
+                }
+                self.setErrors();
+                if (data.docs.length === 0) { return; }
+
                 if (data.action == google.picker.Action.PICKED) {
                     self.setUploadingStatus(data.docs);
                     self.request = self.googleService.callback(data.docs, self.fetchUrl, function(err, type, data) {
@@ -371,6 +390,27 @@ export default class UploaderComponent extends window.HTMLElement {
                     case 'default':
                         break;
                 }
+
+                this.errors = [];
+                let file;
+                // maxSize check
+                for (let i = response.value.length - 1; i>=0; i--) {
+                    file = response.value[i];
+                    if (this.maxSize > 0 && file.size > this.maxSize * 1000000) {
+                        this.errors.push({
+                            filename: file.name,
+                            type: 'size',
+                            size: file.size
+                        });
+                        response.value.splice(i,1);
+                    }
+                }
+                this.setErrors();
+                if (response.value.length === 0) { 
+                    window.removeEventListener('message', handleOneDriveMessage);
+                    return; 
+                }
+
                 this.setUploadingStatus(response.value);
                 this.request = this.oneDriveService.callback(response.value, this.fetchUrl, (err, type, data) => {
                     this.errors = [];
@@ -403,6 +443,7 @@ export default class UploaderComponent extends window.HTMLElement {
                             this.progressBar.style.width = 0 + '%';
                             this.cancel.classList.remove('hidden');
                             this.progressBar.classList.remove('indeterminate');
+                            window.removeEventListener('message', handleOneDriveMessage);
                             break;
                         case 'onprogess':
                             if (data.lengthComputable) {
@@ -549,6 +590,7 @@ export default class UploaderComponent extends window.HTMLElement {
 
     disconnectedCallback () {
         document.body.removeEventListener('click', this._closeDropdownRef);
+        window.removeEventListener('message', handleOneDriveMessage);
         while (this.firstChild) {
             this.removeChild(this.firstChild);
         }
@@ -581,7 +623,7 @@ export default class UploaderComponent extends window.HTMLElement {
                 });
                 continue;
             }
-            if (this.fileSize > 0 && fileSize >= this.maxSize) {
+            if (this.maxSize > 0 && fileSize > this.maxSize * 1000000) {
                 this.errors.push({
                     filename: file.name,
                     type: 'size',
@@ -756,7 +798,7 @@ export default class UploaderComponent extends window.HTMLElement {
             var clone = document.importNode(this.fileTemplate, true);
             var nameAnchor = clone.querySelector('a.name');
             var fileIcon = clone.querySelector('.icons svg');    
-            var iconSvg = (file.mimetype.indexOf('image') > -1) || (file.type.indexOf('image') > -1) ? pictureIcon : fileIcon;
+            var iconSvg = (file.mimetype.indexOf('image') > -1) ? pictureIcon : fileIcon;
             fileIcon.parentNode.replaceChild(iconSvg, fileIcon);
             nameAnchor.textContent = file.name;
             // Excluding local uploads for now until solution is decided on
@@ -878,9 +920,9 @@ export default class UploaderComponent extends window.HTMLElement {
                 this.allowedExtensions.textContent = formattedAcceptMessage[newValue];
                 break;
             case 'max-size':
-                if (newValue > 0) {
+                if (this.maxSize > 0) {
                     this.sizeLimitItem.classList.remove('hidden');
-                    this.maxSizeItem.textContent = parseFloat((parseInt(newValue) / 1000000).toFixed(2));
+                    this.maxSizeItem.textContent = this.maxSize;
                 } else {
                     this.sizeLimitItem.classList.add('hidden');
                 }
@@ -940,7 +982,7 @@ export default class UploaderComponent extends window.HTMLElement {
         return parseInt(this.getAttribute('max-items'));
     }
     get maxSize () {
-        return parseInt(this.getAttribute('max-size')); 
+        return parseFloat(this.getAttribute('max-size')); 
     }
     get accept () {
         return this.getAttribute('accept');
