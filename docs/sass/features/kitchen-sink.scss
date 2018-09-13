@@ -25,6 +25,8 @@
 	@import 'components/toggle-selectors';
 	@import 'components/tooltips';
 	@import 'components/cards';
+	@import 'components/uploader';
+	@import 'components/file-uploader';
 
 	@import 'components/cms/modals';
 
@@ -378,7 +380,6 @@
 		}
 
 		// Cards ---------------------------------------------------------------
-
 		.dashboard-card-container {
 			@extend %flexbox;
 			@include flex-direction(column);
@@ -409,6 +410,44 @@
 		.uniform-card {
 			&.info {
 				margin-bottom: 1em;
+			}
+		}
+
+		// Uploader ---------------------------------------------------------------
+		#uploader_settings {
+			@extend %flexbox;
+			@include flex-wrap(wrap);
+
+			&>div {
+				max-width: 21em;
+				width: 100%;
+				margin-bottom: 1em;
+				.uploader-config-header {
+					margin-bottom: 0.5em;
+					font-size: 1.1em;
+					font-weight: bold;
+				}
+				div {
+					font-size: 0.9em;
+				}
+			}
+
+			input {
+				height: 3em;
+				width: 95%;
+				font-size: 0.9em;
+				margin-bottom: 0.5em;
+			}
+		}
+		
+		#save_uploader_settings {
+			cursor: pointer;
+			border: 1px solid black;
+		}
+
+		#file_uploader_list {
+			&> * {
+				max-width: 20em;
 			}
 		}
 	}

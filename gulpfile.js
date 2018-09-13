@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const connect = require('gulp-connect');
 const open = require('open');
 const sass = require('gulp-sass');
 const webpack = require('webpack-stream');
@@ -44,7 +45,6 @@ function compileHtml(iconSprite, colorList) {
         return file.contents.toString();
     }
 
-
     const templateData = {          
         iconSprite,
         colorList
@@ -60,7 +60,6 @@ function compileHtml(iconSprite, colorList) {
             }
         }
     }                
-
     return gulp.src(app.html)
         .pipe(inject(svgs, { transform: fileContents }))
         .pipe(handlebars(templateData, options))
@@ -80,10 +79,8 @@ async function generateColors() {
         
         if (name !== null && color !== null) {
             colors.push({"name": name[0] , "hex": color[0]});
-            
         }    
     });
-
     return colors;   
 }
 
@@ -120,14 +117,16 @@ gulp.task('html', (done) => {
         }).catch (function(colorErr) {
             done(colorErr);
         });        
-    
     });    
 });
 
 gulp.task('start', (done) => {
-    open('./docs/index.html');
+    connect.server({
+        root: process.env.PWD + "/docs/",
+        port: 33546
+    });
+    open("http://localhost:33546");
     done();
 });
 gulp.task('build', gulp.parallel('sass', 'demo:sass', 'html', 'js', 'demo:js'));
 gulp.task('default', gulp.series('build'));
-

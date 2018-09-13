@@ -20,22 +20,28 @@
   },
   "homepage": "https://github.com/edlio/uniform",
   "dependencies": {
-    "@webcomponents/webcomponentsjs": "^2.0.0"
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "aws-sdk": "^2.275.1",
+    "html-loader": "^0.5.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
+    "css-loader": "^1.0.0",
     "glob": "^7.1.2",
     "gulp": "^4.0.0",
     "gulp-cli": "^2.0.1",
     "gulp-compile-handlebars": "^0.6.1",
+    "gulp-connect": "^5.5.0",
     "gulp-filelist": "^1.0.2",
     "gulp-inject": "^4.3.2",
     "gulp-sass": "^4.0.1",
     "gulp-svgstore": "^6.1.1",
     "open": "0.0.5",
     "path": "^0.12.7",
+    "sass-loader": "^7.0.3",
+    "webpack": "^4.16.3",
     "webpack-stream": "^4.0.3"
   }
 }
