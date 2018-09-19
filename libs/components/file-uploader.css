@@ -1,9 +1,10 @@
-edlio-file-uploader {
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+:host {
   font-size: 16px;
   color: #888;
   /* for Blazer global style overwrite woot woot */ }
-  edlio-file-uploader .dropzone,
-  edlio-file-uploader .loadingzone {
+  :host .dropzone,
+  :host .loadingzone {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -21,44 +22,44 @@ edlio-file-uploader {
     border-radius: 0.24063em;
     margin-bottom: 1em;
     text-align: center; }
-  edlio-file-uploader .dropzone {
+  :host .dropzone {
     padding: 0 1em; }
-  edlio-file-uploader .dropzone.dragover {
+  :host .dropzone.dragover {
     background-color: #e4f4fc;
     border-color: #2ca9e1; }
-    edlio-file-uploader .dropzone.dragover span,
-    edlio-file-uploader .dropzone.dragover .type.file-icon {
+    :host .dropzone.dragover span,
+    :host .dropzone.dragover .type.file-icon {
       display: none; }
-  edlio-file-uploader .dropzone span,
-  edlio-file-uploader .dropzone svg,
-  edlio-file-uploader .loadingzone .progress,
-  edlio-file-uploader .loadingzone .cancel {
+  :host .dropzone span,
+  :host .dropzone svg,
+  :host .loadingzone .progress,
+  :host .loadingzone .cancel {
     -ms-flex-item-align: center;
     -webkit-align-self: center;
     align-self: center; }
-  edlio-file-uploader .dropzone span {
+  :host .dropzone span {
     font-weight: bold; }
-  edlio-file-uploader .dropzone header a {
+  :host .dropzone header a {
     color: #29abe2;
     text-decoration: none; }
-  edlio-file-uploader .dropzone svg.type.file-icon {
+  :host .dropzone svg.type.file-icon {
     -webkit-flex: 1 1 100%;
     -ms-flex: 1 1 100%;
     flex: 1 1 100%;
     height: 3em !important;
     fill: #ccc !important;
     margin-bottom: 1em; }
-  edlio-file-uploader .dropzone .dropdown {
+  :host .dropzone .dropdown {
     position: relative;
     cursor: pointer;
     display: inline-block;
     margin-bottom: 0; }
-  edlio-file-uploader .dropzone .dropdown .file-icon {
+  :host .dropzone .dropdown .file-icon {
     vertical-align: middle;
     width: 1.382em;
     height: 1.382em;
     margin-right: 1em; }
-  edlio-file-uploader .dropzone .dropdown .menu {
+  :host .dropzone .dropdown .menu {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -72,7 +73,7 @@ edlio-file-uploader {
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 3px; }
-    edlio-file-uploader .dropzone .dropdown .menu.open {
+    :host .dropzone .dropdown .menu.open {
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
@@ -81,7 +82,7 @@ edlio-file-uploader {
       opacity: 1;
       height: auto;
       z-index: 101; }
-      edlio-file-uploader .dropzone .dropdown .menu.open a {
+      :host .dropzone .dropdown .menu.open a {
         -webkit-flex: 1 0 auto;
         -ms-flex: 1 0 auto;
         flex: 1 0 auto;
@@ -92,14 +93,14 @@ edlio-file-uploader {
         padding: 0 1.382em 0 1em;
         color: #888888;
         text-decoration: none; }
-  edlio-file-uploader .dropzone .dropdown .menu a:hover {
+  :host .dropzone .dropdown .menu a:hover {
     background-color: #eee;
     text-decoration: none; }
-  edlio-file-uploader .dropzone .dropdown a:not(:last-child) {
+  :host .dropzone .dropdown a:not(:last-child) {
     border-bottom: 1px solid #ccc; }
-  edlio-file-uploader .loadingzone {
+  :host .loadingzone {
     padding: 1em; }
-    edlio-file-uploader .loadingzone .progress {
+    :host .loadingzone .progress {
       -webkit-flex: 1 1 0%;
       -ms-flex: 1 1 0%;
       flex: 1 1 0%;
@@ -112,7 +113,7 @@ edlio-file-uploader {
       color: #2ca9e1;
       border-radius: 2px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; }
-    edlio-file-uploader .loadingzone .progress .progress-bar {
+    :host .loadingzone .progress .progress-bar {
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
@@ -127,10 +128,10 @@ edlio-file-uploader {
       height: 100%;
       color: #fff;
       padding-right: 1em; }
-      edlio-file-uploader .loadingzone .progress .progress-bar.indeterminate {
+      :host .loadingzone .progress .progress-bar.indeterminate {
         position: relative;
         overflow: hidden; }
-      edlio-file-uploader .loadingzone .progress .progress-bar.indeterminate:before {
+      :host .loadingzone .progress .progress-bar.indeterminate:before {
         display: block;
         position: absolute;
         content: "";
@@ -171,19 +172,19 @@ edlio-file-uploader {
     left: 120%; }
   to {
     left: 100%; } }
-    edlio-file-uploader .loadingzone .cancel {
+    :host .loadingzone .cancel {
       color: #e07c3a;
       cursor: pointer; }
-      edlio-file-uploader .loadingzone .cancel:hover {
+      :host .loadingzone .cancel:hover {
         text-decoration: none; }
-      edlio-file-uploader .loadingzone .cancel:active {
+      :host .loadingzone .cancel:active {
         color: #ff6500; }
-    edlio-file-uploader .loadingzone .status {
+    :host .loadingzone .status {
       -webkit-flex: 1 1 100%;
       -ms-flex: 1 1 100%;
       flex: 1 1 100%;
       text-align: center; }
-  edlio-file-uploader .files {
+  :host .files {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -192,7 +193,7 @@ edlio-file-uploader {
     flex-wrap: wrap;
     margin-bottom: 2em;
     margin-top: .382em; }
-    edlio-file-uploader .files .file {
+    :host .files .file {
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
@@ -204,7 +205,7 @@ edlio-file-uploader {
       padding: .3em;
       border: 1px solid #cccccc;
       margin: .382em; }
-    edlio-file-uploader .files .file .icons {
+    :host .files .file .icons {
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
@@ -217,48 +218,48 @@ edlio-file-uploader {
       -ms-flex-align: center;
       -webkit-align-items: center;
       align-items: center; }
-      edlio-file-uploader .files .file .icons a {
+      :host .files .file .icons a {
         padding: .2em;
         box-shadow: 0 0px 1px rgba(0, 0, 0, 0.6);
         border-radius: 2px; }
-        edlio-file-uploader .files .file .icons a:hover {
+        :host .files .file .icons a:hover {
           pointer-events: all;
           cursor: pointer; }
-          edlio-file-uploader .files .file .icons a:hover .icon {
+          :host .files .file .icons a:hover .icon {
             fill: #29abe2; }
-    edlio-file-uploader .files .file .name {
+    :host .files .file .name {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       color: #888888;
       text-align: center;
       margin-top: .618em; }
-  edlio-file-uploader .row,
-  edlio-file-uploader .dropzone .menu a {
+  :host .row,
+  :host .dropzone .menu a {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }
-  edlio-file-uploader .hidden {
+  :host .hidden {
     display: none; }
-  edlio-file-uploader .errors {
+  :host .errors {
     color: #e07c3a;
     font-weight: bold; }
-    edlio-file-uploader .errors div {
+    :host .errors div {
       margin-bottom: 0.3em; }
-    edlio-file-uploader .errors .hint {
+    :host .errors .hint {
       color: #888;
       font-weight: normal; }
-  edlio-file-uploader section {
+  :host section {
     margin-bottom: 0 !important;
     vertical-align: middle !important; }
-  edlio-file-uploader .mobile-only {
+  :host .mobile-only {
     display: none; }
   @media screen and (max-width: 31.9375rem) {
-    edlio-file-uploader .dropzone {
+    :host .dropzone {
       height: 5em; }
-    edlio-file-uploader .dropzone svg.type.file-icon {
+    :host .dropzone svg.type.file-icon {
       display: none; }
-    edlio-file-uploader .dropzone .mobile-only {
+    :host .dropzone .mobile-only {
       display: block; }
-    edlio-file-uploader .dropzone .desktop-only {
+    :host .dropzone .desktop-only {
       display: none; } }

@@ -2,9 +2,21 @@
 
 // Import Necessary Definitions
 @import 'definitions/colors';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 $white                              : rgb(255,255,255);	   // #FFFFFF
 $black                              : rgb(0,0,0);          // #000000
+
+// CMS Typography
+// -----------------------------------------------------------------------------
+$font-family                        : 'Open Sans', Helvetica, Arial, sans-serif;
+
+$h1-fonts                           : $font-family;
+$h1-transform                       : none;
+$h2-fonts                           : $font-family;
+$h2-transform                       : none;
+$h3-fonts                           : $font-family;
+$h3-transform                       : none;
 
 // CMS Palette
 // ---------------------------------------------
@@ -79,7 +91,7 @@ $label-color                        : $grey-7;
 
 $textfield-bg-color                 : $body-bg-color;
 $textfield-border-color             : $grey-3;
-$textfield-placeholder-color        : $grey-5;
+$textfield-placeholder-color        : $grey-4;
 $textfield-text-color               : $grey-6;
 
 $textfield-icon-bg-color            : $grey-2;
@@ -126,18 +138,6 @@ $toggle-selector-option-hover-bg-color        : $grey-1;
 $toggle-selector-option-border-color          : $grey-3;
 $toggle-selector-selected-option-border-color : $grey-6;
 $toggle-selector-text-color                   : $grey-6;
-
-// CMS Typography
-// -----------------------------------------------------------------------------
-$font-family                        : Avenir, Helvetica, Arial, sans-serif;
-
-$h1-fonts                           : $font-family;
-$h1-transform                       : none;
-$h2-fonts                           : $font-family;
-$h2-transform                       : none;
-$h3-fonts                           : $font-family;
-$h3-transform                       : none;
-
 
 // Layout
 // -----------------------------------------------------------------------------
