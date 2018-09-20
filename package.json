@@ -1,6 +1,6 @@
 {
   "name": "@edlio/uniform",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Edlio UI Framework",
   "main": "libs/index.js",
   "scripts": {
