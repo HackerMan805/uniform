@@ -21,18 +21,26 @@ Once you install Node.js, you can use the following to install all dependencies:
 npm install
 ```
 
-### Command
+### Build
+
+> We need to build before we can start up Kitchen Sink properly
+
+```
+npm run build
+```
+
+### Start
+
+> After running the start command below, you should be able to see Kitchen Sink
+> running in your browser at http://localhost:33546
 
 ```
 npm run start
 ```
 
-> Upon running the start command above, you should be able to see Kitchen Sink
-> running in your browser at http://localhost:33546
-
 ## Demo
 
-Kitchen sink is hosted on the Github Pages.
+Kitchen sink is hosted on Github Pages.
 
 ## Development
 
