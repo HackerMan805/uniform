@@ -417,29 +417,7 @@
 			&.info {
 				margin-bottom: 1em;
 			}
-		}
-
-		.code-example {
-			position: relative;
-			
-			.code {
-				text-align: right;
-				opacity: 0;
-				position: absolute;
-				right: 0;
-				top: 0;
-
-				.button.secondary {
-					line-height: 0.3rem;
-					display: inline-block;
-				}				
-			}
-			
-			&:focus .code,
-			&:hover .code {
-				opacity: 1;
-			}	
-		}		
+		}	
 
 		// Uploader ---------------------------------------------------------------
 		#uploader_settings {
@@ -488,23 +466,58 @@
 	.prettyprint {
 		font-size: 14px;
 		padding: 2rem;
+	}	
+
+		// COMPONENT : Clipboard
+	kitchensink-clipboard {
+		display: block;
+
+		.button.secondary {
+			line-height: 0.3rem;
+			position: absolute;
+			padding-top: 0;
+			padding-bottom: 0;
+			margin-right: 0;
+			margin-bottom: 0;
+			right: 0;
+			top: 0;	
+			opacity: 0;
+		}
+
+		&:focus .button.secondary,
+		&:hover .button.secondary {
+			opacity: 1;
+		}
+	}
+
+	// COMPONENT : Codeblock
+	kitchensink-codeblock {
+		display: block;
+		position: relative;
+		
+		.code {
+			text-align: right;
+			opacity: 0;
+			position: absolute;
+			right: 0;
+			top: 0;		
+
+			.button {
+				line-height: 0.3rem;
+				display: inline-block;
+				background-color: $grey-6;
+				color: $white;
+
+				&:hover {
+					color: $red;
+					background-color: $grey-7;
+				}
+			}				
+		}
+		
+		&:focus .code,
+		&:hover .code {
+			opacity: 1;
+		}		
 	}
 }
-
-.copy-to-clipboard.button.secondary {
-	line-height: 0.3rem;
-	position: absolute;
-	padding-top: 0;
-	padding-bottom: 0;
-	margin-right: 0;
-    margin-bottom: 0;
-	right: 0;
-	top: 0;	
-	opacity: 0;
-
-	.item:focus &,
-	.item:hover & {
-		opacity: 1;
-	}
-
- }

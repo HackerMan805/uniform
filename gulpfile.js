@@ -15,7 +15,7 @@ const app = {
     sassRoot: './src/sass/',
     js: './src/js/app.js',
     sass: './src/sass/**/*.scss',
-    dest: './libs',
+    cssDest: './libs',
     jsDest: './libs',
     icons: './src/icons/*.svg',
     html: './src/docs/*.html'
@@ -23,8 +23,8 @@ const app = {
 const demoApp = {
     sassRoot: ['./src/docs/sass/', './src/sass'],
     sass: './src/docs/sass/**/*.scss',
-    js: ['./src/js/app.js', './src/docs/js/kitchen_sink.js'],
-    dest: './docs/css',
+    js: ['./src/js/app.js', './src/docs/js/kitchensink.js'],
+    cssDest: './docs/css',
     jsDest: './docs/js',
     destFolder: './docs/'
 };
@@ -35,7 +35,7 @@ function compileSass (app) {
             .pipe(sass({
                 includePaths: app.sassRoot
             }).on('error', sass.logError))
-            .pipe(gulp.dest(app.dest));
+            .pipe(gulp.dest(app.cssDest));
     };
 }
 
@@ -46,11 +46,33 @@ function compileJs (app) {
             entry: app.js,
             output: {
                 filename: 'app.js',
+                path: path.join(__dirname, 'libs')
             },            
             devtool: 'source-map',
             module: {
                 rules: [
-                    { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
+                    { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+                    {
+                        test: /\.scss$/,
+                        use: [
+                            { loader: 'css-loader' },
+                            {
+                                loader: 'sass-loader',
+                                options: {
+                                    includePaths: ['./src/sass']
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        test: /\.(html)$/,
+                        use: {
+                            loader: 'html-loader',
+                            options: {
+                                attrs: [':data-src']
+                            }
+                        }
+                    }
                 ]
             }
         }))
