@@ -8275,7 +8275,6 @@ var ModalComponent = function (_window$HTMLElement) {
         _this.currentPage = 0;
         _this.pages = [];
         // internal memory
-        _this.previousParent = null;
         _this.container = null;
         _this.handleEscapeClick = _this.handleEscapeClick.bind(_this);
         return _this;
@@ -8285,6 +8284,11 @@ var ModalComponent = function (_window$HTMLElement) {
         key: 'onClose',
         value: function onClose(closeCallback) {
             this.closeCallbacks.push(closeCallback);
+        }
+    }, {
+        key: 'attachOnClose',
+        value: function attachOnClose(closeCallback) {
+            this.onClose(closeCallback);
         }
     }, {
         key: 'goToPage',
@@ -8363,7 +8367,7 @@ var ModalComponent = function (_window$HTMLElement) {
             // move the modal object to be under container and move container to
             // be under body
             var scrollTop = window.pageYOffset;
-            var container = document.createElement('uniform-overlay');
+            var container = document.createElement('edlio-overlay');
             this.container = container;
             document.body.appendChild(container);
             container.appendChild(this);
@@ -8432,7 +8436,6 @@ var ModalComponent = function (_window$HTMLElement) {
             });
 
             function handleTransitionEnd() {
-                this.previousParent.appendChild(this);
                 this.classList.remove('transition-out');
                 this.style.webkitTransform = '';
                 this.style.transform = '';
@@ -8549,17 +8552,17 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *   <select-title>
  *     Current item
  *   </select-title>
- *   <select-menu>
- *     <select-item>
+ *   <menu>
+ *     <item>
  *       item 1
- *     </select-item>
- *     <select-item>
+ *     </item>
+ *     <item>
  *       item 2
- *     </select-item>
- *     <select-item>
+ *     </item>
+ *     <item>
  *       item 3
- *     </select-item>
- *   </select-menu>
+ *     </item>
+ *   </menu>
  * </uniform-select>
  * ```
  */
@@ -8602,7 +8605,7 @@ var SelectComponent = function (_window$HTMLElement) {
                 }
                 mutations.forEach(function (mutation) {
                     Array.prototype.slice.call(mutation.addedNodes).filter(function (n) {
-                        return n.nodeName === 'SELECT-ITEM';
+                        return n.nodeName === 'ITEM';
                     }).forEach(function (node) {
                         (0, _utils.onClick)(node, _this2.close.bind(_this2));
                         return;
@@ -8612,13 +8615,13 @@ var SelectComponent = function (_window$HTMLElement) {
             var config = { childList: true };
             observer.observe(this, config);
             // add event listener to existing select-items
-            [].concat(_toConsumableArray(this.querySelectorAll('select-item'))).forEach(function (n) {
+            [].concat(_toConsumableArray(this.querySelectorAll('item'))).forEach(function (n) {
                 (0, _utils.onClick)(n, _this2.close.bind(_this2));
             });
 
             // add event listener under body to close select menu
             (0, _utils.onClick)(document.querySelector('body'), this.close.bind(this));
-            [].concat(_toConsumableArray(document.querySelectorAll('uniform-modal'))).forEach(function (modal) {
+            [].concat(_toConsumableArray(document.querySelectorAll('edlio-modal'))).forEach(function (modal) {
                 (0, _utils.onClick)(modal, _this2.close.bind(_this2));
             });
             (0, _utils.onClick)(this.querySelector('select-title'), this.toggle.bind(this));
@@ -8626,11 +8629,11 @@ var SelectComponent = function (_window$HTMLElement) {
     }, {
         key: 'multiple',
         get: function get() {
-            return this.hasAttribute('multiple');
+            return this.hasAttribute('multiple') && this.getAttribute('multiple') === 'true';
         },
         set: function set(val) {
             if (val) {
-                this.setAttribute('multiple', '');
+                this.setAttribute('multiple', 'true');
             } else {
                 this.removeAttribute('multiple');
             }

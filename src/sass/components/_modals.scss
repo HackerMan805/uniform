@@ -12,7 +12,7 @@ edlio-overlay {
 	@include flex(1,0,100%);
 
 	uniform-modal,
-	uniform-modal {
+	edlio-modal {
 		@extend %flexbox;
 		@include flex(0,1,auto);
 

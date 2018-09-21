@@ -1046,17 +1046,82 @@
 
                                 <label for="time_field">Time Field</label>
                                 <input id="time_field" type="time" placeholder="Time Field">
+                            
 
-                                <label for="text_field">Textarea</label>
-                                <textarea id="textarea" placeholder="Textarea"></textarea>
+                                <ol class="breadcrumb">
+                                    <li><a href="#forms">Forms</a></li>
+                                    <li class="active"><a href="">Group Inputs</a></li>
+                                </ol>
+
+                                <input id="checkbox" type="checkbox">
+                                <label for="checkbox">Checkbox</label>
+                                <br>
+                                <input id="checkbox-disabled" type="checkbox" disabled="disabled"/>
+                                <label for="checkbox-disabled">Checkbox (disabled)</label>
+                                <br>
+                                <input id="checkbox-disabled2" type="checkbox" checked="checked" disabled="disabled"/>
+                                <label for="checkbox-disabled2">Checkbox (disabled and selected)</label>
+
+                                <br>
+                                <br>
+
+                                <input id="toggle" class="toggle" type="checkbox">
+                                <label for="toggle">Toggle</label>
+                                <br>
+                                <input id="toggle-disabled" class="toggle" type="checkbox" disabled="disabled"/>
+                                <label for="toggle-disabled">Toggle (disabled)</label>
+                                <br>
+                                <input id="toggle-disabled2" class="toggle" type="checkbox" checked="checked" disabled="disabled"/>
+                                <label for="toggle-disabled2">Toggle (disabled and selected)</label>
+
+                                <br>
+                                <br>
+
+                                <input id="radio" type="radio" name="radio">
+                                <label for="radio">Radio Button 1</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <input id="radio2" type="radio" name="radio">
+                                <label for="radio2">Radio Button 2</label>
+                                <br>
+                                <input id="radio-disabled" type="radio" disabled="disabled">
+                                <label for="radio-disabled">Radio Button (disabled)</label>
+                                <br>
+                                <input id="radio-disabled2" type="radio" checked="checked" disabled="disabled">
+                                <label for="radio-disabled2">Radio Button (disabled and selected)</label>
+
+                                <br>
+                                <br>
+
+                                <uniform-select>
+                                    <select-title>
+                                        Simple Select
+                                        <svg viewbox="0 0 2048 2048" class="caret icon">
+                                            <use xlink:href="#caret-down"></use>
+                                        </svg>
+                                    </select-title>
+
+                                    <menu>
+                                        <item>This item has a long label</item>
+                                        <item>Short label</item>
+                                        <item>Medium-length label</item>
+                                    </menu>
+                                </uniform-select>
 
                                 <label for="icon_input">Icon Input</label>
                                 <div class="icon input">
                                     <svg viewbox="0 0 2048 2048" class="icon">
                                         <use xlink:href="#search"></use>
                                     </svg>
-                                    <input id="icon_input" type="text" placeholder="Icon Input">
-                                </div>
+                                </select-title>
+
+                                <menu>
+                                    <item>This item has a long label</item>
+                                    <item>Short label</item>
+                                    <item>Third Item</item>
+                                </menu>
+                            </uniform-select>
+                        </fieldset>
+                    </form>
 
                                 <ol class="breadcrumb">
                                     <li><a href="#forms">Forms</a></li>
