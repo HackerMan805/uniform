@@ -2615,6 +2615,8 @@
         columns: 3 auto; } }
     .edlio.cms .kitchen-sink .icons ul svg {
       margin-right: .382em; }
+    .edlio.cms .kitchen-sink .icons ul .item {
+      position: relative; }
   @media screen and (min-width: 32rem) {
     .edlio.cms .kitchen-sink .colors .columns {
       -webkit-columns: 2 auto;
@@ -2631,8 +2633,11 @@
       -moz-columns: 4 auto;
       columns: 4 auto; } }
   .edlio.cms .kitchen-sink .colors .item {
+    position: relative;
     margin-bottom: 20px;
-    max-width: 250px; }
+    max-width: 250px;
+    break-inside: avoid;
+    page-break-inside: avoid; }
   .edlio.cms .kitchen-sink .colors .color-block {
     height: 3.125rem;
     box-shadow: #ededed 0 0 0 1px inset; }
@@ -2798,3 +2803,46 @@
     border: 1px solid black; }
   .edlio.cms .kitchen-sink #file_uploader_list > * {
     max-width: 20em; }
+  .edlio.cms .code-modal {
+    max-width: calc(100% - 50px);
+    background-color: #333; }
+  .edlio.cms .prettyprint {
+    font-size: 14px;
+    padding: 2rem; }
+  .edlio.cms kitchensink-clipboard {
+    display: block; }
+    .edlio.cms kitchensink-clipboard .button.secondary, .edlio.cms kitchensink-clipboard .kitchen-sink button.secondary, .edlio.cms .kitchen-sink kitchensink-clipboard button.secondary {
+      line-height: 0.3rem;
+      position: absolute;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+      right: 0;
+      top: 0;
+      opacity: 0; }
+    .edlio.cms kitchensink-clipboard:focus .button.secondary, .edlio.cms kitchensink-clipboard:focus .kitchen-sink button.secondary, .edlio.cms .kitchen-sink kitchensink-clipboard:focus button.secondary,
+    .edlio.cms kitchensink-clipboard:hover .button.secondary,
+    .edlio.cms kitchensink-clipboard:hover .kitchen-sink button.secondary,
+    .edlio.cms .kitchen-sink kitchensink-clipboard:hover button.secondary {
+      opacity: 1; }
+  .edlio.cms kitchensink-codeblock {
+    display: block;
+    position: relative; }
+    .edlio.cms kitchensink-codeblock .code {
+      text-align: right;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 0; }
+      .edlio.cms kitchensink-codeblock .code .button, .edlio.cms kitchensink-codeblock .code .kitchen-sink button, .edlio.cms .kitchen-sink kitchensink-codeblock .code button {
+        line-height: 0.3rem;
+        display: inline-block;
+        background-color: #555555;
+        color: white; }
+        .edlio.cms kitchensink-codeblock .code .button:hover, .edlio.cms kitchensink-codeblock .code .kitchen-sink button:hover, .edlio.cms .kitchen-sink kitchensink-codeblock .code button:hover {
+          color: #e64017;
+          background-color: #333333; }
+    .edlio.cms kitchensink-codeblock:focus .code,
+    .edlio.cms kitchensink-codeblock:hover .code {
+      opacity: 1; }
