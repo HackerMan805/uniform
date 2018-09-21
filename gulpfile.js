@@ -15,14 +15,16 @@ const app = {
     sassRoot: './src/sass/',
     js: './src/js/app.js',
     sass: './src/sass/**/*.scss',
-    dest: './libs',
+    cssDest: './libs',
+    jsDest: './libs',
     icons: './src/icons/*.svg',
-    html: './src/*.html'
+    html: './src/docs/*.html'
 };
 const demoApp = {
-    sassRoot: ['./docs/sass/', './src/sass'],
-    sass: './docs/sass/**/*.scss',
-    dest: './docs/css',
+    sassRoot: ['./src/docs/sass/', './src/sass'],
+    sass: './src/docs/sass/**/*.scss',
+    js: ['./src/js/app.js', './src/docs/js/kitchensink.js'],
+    cssDest: './docs/css',
     jsDest: './docs/js',
     destFolder: './docs/'
 };
@@ -33,7 +35,48 @@ function compileSass (app) {
             .pipe(sass({
                 includePaths: app.sassRoot
             }).on('error', sass.logError))
-            .pipe(gulp.dest(app.dest));
+            .pipe(gulp.dest(app.cssDest));
+    };
+}
+
+function compileJs (app) {
+    return () => {
+        return gulp.src(app.js)
+        .pipe(webpack({
+            entry: app.js,
+            output: {
+                filename: 'app.js',
+                path: path.join(__dirname, 'libs')
+            },            
+            devtool: 'source-map',
+            module: {
+                rules: [
+                    { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+                    {
+                        test: /\.scss$/,
+                        use: [
+                            { loader: 'css-loader' },
+                            {
+                                loader: 'sass-loader',
+                                options: {
+                                    includePaths: ['./src/sass']
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        test: /\.(html)$/,
+                        use: {
+                            loader: 'html-loader',
+                            options: {
+                                attrs: [':data-src']
+                            }
+                        }
+                    }
+                ]
+            }
+        }))
+        .pipe(gulp.dest(app.jsDest));            
     };
 }
 
@@ -90,16 +133,8 @@ gulp.task('sass:watch', function() {
 gulp.task('sass', compileSass(app));
 gulp.task('demo:sass', compileSass(demoApp));
 
-gulp.task('js', () => {
-    return gulp.src(app.js)
-        .pipe(webpack( require('./webpack.config.js') ))
-        .pipe(gulp.dest(app.dest));
-});
-gulp.task('demo:js', () => {
-    return gulp.src(app.js)
-        .pipe(webpack( require('./webpack.config.js') ))
-        .pipe(gulp.dest(demoApp.jsDest));
-});
+gulp.task('js', compileJs(app));
+gulp.task('demo:js', compileJs(demoApp));
 
 gulp.task('html', (done) => {
     glob(app.icons, function (globErr, icons) {

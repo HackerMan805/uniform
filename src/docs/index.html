@@ -223,10 +223,12 @@
                     <ul class="example">                            
                         {{#list iconSprite}}                           
                             <li class="item">
-                                <svg viewbox="0 0 2048 2048" class="icon">
-                                    <use xlink:href="#{{icon}}"/>
-                                </svg>
-                                {{icon}}
+                                <kitchensink-clipboard data-text="<svg viewBox=\'0 0 2048 2048\' class=\'icon\'><use xlink:href=\'#{{icon}}\'></use></svg>">
+                                    <svg viewbox="0 0 2048 2048" class="icon">
+                                        <use xlink:href="#{{icon}}"/>
+                                    </svg>
+                                    {{icon}}
+                                </kitchensink-clipboard>
                             </li> 
                         {{/list}}
                     </ul>      
@@ -246,9 +248,11 @@
                     <div class="example columns">
                         {{#list colorList}}
                         <div class="item">
-                            <div class="color-block" style="background-color: {{hex}};" title="{{name}}"></div>
-                            <span class="color-name">{{name}}</span>
-                            <span class="color-hex">{{hex}}</span>
+                            <kitchensink-clipboard data-text="{{name}}">
+                                <div class="color-block" style="background-color: {{hex}};" title="{{name}}"></div>
+                                <span class="color-name">{{name}}</span>
+                                <span class="color-hex">{{hex}}</span>
+                            </kitchensink-clipboard>
                         </div>
                         {{/list}}
                     </div>
@@ -264,7 +268,7 @@
                         </ol>
                     </header>
 
-                    <section class="primary example">
+                    <kitchensink-codeblock class="primary example">
                         <a class="button">
                             Primary Action Button
                         </a>
@@ -309,14 +313,14 @@
                         <button class="button">
                             Button tag
                         </button>
-                    </section>
+                    </kitchensink-codeblock>
 
                     <ol class="breadcrumb">
                         <li><a href="#buttons">Buttons</a></li>
                         <li class="active"><a href="">Secondary Action Buttons</a></li>
                     </ol>
 
-                    <section class="secondary example">
+                    <kitchensink-codeblock class="secondary example">
                         <a class="secondary button">
                             Secondary Action Button
                         </a>
@@ -359,7 +363,7 @@
                         <button class="secondary button">
                             Button tag
                         </button>
-                    </section>
+                    </kitchensink-codeblock>
                 </section>
 
                 <section id="tabs" class="tabs">
@@ -367,12 +371,12 @@
                         <h1>Tabs</h1>
                     </header>
 
-                    <div class="example">
+                    <kitchensink-codeblock class="example">
                         <aside class="tab bar">
                           <a href="">Inactive Tab</a>
                             <a class="selected" href="">Active Tab</a>
                         </aside>
-                    </div>
+                    </kitchensink-codeblock>
                 </section>
 
                 <section id="notifications" class="notifications">
@@ -386,7 +390,7 @@
                         </ol>
                     </header>
 
-                    <div class="example">
+                    <kitchensink-codeblock class="example">
                         <uniform-notification class="confirmation">
                             <svg viewbox="0 0 2048 2048" class="icon">
                                 <use xlink:href="#check"></use>
@@ -415,7 +419,7 @@
                                 </p>
                             </section>
                         </uniform-notification>
-                    </div>
+                    </kitchensink-codeblock>
 
                     <ol class="breadcrumb">
 
@@ -423,7 +427,7 @@
                         <li class="active"><a href="">Alert</a></li>
                     </ol>
 
-                    <div class="example">
+                    <kitchensink-codeblock class="example">
                         <uniform-notification class="alert">
                             <svg viewbox="0 0 2048 2048" class="icon">
                                 <use xlink:href="#exclamation-triangle"></use>
@@ -446,7 +450,7 @@
                                 <h1>Here's a more permanent Alert notification</h1>
                             </section>
                         </uniform-notification>
-                    </div>
+                    </kitchensink-codeblock>
                 </section>
 
                 <section id="toggle_selectors" class="toggle-selectors">
@@ -454,7 +458,7 @@
                         <h1>Toggle Selectors</h1>
                     </header>
 
-                    <div class="toggle-selector example-1">
+                    <kitchensink-codeblock class="toggle-selector example-1">
                         <div class="on option">
                             <svg viewbox="0 0 2048 2048" class="icon">
                                 <use xlink:href="#eye"></use>
@@ -469,9 +473,9 @@
                             <input type="radio" id="toggle_selector_off" name="toggle_selector" value="off">
                             <label for="toggle_selector_off">Off</label>
                         </div>
-                    </div>
+                    </kitchensink-codeblock>
 
-                    <div class="toggle-selector example-2">
+                    <kitchensink-codeblock class="toggle-selector example-2">
                         <div class="option 1">
                             <input type="radio" id="toggle_selector_2_option_1" name="toggle_selector_1" value="option-1" checked>
                             <label for="toggle_selector_option_1">Option 1</label>
@@ -484,7 +488,7 @@
                             <input type="radio" id="toggle_selector_2_option_3" name="toggle_selector_1" value="option-3" checked>
                             <label for="toggle_selector_option_3">Option 3</label>
                         </div>
-                    </div>
+                    </kitchensink-codeblock>
 
                     <script type="text/javascript">
                         (function () {
@@ -687,7 +691,7 @@
                         <h1>Tooltips</h1>
                     </header>
 
-                    <div class="example">
+                    <kitchensink-codeblock class="example">
                         <a class="labeled icon button" data-tooltip="Top Tooltip has a long message in it" data-tooltip-position="top" data-tooltip-alignment="left">
                             <svg viewbox="0 0 2048 2048" class="icon">
                                 <use xlink:href="#question-circle"></use>
@@ -707,7 +711,7 @@
                                 <use xlink:href="#question-circle"></use>
                             </svg>
                         </a>
-                    </div>
+                    </kitchensink-codeblock>
 
                 </section>
 
@@ -716,159 +720,162 @@
                         <h1>Modals</h1>
                     </header>
 
-                    <div class="example">
+                    <kitchensink-codeblock class="example">
                         <a class="button" id="simple-modal-opener">
                             Open Modal Window
                         </a>
+                        <uniform-modal id="simple-modal">
+                            <page>
+                                <header>
+                                    <h1>Modal Title</h1>
+                                    <svg viewbox="0 0 2048 2048" class="close icon">
+                                        <use xlink:href="#times"></use>
+                                    </svg>
+                                </header>
+
+                                <div class="content">
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                                    </p>
+                                </div>
+
+                                <footer>
+                                    <a class="secondary button">Secondary Button</a>
+                                    <a class="finish button">Primary Action</a>
+                                </footer>
+                            </page>
+                        </uniform-modal>                    
+
+                        <script>
+                            (function() {
+                                document.getElementById('simple-modal-opener')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('simple-modal')
+                                            .show(document.getElementById('simple-modal-opener'));
+                                    });
+
+                                document.getElementById('simple-modal')
+                                    .querySelector('footer > .secondary.button')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('simple-modal')
+                                            .hide();
+                                    });
+
+                                document.getElementById('simple-modal')
+                                    .querySelector('header > .close')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('simple-modal')
+                                            .hide();
+                                    });
+
+                            })();
+                        </script>
+                    </kitchensink-codeblock>
+
+                    <kitchensink-codeblock class="example">
+
                         <a class="button" id="multipage-modal-opener">
                             Open Multi-Page Modal
                         </a>
-                    </div>
 
-                    <uniform-modal id="simple-modal">
-                        <page>
-                            <header>
-                                <h1>Modal Title</h1>
-                                <svg viewbox="0 0 2048 2048" class="close icon">
-                                    <use xlink:href="#times"></use>
-                                </svg>
-                            </header>
+                        <uniform-modal id="multipage-modal" class="full">
+                            <page>
+                                <header>
+                                    <h1>Modal Page 1</h1>
+                                    <svg viewbox="0 0 2048 2048" class="close icon">
+                                        <use xlink:href="#times"></use>
+                                    </svg>
+                                </header>
+                                <div class="content">
+                                    <p>
+                                        This modal has a lot of text in it to show that it will be scrollable if there is too much content to display.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                                    </p>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
+                                    </p>
+                                </div>
+                                <footer>
+                                    <a href="javascript:;" class="next-page button">Next</a>
+                                </footer>
+                            </page>
+                            <page>
+                                <header>
+                                    <h1>Modal Page 2</h1>
+                                    <svg viewbox="0 0 2048 2048" class="back icon">
+                                        <use xlink:href="#chevron-left"></use>
+                                    </svg>
+                                    <svg viewbox="0 0 2048 2048" class="close icon">
+                                        <use xlink:href="#times"></use>
+                                    </svg>
+                                </header>
+                                <div class="content">
+                                    <p>
+                                        The modal component is entirely functional- Styling should be
+                                        added on a project basis. This component simply displays a
+                                        a modal window on click. It includes code to open and close
+                                        the modal window, with basic overridable styling.
+                                    </p>
+                                </div>
+                                <footer>
+                                    <a href="javascript:;" class="secondary button">Secondary Action</a>
+                                    <a href="javascript:;" class="finish button">Primary Action</a>
+                                </footer>
+                            </page>
+                        </uniform-modal>
 
-                            <div class="content">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
-                                </p>
-                            </div>
+                        <script>
+                            (function() {
+                                document.getElementById('multipage-modal-opener')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('multipage-modal')
+                                            .show(document.getElementById('multipage-modal-opener'));
+                                    });
 
-                            <footer>
-                                <a class="secondary button">Secondary Button</a>
-                                <a class="finish button">Primary Action</a>
-                            </footer>
-                        </page>
-                    </uniform-modal>
+                                document.getElementById('multipage-modal')
+                                    .querySelector('footer > .secondary.button')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('multipage-modal')
+                                            .hide();
+                                    });
 
-                    <script>
-                        (function() {
-                            document.getElementById('simple-modal-opener')
-                                .addEventListener('click', function() {
-                                    document.getElementById('simple-modal')
-                                        .show(document.getElementById('simple-modal-opener'));
-                                });
+                                document.getElementById('multipage-modal')
+                                    .querySelector('footer > .next-page.button')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('multipage-modal')
+                                            .nextPage();
+                                    });
 
-                            document.getElementById('simple-modal')
-                                .querySelector('footer > .secondary.button')
-                                .addEventListener('click', function() {
-                                    document.getElementById('simple-modal')
-                                        .hide();
-                                });
+                                var closeButton = document.getElementById('multipage-modal')
+                                    .querySelectorAll('header > .close.icon');
 
-                            document.getElementById('simple-modal')
-                                .querySelector('header > .close')
-                                .addEventListener('click', function() {
-                                    document.getElementById('simple-modal')
-                                        .hide();
-                                });
+                                for (var i = 0; i < closeButton.length; i++) {
+                                    closeButton[i].addEventListener('click', function() {
+                                        document.getElementById('multipage-modal')
+                                            .hide();
+                                    });
+                                }
 
-                        })();
-                    </script>
-
-                    <uniform-modal id="multipage-modal" class="full">
-                        <page>
-                            <header>
-                                <h1>Modal Page 1</h1>
-                                <svg viewbox="0 0 2048 2048" class="close icon">
-                                    <use xlink:href="#times"></use>
-                                </svg>
-                            </header>
-                            <div class="content">
-                                <p>
-                                    This modal has a lot of text in it to show that it will be scrollable if there is too much content to display.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
-                                </p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eos odio cumque maiores placeat provident, temporibus fugit dicta sint repellat quia voluptatem! Magnam nesciunt, atque enim quia expedita beatae, nobis.
-                                </p>
-                            </div>
-                            <footer>
-                                <a href="javascript:;" class="next-page button">Next</a>
-                            </footer>
-                        </page>
-                        <page>
-                            <header>
-                                <h1>Modal Page 2</h1>
-                                <svg viewbox="0 0 2048 2048" class="back icon">
-                                    <use xlink:href="#chevron-left"></use>
-                                </svg>
-                                <svg viewbox="0 0 2048 2048" class="close icon">
-                                    <use xlink:href="#times"></use>
-                                </svg>
-                            </header>
-                            <div class="content">
-                                <p>
-                                    The modal component is entirely functional- Styling should be
-                                    added on a project basis. This component simply displays a
-                                    a modal window on click. It includes code to open and close
-                                    the modal window, with basic overridable styling.
-                                </p>
-                            </div>
-                            <footer>
-                                <a href="javascript:;" class="secondary button">Secondary Action</a>
-                                <a href="javascript:;" class="finish button">Primary Action</a>
-                            </footer>
-                        </page>
-                    </uniform-modal>
-
-                    <script>
-                        (function() {
-                            document.getElementById('multipage-modal-opener')
-                                .addEventListener('click', function() {
-                                    document.getElementById('multipage-modal')
-                                        .show(document.getElementById('multipage-modal-opener'));
-                                });
-
-                            document.getElementById('multipage-modal')
-                                .querySelector('footer > .secondary.button')
-                                .addEventListener('click', function() {
-                                    document.getElementById('multipage-modal')
-                                        .hide();
-                                });
-
-                            document.getElementById('multipage-modal')
-                                .querySelector('footer > .next-page.button')
-                                .addEventListener('click', function() {
-                                    document.getElementById('multipage-modal')
-                                        .nextPage();
-                                });
-
-                            var closeButton = document.getElementById('multipage-modal')
-                                .querySelectorAll('header > .close.icon');
-
-                            for (var i = 0; i < closeButton.length; i++) {
-                                closeButton[i].addEventListener('click', function() {
-                                    document.getElementById('multipage-modal')
-                                        .hide();
-                                });
-                            }
-
-                            document.getElementById('multipage-modal')
-                                .querySelector('header > .back.icon')
-                                .addEventListener('click', function() {
-                                    document.getElementById('multipage-modal')
-                                        .previousPage();
-                                })
-                        })();
-                    </script>
+                                document.getElementById('multipage-modal')
+                                    .querySelector('header > .back.icon')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('multipage-modal')
+                                            .previousPage();
+                                    })
+                            })();
+                        </script>
+                    </kitchensink-codeblock>
 
                 </section>
 
@@ -878,21 +885,21 @@
                     <header>
                         <h1>Drawer Menu</h1>
                     </header>
-                    <div class="example">
+                    <kitchensink-codeblock class="example">
                         <a class="button" id="drawer-opener">
                             Open Drawer Menu
                         </a>
-                    </div>
 
-                    <script>
-                        (function() {
-                            document.getElementById('drawer-opener')
-                                .addEventListener('click', function() {
-                                    document.getElementById('main-menu')
-                                        .open();
-                                });
-                        })();
-                    </script>
+                        <script>
+                            (function() {
+                                document.getElementById('drawer-opener')
+                                    .addEventListener('click', function() {
+                                        document.getElementById('main-menu')
+                                            .open();
+                                    });
+                            })();
+                        </script>
+                    </kitchensink-codeblock>
                 </section>
 
                 <section class="accordions">
@@ -918,7 +925,7 @@
                         </p>
                     </section>
 
-                    <div class="example">
+                    <kitchensink-codeblock class="example">
                         <uniform-accordion multiple>
                             <section>
                                 <header>
@@ -957,7 +964,7 @@
                                 </div>
                             </section>
                         </uniform-accordion>
-                    </div>
+                    </kitchensink-codeblock>
 
                     <ol class="breadcrumb">
 
@@ -965,7 +972,7 @@
                         <li class="active"><a href="">Collapsing</a></li>
                     </ol>
 
-                    <div class="example">
+                    <kitchensink-codeblock class="example">
                         <uniform-accordion>
                             <section>
                                 <header>
@@ -1004,7 +1011,7 @@
                                 </div>
                             </section>
                         </uniform-accordion>
-                    </div>
+                    </kitchensink-codeblock>
                 </section>
 
                 <section id="forms" class="forms">
@@ -1012,108 +1019,98 @@
                         <h1>Forms</h1>
                     </header>
 
-                    <form class="example">
-                        <fieldset>
-                            <legend>Fieldset Legend</legend>
+                    <kitchensink-codeblock>
+                        <form class="example">
+                            <fieldset>
+                                <legend>Fieldset Legend</legend>
 
-                            <ol class="breadcrumb">
-                                <li><a href="#forms">Forms</a></li>
-                                <li class="active"><a href="">Text Inputs</a></li>
-                            </ol>
+                                <ol class="breadcrumb">
+                                    <li><a href="#forms">Forms</a></li>
+                                    <li class="active"><a href="">Text Inputs</a></li>
+                                </ol>
 
-                            <label for="text_field">Text Field</label>
-                            <input id="text_field" type="text" placeholder="Text Field">
+                                <label for="text_field">Text Field</label>
+                                <input id="text_field" type="text" placeholder="Text Field">
 
-                            <label for="password_field">Password Field</label>
-                            <input id="password_field" type="password">
+                                <label for="password_field">Password Field</label>
+                                <input id="password_field" type="password">
 
-                            <label for="number_field">Number Field</label>
-                            <input id="number_field" type="number" placeholder="Number Field">
+                                <label for="number_field">Number Field</label>
+                                <input id="number_field" type="number" placeholder="Number Field">
 
-                            <label for="url_field">URL Field</label>
-                            <input id="url_field" type="url" placeholder="URL Field">
+                                <label for="url_field">URL Field</label>
+                                <input id="url_field" type="url" placeholder="URL Field">
 
-                            <label for="date_field">Date Field</label>
-                            <input id="date_field" type="date" placeholder="Date Field">
+                                <label for="date_field">Date Field</label>
+                                <input id="date_field" type="date" placeholder="Date Field">
 
-                            <label for="time_field">Time Field</label>
-                            <input id="time_field" type="time" placeholder="Time Field">
+                                <label for="time_field">Time Field</label>
+                                <input id="time_field" type="time" placeholder="Time Field">
+                            
 
-                            <label for="text_field">Textarea</label>
-                            <textarea id="textarea" placeholder="Textarea"></textarea>
+                                <ol class="breadcrumb">
+                                    <li><a href="#forms">Forms</a></li>
+                                    <li class="active"><a href="">Group Inputs</a></li>
+                                </ol>
 
-                            <label for="icon_input">Icon Input</label>
-                            <div class="icon input">
-                                <svg viewbox="0 0 2048 2048" class="icon">
-                                    <use xlink:href="#search"></use>
-                                </svg>
-                                <input id="icon_input" type="text" placeholder="Icon Input">
-                            </div>
+                                <input id="checkbox" type="checkbox">
+                                <label for="checkbox">Checkbox</label>
+                                <br>
+                                <input id="checkbox-disabled" type="checkbox" disabled="disabled"/>
+                                <label for="checkbox-disabled">Checkbox (disabled)</label>
+                                <br>
+                                <input id="checkbox-disabled2" type="checkbox" checked="checked" disabled="disabled"/>
+                                <label for="checkbox-disabled2">Checkbox (disabled and selected)</label>
 
-                            <ol class="breadcrumb">
-                                <li><a href="#forms">Forms</a></li>
-                                <li class="active"><a href="">Group Inputs</a></li>
-                            </ol>
+                                <br>
+                                <br>
 
-                            <input id="checkbox" type="checkbox">
-                            <label for="checkbox">Checkbox</label>
-                            <br>
-                            <input id="checkbox-disabled" type="checkbox" disabled="disabled"/>
-                            <label for="checkbox-disabled">Checkbox (disabled)</label>
-                            <br>
-                            <input id="checkbox-disabled2" type="checkbox" checked="checked" disabled="disabled"/>
-                            <label for="checkbox-disabled2">Checkbox (disabled and selected)</label>
+                                <input id="toggle" class="toggle" type="checkbox">
+                                <label for="toggle">Toggle</label>
+                                <br>
+                                <input id="toggle-disabled" class="toggle" type="checkbox" disabled="disabled"/>
+                                <label for="toggle-disabled">Toggle (disabled)</label>
+                                <br>
+                                <input id="toggle-disabled2" class="toggle" type="checkbox" checked="checked" disabled="disabled"/>
+                                <label for="toggle-disabled2">Toggle (disabled and selected)</label>
 
-                            <br>
-                            <br>
+                                <br>
+                                <br>
 
-                            <input id="toggle" class="toggle" type="checkbox">
-                            <label for="toggle">Toggle</label>
-                            <br>
-                            <input id="toggle-disabled" class="toggle" type="checkbox" disabled="disabled"/>
-                            <label for="toggle-disabled">Toggle (disabled)</label>
-                            <br>
-                            <input id="toggle-disabled2" class="toggle" type="checkbox" checked="checked" disabled="disabled"/>
-                            <label for="toggle-disabled2">Toggle (disabled and selected)</label>
+                                <input id="radio" type="radio" name="radio">
+                                <label for="radio">Radio Button 1</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <input id="radio2" type="radio" name="radio">
+                                <label for="radio2">Radio Button 2</label>
+                                <br>
+                                <input id="radio-disabled" type="radio" disabled="disabled">
+                                <label for="radio-disabled">Radio Button (disabled)</label>
+                                <br>
+                                <input id="radio-disabled2" type="radio" checked="checked" disabled="disabled">
+                                <label for="radio-disabled2">Radio Button (disabled and selected)</label>
 
-                            <br>
-                            <br>
+                                <br>
+                                <br>
 
-                            <input id="radio" type="radio" name="radio">
-                            <label for="radio">Radio Button 1</label>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <input id="radio2" type="radio" name="radio">
-                            <label for="radio2">Radio Button 2</label>
-                            <br>
-                            <input id="radio-disabled" type="radio" disabled="disabled">
-                            <label for="radio-disabled">Radio Button (disabled)</label>
-                            <br>
-                            <input id="radio-disabled2" type="radio" checked="checked" disabled="disabled">
-                            <label for="radio-disabled2">Radio Button (disabled and selected)</label>
+                                <uniform-select>
+                                    <select-title>
+                                        Simple Select
+                                        <svg viewbox="0 0 2048 2048" class="caret icon">
+                                            <use xlink:href="#caret-down"></use>
+                                        </svg>
+                                    </select-title>
 
-                            <br>
-                            <br>
+                                    <menu>
+                                        <item>This item has a long label</item>
+                                        <item>Short label</item>
+                                        <item>Medium-length label</item>
+                                    </menu>
+                                </uniform-select>
 
-                            <uniform-select>
-                                <select-title>
-                                    Simple Select
-                                    <svg viewbox="0 0 2048 2048" class="caret icon">
-                                        <use xlink:href="#caret-down"></use>
-                                    </svg>
-                                </select-title>
-
-                                <menu>
-                                    <item>This item has a long label</item>
-                                    <item>Short label</item>
-                                    <item>Medium-length label</item>
-                                </menu>
-                            </uniform-select>
-
-                            <uniform-select class="bare">
-                                <select-title>
+                                <label for="icon_input">Icon Input</label>
+                                <div class="icon input">
                                     <svg viewbox="0 0 2048 2048" class="icon">
-                                        <use xlink:href="#cog">
-                                        </use>
+                                        <use xlink:href="#search"></use>
                                     </svg>
                                 </select-title>
 
@@ -1126,6 +1123,82 @@
                         </fieldset>
                     </form>
 
+                                <ol class="breadcrumb">
+                                    <li><a href="#forms">Forms</a></li>
+                                    <li class="active"><a href="">Group Inputs</a></li>
+                                </ol>
+
+                                <input id="checkbox" type="checkbox">
+                                <label for="checkbox">Checkbox</label>
+                                <br>
+                                <input id="checkbox-disabled" type="checkbox" disabled="disabled"/>
+                                <label for="checkbox-disabled">Checkbox (disabled)</label>
+                                <br>
+                                <input id="checkbox-disabled2" type="checkbox" checked="checked" disabled="disabled"/>
+                                <label for="checkbox-disabled2">Checkbox (disabled and selected)</label>
+
+                                <br>
+                                <br>
+
+                                <input id="toggle" class="toggle" type="checkbox">
+                                <label for="toggle">Toggle</label>
+                                <br>
+                                <input id="toggle-disabled" class="toggle" type="checkbox" disabled="disabled"/>
+                                <label for="toggle-disabled">Toggle (disabled)</label>
+                                <br>
+                                <input id="toggle-disabled2" class="toggle" type="checkbox" checked="checked" disabled="disabled"/>
+                                <label for="toggle-disabled2">Toggle (disabled and selected)</label>
+
+                                <br>
+                                <br>
+
+                                <input id="radio" type="radio" name="radio">
+                                <label for="radio">Radio Button 1</label>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <input id="radio2" type="radio" name="radio">
+                                <label for="radio2">Radio Button 2</label>
+                                <br>
+                                <input id="radio-disabled" type="radio" disabled="disabled">
+                                <label for="radio-disabled">Radio Button (disabled)</label>
+                                <br>
+                                <input id="radio-disabled2" type="radio" checked="checked" disabled="disabled">
+                                <label for="radio-disabled2">Radio Button (disabled and selected)</label>
+
+                                <br>
+                                <br>
+
+                                <uniform-select>
+                                    <select-title>
+                                        Simple Select
+                                        <svg viewbox="0 0 2048 2048" class="caret icon">
+                                            <use xlink:href="#caret-down"></use>
+                                        </svg>
+                                    </select-title>
+
+                                    <select-menu>
+                                        <select-item>This item has a long label</select-item>
+                                        <select-item>Short label</select-item>
+                                        <select-item>Medium-length label</select-item>
+                                    </select-menu>
+                                </uniform-select>
+
+                                <uniform-select class="bare">
+                                    <select-title>
+                                        <svg viewbox="0 0 2048 2048" class="icon">
+                                            <use xlink:href="#cog">
+                                            </use>
+                                        </svg>
+                                    </select-title>
+
+                                    <select-menu>
+                                        <select-item>This item has a long label</select-item>
+                                        <select-item>Short label</select-item>
+                                        <select-item>Third Item</select-item>
+                                    </select-menu>
+                                </uniform-select>
+                            </fieldset>
+                        </form>
+                    </kitchensink-codeblock>
                 </section>
 
                 <section id="data_tables">
@@ -1137,7 +1210,7 @@
                         </ol>
                     </header>
 
-                    <section class="data-table example">
+                    <kitchensink-codeblock class="data-table example">
                         <header class="thead">
                             <div class="th">
                                 <div class="column">
@@ -1163,14 +1236,14 @@
                                 <p>We didn't find any content.</p>
                             </section>
                         </div>
-                    </section>
+                    </kitchensink-codeblock>
 
                     <ol class="breadcrumb">
                         <li><a href="#data_tables">Data Tables</a></li>
                         <li class="active"><a href="">Populated</a></li>
                     </ol>
 
-                    <section class="data-table">
+                    <kitchensink-codeblock class="data-table">
                         <header class="thead">
                             <div class="th">
                                 <div class="column">
@@ -1326,7 +1399,7 @@
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </kitchensink-codeblock>
                 </section>
 
                 <!-- <section class="grid">
@@ -1392,7 +1465,7 @@
                     <header>
                         <h1>Pagination</h1>
                     </header>
-                    <div class="mobile pagination example">
+                    <kitchensink-codeblock class="mobile pagination example">
                         <a class="disabled skip secondary button"><span class="arrow">&laquo;</span></a>
                         <div class="button-bar">
                             <a class="disabled secondary button"><span class="arrow">&lsaquo;</span></a>
@@ -1404,9 +1477,9 @@
                             <a class="secondary button"><span class="arrow">&rsaquo;</span></a>
                         </div>
                         <a class="skip secondary button"><span class="arrow">&raquo;</span></a>
-                    </div>
+                    </kitchensink-codeblock>
 
-                    <div class="desktop pagination example">
+                    <kitchensink-codeblock class="desktop pagination example">
                         <a class="disabled skip secondary button"><span class="arrow">&laquo;</span><span>10</span></a>
                         <div class="button-bar">
                             <a class="disabled secondary button"><span class="arrow">&lsaquo;</span></a>
@@ -1425,7 +1498,7 @@
                             <a class="secondary button"><span class="arrow">&rsaquo;</span></a>
                         </div>
                         <a class="skip secondary button"><span>10</span><span class="arrow">&raquo;</span></a>
-                    </div>
+                    </kitchensink-codeblock>
                 </section>
 
                 <section id="cards">
@@ -1606,9 +1679,24 @@
 
             </div> <!-- close .content -->
         </main>
+
+        <script type="text/javascript">
+            (function () {
+                let codeExamples = document.querySelectorAll('kitchensink-codeblock');
+                codeExamples.forEach((codeExample, index) => {
+                    codeExample.id = "codeblock_" + index  
+                });
+            })();
+        </script>
+
+        <!-- kitchen-sink codeblock uses code-prettify -->
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+
         <script src="js/app.js"></script>
+
         <!-- uniform-uploader 3rd party picker APIs -->
         <script src="https://www.dropbox.com/static/api/2/dropins.js"></script>
         <script src="https://apis.google.com/js/api.js"></script>
+
     </body>
 </html>
