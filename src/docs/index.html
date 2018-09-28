@@ -127,7 +127,7 @@
         </nav>
 
         <!-- Feature content -->
-        <main id="blazer" class="kitchen-sink">
+        <main id="uniform" class="kitchen-sink">
 
             <div class="content">
                 <section class="disclaimer">
@@ -159,23 +159,12 @@
                         </div>
                     </form>
                 </section> -->
-
-                {{> typography}}
-                {{> icons}}
-                {{> buttons}}
-                {{> tabs}}
-                {{> notifications}}
-                {{> toggle_selectors}}
-                {{> flex_layouts}}
-                {{> tooltips}}
-                {{> modals}}
-                {{> drawers}}
-                {{> accordions}}
-                {{> forms}}
-                {{> tables}}
-                {{> flex_grid}}
-                {{> pagination}}
-
+                
+                {{#list componentList}}       
+                    {{> (lookup . 'name') parent=..}}
+                {{/list}}
+     
+               
             </div> <!-- close .content -->
         </main>
 

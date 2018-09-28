@@ -1,0 +1,101 @@
+<section id="uploader">
+    <header>
+        <h1>Uploader</h1>
+    </header>
+
+    <div id="uploader_settings">
+        <div>
+            <div class="uploader-config-header">Edlio Config.</div>
+            <div>S3 Bucket Name: <input type="text" class="uploader-setting" name="s3BucketName" /></div>
+            <div>S3 Bucket Region: <input type="text" class="uploader-setting" name="s3BucketRegion" /></div>
+            <div>S3 IdentityPoolId: <input type="text" class="uploader-setting" name="s3IdentityPoolId" /></div>
+            <div>Files Microservice URL: <input type="text" placeholder="i.e: http://localhost:20010" class="uploader-setting" name="filesMicroserviceURL" /></div>
+        </div>
+        <div>
+            <div class="uploader-config-header">Google Config.</div>
+            <div>Google Picker Callback URL: <input type="text" class="uploader-setting" name="googlePickerCallback" /></div>
+            <div>Google API Key: <input type="text" class="uploader-setting" name="googleAPIKey" /></div>
+            <div>Google OAuth Client ID: <input type="text" class="uploader-setting" name="googleOAuthClientId" /></div>
+        </div>
+        <div>
+            <div class="uploader-config-header">Dropbox Config.</div>
+            <div>Dropbox App Key: <input type="text" class="uploader-setting" name="dropboxAppKey" /></div>
+            <div class="uploader-config-header" style="margin-top: 15px;">OneDrive Config.</div>
+            <div>OneDrive Picker Callback URL: <input type="text" class="uploader-setting" name="oneDrivePickerCallback" /></div>
+            <div class="uploader-config-header" style="margin-top: 15px;">Accept</div>
+            <div>
+                <select id="accept_select" class="uploader-setting" name="accept">
+                    <option value="" selected>All</option>
+                    <option value="image/*">Images</option>
+                    <option value="video/*">Videos</option>
+                    <option value="audio/*">Audio</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div><input type="button" value="Save Uploader Settings" id="save_uploader_settings"></div>
+    <uniform-uploader
+        s3-bucket-name=""
+        s3-bucket-region=""
+        s3-identity-pool-id=""
+        files-microservice-url=""
+        google-picker-callback-url=""
+        google-api-key=""
+        google-oauth-client-id=""
+        dropbox-app-key=""
+        onedrive-picker-callback-url=""
+        method="POST"
+        accept="audio/*"
+        max-size="1"
+        max-items="0"
+        images-only=""
+        default-list-view="true">
+    </uniform-uploader>
+    <div id="file_uploader_list"></div>
+    <script>
+        const settingsObj = JSON.parse(localStorage.getItem('uploader-settings'));
+        const uploaderDOM = document.querySelector('uniform-uploader');
+        const uploaderListDOM = document.querySelector('#file_uploader_list');
+        const saveSettingsBtn = document.getElementById('save_uploader_settings');
+        const acceptSelect = document.getElementById('accept_select');
+
+        if (settingsObj) {
+            let settingFields = document.getElementsByClassName('uploader-setting');
+            for (let i=0; i<settingFields.length; i++) {
+                settingFields[i].value = Object.entries(settingsObj)[i][1];
+            }
+            // Set uploader attributes using settingsObj
+            uploaderDOM.setAttribute('s3-bucket-name', settingsObj.s3BucketName);
+            uploaderDOM.setAttribute('s3-bucket-region', settingsObj.s3BucketRegion);
+            uploaderDOM.setAttribute('s3-identity-pool-id', settingsObj.s3IdentityPoolId);
+            uploaderDOM.setAttribute('files-microservice-url', settingsObj.filesMicroserviceURL);
+            uploaderDOM.setAttribute('google-picker-callback-url', settingsObj.googlePickerCallback);
+            uploaderDOM.setAttribute('google-api-key', settingsObj.googleAPIKey);
+            uploaderDOM.setAttribute('google-oauth-client-id', settingsObj.googleOAuthClientId);
+            uploaderDOM.setAttribute('dropbox-app-key', settingsObj.dropboxAppKey);
+            uploaderDOM.setAttribute('onedrive-picker-callback-url', settingsObj.oneDrivePickerCallback);
+            uploaderDOM.setAttribute('accept', settingsObj.accept);
+        }
+
+        saveSettingsBtn.addEventListener('click', () => {
+            // get values of settings and store them
+            const settings = document.getElementsByClassName('uploader-setting');
+            let settingsObj = {};
+            Array.from(settings).forEach(setting => {
+                settingsObj[setting.name] = setting.value;
+            });
+            // save on localStorage
+            localStorage.setItem('uploader-settings', JSON.stringify(settingsObj));
+            // reload page so settings take effect
+            location.reload();
+        });
+
+        uploaderDOM.addEventListener('uploaded', (e) => {
+            console.log(e, e.detail);
+        });
+
+        acceptSelect.addEventListener('change', () => {
+            saveSettingsBtn.click();
+        });
+    </script>
+</section>

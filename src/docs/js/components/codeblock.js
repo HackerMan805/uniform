@@ -1,5 +1,3 @@
-PR.prettyPrint();
-
 export default class CodeblockComponent extends window.HTMLElement {
     constructor () {
         super();
@@ -9,6 +7,7 @@ export default class CodeblockComponent extends window.HTMLElement {
         codetmpl.innerHTML = '<a class="button" onclick="document.getElementById(\'' + codeId + '\').show(this)">&lt;/&gt;</a><uniform-modal id="' + codeId + '" class="code-modal"><pre class="prettyprint linenums"></pre></uniform-modal>';                    
         codetmpl.querySelector('.prettyprint').textContent = this.prettyPre(this.innerHTML);
         this.appendChild(codetmpl);                    
+        PR.prettyPrint();
     }
 
     prettyPre(text) {
