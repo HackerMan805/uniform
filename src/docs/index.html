@@ -160,11 +160,10 @@
                     </form>
                 </section> -->
                 
-                {{#list componentList}}       
+                {{#list componentList}}
                     {{> (lookup . 'name') parent=..}}
                 {{/list}}
-     
-               
+
             </div> <!-- close .content -->
         </main>
 
