@@ -1,0 +1,111 @@
+<section id="forms" class="forms">
+    <header>
+        <h1>Forms</h1>
+    </header>
+
+    <kitchensink-codeblock>
+        <form class="example">
+            <fieldset>
+                <legend>Fieldset Legend</legend>
+
+                <ol class="breadcrumb">
+                    <li><a href="#forms">Forms</a></li>
+                    <li class="active"><a href="">Text Inputs</a></li>
+                </ol>
+
+                <label for="text_field">Text Field</label>
+                <input id="text_field" type="text" placeholder="Text Field">
+
+                <label for="password_field">Password Field</label>
+                <input id="password_field" type="password">
+
+                <label for="number_field">Number Field</label>
+                <input id="number_field" type="number" placeholder="Number Field">
+
+                <label for="url_field">URL Field</label>
+                <input id="url_field" type="url" placeholder="URL Field">
+
+                <label for="date_field">Date Field</label>
+                <input id="date_field" type="date" placeholder="Date Field">
+
+                <label for="time_field">Time Field</label>
+                <input id="time_field" type="time" placeholder="Time Field">
+            
+            
+                <ol class="breadcrumb">
+                    <li><a href="#forms">Forms</a></li>
+                    <li class="active"><a href="">Group Inputs</a></li>
+                </ol>
+
+                <input id="checkbox" type="checkbox">
+                <label for="checkbox">Checkbox</label>
+                <br>
+                <input id="checkbox-disabled" type="checkbox" disabled="disabled"/>
+                <label for="checkbox-disabled">Checkbox (disabled)</label>
+                <br>
+                <input id="checkbox-disabled2" type="checkbox" checked="checked" disabled="disabled"/>
+                <label for="checkbox-disabled2">Checkbox (disabled and selected)</label>
+
+                <br>
+                <br>
+
+                <input id="toggle" class="toggle" type="checkbox">
+                <label for="toggle">Toggle</label>
+                <br>
+                <input id="toggle-disabled" class="toggle" type="checkbox" disabled="disabled"/>
+                <label for="toggle-disabled">Toggle (disabled)</label>
+                <br>
+                <input id="toggle-disabled2" class="toggle" type="checkbox" checked="checked" disabled="disabled"/>
+                <label for="toggle-disabled2">Toggle (disabled and selected)</label>
+
+                <br>
+                <br>
+
+                <input id="radio" type="radio" name="radio">
+                <label for="radio">Radio Button 1</label>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="radio2" type="radio" name="radio">
+                <label for="radio2">Radio Button 2</label>
+                <br>
+                <input id="radio-disabled" type="radio" disabled="disabled">
+                <label for="radio-disabled">Radio Button (disabled)</label>
+                <br>
+                <input id="radio-disabled2" type="radio" checked="checked" disabled="disabled">
+                <label for="radio-disabled2">Radio Button (disabled and selected)</label>
+
+                <br>
+                <br>
+
+                <uniform-select>
+                    <select-title>
+                        Simple Select
+                        <svg viewbox="0 0 2048 2048" class="caret icon">
+                            <use xlink:href="#caret-down"></use>
+                        </svg>
+                    </select-title>
+
+                    <menu>
+                        <item>This item has a long label</item>
+                        <item>Short label</item>
+                        <item>Medium-length label</item>
+                    </menu>
+                </uniform-select>
+
+                <uniform-select class="bare">
+                    <select-title>
+                        <svg viewbox="0 0 2048 2048" class="icon">
+                            <use xlink:href="#cog">
+                            </use>
+                        </svg>
+                    </select-title>
+
+                    <menu>
+                        <item>This item has a long label</item>
+                        <item>Short label</item>
+                        <item>Third Item</item>
+                    </menu>
+                </uniform-select>
+            </fieldset>
+        </form>
+    </kitchensink-codeblock>
+</section>

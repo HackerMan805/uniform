@@ -5,7 +5,7 @@ const sass = require('gulp-sass');
 const webpack = require('webpack-stream');
 const svgstore = require('gulp-svgstore');
 const inject = require('gulp-inject');
-const glob = require('glob');
+const fg = require('fast-glob');
 const path = require('path');
 const handlebars = require('gulp-compile-handlebars');
 const fs = require('fs');
@@ -17,16 +17,19 @@ const app = {
     sass: './src/sass/**/*.scss',
     cssDest: './libs',
     jsDest: './libs',
-    icons: './src/icons/*.svg',
-    html: './src/docs/*.html'
+    icons: './src/icons/*.svg',    
 };
+
 const demoApp = {
     sassRoot: ['./src/docs/sass/', './src/sass'],
     sass: './src/docs/sass/**/*.scss',
     js: ['./src/js/app.js', './src/docs/js/kitchensink.js'],
     cssDest: './docs/css',
     jsDest: './docs/js',
-    destFolder: './docs/'
+    destFolder: './docs/',
+    html: './src/docs/*.html',
+    components: './src/docs/components/*.handlebars',
+    componentspath: './src/docs/components'    
 };
 
 function compileSass (app) {
@@ -80,17 +83,17 @@ function compileJs (app) {
     };
 }
 
-function compileHtml(iconSprite, colorList) {
+function compileHtml(iconList, colorList, componentList) {
     const svgs = gulp.src(app.icons)
     .pipe(svgstore({inlineSvg: true}));
 
     function fileContents (filePath, file) {
         return file.contents.toString();
     }
-
     const templateData = {          
-        iconSprite,
-        colorList
+        iconList,
+        colorList,
+        componentList
     },        
     options = {
         helpers : {
@@ -98,15 +101,35 @@ function compileHtml(iconSprite, colorList) {
                 let ret = "";
                 for (let value of context) {
                     ret += options.fn(value);
-                }                
+                }           
                 return ret;
+            },
+            getColors : function() {
+                return colorList;
             }
-        }
-    }                
-    return gulp.src(app.html)
+        },
+        batch: [demoApp.componentspath]
+    };                
+    
+    return gulp.src(demoApp.html)
         .pipe(inject(svgs, { transform: fileContents }))
         .pipe(handlebars(templateData, options))
         .pipe(gulp.dest(demoApp.destFolder));
+}
+
+function getIconList() {
+    const icons = fg.sync(app.icons);    
+    return svgIconPath = icons.map(function(icon){
+        return { icon: path.basename(icon, '.svg') };
+    });
+}
+
+function getComponentList() {
+    const components = fg.sync(demoApp.components);
+    const compnentList = components.map(function(componet){
+        return {name: path.basename(componet, '.handlebars')};
+    });
+    return compnentList;
 }
 
 async function generateColors() {    
@@ -119,12 +142,14 @@ async function generateColors() {
         const regHexValue = new RegExp('(#[0-9a-fA-F]{3,6})');
         let name = line.match(regVarName);
         let color = line.match(regHexValue);
-        
+
         if (name !== null && color !== null) {
             colors.push({"name": name[0] , "hex": color[0]});
-        }    
+        }
     });
+    
     return colors;   
+
 }
 
 gulp.task('sass:watch', function() {
@@ -137,21 +162,14 @@ gulp.task('js', compileJs(app));
 gulp.task('demo:js', compileJs(demoApp));
 
 gulp.task('html', (done) => {
-    glob(app.icons, function (globErr, icons) {
-        if(globErr){
-            done(globErr);
-            return;
-        }
-        const svgIconPath = icons.map(function(icon){
-            return { icon: path.basename(icon, '.svg') };
-        });
+    let iconlist = getIconList();        
+    let componentlist = getComponentList();
 
-        generateColors().then(function(colors) {
-            compileHtml(svgIconPath, colors);   
-            done();
-        }).catch (function(colorErr) {
-            done(colorErr);
-        });        
+    generateColors().then(function(colorList) {
+        compileHtml(iconlist, colorList, componentlist);
+        done();
+    }).catch (function(colorErr) {
+        done(colorErr);
     });    
 });
 

@@ -1,0 +1,23 @@
+<section id="colors" class="colors">
+    <header>
+        <h1>Colors</h1>
+
+        <ol class="breadcrumb">
+
+            <li><a href="#typography">Colors</a></li>
+            <li class="active"><a href="">Base Colors</a></li>
+        </ol>
+    </header>
+
+    <div class="example columns">
+        {{#list parent.colorList}}
+        <div class="item">
+            <kitchensink-clipboard data-text="{{name}}">
+                <div class="color-block" style="background-color: {{hex}};" title="{{name}}"></div>
+                <span class="color-name">{{name}}</span>
+                <span class="color-hex">{{hex}}</span>
+            </kitchensink-clipboard>
+        </div>
+        {{/list}}
+    </div>
+</section>

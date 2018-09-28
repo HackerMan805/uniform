@@ -1,0 +1,23 @@
+<section id="icons" class="icons">
+    <header>
+        <h1>Icons</h1>
+
+        <ol class="breadcrumb">
+            <li><a href="#icons">Icons</a></li>
+            <li class="active"><a href="">Fonts</a></li>
+        </ol>
+    </header>
+
+    <ul class="example">
+        {{#list parent.iconList}}
+            <li class="item">
+                <kitchensink-clipboard data-text="<svg viewBox='0 0 2048 2048' class='icon'><use xlink:href='/apps/svg/icons.svg#{{icon}}'></use></svg>">
+                    <svg viewbox="0 0 2048 2048" class="icon">
+                        <use xlink:href="#{{icon}}"/>
+                    </svg>
+                    {{icon}}
+                </kitchensink-clipboard>
+            </li>
+        {{/list}}
+    </ul>
+</section>  

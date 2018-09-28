@@ -1,0 +1,100 @@
+<section id="toggle_selectors" class="toggle-selectors">
+    <header>
+        <h1>Toggle Selectors</h1>
+    </header>
+
+    <kitchensink-codeblock class="toggle-selector example-1">
+        <div class="on option">
+            <svg viewbox="0 0 2048 2048" class="icon">
+                <use xlink:href="#eye"></use>
+            </svg>
+            <input type="radio" id="toggle_selector_on" name="toggle_selector" value="on" checked>
+            <label for="toggle_selector_on">On</label>
+        </div>
+        <div class="off option">
+            <svg viewbox="0 0 2048 2048" class="icon">
+                <use xlink:href="#eye-slash"></use>
+            </svg>
+            <input type="radio" id="toggle_selector_off" name="toggle_selector" value="off">
+            <label for="toggle_selector_off">Off</label>
+        </div>
+    </kitchensink-codeblock>
+
+    <kitchensink-codeblock class="toggle-selector example-2">
+        <div class="option 1">
+            <input type="radio" id="toggle_selector_2_option_1" name="toggle_selector_1" value="option-1" checked>
+            <label for="toggle_selector_option_1">Option 1</label>
+        </div>
+        <div class="option 2">
+            <input type="radio" id="toggle_selector_2_option_2" name="toggle_selector_1" value="option-2">
+            <label for="toggle_selector_option_2">Option 2</label>
+        </div>
+        <div class="option 3">
+            <input type="radio" id="toggle_selector_2_option_3" name="toggle_selector_1" value="option-3" checked>
+            <label for="toggle_selector_option_3">Option 3</label>
+        </div>
+    </kitchensink-codeblock>
+
+    <script type="text/javascript">
+        (function () {
+            var toggleSelector1 = new ToggleSelector({
+                node: document.querySelector('.toggle-selector.example-1'),
+                selectedOption: 'on'
+            });
+
+            var toggleSelector2 = new ToggleSelector({
+                node: document.querySelector('.toggle-selector.example-2'),
+                selectedOption: 'option-2'
+            });
+
+            function ToggleSelector (data) {
+                var self = this;
+
+                self.node = data.node;
+                self.options = [];
+                self.selectedOption = data.selectedOption;
+
+                var options = data.node.querySelectorAll('.option')
+
+                for (var i = 0; i < options.length; i++) {
+                    var value = options[i].querySelector('input').value;
+
+                    self.options.push(new Option({
+                        node: options[i],
+                        value: value,
+                        selected: value === self.selectedOption,
+                        clickCallback: selectOption
+                    }));
+                }
+
+                function selectOption (option, input, value) {
+                    self.options.forEach(function (option) {
+                        option.node.classList.remove('selected');
+                    });
+
+                    option.classList.add('selected');
+                    input.checked = true;
+                    self.selectedOption = value;
+                }
+            }
+
+            function Option (data) {
+                var self = this;
+
+                self.node = data.node;
+                self.input = self.node.querySelector('input[type="radio"]');
+                self.selected = data.selected;
+                self.value = data.value;
+
+                if (self.selected) {
+                    self.node.classList.add('selected');
+                    self.input.checked = true;
+                }
+
+                self.node.addEventListener('click', function (evt) {
+                    data.clickCallback(self.node, self.input, self.value);
+                })
+            }
+        })();
+    </script>
+</section>

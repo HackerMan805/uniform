@@ -29,6 +29,7 @@
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^1.0.0",
+    "fast-glob": "^2.2.2",
     "glob": "^7.1.2",
     "gulp": "^4.0.0",
     "gulp-cli": "^2.0.1",
