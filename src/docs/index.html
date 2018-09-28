@@ -130,7 +130,6 @@
         <main id="blazer" class="kitchen-sink">
 
             <div class="content">
-
                 <section class="disclaimer">
                     <uniform-notification class="alert">
                         <svg viewbox="0 0 2048 2048" class="icon">
@@ -179,6 +178,24 @@
 
             </div> <!-- close .content -->
         </main>
+
+        <script type="text/javascript">
+            (function () {
+                let codeExamples = document.querySelectorAll('kitchensink-codeblock');
+                codeExamples.forEach((codeExample, index) => {
+                    codeExample.id = "codeblock_" + index  
+                });
+            })();
+        </script>
+
+        <!-- kitchen-sink codeblock uses code-prettify -->
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert"></script>
+
         <script src="js/app.js"></script>
+
+        <!-- uniform-uploader 3rd party picker APIs -->
+        <script src="https://www.dropbox.com/static/api/2/dropins.js"></script>
+        <script src="https://apis.google.com/js/api.js"></script>
+
     </body>
 </html>

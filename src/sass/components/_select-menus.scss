@@ -68,7 +68,7 @@ edlio-select,
 			}
 		}
 
-		select-menu {
+		menu {
 			border: $default-border-width solid $select-menu-border-color;
 			margin-top: .618em;
 
@@ -96,8 +96,8 @@ edlio-select,
 				border-width: calc(1em - #{$default-border-width});
 			}
 
-			select-item:hover:first-child:before,
-			.select-item:hover:first-child:before {
+			item:hover:first-child:before,
+			.item:hover:first-child:before {
 				content: "";
 				position: absolute;
 				top: calc(-1em + #{$default-border-width});
@@ -125,7 +125,7 @@ edlio-select,
 			inset 0 $default-border-width 0 0 $select-menu-border-color
 		;
 
-		> select-menu {
+		> menu {
 			visibility: visible;
 			opacity: 1;
 			top: 100%;
@@ -138,7 +138,7 @@ edlio-select,
 		}
 	}
 
-	> select-menu {
+	> menu {
 		position: absolute;
 		left: 0;
 		top: 50%;
@@ -165,8 +165,8 @@ edlio-select,
 			right: 0;
 		}
 
-		select-item,
-		.select-item {
+		item,
+		.item {
 			position: relative;
 
 			// For IE10 & Safari

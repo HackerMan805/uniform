@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const connect = require('gulp-connect');
 const open = require('open');
 const sass = require('gulp-sass');
 const webpack = require('webpack-stream');
@@ -7,21 +8,25 @@ const inject = require('gulp-inject');
 const glob = require('glob');
 const path = require('path');
 const handlebars = require('gulp-compile-handlebars');
+const fs = require('fs');
+const split = require('split');
 
 const app = {
     sassRoot: './src/sass/',
     js: './src/js/app.js',
     sass: './src/sass/**/*.scss',
-    dest: './libs',
+    cssDest: './libs',
+    jsDest: './libs',
     icons: './src/icons/*.svg',
-    html: './src/*.html',
-    components: './src/components'
+    components: './src/components',
+    html: './src/docs/*.html'
 };
 
 const demoApp = {
-    sassRoot: ['./docs/sass/', './src/sass'],
-    sass: './docs/sass/**/*.scss',
-    dest: './docs/css',
+    sassRoot: ['./src/docs/sass/', './src/sass'],
+    sass: './src/docs/sass/**/*.scss',
+    js: ['./src/js/app.js', './src/docs/js/kitchensink.js'],
+    cssDest: './docs/css',
     jsDest: './docs/js',
     destFolder: './docs/'
 };
@@ -32,11 +37,52 @@ function compileSass (app) {
             .pipe(sass({
                 includePaths: app.sassRoot
             }).on('error', sass.logError))
-            .pipe(gulp.dest(app.dest));
+            .pipe(gulp.dest(app.cssDest));
     };
 }
 
-function compileHtml(iconSprite) {
+function compileJs (app) {
+    return () => {
+        return gulp.src(app.js)
+        .pipe(webpack({
+            entry: app.js,
+            output: {
+                filename: 'app.js',
+                path: path.join(__dirname, 'libs')
+            },            
+            devtool: 'source-map',
+            module: {
+                rules: [
+                    { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+                    {
+                        test: /\.scss$/,
+                        use: [
+                            { loader: 'css-loader' },
+                            {
+                                loader: 'sass-loader',
+                                options: {
+                                    includePaths: ['./src/sass']
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        test: /\.(html)$/,
+                        use: {
+                            loader: 'html-loader',
+                            options: {
+                                attrs: [':data-src']
+                            }
+                        }
+                    }
+                ]
+            }
+        }))
+        .pipe(gulp.dest(app.jsDest));            
+    };
+}
+
+function compileHtml(iconSprite, colorList) {
     const svgs = gulp.src(app.icons)
     .pipe(svgstore({inlineSvg: true}));
 
@@ -45,7 +91,8 @@ function compileHtml(iconSprite) {
     }
 
     const templateData = {          
-        iconSprite
+        iconSprite,
+        colorList
     },        
     options = {
         helpers : {
@@ -59,11 +106,28 @@ function compileHtml(iconSprite) {
         },
         batch: [app.components]
     }                
-
     return gulp.src(app.html)
         .pipe(inject(svgs, { transform: fileContents }))
         .pipe(handlebars(templateData, options))
         .pipe(gulp.dest(demoApp.destFolder));
+}
+
+async function generateColors() {    
+    const charStream = fs.createReadStream('./src/sass/themes/cms/_edlio.scss');
+    const lineStream = charStream.pipe(split());
+    let colors = [];
+
+    await lineStream.on('data', function(line) {
+        const regVarName = new RegExp('\\$(.+?)(?=\\s*:)');
+        const regHexValue = new RegExp('(#[0-9a-fA-F]{3,6})');
+        let name = line.match(regVarName);
+        let color = line.match(regHexValue);
+        
+        if (name !== null && color !== null) {
+            colors.push({"name": name[0] , "hex": color[0]});
+        }    
+    });
+    return colors;   
 }
 
 gulp.task('sass:watch', function() {
@@ -72,32 +136,35 @@ gulp.task('sass:watch', function() {
 gulp.task('sass', compileSass(app));
 gulp.task('demo:sass', compileSass(demoApp));
 
-gulp.task('js', () => {
-    return gulp.src(app.js)
-        .pipe(webpack( require('./webpack.config.js') ))
-        .pipe(gulp.dest(app.dest));
-});
-gulp.task('demo:js', () => {
-    return gulp.src(app.js)
-        .pipe(webpack( require('./webpack.config.js') ))
-        .pipe(gulp.dest(demoApp.jsDest));
-});
+gulp.task('js', compileJs(app));
+gulp.task('demo:js', compileJs(demoApp));
 
 gulp.task('html', (done) => {
-    glob(app.icons, function (err, icons) {
+    glob(app.icons, function (globErr, icons) {
+        if(globErr){
+            done(globErr);
+            return;
+        }
         const svgIconPath = icons.map(function(icon){
             return { icon: path.basename(icon, '.svg') };
-        }); 
-        
-        compileHtml(svgIconPath, app.components);
-        done(err);
-    });
+        });
+
+        generateColors().then(function(colors) {
+            compileHtml(svgIconPath, colors);   
+            done();
+        }).catch (function(colorErr) {
+            done(colorErr);
+        });        
+    });    
 });
 
 gulp.task('start', (done) => {
-    open('./docs/index.html');
+    connect.server({
+        root: process.env.PWD + "/docs/",
+        port: 33546
+    });
+    open("http://localhost:33546");
     done();
 });
 gulp.task('build', gulp.parallel('sass', 'demo:sass', 'html', 'js', 'demo:js'));
 gulp.task('default', gulp.series('build'));
-

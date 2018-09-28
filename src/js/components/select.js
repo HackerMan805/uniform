@@ -13,17 +13,17 @@ import { onClick } from '../utils';
  *   <select-title>
  *     Current item
  *   </select-title>
- *   <select-menu>
- *     <select-item>
+ *   <menu>
+ *     <item>
  *       item 1
- *     </select-item>
- *     <select-item>
+ *     </item>
+ *     <item>
  *       item 2
- *     </select-item>
- *     <select-item>
+ *     </item>
+ *     <item>
  *       item 3
- *     </select-item>
- *   </select-menu>
+ *     </item>
+ *   </menu>
  * </uniform-select>
  * ```
  */
@@ -33,11 +33,11 @@ export default class SelectComponent extends window.HTMLElement {
     }
 
     get multiple () {
-        return this.hasAttribute('multiple');
+        return this.hasAttribute('multiple') && this.getAttribute('multiple') === 'true';
     }
     set multiple (val) {
         if (val) {
-            this.setAttribute('multiple', '');
+            this.setAttribute('multiple', 'true');
         } else {
             this.removeAttribute('multiple');
         }
@@ -66,7 +66,7 @@ export default class SelectComponent extends window.HTMLElement {
             }
             mutations.forEach(mutation => {
                 Array.prototype.slice.call(mutation.addedNodes)
-                    .filter(n => n.nodeName === 'SELECT-ITEM')
+                    .filter(n => n.nodeName === 'ITEM')
                     .forEach(node => {
                             onClick(node, this.close.bind(this));
                             return;
@@ -76,14 +76,14 @@ export default class SelectComponent extends window.HTMLElement {
         var config = { childList: true };
         observer.observe(this, config);
         // add event listener to existing select-items
-        [...this.querySelectorAll('select-item')]
+        [...this.querySelectorAll('item')]
             .forEach(n => {
                 onClick(n, this.close.bind(this));
             });
 
         // add event listener under body to close select menu
         onClick(document.querySelector('body'), this.close.bind(this));
-        [...document.querySelectorAll('uniform-modal')]
+        [...document.querySelectorAll('edlio-modal')]
             .forEach((modal) => {
                 onClick(modal, this.close.bind(this));
             });

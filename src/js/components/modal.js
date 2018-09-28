@@ -6,13 +6,15 @@ export default class ModalComponent extends window.HTMLElement {
         this.currentPage = 0;
         this.pages = [];
         // internal memory
-        this.previousParent = null;
         this.container = null;
         this.handleEscapeClick = this.handleEscapeClick.bind(this);
     }
 
     onClose (closeCallback) {
         this.closeCallbacks.push(closeCallback);
+    }
+    attachOnClose (closeCallback) {
+        this.onClose(closeCallback);
     }
 
     goToPage (index) {
@@ -89,7 +91,7 @@ export default class ModalComponent extends window.HTMLElement {
         // move the modal object to be under container and move container to
         // be under body
         const scrollTop = window.pageYOffset;
-        const container = document.createElement('uniform-overlay');
+        const container = document.createElement('edlio-overlay');
         this.container = container;
         document.body.appendChild(container);
         container.appendChild(this);
@@ -152,12 +154,13 @@ export default class ModalComponent extends window.HTMLElement {
         });
 
         function handleTransitionEnd () {
-            this.previousParent.appendChild(this);
             this.classList.remove('transition-out');
             this.style.webkitTransform = '';
             this.style.transform = '';
             // reset scrolling event
-            document.body.style.overflow = undefined;
+            document.body.style.overflow = null;
+
+            document.body.appendChild(this);
             this.container.remove();
 
             if (this.removeOnHide) {
@@ -168,7 +171,6 @@ export default class ModalComponent extends window.HTMLElement {
     }
 
     connectedCallback () {
-        console.log(this.parentNode);
         this.previousParent = this.parentNode;
     }
 };
