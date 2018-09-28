@@ -1,6 +1,7 @@
 /*** Kitchen Sink ***/
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
 .edlio.cms uniform-accordion > section,
 .edlio.cms .uniform-accordion > section,
 .edlio.cms edlio-accordion > section,
@@ -18,15 +19,17 @@
 .edlio.cms edlio-select select-title,
 .edlio.cms edlio-select .select-title,
 .edlio.cms .edlio-select select-title,
-.edlio.cms .edlio-select .select-title, .edlio.cms uniform-overlay,
+.edlio.cms .edlio-select .select-title, .edlio.cms .uniform-card, .edlio.cms .uniform-card.thumbnail .graphic, .edlio.cms uniform-overlay,
 .edlio.cms edlio-overlay, .edlio.cms uniform-overlay uniform-modal,
-.edlio.cms edlio-overlay uniform-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
+.edlio.cms uniform-overlay edlio-modal,
+.edlio.cms edlio-overlay uniform-modal,
+.edlio.cms edlio-overlay edlio-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
 .edlio.cms uniform-overlay edlio-modal page.current header,
 .edlio.cms edlio-overlay uniform-modal page.current header,
 .edlio.cms edlio-overlay edlio-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer,
 .edlio.cms uniform-overlay edlio-modal page.current footer,
 .edlio.cms edlio-overlay uniform-modal page.current footer,
-.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
+.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell, .edlio.cms .kitchen-sink .dashboard-card-container, .edlio.cms .kitchen-sink #uploader_settings {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
@@ -54,15 +57,17 @@
 .edlio.cms edlio-select select-title,
 .edlio.cms edlio-select .select-title,
 .edlio.cms .edlio-select select-title,
-.edlio.cms .edlio-select .select-title, .edlio.cms uniform-overlay,
+.edlio.cms .edlio-select .select-title, .edlio.cms .uniform-card, .edlio.cms .uniform-card.thumbnail .graphic, .edlio.cms uniform-overlay,
 .edlio.cms edlio-overlay, .edlio.cms uniform-overlay uniform-modal,
-.edlio.cms edlio-overlay uniform-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
+.edlio.cms uniform-overlay edlio-modal,
+.edlio.cms edlio-overlay uniform-modal,
+.edlio.cms edlio-overlay edlio-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
 .edlio.cms uniform-overlay edlio-modal page.current header,
 .edlio.cms edlio-overlay uniform-modal page.current header,
 .edlio.cms edlio-overlay edlio-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer,
 .edlio.cms uniform-overlay edlio-modal page.current footer,
 .edlio.cms edlio-overlay uniform-modal page.current footer,
-.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
+.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell, .edlio.cms .kitchen-sink .dashboard-card-container, .edlio.cms .kitchen-sink #uploader_settings {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
@@ -131,15 +136,17 @@
 .edlio.cms edlio-select select-title,
 .edlio.cms edlio-select .select-title,
 .edlio.cms .edlio-select select-title,
-.edlio.cms .edlio-select .select-title, .edlio.cms uniform-overlay,
+.edlio.cms .edlio-select .select-title, .edlio.cms .uniform-card, .edlio.cms .uniform-card.thumbnail .graphic, .edlio.cms uniform-overlay,
 .edlio.cms edlio-overlay, .edlio.cms uniform-overlay uniform-modal,
-.edlio.cms edlio-overlay uniform-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
+.edlio.cms uniform-overlay edlio-modal,
+.edlio.cms edlio-overlay uniform-modal,
+.edlio.cms edlio-overlay edlio-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
 .edlio.cms uniform-overlay edlio-modal page.current header,
 .edlio.cms edlio-overlay uniform-modal page.current header,
 .edlio.cms edlio-overlay edlio-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer,
 .edlio.cms uniform-overlay edlio-modal page.current footer,
 .edlio.cms edlio-overlay uniform-modal page.current footer,
-.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
+.edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell, .edlio.cms .kitchen-sink .dashboard-card-container, .edlio.cms .kitchen-sink #uploader_settings {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
@@ -170,1637 +177,2417 @@
 .edlio.cms ol.breadcrumb li.active a, .edlio.cms a.disabled {
   color: #aaabad; }
 
-.edlio.cms uniform-accordion > section,
-.edlio.cms .uniform-accordion > section,
-.edlio.cms edlio-accordion > section,
-.edlio.cms .edlio-accordion > section {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  margin-bottom: 0; }
-  .edlio.cms uniform-accordion > section .content,
-  .edlio.cms .uniform-accordion > section .content,
-  .edlio.cms edlio-accordion > section .content,
-  .edlio.cms .edlio-accordion > section .content {
-    max-height: 25em;
-    opacity: 1; }
-  .edlio.cms uniform-accordion > section header,
-  .edlio.cms .uniform-accordion > section header,
-  .edlio.cms edlio-accordion > section header,
-  .edlio.cms .edlio-accordion > section header {
-    cursor: pointer; }
-    .edlio.cms uniform-accordion > section header svg,
-    .edlio.cms .uniform-accordion > section header svg,
-    .edlio.cms edlio-accordion > section header svg,
-    .edlio.cms .edlio-accordion > section header svg {
-      margin-left: auto; }
-  .edlio.cms uniform-accordion > section.collapsed .content,
-  .edlio.cms .uniform-accordion > section.collapsed .content,
-  .edlio.cms edlio-accordion > section.collapsed .content,
-  .edlio.cms .edlio-accordion > section.collapsed .content {
-    max-height: 0;
-    padding: 0;
-    visibility: hidden;
-    opacity: 0; }
-
-.edlio.cms .bar {
-  border-bottom: 1px solid #555555; }
-  @media screen and (max-width: 47.9375rem) {
-    .edlio.cms .bar *:last-child {
-      margin-bottom: 0; } }
-  @media screen and (min-width: 48rem) {
-    .edlio.cms .bar * {
-      margin-top: 0;
-      margin-bottom: 0; } }
-  .edlio.cms .bar.tab {
-    padding: .382em 0; }
-    .edlio.cms .bar.tab > *:not(.width-constraint),
-    .edlio.cms .bar.tab .width-constraint > * {
-      display: block;
-      -webkit-flex: 0 1 auto;
-      -ms-flex: 0 1 auto;
-      flex: 0 1 auto;
-      padding: 0 2rem;
-      color: #444444;
-      text-decoration: none; }
-      .edlio.cms .bar.tab > *:not(.width-constraint):hover,
-      .edlio.cms .bar.tab .width-constraint > *:hover {
-        background: #ededed;
-        box-shadow: inset 0 -0.236em 0 0 #444444; }
-      .edlio.cms .bar.tab > *:not(.width-constraint).selected,
-      .edlio.cms .bar.tab .width-constraint > *.selected {
-        color: #444444;
-        box-shadow: inset 0 -0.236em 0 0 #444444; }
-        .edlio.cms .bar.tab > *:not(.width-constraint).selected:hover,
-        .edlio.cms .bar.tab .width-constraint > *.selected:hover {
-          background: transparent; }
-
-.edlio.cms ol.breadcrumb {
-  list-style: none; }
-  .edlio.cms ol.breadcrumb li {
-    display: inline-block; }
-    .edlio.cms ol.breadcrumb li + li:before {
-      content: '/\00a0';
-      padding: 0 .382em;
-      color: #ededed; }
-
-.edlio.cms .button, .edlio.cms .kitchen-sink button {
-  display: inline-block;
-  color: white;
-  font-weight: 300;
-  font-style: normal;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  background: #29abe2;
-  box-shadow: none;
-  border-radius: 0.24063em;
-  border: none;
-  outline: none; }
-  .edlio.cms .button:link, .edlio.cms .kitchen-sink button:link {
-    color: white; }
-  .edlio.cms .button:visited, .edlio.cms .kitchen-sink button:visited {
-    background: #29abe2;
-    color: white; }
-  .edlio.cms .button:hover, .edlio.cms .kitchen-sink button:hover {
-    background: #1d9ed5;
-    text-decoration: none; }
-  .edlio.cms .button.icon:active:not(.secondary), .edlio.cms .kitchen-sink button.icon:active:not(.secondary), .edlio.cms .button:active, .edlio.cms .kitchen-sink button:active {
-    background: #1a8dbe;
-    color: white; }
-  .edlio.cms .button:focus, .edlio.cms .kitchen-sink button:focus {
-    outline: none; }
-  .edlio.cms .button.disabled, .edlio.cms .kitchen-sink button.disabled {
-    background: #c0e4f3;
-    box-shadow: none;
-    color: white; }
-  .edlio.cms .button.secondary, .edlio.cms .kitchen-sink button.secondary {
-    background: white;
-    color: #555555;
-    box-shadow: inset 0 0 0 1px #cccccc; }
-    .edlio.cms .button.secondary:link, .edlio.cms .kitchen-sink button.secondary:link {
-      color: #555555; }
-    .edlio.cms .button.secondary:visited, .edlio.cms .kitchen-sink button.secondary:visited {
-      background: white;
-      color: #555555; }
-    .edlio.cms .button.secondary:hover, .edlio.cms .kitchen-sink button.secondary:hover {
-      background: #f4f4f4; }
-    .edlio.cms .button.secondary:active, .edlio.cms .kitchen-sink button.secondary:active {
-      background: #e7e7e7;
-      color: #555555; }
-    .edlio.cms .button.secondary.selected, .edlio.cms .kitchen-sink button.secondary.selected {
-      background: #ededed; }
-    .edlio.cms .button.secondary.disabled, .edlio.cms .kitchen-sink button.secondary.disabled {
-      box-shadow: inset 0 0 0 1px #ebebeb;
-      color: #bbbbbb; }
-      .edlio.cms .button.secondary.disabled.icon svg, .edlio.cms .kitchen-sink button.secondary.disabled.icon svg {
-        fill: #bbbbbb; }
-    .edlio.cms .button.secondary.bare:hover, .edlio.cms .kitchen-sink button.secondary.bare:hover {
-      background: #f4f4f4;
-      box-shadow: inset 0 0 0 1px #cccccc;
-      color: #555555; }
-    .edlio.cms .button.secondary.bare:active, .edlio.cms .kitchen-sink button.secondary.bare:active {
-      background: #e7e7e7;
-      color: #555555; }
-    .edlio.cms .button.secondary.icon svg, .edlio.cms .kitchen-sink button.secondary.icon svg {
-      fill: #77787c; }
-    .edlio.cms .button.secondary.icon:hover svg, .edlio.cms .kitchen-sink button.secondary.icon:hover svg {
-      fill: #1d9ed5; }
-  .edlio.cms .button.bare, .edlio.cms .kitchen-sink button.bare {
-    margin-right: 0;
-    box-shadow: none;
-    background: transparent;
-    color: #555555; }
-    .edlio.cms .button.bare:hover, .edlio.cms .kitchen-sink button.bare:hover {
-      background: #1d9ed5; }
-      .edlio.cms .button.bare:hover:not(.icon), .edlio.cms .kitchen-sink button.bare:hover:not(.icon) {
-        background: transparent;
-        color: #555555;
-        box-shadow: none;
-        text-decoration: underline; }
-    .edlio.cms .button.bare:active:not(.icon), .edlio.cms .kitchen-sink button.bare:active:not(.icon) {
-      background: transparent;
-      color: #555555;
-      text-decoration: none; }
-  .edlio.cms .button.icon svg, .edlio.cms .kitchen-sink button.icon svg {
-    position: relative;
-    pointer-events: none;
-    vertical-align: middle;
-    fill: #444444;
-    fill: white; }
-  .edlio.cms .button.icon.labeled svg, .edlio.cms .kitchen-sink button.icon.labeled svg {
-    margin-right: .382em; }
-  .edlio.cms .button.icon.circular, .edlio.cms .kitchen-sink button.icon.circular {
-    border-radius: 50%; }
-  .edlio.cms .button.icon.bare svg, .edlio.cms .kitchen-sink button.icon.bare svg {
-    fill: #77787c; }
-  .edlio.cms .button.icon.bare:hover svg, .edlio.cms .kitchen-sink button.icon.bare:hover svg {
-    fill: white; }
-  .edlio.cms .button.icon.bare.secondary:hover svg, .edlio.cms .kitchen-sink button.icon.bare.secondary:hover svg {
-    fill: #1d9ed5; }
-
-.edlio.cms .button-bar {
-  display: flex; }
-  .edlio.cms .button-bar .button, .edlio.cms .button-bar .kitchen-sink button, .edlio.cms .kitchen-sink .button-bar button {
-    margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    box-shadow: inset 1px 0 0 0 white;
-    border-radius: 0; }
-    .edlio.cms .button-bar .button:first-of-type, .edlio.cms .button-bar .kitchen-sink button:first-of-type, .edlio.cms .kitchen-sink .button-bar button:first-of-type {
-      border-radius: 0.24063em 0 0 0.24063em; }
-    .edlio.cms .button-bar .button:last-of-type, .edlio.cms .button-bar .kitchen-sink button:last-of-type, .edlio.cms .kitchen-sink .button-bar button:last-of-type {
-      border-radius: 0 0.24063em 0.24063em 0; }
-    .edlio.cms .button-bar .button.secondary, .edlio.cms .button-bar .kitchen-sink button.secondary, .edlio.cms .kitchen-sink .button-bar button.secondary {
-      box-shadow: inset 1px 0 0 0 #cccccc, inset 0 1px 0 0 #cccccc, inset 0 -1px 0 0 #cccccc; }
-      .edlio.cms .button-bar .button.secondary:last-of-type, .edlio.cms .button-bar .kitchen-sink button.secondary:last-of-type, .edlio.cms .kitchen-sink .button-bar button.secondary:last-of-type {
-        box-shadow: inset 0 0 0 1px #cccccc; }
-
-.edlio.cms uniform-drawer,
-.edlio.cms edlio-drawer {
-  position: absolute;
-  z-index: 99;
-  width: 20em;
-  height: 100%;
-  background-color: white;
-  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
-  -webkit-transform: translate3d(-100%, 0, 0);
-  transform: translate3d(-100%, 0, 0);
-  transition: transform .3s; }
-  .edlio.cms uniform-drawer a,
-  .edlio.cms edlio-drawer a {
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    -ms-flex-pack: distribute;
-    -webkit-justify-content: space-around;
-    justify-content: space-around;
-    padding: 0 1em 0 1.382em;
-    color: #444444;
-    align-items: center;
-    line-height: 3em; }
-    .edlio.cms uniform-drawer a:hover,
-    .edlio.cms edlio-drawer a:hover {
-      background: #cccccc;
-      text-decoration: none; }
-    .edlio.cms uniform-drawer a svg.icon,
-    .edlio.cms edlio-drawer a svg.icon {
-      width: 1.5em;
-      height: 1.5em;
-      vertical-align: middle; }
-    .edlio.cms uniform-drawer a span,
-    .edlio.cms edlio-drawer a span {
-      margin: 0 1em;
-      color: #444444; }
-  .edlio.cms uniform-drawer.open,
-  .edlio.cms edlio-drawer.open {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); }
-
-.edlio.cms legend {
-  display: block;
-  color: #444444; }
-
-.edlio.cms label {
-  display: block;
-  color: #77787c; }
-
-.edlio.cms input[type="text"], .edlio.cms input[type="number"], .edlio.cms input[type="url"], .edlio.cms input[type="date"], .edlio.cms input[type="time"], .edlio.cms input[type="password"], .edlio.cms input[type="file"], .edlio.cms input[type="image"], .edlio.cms input[type="submit"], .edlio.cms input[type="reset"], .edlio.cms input[type="button"] {
-  width: auto;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  line-height: normal;
-  text-decoration: none;
-  color: #555555;
-  background-color: white;
-  border: none;
-  box-shadow: inset 0 0 0 1px #cccccc;
-  outline: none;
-  -webkit-appearance: none;
-  -webkit-border-radius: 0;
-  border-radius: 0; }
-  .edlio.cms input[type="text"]::-webkit-input-placeholder, .edlio.cms input[type="number"]::-webkit-input-placeholder, .edlio.cms input[type="url"]::-webkit-input-placeholder, .edlio.cms input[type="date"]::-webkit-input-placeholder, .edlio.cms input[type="time"]::-webkit-input-placeholder, .edlio.cms input[type="password"]::-webkit-input-placeholder, .edlio.cms input[type="file"]::-webkit-input-placeholder, .edlio.cms input[type="image"]::-webkit-input-placeholder, .edlio.cms input[type="submit"]::-webkit-input-placeholder, .edlio.cms input[type="reset"]::-webkit-input-placeholder, .edlio.cms input[type="button"]::-webkit-input-placeholder {
-    color: #aaabad;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif; }
-  .edlio.cms input[type="text"]::-moz-placeholder, .edlio.cms input[type="number"]::-moz-placeholder, .edlio.cms input[type="url"]::-moz-placeholder, .edlio.cms input[type="date"]::-moz-placeholder, .edlio.cms input[type="time"]::-moz-placeholder, .edlio.cms input[type="password"]::-moz-placeholder, .edlio.cms input[type="file"]::-moz-placeholder, .edlio.cms input[type="image"]::-moz-placeholder, .edlio.cms input[type="submit"]::-moz-placeholder, .edlio.cms input[type="reset"]::-moz-placeholder, .edlio.cms input[type="button"]::-moz-placeholder {
-    color: #aaabad;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    opacity: 1; }
-  .edlio.cms input[type="text"]::-ms-input-placeholder, .edlio.cms input[type="number"]::-ms-input-placeholder, .edlio.cms input[type="url"]::-ms-input-placeholder, .edlio.cms input[type="date"]::-ms-input-placeholder, .edlio.cms input[type="time"]::-ms-input-placeholder, .edlio.cms input[type="password"]::-ms-input-placeholder, .edlio.cms input[type="file"]::-ms-input-placeholder, .edlio.cms input[type="image"]::-ms-input-placeholder, .edlio.cms input[type="submit"]::-ms-input-placeholder, .edlio.cms input[type="reset"]::-ms-input-placeholder, .edlio.cms input[type="button"]::-ms-input-placeholder {
-    color: #aaabad;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif; }
-  .edlio.cms input[type="text"]::placeholder, .edlio.cms input[type="number"]::placeholder, .edlio.cms input[type="url"]::placeholder, .edlio.cms input[type="date"]::placeholder, .edlio.cms input[type="time"]::placeholder, .edlio.cms input[type="password"]::placeholder, .edlio.cms input[type="file"]::placeholder, .edlio.cms input[type="image"]::placeholder, .edlio.cms input[type="submit"]::placeholder, .edlio.cms input[type="reset"]::placeholder, .edlio.cms input[type="button"]::placeholder {
-    color: #aaabad;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif; }
-
-.edlio.cms input[type="radio"], .edlio.cms input[type="checkbox"] {
-  display: none; }
-  .edlio.cms input[type="radio"] + label, .edlio.cms input[type="checkbox"] + label {
-    display: inline;
-    cursor: pointer; }
-    .edlio.cms input[type="radio"] + label:before, .edlio.cms input[type="checkbox"] + label:before {
-      content: "";
-      display: inline-block;
-      width: calc(1em - ( 2 * 2px ));
-      height: calc(1em - ( 2 * 2px ));
-      margin: 0 .618em 0 0;
-      background: white;
-      box-shadow: 0 0 0 2px #d1d2d4;
-      text-align: center;
-      vertical-align: initial;
-      cursor: pointer; }
-  .edlio.cms input[type="radio"]:checked + label:before, .edlio.cms input[type="checkbox"]:checked + label:before {
-    content: ""; }
-
-.edlio.cms input[type=checkbox] + label:before {
-  border-radius: 2px;
-  background: white;
-  box-shadow: 0 0 0 2px #d1d2d4; }
-
-.edlio.cms input[type=checkbox]:checked + label {
-  position: relative; }
-  .edlio.cms input[type=checkbox]:checked + label:before {
-    background: white;
-    box-shadow: 0 0 0 2px black; }
-  .edlio.cms input[type=checkbox]:checked + label:after {
-    content: "";
-    display: block;
-    width: .32em;
-    height: .72em;
-    border-width: 0 3px 3px 0;
-    border-style: solid;
-    border-color: black;
-    position: absolute;
-    top: .2em;
-    left: .25em;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg); }
-
-.edlio.cms input[type=checkbox].toggle + label {
-  position: relative; }
-  .edlio.cms input[type=checkbox].toggle + label:before {
-    width: 1.382em;
-    border-radius: 1em;
-    border-color: #a9aaae;
-    background-color: white;
-    box-shadow: 0 0 0 2px #a9aaae; }
-  .edlio.cms input[type=checkbox].toggle + label:after {
-    content: "";
-    position: absolute;
-    top: .15em;
-    left: -2px;
-    display: block;
-    height: 1em;
-    width: 1em;
-    background: white;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #a9aaae;
-    border-radius: 50%; }
-
-.edlio.cms input[type=checkbox].toggle:checked + label:before {
-  background-color: black;
-  box-shadow: 0 0 0 2px black; }
-
-.edlio.cms input[type=checkbox].toggle:checked + label:after {
-  background: white;
-  border-color: black;
-  left: calc(.382em + 2px); }
-
-.edlio.cms input[type=checkbox][disabled] + label,
-.edlio.cms input[type=checkbox] .disabled + label {
-  cursor: default; }
-  .edlio.cms input[type=checkbox][disabled] + label:before,
-  .edlio.cms input[type=checkbox] .disabled + label:before {
-    cursor: default;
-    background-color: #e2e3e5;
-    border-color: #d1d2d4;
-    box-shadow: 0 0 0 2px #d1d2d4; }
-
-.edlio.cms input[type=checkbox][disabled]:checked + label,
-.edlio.cms input[type=checkbox] .disabled:checked + label {
-  cursor: default; }
-  .edlio.cms input[type=checkbox][disabled]:checked + label:before,
-  .edlio.cms input[type=checkbox] .disabled:checked + label:before {
-    background-color: #e2e3e5;
-    border-color: #d1d2d4;
-    box-shadow: 0 0 0 2px #d1d2d4; }
-  .edlio.cms input[type=checkbox][disabled]:checked + label:after,
-  .edlio.cms input[type=checkbox] .disabled:checked + label:after {
-    border-color: #d1d2d4; }
-
-.edlio.cms input[type=checkbox][disabled].toggle + label,
-.edlio.cms input[type=checkbox] .disabled.toggle + label {
-  cursor: default; }
-  .edlio.cms input[type=checkbox][disabled].toggle + label:before,
-  .edlio.cms input[type=checkbox] .disabled.toggle + label:before {
-    cursor: default;
-    border-color: #d1d2d4;
-    background-color: #e2e3e5;
-    box-shadow: 0 0 0 2px #d1d2d4; }
-  .edlio.cms input[type=checkbox][disabled].toggle + label:after,
-  .edlio.cms input[type=checkbox] .disabled.toggle + label:after {
-    cursor: default;
-    background: #d1d2d4;
-    border-color: #d1d2d4; }
-
-.edlio.cms input[type=checkbox][disabled].toggle:checked + label,
-.edlio.cms input[type=checkbox] .disabled.toggle:checked + label {
-  cursor: default; }
-  .edlio.cms input[type=checkbox][disabled].toggle:checked + label:before,
-  .edlio.cms input[type=checkbox] .disabled.toggle:checked + label:before {
-    background-color: #e2e3e5;
-    box-shadow: 0 0 0 2px #d1d2d4; }
-  .edlio.cms input[type=checkbox][disabled].toggle:checked + label:after,
-  .edlio.cms input[type=checkbox] .disabled.toggle:checked + label:after {
-    background: #d1d2d4;
-    border-color: #d1d2d4; }
-
-.edlio.cms input[type=radio] + label:before {
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0 0 0 2px #d1d2d4; }
-
-.edlio.cms input[type=radio]:checked + label:before {
-  background: black;
-  box-shadow: 0 0 0 2px black, inset 0 0 0 3px white; }
-
-.edlio.cms input[type=radio].disabled + label, .edlio.cms input[type=radio][disabled] + label {
-  cursor: default; }
-  .edlio.cms input[type=radio].disabled + label:before, .edlio.cms input[type=radio][disabled] + label:before {
-    cursor: default;
-    background: #e2e3e5;
-    box-shadow: 0 0 0 2px #d1d2d4; }
-
-.edlio.cms input[type=radio].disabled:checked + label, .edlio.cms input[type=radio][disabled]:checked + label {
-  cursor: default; }
-  .edlio.cms input[type=radio].disabled:checked + label:before, .edlio.cms input[type=radio][disabled]:checked + label:before {
-    background: #d1d2d4;
-    box-shadow: 0 0 0 2px #d1d2d4, inset 0 0 0 3px white; }
-
-.edlio.cms input[type="file"]:focus, .edlio.cms input[type="radio"]:focus, .edlio.cms input[type="checkbox"]:focus {
-  outline: thin dotted #d1d2d4;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px; }
-
-.edlio.cms textarea {
-  resize: none;
-  overflow: auto;
-  vertical-align: middle;
-  width: auto;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  font-weight: 300;
-  font-style: normal;
-  text-decoration: none;
-  color: #949599;
-  background-color: white;
-  border: none;
-  box-shadow: inset 0 0 0 1px #d1d2d4;
-  outline: none; }
-  .edlio.cms textarea::-webkit-input-placeholder {
-    color: #bcbdc1;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif; }
-  .edlio.cms textarea::-moz-placeholder {
-    color: #bcbdc1;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif;
-    opacity: 1; }
-  .edlio.cms textarea::-ms-input-placeholder {
-    color: #bcbdc1;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif; }
-  .edlio.cms textarea::placeholder {
-    color: #bcbdc1;
-    font-family: "Open Sans", Helvetica, Arial, sans-serif; }
-
-.edlio.cms .icon.input {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center; }
-  .edlio.cms .icon.input > input {
-    -webkit-flex: 1 0 auto;
-    -ms-flex: 1 0 auto;
-    flex: 1 0 auto;
-    -webkit-order: 1;
-    -ms-flex-order: 1;
-    order: 1;
-    margin: 0;
-    background-color: white;
-    box-shadow: inset 0 0 0 1px #cccccc; }
-  .edlio.cms .icon.input > svg {
-    -webkit-flex: 0 0 auto;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
-    -webkit-order: 0;
-    -ms-flex-order: 0;
-    order: 0;
-    fill: #888888;
-    background: #ededed;
-    box-shadow: inset 1px 1px 0 0 #cccccc, inset 0 -1px 0 0 #cccccc; }
-
-.edlio.cms svg.icon {
-  position: relative;
-  pointer-events: none;
-  vertical-align: middle;
-  fill: #444444; }
-
-.edlio.cms a {
-  color: #29abe2;
-  text-decoration: none; }
-  .edlio.cms a:link {
-    color: #29abe2; }
-  .edlio.cms a:visited {
-    color: #29abe2; }
-  .edlio.cms a:hover {
-    text-decoration: underline; }
-  .edlio.cms a:active {
-    color: #1a8dbe; }
-  .edlio.cms a.disabled {
-    color: #aaabad; }
-
-.edlio.cms .list .next.icon {
-  width: 4em;
-  height: 4em;
-  padding: 1em; }
-  @media screen and (min-width: 48rem) {
-    .edlio.cms .list .next.icon {
-      display: none; } }
-
-.edlio.cms .list.grid > * {
-  margin-bottom: 1em; }
-
-.edlio.cms uniform-notification,
-.edlio.cms .uniform-notification,
-.edlio.cms edlio-notification,
-.edlio.cms .edlio-notification {
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  border-radius: 0.24063em;
-  color: white; }
-  .edlio.cms uniform-notification.alert,
-  .edlio.cms .uniform-notification.alert,
-  .edlio.cms edlio-notification.alert,
-  .edlio.cms .edlio-notification.alert {
-    color: #e07c3a;
-    box-shadow: inset 3.5em 0 0 2px #e07c3a, inset 0 0 0 2px #e07c3a; }
-    .edlio.cms uniform-notification.alert svg.icon,
-    .edlio.cms .uniform-notification.alert svg.icon,
-    .edlio.cms edlio-notification.alert svg.icon,
-    .edlio.cms .edlio-notification.alert svg.icon {
-      position: relative;
-      pointer-events: none;
-      vertical-align: middle;
-      fill: #444444;
-      fill: white; }
-    .edlio.cms uniform-notification.alert .close,
-    .edlio.cms .uniform-notification.alert .close,
-    .edlio.cms edlio-notification.alert .close,
-    .edlio.cms .edlio-notification.alert .close {
-      display: block; }
-      .edlio.cms uniform-notification.alert .close svg.icon,
-      .edlio.cms .uniform-notification.alert .close svg.icon,
-      .edlio.cms edlio-notification.alert .close svg.icon,
-      .edlio.cms .edlio-notification.alert .close svg.icon {
-        position: relative;
-        pointer-events: none;
-        vertical-align: middle;
-        fill: #444444;
-        fill: #444444; }
-  .edlio.cms uniform-notification.confirmation,
-  .edlio.cms .uniform-notification.confirmation,
-  .edlio.cms edlio-notification.confirmation,
-  .edlio.cms .edlio-notification.confirmation {
-    color: #33a468;
-    box-shadow: inset 3.5em 0 0 2px #33a468, inset 0 0 0 2px #33a468; }
-    .edlio.cms uniform-notification.confirmation svg.icon,
-    .edlio.cms .uniform-notification.confirmation svg.icon,
-    .edlio.cms edlio-notification.confirmation svg.icon,
-    .edlio.cms .edlio-notification.confirmation svg.icon {
-      position: relative;
-      pointer-events: none;
-      vertical-align: middle;
-      fill: #444444;
-      fill: white; }
-    .edlio.cms uniform-notification.confirmation .close,
-    .edlio.cms .uniform-notification.confirmation .close,
-    .edlio.cms edlio-notification.confirmation .close,
-    .edlio.cms .edlio-notification.confirmation .close {
-      display: block; }
-      .edlio.cms uniform-notification.confirmation .close svg.icon,
-      .edlio.cms .uniform-notification.confirmation .close svg.icon,
-      .edlio.cms edlio-notification.confirmation .close svg.icon,
-      .edlio.cms .edlio-notification.confirmation .close svg.icon {
-        position: relative;
-        pointer-events: none;
-        vertical-align: middle;
-        fill: #444444;
-        fill: #444444; }
-  .edlio.cms uniform-notification .message,
-  .edlio.cms .uniform-notification .message,
-  .edlio.cms edlio-notification .message,
-  .edlio.cms .edlio-notification .message {
-    -webkit-flex: 1 1 0%;
-    -ms-flex: 1 1 0%;
-    flex: 1 1 0%;
-    margin: 0 1em;
-    padding: 0 0 0 1em;
-    text-align: center; }
-    .edlio.cms uniform-notification .message h1,
-    .edlio.cms .uniform-notification .message h1,
-    .edlio.cms edlio-notification .message h1,
-    .edlio.cms .edlio-notification .message h1 {
-      font-weight: 600;
-      margin: .5em 0; }
-      @media screen and (max-width: 47.9375rem) {
-        .edlio.cms uniform-notification .message h1,
-        .edlio.cms .uniform-notification .message h1,
-        .edlio.cms edlio-notification .message h1,
-        .edlio.cms .edlio-notification .message h1 {
-          font-size: 1rem;
-          line-height: 1.5rem; } }
-      @media screen and (min-width: 48rem) {
-        .edlio.cms uniform-notification .message h1,
-        .edlio.cms .uniform-notification .message h1,
-        .edlio.cms edlio-notification .message h1,
-        .edlio.cms .edlio-notification .message h1 {
-          font-size: 1rem;
-          line-height: 1.5rem; } }
-      @media screen and (min-width: 64rem) {
-        .edlio.cms uniform-notification .message h1,
-        .edlio.cms .uniform-notification .message h1,
-        .edlio.cms edlio-notification .message h1,
-        .edlio.cms .edlio-notification .message h1 {
-          font-size: 1.0625rem;
-          line-height: 1.59375rem; } }
-      @media screen and (min-width: 75rem) {
-        .edlio.cms uniform-notification .message h1,
-        .edlio.cms .uniform-notification .message h1,
-        .edlio.cms edlio-notification .message h1,
-        .edlio.cms .edlio-notification .message h1 {
-          font-size: 1.125rem;
-          line-height: 1.6875rem; } }
-    .edlio.cms uniform-notification .message p,
-    .edlio.cms .uniform-notification .message p,
-    .edlio.cms edlio-notification .message p,
-    .edlio.cms .edlio-notification .message p {
-      margin-bottom: .5em;
-      color: #888888; }
-    @media screen and (max-width: 47.9375rem) {
-      .edlio.cms uniform-notification .message .disclaimer,
-      .edlio.cms .uniform-notification .message .disclaimer,
-      .edlio.cms edlio-notification .message .disclaimer,
-      .edlio.cms .edlio-notification .message .disclaimer {
-        font-size: 0.875rem;
-        line-height: 1.5rem; } }
-    @media screen and (min-width: 48rem) {
-      .edlio.cms uniform-notification .message .disclaimer,
-      .edlio.cms .uniform-notification .message .disclaimer,
-      .edlio.cms edlio-notification .message .disclaimer,
-      .edlio.cms .edlio-notification .message .disclaimer {
-        font-size: 0.875rem;
-        line-height: 1.5rem; } }
-    @media screen and (min-width: 64rem) {
-      .edlio.cms uniform-notification .message .disclaimer,
-      .edlio.cms .uniform-notification .message .disclaimer,
-      .edlio.cms edlio-notification .message .disclaimer,
-      .edlio.cms .edlio-notification .message .disclaimer {
-        font-size: 0.9375rem;
-        line-height: 1.59375rem; } }
-    @media screen and (min-width: 75rem) {
-      .edlio.cms uniform-notification .message .disclaimer,
-      .edlio.cms .uniform-notification .message .disclaimer,
-      .edlio.cms edlio-notification .message .disclaimer,
-      .edlio.cms .edlio-notification .message .disclaimer {
-        font-size: 1rem;
-        line-height: 1.6875rem; } }
-  .edlio.cms uniform-notification .close,
-  .edlio.cms .uniform-notification .close,
-  .edlio.cms edlio-notification .close,
-  .edlio.cms .edlio-notification .close {
-    -ms-flex-item-align: start;
-    -webkit-align-self: flex-start;
-    align-self: flex-start;
-    padding: 0;
-    cursor: pointer; }
-    .edlio.cms uniform-notification .close .icon,
-    .edlio.cms .uniform-notification .close .icon,
-    .edlio.cms edlio-notification .close .icon,
-    .edlio.cms .edlio-notification .close .icon {
-      border-radius: 0.24063em; }
-
-.edlio.cms uniform-overlay,
-.edlio.cms .uniform-overlay,
-.edlio.cms edlio-overlay,
-.edlio.cms .edlio-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.618);
-  z-index: 97; }
-
-.edlio.cms .pagination {
-  display: flex;
-  flex-direction: row;
-  justify-content: center; }
-  .edlio.cms .pagination.desktop {
-    display: none;
-    visibility: hidden;
-    opacity: 0; }
-    @media screen and (min-width: 64rem) {
-      .edlio.cms .pagination.desktop {
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        visibility: visible;
-        opacity: 1; } }
-  @media screen and (max-width: 31.9375rem) {
-    .edlio.cms .pagination.mobile .skip {
-      display: none;
-      visibility: hidden;
-      opacity: 0; } }
-  @media screen and (min-width: 64rem) {
-    .edlio.cms .pagination.mobile {
-      display: none;
-      visibility: hidden;
-      opacity: 0; } }
-  .edlio.cms .pagination .button-bar .active {
-    color: #333333;
-    background-color: #f4f4f4;
-    font-weight: 600; }
-  .edlio.cms .pagination .button, .edlio.cms .pagination .kitchen-sink button, .edlio.cms .kitchen-sink .pagination button {
-    display: flex;
-    align-items: center; }
-    .edlio.cms .pagination .button.ellipsis, .edlio.cms .pagination .kitchen-sink button.ellipsis, .edlio.cms .kitchen-sink .pagination button.ellipsis {
-      box-shadow: inset 1px 0 0 0 #cccccc; }
-      .edlio.cms .pagination .button.ellipsis:hover, .edlio.cms .pagination .kitchen-sink button.ellipsis:hover, .edlio.cms .kitchen-sink .pagination button.ellipsis:hover {
-        background-color: transparent;
-        cursor: default; }
-    .edlio.cms .pagination .button span:nth-child(2), .edlio.cms .pagination .kitchen-sink button span:nth-child(2), .edlio.cms .kitchen-sink .pagination button span:nth-child(2) {
-      padding-left: .192em; }
-  .edlio.cms .pagination .arrow {
-    font-size: 2em;
-    line-height: 0;
-    margin-bottom: .2em; }
-
-.edlio.cms uniform-select,
-.edlio.cms .uniform-select,
-.edlio.cms edlio-select,
-.edlio.cms .edlio-select {
-  position: relative;
-  display: inline-block;
-  padding: 0;
-  background: white;
-  box-shadow: inset 0 0 0 1px #cccccc;
-  outline: none;
-  font-weight: 300;
-  cursor: pointer;
-  white-space: nowrap; }
-  @media screen and (max-width: 31.9375rem) {
-    .edlio.cms uniform-select:not(.bare),
-    .edlio.cms .uniform-select:not(.bare),
-    .edlio.cms edlio-select:not(.bare),
-    .edlio.cms .edlio-select:not(.bare) {
-      display: block;
-      margin-right: 0; } }
-  .edlio.cms uniform-select select-title,
-  .edlio.cms uniform-select .select-title,
-  .edlio.cms .uniform-select select-title,
-  .edlio.cms .uniform-select .select-title,
-  .edlio.cms edlio-select select-title,
-  .edlio.cms edlio-select .select-title,
-  .edlio.cms .edlio-select select-title,
-  .edlio.cms .edlio-select .select-title {
-    -ms-flex-pack: justify;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    cursor: pointer; }
-    .edlio.cms uniform-select select-title svg.icon,
-    .edlio.cms uniform-select .select-title svg.icon,
-    .edlio.cms .uniform-select select-title svg.icon,
-    .edlio.cms .uniform-select .select-title svg.icon,
-    .edlio.cms edlio-select select-title svg.icon,
-    .edlio.cms edlio-select .select-title svg.icon,
-    .edlio.cms .edlio-select select-title svg.icon,
-    .edlio.cms .edlio-select .select-title svg.icon {
-      position: relative;
-      pointer-events: none;
-      vertical-align: middle;
-      fill: #444444;
-      margin-left: .382em;
-      fill: #888888; }
-    .edlio.cms uniform-select select-title:hover svg.icon,
-    .edlio.cms uniform-select .select-title:hover svg.icon,
-    .edlio.cms .uniform-select select-title:hover svg.icon,
-    .edlio.cms .uniform-select .select-title:hover svg.icon,
-    .edlio.cms edlio-select select-title:hover svg.icon,
-    .edlio.cms edlio-select .select-title:hover svg.icon,
-    .edlio.cms .edlio-select select-title:hover svg.icon,
-    .edlio.cms .edlio-select .select-title:hover svg.icon {
-      fill: #555555; }
-    .edlio.cms uniform-select select-title:before,
-    .edlio.cms uniform-select .select-title:before,
-    .edlio.cms .uniform-select select-title:before,
-    .edlio.cms .uniform-select .select-title:before,
-    .edlio.cms edlio-select select-title:before,
-    .edlio.cms edlio-select .select-title:before,
-    .edlio.cms .edlio-select select-title:before,
-    .edlio.cms .edlio-select .select-title:before {
-      content: "";
-      width: 0;
-      height: 0; }
-  .edlio.cms uniform-select.bare,
-  .edlio.cms .uniform-select.bare,
-  .edlio.cms edlio-select.bare,
-  .edlio.cms .edlio-select.bare {
-    box-shadow: none; }
-    .edlio.cms uniform-select.bare select-title,
-    .edlio.cms uniform-select.bare .select-title,
-    .edlio.cms .uniform-select.bare select-title,
-    .edlio.cms .uniform-select.bare .select-title,
-    .edlio.cms edlio-select.bare select-title,
-    .edlio.cms edlio-select.bare .select-title,
-    .edlio.cms .edlio-select.bare select-title,
-    .edlio.cms .edlio-select.bare .select-title {
-      -ms-flex-pack: start;
-      -webkit-justify-content: flex-start;
-      justify-content: flex-start; }
-      .edlio.cms uniform-select.bare select-title svg.icon,
-      .edlio.cms uniform-select.bare .select-title svg.icon,
-      .edlio.cms .uniform-select.bare select-title svg.icon,
-      .edlio.cms .uniform-select.bare .select-title svg.icon,
-      .edlio.cms edlio-select.bare select-title svg.icon,
-      .edlio.cms edlio-select.bare .select-title svg.icon,
-      .edlio.cms .edlio-select.bare select-title svg.icon,
-      .edlio.cms .edlio-select.bare .select-title svg.icon {
-        margin: 0; }
-    .edlio.cms uniform-select.bare select-menu,
-    .edlio.cms .uniform-select.bare select-menu,
-    .edlio.cms edlio-select.bare select-menu,
-    .edlio.cms .edlio-select.bare select-menu {
-      border: 1px solid #cccccc;
-      margin-top: .618em; }
-      .edlio.cms uniform-select.bare select-menu:before, .edlio.cms uniform-select.bare select-menu:after,
-      .edlio.cms .uniform-select.bare select-menu:before,
-      .edlio.cms .uniform-select.bare select-menu:after,
-      .edlio.cms edlio-select.bare select-menu:before,
-      .edlio.cms edlio-select.bare select-menu:after,
-      .edlio.cms .edlio-select.bare select-menu:before,
-      .edlio.cms .edlio-select.bare select-menu:after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-color: transparent;
-        border-top: 0; }
-      .edlio.cms uniform-select.bare select-menu:before,
-      .edlio.cms .uniform-select.bare select-menu:before,
-      .edlio.cms edlio-select.bare select-menu:before,
-      .edlio.cms .edlio-select.bare select-menu:before {
-        top: -1em;
-        left: 0.691em;
-        border-bottom-color: #cccccc;
-        border-width: 1em; }
-      .edlio.cms uniform-select.bare select-menu:after,
-      .edlio.cms .uniform-select.bare select-menu:after,
-      .edlio.cms edlio-select.bare select-menu:after,
-      .edlio.cms .edlio-select.bare select-menu:after {
-        top: calc(-1em + 1px);
-        left: calc((( 1.382 / 2 ) * 1em) + 1px);
-        border-bottom-color: white;
-        border-width: calc(1em - 1px); }
-      .edlio.cms uniform-select.bare select-menu select-item:hover:first-child:before,
-      .edlio.cms uniform-select.bare select-menu .select-item:hover:first-child:before,
-      .edlio.cms .uniform-select.bare select-menu select-item:hover:first-child:before,
-      .edlio.cms .uniform-select.bare select-menu .select-item:hover:first-child:before,
-      .edlio.cms edlio-select.bare select-menu select-item:hover:first-child:before,
-      .edlio.cms edlio-select.bare select-menu .select-item:hover:first-child:before,
-      .edlio.cms .edlio-select.bare select-menu select-item:hover:first-child:before,
-      .edlio.cms .edlio-select.bare select-menu .select-item:hover:first-child:before {
-        content: "";
-        position: absolute;
-        top: calc(-1em + 1px);
-        left: calc((( 1.382 / 2 ) * 1em) + 1px);
-        width: 0;
-        height: 0;
-        border-style: solid;
-        border-color: transparent;
-        border-top: 0;
-        border-bottom-color: #f4f4f4;
-        border-width: calc(1em - 1px);
-        z-index: 2; }
-  .edlio.cms uniform-select.open,
-  .edlio.cms .uniform-select.open,
-  .edlio.cms edlio-select.open,
-  .edlio.cms .edlio-select.open {
-    box-shadow: inset 1px 0 0 0 #cccccc, inset -1px 0 0 0 #cccccc, inset 0 1px 0 0 #cccccc; }
-    .edlio.cms uniform-select.open > select-menu,
-    .edlio.cms .uniform-select.open > select-menu,
-    .edlio.cms edlio-select.open > select-menu,
-    .edlio.cms .edlio-select.open > select-menu {
-      visibility: visible;
-      opacity: 1;
-      top: 100%;
-      border: 1px solid #cccccc; }
-    .edlio.cms uniform-select.open.bare,
-    .edlio.cms .uniform-select.open.bare,
-    .edlio.cms edlio-select.open.bare,
-    .edlio.cms .edlio-select.open.bare {
-      box-shadow: none; }
-  .edlio.cms uniform-select > select-menu,
-  .edlio.cms .uniform-select > select-menu,
-  .edlio.cms edlio-select > select-menu,
-  .edlio.cms .edlio-select > select-menu {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    -webkit-flex: 0 1 auto;
-    -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
+.edlio.cms {
+  /*@import '../global/tools';*/ }
+  .edlio.cms uniform-accordion > section,
+  .edlio.cms .uniform-accordion > section,
+  .edlio.cms edlio-accordion > section,
+  .edlio.cms .edlio-accordion > section {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    max-height: 20em;
-    overflow-y: auto;
-    visibility: hidden;
-    opacity: 0;
-    min-width: 100%;
-    background-color: white;
-    z-index: 2;
-    transition: all 0.1s ease-in-out; }
-    .edlio.cms uniform-select > select-menu.right,
-    .edlio.cms .uniform-select > select-menu.right,
-    .edlio.cms edlio-select > select-menu.right,
-    .edlio.cms .edlio-select > select-menu.right {
-      left: auto;
-      right: 0; }
-    .edlio.cms uniform-select > select-menu select-item,
-    .edlio.cms uniform-select > select-menu .select-item,
-    .edlio.cms .uniform-select > select-menu select-item,
-    .edlio.cms .uniform-select > select-menu .select-item,
-    .edlio.cms edlio-select > select-menu select-item,
-    .edlio.cms edlio-select > select-menu .select-item,
-    .edlio.cms .edlio-select > select-menu select-item,
-    .edlio.cms .edlio-select > select-menu .select-item {
+    margin-bottom: 0; }
+    .edlio.cms uniform-accordion > section .content,
+    .edlio.cms .uniform-accordion > section .content,
+    .edlio.cms edlio-accordion > section .content,
+    .edlio.cms .edlio-accordion > section .content {
+      max-height: 25em;
+      opacity: 1; }
+    .edlio.cms uniform-accordion > section header,
+    .edlio.cms .uniform-accordion > section header,
+    .edlio.cms edlio-accordion > section header,
+    .edlio.cms .edlio-accordion > section header {
+      cursor: pointer; }
+      .edlio.cms uniform-accordion > section header svg,
+      .edlio.cms .uniform-accordion > section header svg,
+      .edlio.cms edlio-accordion > section header svg,
+      .edlio.cms .edlio-accordion > section header svg {
+        margin-left: auto; }
+    .edlio.cms uniform-accordion > section.collapsed .content,
+    .edlio.cms .uniform-accordion > section.collapsed .content,
+    .edlio.cms edlio-accordion > section.collapsed .content,
+    .edlio.cms .edlio-accordion > section.collapsed .content {
+      max-height: 0;
+      padding: 0;
+      visibility: hidden;
+      opacity: 0; }
+  .edlio.cms .bar {
+    border-bottom: 1px solid #555555; }
+    @media screen and (max-width: 47.9375rem) {
+      .edlio.cms .bar *:last-child {
+        margin-bottom: 0; } }
+    @media screen and (min-width: 48rem) {
+      .edlio.cms .bar * {
+        margin-top: 0;
+        margin-bottom: 0; } }
+    .edlio.cms .bar.tab {
+      padding: .382em 0; }
+      .edlio.cms .bar.tab > *:not(.width-constraint),
+      .edlio.cms .bar.tab .width-constraint > * {
+        display: block;
+        -webkit-flex: 0 1 auto;
+        -ms-flex: 0 1 auto;
+        flex: 0 1 auto;
+        padding: 0 2rem;
+        color: #444444;
+        text-decoration: none; }
+        .edlio.cms .bar.tab > *:not(.width-constraint):hover,
+        .edlio.cms .bar.tab .width-constraint > *:hover {
+          background: #ededed;
+          box-shadow: inset 0 -0.236em 0 0 #444444; }
+        .edlio.cms .bar.tab > *:not(.width-constraint).selected,
+        .edlio.cms .bar.tab .width-constraint > *.selected {
+          color: #444444;
+          box-shadow: inset 0 -0.236em 0 0 #444444; }
+          .edlio.cms .bar.tab > *:not(.width-constraint).selected:hover,
+          .edlio.cms .bar.tab .width-constraint > *.selected:hover {
+            background: transparent; }
+  .edlio.cms ol.breadcrumb {
+    list-style: none; }
+    .edlio.cms ol.breadcrumb li {
+      display: inline-block; }
+      .edlio.cms ol.breadcrumb li + li:before {
+        content: '/\00a0';
+        padding: 0 .382em;
+        color: #ededed; }
+  .edlio.cms .button, .edlio.cms .kitchen-sink button {
+    display: inline-block;
+    color: white;
+    font-weight: 300;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    background: #29abe2;
+    box-shadow: none;
+    border-radius: 0.24063em;
+    border: none;
+    outline: none; }
+    .edlio.cms .button:link, .edlio.cms .kitchen-sink button:link {
+      color: white; }
+    .edlio.cms .button:visited, .edlio.cms .kitchen-sink button:visited {
+      background: #29abe2;
+      color: white; }
+    .edlio.cms .button:hover, .edlio.cms .kitchen-sink button:hover {
+      background: #1d9ed5;
+      text-decoration: none; }
+    .edlio.cms .button.icon:active:not(.secondary), .edlio.cms .kitchen-sink button.icon:active:not(.secondary), .edlio.cms .button:active, .edlio.cms .kitchen-sink button:active {
+      background: #1a8dbe;
+      color: white; }
+    .edlio.cms .button:focus, .edlio.cms .kitchen-sink button:focus {
+      outline: none; }
+    .edlio.cms .button.disabled, .edlio.cms .kitchen-sink button.disabled {
+      background: #c0e4f3;
+      box-shadow: none;
+      color: white; }
+    .edlio.cms .button.secondary, .edlio.cms .kitchen-sink button.secondary {
+      background: white;
+      color: #555555;
+      box-shadow: inset 0 0 0 1px #cccccc; }
+      .edlio.cms .button.secondary:link, .edlio.cms .kitchen-sink button.secondary:link {
+        color: #555555; }
+      .edlio.cms .button.secondary:visited, .edlio.cms .kitchen-sink button.secondary:visited {
+        background: white;
+        color: #555555; }
+      .edlio.cms .button.secondary:hover, .edlio.cms .kitchen-sink button.secondary:hover {
+        background: #f4f4f4; }
+      .edlio.cms .button.secondary:active, .edlio.cms .kitchen-sink button.secondary:active {
+        background: #e7e7e7;
+        color: #555555; }
+      .edlio.cms .button.secondary.selected, .edlio.cms .kitchen-sink button.secondary.selected {
+        background: #ededed; }
+      .edlio.cms .button.secondary.disabled, .edlio.cms .kitchen-sink button.secondary.disabled {
+        box-shadow: inset 0 0 0 1px #ebebeb;
+        color: #bbbbbb; }
+        .edlio.cms .button.secondary.disabled.icon svg, .edlio.cms .kitchen-sink button.secondary.disabled.icon svg {
+          fill: #bbbbbb; }
+      .edlio.cms .button.secondary.bare:hover, .edlio.cms .kitchen-sink button.secondary.bare:hover {
+        background: #f4f4f4;
+        box-shadow: inset 0 0 0 1px #cccccc;
+        color: #555555; }
+      .edlio.cms .button.secondary.bare:active, .edlio.cms .kitchen-sink button.secondary.bare:active {
+        background: #e7e7e7;
+        color: #555555; }
+      .edlio.cms .button.secondary.icon svg, .edlio.cms .kitchen-sink button.secondary.icon svg {
+        fill: #77787c; }
+      .edlio.cms .button.secondary.icon:hover svg, .edlio.cms .kitchen-sink button.secondary.icon:hover svg {
+        fill: #1d9ed5; }
+    .edlio.cms .button.bare, .edlio.cms .kitchen-sink button.bare {
+      margin-right: 0;
+      box-shadow: none;
+      background: transparent;
+      color: #555555; }
+      .edlio.cms .button.bare:hover, .edlio.cms .kitchen-sink button.bare:hover {
+        background: #1d9ed5; }
+        .edlio.cms .button.bare:hover:not(.icon), .edlio.cms .kitchen-sink button.bare:hover:not(.icon) {
+          background: transparent;
+          color: #555555;
+          box-shadow: none;
+          text-decoration: underline; }
+      .edlio.cms .button.bare:active:not(.icon), .edlio.cms .kitchen-sink button.bare:active:not(.icon) {
+        background: transparent;
+        color: #555555;
+        text-decoration: none; }
+    .edlio.cms .button.icon svg, .edlio.cms .kitchen-sink button.icon svg {
       position: relative;
-      display: block;
-      padding: 0 1em;
-      -webkit-flex: 1 0 auto;
-      -ms-flex: 1 0 auto;
-      flex: 1 0 auto; }
-      .edlio.cms uniform-select > select-menu select-item:hover,
-      .edlio.cms uniform-select > select-menu .select-item:hover,
-      .edlio.cms .uniform-select > select-menu select-item:hover,
-      .edlio.cms .uniform-select > select-menu .select-item:hover,
-      .edlio.cms edlio-select > select-menu select-item:hover,
-      .edlio.cms edlio-select > select-menu .select-item:hover,
-      .edlio.cms .edlio-select > select-menu select-item:hover,
-      .edlio.cms .edlio-select > select-menu .select-item:hover {
-        background-color: #f4f4f4; }
-      .edlio.cms uniform-select > select-menu select-item.active,
-      .edlio.cms uniform-select > select-menu .select-item.active,
-      .edlio.cms .uniform-select > select-menu select-item.active,
-      .edlio.cms .uniform-select > select-menu .select-item.active,
-      .edlio.cms edlio-select > select-menu select-item.active,
-      .edlio.cms edlio-select > select-menu .select-item.active,
-      .edlio.cms .edlio-select > select-menu select-item.active,
-      .edlio.cms .edlio-select > select-menu .select-item.active {
-        background-color: #eaebec; }
-
-.edlio.cms .data-table .tr,
-.edlio.cms .data-table .th {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center; }
-  .edlio.cms .data-table .tr .column,
-  .edlio.cms .data-table .th .column {
-    -webkit-flex: 1 1 0%;
-    -ms-flex: 1 1 0%;
-    flex: 1 1 0%;
-    padding: 0.5em; }
-    .edlio.cms .data-table .tr .column.text,
-    .edlio.cms .data-table .th .column.text {
+      pointer-events: none;
+      vertical-align: middle;
+      fill: #444444;
+      fill: white; }
+    .edlio.cms .button.icon.labeled svg, .edlio.cms .kitchen-sink button.icon.labeled svg {
+      margin-right: .382em; }
+    .edlio.cms .button.icon.circular, .edlio.cms .kitchen-sink button.icon.circular {
+      border-radius: 50%; }
+    .edlio.cms .button.icon.bare svg, .edlio.cms .kitchen-sink button.icon.bare svg {
+      fill: #77787c; }
+    .edlio.cms .button.icon.bare:hover svg, .edlio.cms .kitchen-sink button.icon.bare:hover svg {
+      fill: white; }
+    .edlio.cms .button.icon.bare.secondary:hover svg, .edlio.cms .kitchen-sink button.icon.bare.secondary:hover svg {
+      fill: #1d9ed5; }
+  .edlio.cms .button-bar {
+    display: flex; }
+    .edlio.cms .button-bar .button, .edlio.cms .button-bar .kitchen-sink button, .edlio.cms .kitchen-sink .button-bar button {
+      margin: 0;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis; }
-    .edlio.cms .data-table .tr .column.action,
-    .edlio.cms .data-table .th .column.action {
-      -webkit-flex: 0 0 6em;
-      -ms-flex: 0 0 6em;
-      flex: 0 0 6em; }
-
-.edlio.cms .data-table .empty-message {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  height: 10em;
-  color: #cccccc;
-  font-size: 1.3em; }
-
-.edlio.cms .data-table .tr.border {
-  border-bottom: 1px solid #cccccc;
-  padding: .5em 0; }
-
-.edlio.cms .data-table .tr.not-clickable, .edlio.cms .data-table .tr.disabled {
-  cursor: default; }
-
-.edlio.cms .data-table .tr.disabled {
-  color: #aaabad; }
-  .edlio.cms .data-table .tr.disabled a {
-    color: #aaabad;
+      text-overflow: ellipsis;
+      box-shadow: inset 1px 0 0 0 white;
+      border-radius: 0; }
+      .edlio.cms .button-bar .button:first-of-type, .edlio.cms .button-bar .kitchen-sink button:first-of-type, .edlio.cms .kitchen-sink .button-bar button:first-of-type {
+        border-radius: 0.24063em 0 0 0.24063em; }
+      .edlio.cms .button-bar .button:last-of-type, .edlio.cms .button-bar .kitchen-sink button:last-of-type, .edlio.cms .kitchen-sink .button-bar button:last-of-type {
+        border-radius: 0 0.24063em 0.24063em 0; }
+      .edlio.cms .button-bar .button.secondary, .edlio.cms .button-bar .kitchen-sink button.secondary, .edlio.cms .kitchen-sink .button-bar button.secondary {
+        box-shadow: inset 1px 0 0 0 #cccccc, inset 0 1px 0 0 #cccccc, inset 0 -1px 0 0 #cccccc; }
+        .edlio.cms .button-bar .button.secondary:last-of-type, .edlio.cms .button-bar .kitchen-sink button.secondary:last-of-type, .edlio.cms .kitchen-sink .button-bar button.secondary:last-of-type {
+          box-shadow: inset 0 0 0 1px #cccccc; }
+  .edlio.cms uniform-drawer,
+  .edlio.cms edlio-drawer {
+    position: absolute;
+    z-index: 99;
+    width: 20em;
+    height: 100%;
+    background-color: white;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    transition: transform .3s; }
+    .edlio.cms uniform-drawer a,
+    .edlio.cms edlio-drawer a {
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      -ms-flex-pack: distribute;
+      -webkit-justify-content: space-around;
+      justify-content: space-around;
+      padding: 0 1em 0 1.382em;
+      color: #444444;
+      align-items: center;
+      line-height: 3em; }
+      .edlio.cms uniform-drawer a:hover,
+      .edlio.cms edlio-drawer a:hover {
+        background: #cccccc;
+        text-decoration: none; }
+      .edlio.cms uniform-drawer a svg.icon,
+      .edlio.cms edlio-drawer a svg.icon {
+        width: 1.5em;
+        height: 1.5em;
+        vertical-align: middle; }
+      .edlio.cms uniform-drawer a span,
+      .edlio.cms edlio-drawer a span {
+        margin: 0 1em;
+        color: #444444; }
+    .edlio.cms uniform-drawer.open,
+    .edlio.cms edlio-drawer.open {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0); }
+  .edlio.cms legend {
+    display: block;
+    color: #444444; }
+  .edlio.cms label {
+    display: block;
+    color: #77787c; }
+  .edlio.cms input[type="text"], .edlio.cms input[type="number"], .edlio.cms input[type="url"], .edlio.cms input[type="date"], .edlio.cms input[type="time"], .edlio.cms input[type="password"], .edlio.cms input[type="file"], .edlio.cms input[type="image"], .edlio.cms input[type="submit"], .edlio.cms input[type="reset"], .edlio.cms input[type="button"] {
+    width: auto;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    line-height: normal;
+    text-decoration: none;
+    color: #555555;
+    background-color: white;
+    border: none;
+    box-shadow: inset 0 0 0 1px #cccccc;
+    outline: none;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border-radius: 0; }
+    .edlio.cms input[type="text"]::-webkit-input-placeholder, .edlio.cms input[type="number"]::-webkit-input-placeholder, .edlio.cms input[type="url"]::-webkit-input-placeholder, .edlio.cms input[type="date"]::-webkit-input-placeholder, .edlio.cms input[type="time"]::-webkit-input-placeholder, .edlio.cms input[type="password"]::-webkit-input-placeholder, .edlio.cms input[type="file"]::-webkit-input-placeholder, .edlio.cms input[type="image"]::-webkit-input-placeholder, .edlio.cms input[type="submit"]::-webkit-input-placeholder, .edlio.cms input[type="reset"]::-webkit-input-placeholder, .edlio.cms input[type="button"]::-webkit-input-placeholder {
+      color: #aaabad;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+    .edlio.cms input[type="text"]::-moz-placeholder, .edlio.cms input[type="number"]::-moz-placeholder, .edlio.cms input[type="url"]::-moz-placeholder, .edlio.cms input[type="date"]::-moz-placeholder, .edlio.cms input[type="time"]::-moz-placeholder, .edlio.cms input[type="password"]::-moz-placeholder, .edlio.cms input[type="file"]::-moz-placeholder, .edlio.cms input[type="image"]::-moz-placeholder, .edlio.cms input[type="submit"]::-moz-placeholder, .edlio.cms input[type="reset"]::-moz-placeholder, .edlio.cms input[type="button"]::-moz-placeholder {
+      color: #aaabad;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif;
+      opacity: 1; }
+    .edlio.cms input[type="text"]::-ms-input-placeholder, .edlio.cms input[type="number"]::-ms-input-placeholder, .edlio.cms input[type="url"]::-ms-input-placeholder, .edlio.cms input[type="date"]::-ms-input-placeholder, .edlio.cms input[type="time"]::-ms-input-placeholder, .edlio.cms input[type="password"]::-ms-input-placeholder, .edlio.cms input[type="file"]::-ms-input-placeholder, .edlio.cms input[type="image"]::-ms-input-placeholder, .edlio.cms input[type="submit"]::-ms-input-placeholder, .edlio.cms input[type="reset"]::-ms-input-placeholder, .edlio.cms input[type="button"]::-ms-input-placeholder {
+      color: #aaabad;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+    .edlio.cms input[type="text"]::placeholder, .edlio.cms input[type="number"]::placeholder, .edlio.cms input[type="url"]::placeholder, .edlio.cms input[type="date"]::placeholder, .edlio.cms input[type="time"]::placeholder, .edlio.cms input[type="password"]::placeholder, .edlio.cms input[type="file"]::placeholder, .edlio.cms input[type="image"]::placeholder, .edlio.cms input[type="submit"]::placeholder, .edlio.cms input[type="reset"]::placeholder, .edlio.cms input[type="button"]::placeholder {
+      color: #aaabad;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+  .edlio.cms input[type="radio"], .edlio.cms input[type="checkbox"] {
+    display: none; }
+    .edlio.cms input[type="radio"] + label, .edlio.cms input[type="checkbox"] + label {
+      display: inline;
+      cursor: pointer; }
+      .edlio.cms input[type="radio"] + label:before, .edlio.cms input[type="checkbox"] + label:before {
+        content: "";
+        display: inline-block;
+        width: calc(1em - ( 2 * 2px ));
+        height: calc(1em - ( 2 * 2px ));
+        margin: 0 .618em 0 0;
+        background: white;
+        box-shadow: 0 0 0 2px #d1d2d4;
+        text-align: center;
+        vertical-align: initial;
+        cursor: pointer; }
+    .edlio.cms input[type="radio"]:checked + label:before, .edlio.cms input[type="checkbox"]:checked + label:before {
+      content: ""; }
+  .edlio.cms input[type=checkbox] + label:before {
+    border-radius: 2px;
+    background: white;
+    box-shadow: 0 0 0 2px #d1d2d4; }
+  .edlio.cms input[type=checkbox]:checked + label {
+    position: relative; }
+    .edlio.cms input[type=checkbox]:checked + label:before {
+      background: white;
+      box-shadow: 0 0 0 2px black; }
+    .edlio.cms input[type=checkbox]:checked + label:after {
+      content: "";
+      display: block;
+      width: .32em;
+      height: .72em;
+      border-width: 0 3px 3px 0;
+      border-style: solid;
+      border-color: black;
+      position: absolute;
+      top: .2em;
+      left: .25em;
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg); }
+  .edlio.cms input[type=checkbox].toggle + label {
+    position: relative; }
+    .edlio.cms input[type=checkbox].toggle + label:before {
+      width: 1.382em;
+      border-radius: 1em;
+      border-color: #a9aaae;
+      background-color: white;
+      box-shadow: 0 0 0 2px #a9aaae; }
+    .edlio.cms input[type=checkbox].toggle + label:after {
+      content: "";
+      position: absolute;
+      top: .15em;
+      left: -2px;
+      display: block;
+      height: 1em;
+      width: 1em;
+      background: white;
+      border-width: 2px;
+      border-style: solid;
+      border-color: #a9aaae;
+      border-radius: 50%; }
+  .edlio.cms input[type=checkbox].toggle:checked + label:before {
+    background-color: black;
+    box-shadow: 0 0 0 2px black; }
+  .edlio.cms input[type=checkbox].toggle:checked + label:after {
+    background: white;
+    border-color: black;
+    left: calc(.382em + 2px); }
+  .edlio.cms input[type=checkbox][disabled] + label,
+  .edlio.cms input[type=checkbox] .disabled + label {
     cursor: default; }
-    .edlio.cms .data-table .tr.disabled a:hover {
-      text-decoration: none; }
-
-.edlio.cms .data-table .tr .action.column .action {
-  display: none; }
-
-.edlio.cms .data-table .tr .action.column a:hover .icon {
-  fill: #29abe2; }
-
-.edlio.cms .data-table .tr:not(.disabled) .column a {
-  color: #555555; }
-  .edlio.cms .data-table .tr:not(.disabled) .column a:hover {
-    color: #29abe2;
-    text-decoration: none; }
-
-.edlio.cms .data-table .tr:hover .action:not(.mobile-only) {
-  display: initial; }
-
-.edlio.cms .data-table .tr:not(.disabled):not(.without-action):hover,
-.edlio.cms .data-table .th > .column:not(.action):hover {
-  background-color: #f4f4f4; }
-
-.edlio.cms .data-table .th {
-  border-bottom: 2px solid #cccccc; }
-  .edlio.cms .data-table .th .icon {
-    pointer-events: all;
-    fill: #aaabad; }
-    .edlio.cms .data-table .th .icon.active {
-      fill: #333333;
-      margin-top: -0.4em; }
-
-.edlio.cms .data-table .action.column .menu {
-  margin: 0;
-  height: 1.75em;
-  border-radius: 0.24063em; }
-  .edlio.cms .data-table .action.column .menu .title {
-    height: 1.75em; }
-  .edlio.cms .data-table .action.column .menu > svg {
-    margin: 0; }
-
-.edlio.cms .data-table .mobile-only {
-  display: none; }
-
-@media screen and (max-width: 31.9375rem) {
-  .edlio.cms .data-table .mobile-only {
-    display: initial; }
-  .edlio.cms .data-table .desktop-only {
-    display: none; }
-  .edlio.cms .data-table .th,
-  .edlio.cms .data-table .tr {
-    -ms-flex-align: initial;
-    -webkit-align-items: initial;
-    align-items: initial; }
-  .edlio.cms .data-table .th {
-    display: none; }
-  .edlio.cms .data-table .tr {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column; }
-    .edlio.cms .data-table .tr:hover > .action.column {
+    .edlio.cms input[type=checkbox][disabled] + label:before,
+    .edlio.cms input[type=checkbox] .disabled + label:before {
+      cursor: default;
+      background-color: #e2e3e5;
+      border-color: #d1d2d4;
+      box-shadow: 0 0 0 2px #d1d2d4; }
+  .edlio.cms input[type=checkbox][disabled]:checked + label,
+  .edlio.cms input[type=checkbox] .disabled:checked + label {
+    cursor: default; }
+    .edlio.cms input[type=checkbox][disabled]:checked + label:before,
+    .edlio.cms input[type=checkbox] .disabled:checked + label:before {
+      background-color: #e2e3e5;
+      border-color: #d1d2d4;
+      box-shadow: 0 0 0 2px #d1d2d4; }
+    .edlio.cms input[type=checkbox][disabled]:checked + label:after,
+    .edlio.cms input[type=checkbox] .disabled:checked + label:after {
+      border-color: #d1d2d4; }
+  .edlio.cms input[type=checkbox][disabled].toggle + label,
+  .edlio.cms input[type=checkbox] .disabled.toggle + label {
+    cursor: default; }
+    .edlio.cms input[type=checkbox][disabled].toggle + label:before,
+    .edlio.cms input[type=checkbox] .disabled.toggle + label:before {
+      cursor: default;
+      border-color: #d1d2d4;
+      background-color: #e2e3e5;
+      box-shadow: 0 0 0 2px #d1d2d4; }
+    .edlio.cms input[type=checkbox][disabled].toggle + label:after,
+    .edlio.cms input[type=checkbox] .disabled.toggle + label:after {
+      cursor: default;
+      background: #d1d2d4;
+      border-color: #d1d2d4; }
+  .edlio.cms input[type=checkbox][disabled].toggle:checked + label,
+  .edlio.cms input[type=checkbox] .disabled.toggle:checked + label {
+    cursor: default; }
+    .edlio.cms input[type=checkbox][disabled].toggle:checked + label:before,
+    .edlio.cms input[type=checkbox] .disabled.toggle:checked + label:before {
+      background-color: #e2e3e5;
+      box-shadow: 0 0 0 2px #d1d2d4; }
+    .edlio.cms input[type=checkbox][disabled].toggle:checked + label:after,
+    .edlio.cms input[type=checkbox] .disabled.toggle:checked + label:after {
+      background: #d1d2d4;
+      border-color: #d1d2d4; }
+  .edlio.cms input[type=radio] + label:before {
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 0 2px #d1d2d4; }
+  .edlio.cms input[type=radio]:checked + label:before {
+    background: black;
+    box-shadow: 0 0 0 2px black, inset 0 0 0 3px white; }
+  .edlio.cms input[type=radio].disabled + label, .edlio.cms input[type=radio][disabled] + label {
+    cursor: default; }
+    .edlio.cms input[type=radio].disabled + label:before, .edlio.cms input[type=radio][disabled] + label:before {
+      cursor: default;
+      background: #e2e3e5;
+      box-shadow: 0 0 0 2px #d1d2d4; }
+  .edlio.cms input[type=radio].disabled:checked + label, .edlio.cms input[type=radio][disabled]:checked + label {
+    cursor: default; }
+    .edlio.cms input[type=radio].disabled:checked + label:before, .edlio.cms input[type=radio][disabled]:checked + label:before {
+      background: #d1d2d4;
+      box-shadow: 0 0 0 2px #d1d2d4, inset 0 0 0 3px white; }
+  .edlio.cms input[type="file"]:focus, .edlio.cms input[type="radio"]:focus, .edlio.cms input[type="checkbox"]:focus {
+    outline: thin dotted #d1d2d4;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px; }
+  .edlio.cms textarea {
+    resize: none;
+    overflow: auto;
+    vertical-align: middle;
+    width: auto;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    text-decoration: none;
+    color: #949599;
+    background-color: white;
+    border: none;
+    box-shadow: inset 0 0 0 1px #d1d2d4;
+    outline: none; }
+    .edlio.cms textarea::-webkit-input-placeholder {
+      color: #bcbdc1;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+    .edlio.cms textarea::-moz-placeholder {
+      color: #bcbdc1;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif;
+      opacity: 1; }
+    .edlio.cms textarea::-ms-input-placeholder {
+      color: #bcbdc1;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+    .edlio.cms textarea::placeholder {
+      color: #bcbdc1;
+      font-family: "Open Sans", Helvetica, Arial, sans-serif; }
+  .edlio.cms .icon.input {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center; }
+    .edlio.cms .icon.input > input {
       -webkit-flex: 1 0 auto;
       -ms-flex: 1 0 auto;
       flex: 1 0 auto;
-      display: -webkit-flex;
-      display: -ms-flexbox;
+      -webkit-order: 1;
+      -ms-flex-order: 1;
+      order: 1;
+      margin: 0;
+      background-color: white;
+      box-shadow: inset 0 0 0 1px #cccccc; }
+    .edlio.cms .icon.input > svg {
+      -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
+      -webkit-order: 0;
+      -ms-flex-order: 0;
+      order: 0;
+      fill: #888888;
+      background: #ededed;
+      box-shadow: inset 1px 1px 0 0 #cccccc, inset 0 -1px 0 0 #cccccc; }
+  .edlio.cms svg.icon {
+    position: relative;
+    pointer-events: none;
+    vertical-align: middle;
+    fill: #444444; }
+  .edlio.cms a {
+    color: #29abe2;
+    text-decoration: none; }
+    .edlio.cms a:link {
+      color: #29abe2; }
+    .edlio.cms a:visited {
+      color: #29abe2; }
+    .edlio.cms a:hover {
+      text-decoration: underline; }
+    .edlio.cms a:active {
+      color: #1a8dbe; }
+    .edlio.cms a.disabled {
+      color: #aaabad; }
+  .edlio.cms .list .next.icon {
+    width: 4em;
+    height: 4em;
+    padding: 1em; }
+    @media screen and (min-width: 48rem) {
+      .edlio.cms .list .next.icon {
+        display: none; } }
+  .edlio.cms .list.grid > * {
+    margin-bottom: 1em; }
+  .edlio.cms uniform-notification,
+  .edlio.cms .uniform-notification,
+  .edlio.cms edlio-notification,
+  .edlio.cms .edlio-notification {
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border-radius: 0.24063em;
+    color: white; }
+    .edlio.cms uniform-notification.alert,
+    .edlio.cms .uniform-notification.alert,
+    .edlio.cms edlio-notification.alert,
+    .edlio.cms .edlio-notification.alert {
+      color: #e07c3a;
+      box-shadow: inset 3.5em 0 0 2px #e07c3a, inset 0 0 0 2px #e07c3a; }
+      .edlio.cms uniform-notification.alert svg.icon,
+      .edlio.cms .uniform-notification.alert svg.icon,
+      .edlio.cms edlio-notification.alert svg.icon,
+      .edlio.cms .edlio-notification.alert svg.icon {
+        position: relative;
+        pointer-events: none;
+        vertical-align: middle;
+        fill: #444444;
+        fill: white; }
+      .edlio.cms uniform-notification.alert .close,
+      .edlio.cms .uniform-notification.alert .close,
+      .edlio.cms edlio-notification.alert .close,
+      .edlio.cms .edlio-notification.alert .close {
+        display: block; }
+        .edlio.cms uniform-notification.alert .close svg.icon,
+        .edlio.cms .uniform-notification.alert .close svg.icon,
+        .edlio.cms edlio-notification.alert .close svg.icon,
+        .edlio.cms .edlio-notification.alert .close svg.icon {
+          position: relative;
+          pointer-events: none;
+          vertical-align: middle;
+          fill: #444444;
+          fill: #444444; }
+    .edlio.cms uniform-notification.confirmation,
+    .edlio.cms .uniform-notification.confirmation,
+    .edlio.cms edlio-notification.confirmation,
+    .edlio.cms .edlio-notification.confirmation {
+      color: #33a468;
+      box-shadow: inset 3.5em 0 0 2px #33a468, inset 0 0 0 2px #33a468; }
+      .edlio.cms uniform-notification.confirmation svg.icon,
+      .edlio.cms .uniform-notification.confirmation svg.icon,
+      .edlio.cms edlio-notification.confirmation svg.icon,
+      .edlio.cms .edlio-notification.confirmation svg.icon {
+        position: relative;
+        pointer-events: none;
+        vertical-align: middle;
+        fill: #444444;
+        fill: white; }
+      .edlio.cms uniform-notification.confirmation .close,
+      .edlio.cms .uniform-notification.confirmation .close,
+      .edlio.cms edlio-notification.confirmation .close,
+      .edlio.cms .edlio-notification.confirmation .close {
+        display: block; }
+        .edlio.cms uniform-notification.confirmation .close svg.icon,
+        .edlio.cms .uniform-notification.confirmation .close svg.icon,
+        .edlio.cms edlio-notification.confirmation .close svg.icon,
+        .edlio.cms .edlio-notification.confirmation .close svg.icon {
+          position: relative;
+          pointer-events: none;
+          vertical-align: middle;
+          fill: #444444;
+          fill: #444444; }
+    .edlio.cms uniform-notification .message,
+    .edlio.cms .uniform-notification .message,
+    .edlio.cms edlio-notification .message,
+    .edlio.cms .edlio-notification .message {
+      -webkit-flex: 1 1 0%;
+      -ms-flex: 1 1 0%;
+      flex: 1 1 0%;
+      margin: 0 1em;
+      padding: 0 0 0 1em;
+      text-align: center; }
+      .edlio.cms uniform-notification .message h1,
+      .edlio.cms .uniform-notification .message h1,
+      .edlio.cms edlio-notification .message h1,
+      .edlio.cms .edlio-notification .message h1 {
+        font-weight: 600;
+        margin: .5em 0; }
+        @media screen and (max-width: 47.9375rem) {
+          .edlio.cms uniform-notification .message h1,
+          .edlio.cms .uniform-notification .message h1,
+          .edlio.cms edlio-notification .message h1,
+          .edlio.cms .edlio-notification .message h1 {
+            font-size: 1rem;
+            line-height: 1.5rem; } }
+        @media screen and (min-width: 48rem) {
+          .edlio.cms uniform-notification .message h1,
+          .edlio.cms .uniform-notification .message h1,
+          .edlio.cms edlio-notification .message h1,
+          .edlio.cms .edlio-notification .message h1 {
+            font-size: 1rem;
+            line-height: 1.5rem; } }
+        @media screen and (min-width: 64rem) {
+          .edlio.cms uniform-notification .message h1,
+          .edlio.cms .uniform-notification .message h1,
+          .edlio.cms edlio-notification .message h1,
+          .edlio.cms .edlio-notification .message h1 {
+            font-size: 1.0625rem;
+            line-height: 1.59375rem; } }
+        @media screen and (min-width: 75rem) {
+          .edlio.cms uniform-notification .message h1,
+          .edlio.cms .uniform-notification .message h1,
+          .edlio.cms edlio-notification .message h1,
+          .edlio.cms .edlio-notification .message h1 {
+            font-size: 1.125rem;
+            line-height: 1.6875rem; } }
+      .edlio.cms uniform-notification .message p,
+      .edlio.cms .uniform-notification .message p,
+      .edlio.cms edlio-notification .message p,
+      .edlio.cms .edlio-notification .message p {
+        margin-bottom: .5em;
+        color: #888888; }
+      @media screen and (max-width: 47.9375rem) {
+        .edlio.cms uniform-notification .message .disclaimer,
+        .edlio.cms .uniform-notification .message .disclaimer,
+        .edlio.cms edlio-notification .message .disclaimer,
+        .edlio.cms .edlio-notification .message .disclaimer {
+          font-size: 0.875rem;
+          line-height: 1.5rem; } }
+      @media screen and (min-width: 48rem) {
+        .edlio.cms uniform-notification .message .disclaimer,
+        .edlio.cms .uniform-notification .message .disclaimer,
+        .edlio.cms edlio-notification .message .disclaimer,
+        .edlio.cms .edlio-notification .message .disclaimer {
+          font-size: 0.875rem;
+          line-height: 1.5rem; } }
+      @media screen and (min-width: 64rem) {
+        .edlio.cms uniform-notification .message .disclaimer,
+        .edlio.cms .uniform-notification .message .disclaimer,
+        .edlio.cms edlio-notification .message .disclaimer,
+        .edlio.cms .edlio-notification .message .disclaimer {
+          font-size: 0.9375rem;
+          line-height: 1.59375rem; } }
+      @media screen and (min-width: 75rem) {
+        .edlio.cms uniform-notification .message .disclaimer,
+        .edlio.cms .uniform-notification .message .disclaimer,
+        .edlio.cms edlio-notification .message .disclaimer,
+        .edlio.cms .edlio-notification .message .disclaimer {
+          font-size: 1rem;
+          line-height: 1.6875rem; } }
+    .edlio.cms uniform-notification .close,
+    .edlio.cms .uniform-notification .close,
+    .edlio.cms edlio-notification .close,
+    .edlio.cms .edlio-notification .close {
+      -ms-flex-item-align: start;
+      -webkit-align-self: flex-start;
+      align-self: flex-start;
+      padding: 0;
+      cursor: pointer; }
+      .edlio.cms uniform-notification .close .icon,
+      .edlio.cms .uniform-notification .close .icon,
+      .edlio.cms edlio-notification .close .icon,
+      .edlio.cms .edlio-notification .close .icon {
+        border-radius: 0.24063em; }
+  .edlio.cms uniform-overlay,
+  .edlio.cms .uniform-overlay,
+  .edlio.cms edlio-overlay,
+  .edlio.cms .edlio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.618);
+    z-index: 97; }
+  .edlio.cms .pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; }
+    .edlio.cms .pagination.desktop {
+      display: none;
+      visibility: hidden;
+      opacity: 0; }
+      @media screen and (min-width: 64rem) {
+        .edlio.cms .pagination.desktop {
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          visibility: visible;
+          opacity: 1; } }
+    @media screen and (max-width: 31.9375rem) {
+      .edlio.cms .pagination.mobile .skip {
+        display: none;
+        visibility: hidden;
+        opacity: 0; } }
+    @media screen and (min-width: 64rem) {
+      .edlio.cms .pagination.mobile {
+        display: none;
+        visibility: hidden;
+        opacity: 0; } }
+    .edlio.cms .pagination .button-bar .active {
+      color: #333333;
+      background-color: #f4f4f4;
+      font-weight: 600; }
+    .edlio.cms .pagination .button, .edlio.cms .pagination .kitchen-sink button, .edlio.cms .kitchen-sink .pagination button {
       display: flex;
-      -ms-flex-pack: distribute;
-      -webkit-justify-content: space-around;
-      justify-content: space-around; }
-      .edlio.cms .data-table .tr:hover > .action.column .action {
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
-        background-color: rgba(0, 0, 0, 0.7);
-        border-radius: 0.24063em;
-        width: 5em;
-        padding: 1em;
-        color: white; }
-        .edlio.cms .data-table .tr:hover > .action.column .action svg.icon {
-          fill: white;
-          min-width: 1em;
-          min-height: 1em; }
-        .edlio.cms .data-table .tr:hover > .action.column .action span {
-          font-size: 0.7em; }
-    .edlio.cms .data-table .tr .action.column {
-      display: none; } }
-
-.edlio.cms .tags {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -ms-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap; }
-  .edlio.cms .tags > .tag {
+      align-items: center; }
+      .edlio.cms .pagination .button.ellipsis, .edlio.cms .pagination .kitchen-sink button.ellipsis, .edlio.cms .kitchen-sink .pagination button.ellipsis {
+        box-shadow: inset 1px 0 0 0 #cccccc; }
+        .edlio.cms .pagination .button.ellipsis:hover, .edlio.cms .pagination .kitchen-sink button.ellipsis:hover, .edlio.cms .kitchen-sink .pagination button.ellipsis:hover {
+          background-color: transparent;
+          cursor: default; }
+      .edlio.cms .pagination .button span:nth-child(2), .edlio.cms .pagination .kitchen-sink button span:nth-child(2), .edlio.cms .kitchen-sink .pagination button span:nth-child(2) {
+        padding-left: .192em; }
+    .edlio.cms .pagination .arrow {
+      font-size: 2em;
+      line-height: 0;
+      margin-bottom: .2em; }
+  .edlio.cms uniform-select,
+  .edlio.cms .uniform-select,
+  .edlio.cms edlio-select,
+  .edlio.cms .edlio-select {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    background: white;
+    box-shadow: inset 0 0 0 1px #cccccc;
+    outline: none;
+    font-weight: 300;
+    cursor: pointer;
+    white-space: nowrap; }
+    @media screen and (max-width: 31.9375rem) {
+      .edlio.cms uniform-select:not(.bare),
+      .edlio.cms .uniform-select:not(.bare),
+      .edlio.cms edlio-select:not(.bare),
+      .edlio.cms .edlio-select:not(.bare) {
+        display: block;
+        margin-right: 0; } }
+    .edlio.cms uniform-select select-title,
+    .edlio.cms uniform-select .select-title,
+    .edlio.cms .uniform-select select-title,
+    .edlio.cms .uniform-select .select-title,
+    .edlio.cms edlio-select select-title,
+    .edlio.cms edlio-select .select-title,
+    .edlio.cms .edlio-select select-title,
+    .edlio.cms .edlio-select .select-title {
+      -ms-flex-pack: justify;
+      -webkit-justify-content: space-between;
+      justify-content: space-between;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      cursor: pointer; }
+      .edlio.cms uniform-select select-title svg.icon,
+      .edlio.cms uniform-select .select-title svg.icon,
+      .edlio.cms .uniform-select select-title svg.icon,
+      .edlio.cms .uniform-select .select-title svg.icon,
+      .edlio.cms edlio-select select-title svg.icon,
+      .edlio.cms edlio-select .select-title svg.icon,
+      .edlio.cms .edlio-select select-title svg.icon,
+      .edlio.cms .edlio-select .select-title svg.icon {
+        position: relative;
+        pointer-events: none;
+        vertical-align: middle;
+        fill: #444444;
+        margin-left: .382em;
+        fill: #888888; }
+      .edlio.cms uniform-select select-title:hover svg.icon,
+      .edlio.cms uniform-select .select-title:hover svg.icon,
+      .edlio.cms .uniform-select select-title:hover svg.icon,
+      .edlio.cms .uniform-select .select-title:hover svg.icon,
+      .edlio.cms edlio-select select-title:hover svg.icon,
+      .edlio.cms edlio-select .select-title:hover svg.icon,
+      .edlio.cms .edlio-select select-title:hover svg.icon,
+      .edlio.cms .edlio-select .select-title:hover svg.icon {
+        fill: #555555; }
+      .edlio.cms uniform-select select-title:before,
+      .edlio.cms uniform-select .select-title:before,
+      .edlio.cms .uniform-select select-title:before,
+      .edlio.cms .uniform-select .select-title:before,
+      .edlio.cms edlio-select select-title:before,
+      .edlio.cms edlio-select .select-title:before,
+      .edlio.cms .edlio-select select-title:before,
+      .edlio.cms .edlio-select .select-title:before {
+        content: "";
+        width: 0;
+        height: 0; }
+    .edlio.cms uniform-select.bare,
+    .edlio.cms .uniform-select.bare,
+    .edlio.cms edlio-select.bare,
+    .edlio.cms .edlio-select.bare {
+      box-shadow: none; }
+      .edlio.cms uniform-select.bare select-title,
+      .edlio.cms uniform-select.bare .select-title,
+      .edlio.cms .uniform-select.bare select-title,
+      .edlio.cms .uniform-select.bare .select-title,
+      .edlio.cms edlio-select.bare select-title,
+      .edlio.cms edlio-select.bare .select-title,
+      .edlio.cms .edlio-select.bare select-title,
+      .edlio.cms .edlio-select.bare .select-title {
+        -ms-flex-pack: start;
+        -webkit-justify-content: flex-start;
+        justify-content: flex-start; }
+        .edlio.cms uniform-select.bare select-title svg.icon,
+        .edlio.cms uniform-select.bare .select-title svg.icon,
+        .edlio.cms .uniform-select.bare select-title svg.icon,
+        .edlio.cms .uniform-select.bare .select-title svg.icon,
+        .edlio.cms edlio-select.bare select-title svg.icon,
+        .edlio.cms edlio-select.bare .select-title svg.icon,
+        .edlio.cms .edlio-select.bare select-title svg.icon,
+        .edlio.cms .edlio-select.bare .select-title svg.icon {
+          margin: 0; }
+      .edlio.cms uniform-select.bare menu,
+      .edlio.cms .uniform-select.bare menu,
+      .edlio.cms edlio-select.bare menu,
+      .edlio.cms .edlio-select.bare menu {
+        border: 1px solid #cccccc;
+        margin-top: .618em; }
+        .edlio.cms uniform-select.bare menu:before, .edlio.cms uniform-select.bare menu:after,
+        .edlio.cms .uniform-select.bare menu:before,
+        .edlio.cms .uniform-select.bare menu:after,
+        .edlio.cms edlio-select.bare menu:before,
+        .edlio.cms edlio-select.bare menu:after,
+        .edlio.cms .edlio-select.bare menu:before,
+        .edlio.cms .edlio-select.bare menu:after {
+          content: "";
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-color: transparent;
+          border-top: 0; }
+        .edlio.cms uniform-select.bare menu:before,
+        .edlio.cms .uniform-select.bare menu:before,
+        .edlio.cms edlio-select.bare menu:before,
+        .edlio.cms .edlio-select.bare menu:before {
+          top: -1em;
+          left: 0.691em;
+          border-bottom-color: #cccccc;
+          border-width: 1em; }
+        .edlio.cms uniform-select.bare menu:after,
+        .edlio.cms .uniform-select.bare menu:after,
+        .edlio.cms edlio-select.bare menu:after,
+        .edlio.cms .edlio-select.bare menu:after {
+          top: calc(-1em + 1px);
+          left: calc((( 1.382 / 2 ) * 1em) + 1px);
+          border-bottom-color: white;
+          border-width: calc(1em - 1px); }
+        .edlio.cms uniform-select.bare menu item:hover:first-child:before,
+        .edlio.cms uniform-select.bare menu .item:hover:first-child:before,
+        .edlio.cms .uniform-select.bare menu item:hover:first-child:before,
+        .edlio.cms .uniform-select.bare menu .item:hover:first-child:before,
+        .edlio.cms edlio-select.bare menu item:hover:first-child:before,
+        .edlio.cms edlio-select.bare menu .item:hover:first-child:before,
+        .edlio.cms .edlio-select.bare menu item:hover:first-child:before,
+        .edlio.cms .edlio-select.bare menu .item:hover:first-child:before {
+          content: "";
+          position: absolute;
+          top: calc(-1em + 1px);
+          left: calc((( 1.382 / 2 ) * 1em) + 1px);
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-color: transparent;
+          border-top: 0;
+          border-bottom-color: #f4f4f4;
+          border-width: calc(1em - 1px);
+          z-index: 2; }
+    .edlio.cms uniform-select.open,
+    .edlio.cms .uniform-select.open,
+    .edlio.cms edlio-select.open,
+    .edlio.cms .edlio-select.open {
+      box-shadow: inset 1px 0 0 0 #cccccc, inset -1px 0 0 0 #cccccc, inset 0 1px 0 0 #cccccc; }
+      .edlio.cms uniform-select.open > menu,
+      .edlio.cms .uniform-select.open > menu,
+      .edlio.cms edlio-select.open > menu,
+      .edlio.cms .edlio-select.open > menu {
+        visibility: visible;
+        opacity: 1;
+        top: 100%;
+        border: 1px solid #cccccc; }
+      .edlio.cms uniform-select.open.bare,
+      .edlio.cms .uniform-select.open.bare,
+      .edlio.cms edlio-select.open.bare,
+      .edlio.cms .edlio-select.open.bare {
+        box-shadow: none; }
+    .edlio.cms uniform-select > menu,
+    .edlio.cms .uniform-select > menu,
+    .edlio.cms edlio-select > menu,
+    .edlio.cms .edlio-select > menu {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      -webkit-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+      flex: 0 1 auto;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      max-height: 20em;
+      overflow-y: auto;
+      visibility: hidden;
+      opacity: 0;
+      min-width: 100%;
+      background-color: white;
+      z-index: 2;
+      transition: all 0.1s ease-in-out; }
+      .edlio.cms uniform-select > menu.right,
+      .edlio.cms .uniform-select > menu.right,
+      .edlio.cms edlio-select > menu.right,
+      .edlio.cms .edlio-select > menu.right {
+        left: auto;
+        right: 0; }
+      .edlio.cms uniform-select > menu item,
+      .edlio.cms uniform-select > menu .item,
+      .edlio.cms .uniform-select > menu item,
+      .edlio.cms .uniform-select > menu .item,
+      .edlio.cms edlio-select > menu item,
+      .edlio.cms edlio-select > menu .item,
+      .edlio.cms .edlio-select > menu item,
+      .edlio.cms .edlio-select > menu .item {
+        position: relative;
+        display: block;
+        padding: 0 1em;
+        -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto; }
+        .edlio.cms uniform-select > menu item:hover,
+        .edlio.cms uniform-select > menu .item:hover,
+        .edlio.cms .uniform-select > menu item:hover,
+        .edlio.cms .uniform-select > menu .item:hover,
+        .edlio.cms edlio-select > menu item:hover,
+        .edlio.cms edlio-select > menu .item:hover,
+        .edlio.cms .edlio-select > menu item:hover,
+        .edlio.cms .edlio-select > menu .item:hover {
+          background-color: #f4f4f4; }
+        .edlio.cms uniform-select > menu item.active,
+        .edlio.cms uniform-select > menu .item.active,
+        .edlio.cms .uniform-select > menu item.active,
+        .edlio.cms .uniform-select > menu .item.active,
+        .edlio.cms edlio-select > menu item.active,
+        .edlio.cms edlio-select > menu .item.active,
+        .edlio.cms .edlio-select > menu item.active,
+        .edlio.cms .edlio-select > menu .item.active {
+          background-color: #eaebec; }
+  .edlio.cms .data-table .tr,
+  .edlio.cms .data-table .th {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
     -webkit-align-items: center;
-    align-items: center;
-    padding: 0 1em;
-    vertical-align: baseline;
-    box-shadow: inset 0 0 0 1px #dadbdd;
-    border-radius: 0.24063em; }
-
-.edlio.cms .toggle-selector {
-  display: flex; }
-  .edlio.cms .toggle-selector .option {
+    align-items: center; }
+    .edlio.cms .data-table .tr .column,
+    .edlio.cms .data-table .th .column {
+      -webkit-flex: 1 1 0%;
+      -ms-flex: 1 1 0%;
+      flex: 1 1 0%;
+      padding: 0.5em; }
+      .edlio.cms .data-table .tr .column.text,
+      .edlio.cms .data-table .th .column.text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+      .edlio.cms .data-table .tr .column.action,
+      .edlio.cms .data-table .th .column.action {
+        -webkit-flex: 0 0 6em;
+        -ms-flex: 0 0 6em;
+        flex: 0 0 6em; }
+  .edlio.cms .data-table .empty-message {
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
     justify-content: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
     align-items: center;
-    background: #ededed;
-    box-shadow: inset -1px 0 0 0 #cccccc, inset 0 1px 0 0 #cccccc, inset 0 -1px 0 0 #cccccc;
-    border-radius: 0;
-    border: none;
-    outline: none;
-    font-weight: 300;
-    font-style: normal;
-    text-align: center;
-    text-decoration: none;
-    color: #555555;
-    cursor: pointer;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; }
-    .edlio.cms .toggle-selector .option input,
-    .edlio.cms .toggle-selector .option label:before {
-      display: none;
-      visibility: hidden;
-      opacity: 0; }
-    .edlio.cms .toggle-selector .option label {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis; }
-    .edlio.cms .toggle-selector .option .icon {
-      margin-right: .382em; }
-    .edlio.cms .toggle-selector .option:hover {
-      background: #f4f4f4; }
-    .edlio.cms .toggle-selector .option.selected {
-      background: white;
-      box-shadow: -1px 0 0 0 #555555, inset -1px 0 0 0 #555555, inset 0 1px 0 0 #555555, inset 0 -1px 0 0 #555555; }
-      .edlio.cms .toggle-selector .option.selected label {
-        color: black; }
-    .edlio.cms .toggle-selector .option.disabled {
-      opacity: .382;
-      pointer-events: none; }
-      .edlio.cms .toggle-selector .option.disabled + .option:not(.disabled) {
-        box-shadow: inset -1px 0 0 0 #cccccc, -1px 0 0 0 #cccccc, inset 0 1px 0 0 #cccccc, inset 0 -1px 0 0 #cccccc; }
-    .edlio.cms .toggle-selector .option:first-of-type {
-      border-radius: 0.24063em 0 0 0.24063em;
-      box-shadow: inset 0 0 0 1px #cccccc; }
-      .edlio.cms .toggle-selector .option:first-of-type.selected {
-        box-shadow: inset 0 0 0 1px #555555; }
-    .edlio.cms .toggle-selector .option:last-of-type {
-      border-radius: 0 0.24063em 0.24063em 0; }
-  .edlio.cms .toggle-selector.disabled {
-    opacity: .382; }
-    .edlio.cms .toggle-selector.disabled .option {
-      opacity: 1;
-      pointer-events: none; }
-
-.edlio.cms [data-tooltip] {
-  position: relative; }
-  .edlio.cms [data-tooltip]:before, .edlio.cms [data-tooltip]:after {
-    position: absolute;
-    z-index: 2;
-    display: inline-block;
-    visibility: hidden;
-    opacity: 0; }
-    @media screen and (max-width: 47.9375rem) {
-      .edlio.cms [data-tooltip]:before, .edlio.cms [data-tooltip]:after {
-        display: none;
-        visibility: hidden;
-        opacity: 0; } }
-  .edlio.cms [data-tooltip]:before {
-    content: '';
-    transition: all 0.1146s cubic-bezier(0.44, 0.01, 0.37, 0.99) 0.1146s; }
-  .edlio.cms [data-tooltip]:after {
-    content: attr(data-tooltip);
-    width: 12em;
-    height: auto;
-    overflow: hidden;
-    background-color: #333333;
-    text-align: center;
-    color: white;
-    pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.44, 0.01, 0.37, 0.99) 0.1854s; }
-    @media screen and (max-width: 47.9375rem) {
-      .edlio.cms [data-tooltip]:after {
-        font-size: 14px;
-        line-height: 24px; } }
-    @media screen and (min-width: 48rem) {
-      .edlio.cms [data-tooltip]:after {
-        font-size: 14px;
-        line-height: 24px; } }
-    @media screen and (min-width: 64rem) {
-      .edlio.cms [data-tooltip]:after {
-        font-size: 15px;
-        line-height: 25.5px; } }
-    @media screen and (min-width: 75rem) {
-      .edlio.cms [data-tooltip]:after {
-        font-size: 16px;
-        line-height: 27px; } }
-  .edlio.cms [data-tooltip]:hover:before {
-    transition: all 0.3s cubic-bezier(0.44, 0.01, 0.37, 0.99) 0.3s; }
-  .edlio.cms [data-tooltip]:hover:before, .edlio.cms [data-tooltip]:hover:after {
-    opacity: 1;
-    visibility: visible; }
-  .edlio.cms [data-tooltip][data-tooltip-position="top"]:before {
-    top: -2.5em;
-    left: 50%;
-    margin-left: -1.382em;
-    border-top: 1.382em solid #333333;
-    border-left: 1.382em solid transparent;
-    border-right: 1.382em solid transparent; }
-  .edlio.cms [data-tooltip][data-tooltip-position="top"]:after {
-    left: 50%;
-    bottom: 100%;
-    margin-left: -6em; }
-  .edlio.cms [data-tooltip][data-tooltip-position="top"]:hover:before {
-    -webkit-transform: translateY(1em);
-    transform: translateY(1em); }
-  .edlio.cms [data-tooltip][data-tooltip-position="top"]:hover:after {
-    -webkit-transform: translateY(-1em);
-    transform: translateY(-1em); }
-  .edlio.cms [data-tooltip][data-tooltip-position="bottom"]:before {
-    bottom: -2.5em;
-    right: 50%;
-    margin-right: -1.382em;
-    border-top: none;
-    border-bottom: 1.382em solid #333333;
-    border-left: 1.382em solid transparent;
-    border-right: 1.382em solid transparent; }
-  .edlio.cms [data-tooltip][data-tooltip-position="bottom"]:after {
-    top: 100%;
-    right: 50%;
-    margin-right: -6em; }
-  .edlio.cms [data-tooltip][data-tooltip-position="bottom"]:hover:before {
-    -webkit-transform: translateY(-1em);
-    transform: translateY(-1em); }
-  .edlio.cms [data-tooltip][data-tooltip-position="bottom"]:hover:after {
-    -webkit-transform: translateY(1em);
-    transform: translateY(1em); }
-
-.edlio.cms uniform-modal,
-.edlio.cms edlio-modal {
-  display: none; }
-
-.edlio.cms uniform-overlay,
-.edlio.cms edlio-overlay {
-  -webkit-flex: 1 0 100%;
-  -ms-flex: 1 0 100%;
-  flex: 1 0 100%; }
-  .edlio.cms uniform-overlay uniform-modal,
-  .edlio.cms uniform-overlay uniform-modal,
-  .edlio.cms edlio-overlay uniform-modal,
-  .edlio.cms edlio-overlay uniform-modal {
-    -webkit-flex: 0 1 auto;
-    -ms-flex: 0 1 auto;
-    flex: 0 1 auto;
-    position: relative;
-    z-index: 98;
-    opacity: 0; }
-    .edlio.cms uniform-overlay uniform-modal.transition-in,
-    .edlio.cms uniform-overlay uniform-modal.transition-in,
-    .edlio.cms edlio-overlay uniform-modal.transition-in,
-    .edlio.cms edlio-overlay uniform-modal.transition-in {
-      opacity: 1;
-      transition: all 0.3s cubic-bezier(0.44, 0.01, 0.37, 0.99);
-      -webkit-transform: translate3d(0, 0, 0) scale(1);
-      transform: translate3d(0, 0, 0) scale(1); }
-    .edlio.cms uniform-overlay uniform-modal.transition-out,
-    .edlio.cms uniform-overlay uniform-modal.transition-out,
-    .edlio.cms edlio-overlay uniform-modal.transition-out,
-    .edlio.cms edlio-overlay uniform-modal.transition-out {
-      opacity: 0;
-      transition: all 0.3s cubic-bezier(0.44, 0.01, 0.37, 0.99);
-      -webkit-transform: translate3d(0, -25%, 0) scale(0.2);
-      transform: translate3d(0, -25%, 0) scale(0.2); }
-
-.edlio.cms uniform-overlay,
-.edlio.cms edlio-overlay {
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-flex-flow: row wrap;
-  -ms-flex-flow: row wrap;
-  flex-flow: row wrap; }
-  .edlio.cms uniform-overlay uniform-modal,
-  .edlio.cms uniform-overlay edlio-modal,
-  .edlio.cms edlio-overlay uniform-modal,
-  .edlio.cms edlio-overlay edlio-modal {
-    width: 100%;
-    height: 100%;
-    min-width: 16rem;
-    max-width: 82rem;
-    max-height: 100vh;
-    overflow: auto;
-    background-color: white;
+    height: 10em;
+    color: #cccccc;
+    font-size: 1.3em; }
+  .edlio.cms .data-table .tr.border {
+    border-bottom: 1px solid #cccccc;
+    padding: .5em 0; }
+  .edlio.cms .data-table .tr.not-clickable, .edlio.cms .data-table .tr.disabled {
+    cursor: default; }
+  .edlio.cms .data-table .tr.disabled {
+    color: #aaabad; }
+    .edlio.cms .data-table .tr.disabled a {
+      color: #aaabad;
+      cursor: default; }
+      .edlio.cms .data-table .tr.disabled a:hover {
+        text-decoration: none; }
+  .edlio.cms .data-table .tr .action.column .action {
+    display: none; }
+  .edlio.cms .data-table .tr .action.column a:hover .icon {
+    fill: #29abe2; }
+  .edlio.cms .data-table .tr:not(.disabled) .column a {
     color: #555555; }
-    .edlio.cms uniform-overlay uniform-modal page,
-    .edlio.cms uniform-overlay edlio-modal page,
-    .edlio.cms edlio-overlay uniform-modal page,
-    .edlio.cms edlio-overlay edlio-modal page {
-      display: none;
-      visibility: hidden;
-      opacity: 0;
-      height: 100%;
-      width: 100%;
-      transition: transform 0.3s ease-in; }
-      .edlio.cms uniform-overlay uniform-modal page.current,
-      .edlio.cms uniform-overlay edlio-modal page.current,
-      .edlio.cms edlio-overlay uniform-modal page.current,
-      .edlio.cms edlio-overlay edlio-modal page.current {
+    .edlio.cms .data-table .tr:not(.disabled) .column a:hover {
+      color: #29abe2;
+      text-decoration: none; }
+  .edlio.cms .data-table .tr:hover .action:not(.mobile-only) {
+    display: initial; }
+  .edlio.cms .data-table .tr:not(.disabled):not(.without-action):hover,
+  .edlio.cms .data-table .th > .column:not(.action):hover {
+    background-color: #f4f4f4; }
+  .edlio.cms .data-table .th {
+    border-bottom: 2px solid #cccccc; }
+    .edlio.cms .data-table .th .icon {
+      pointer-events: all;
+      fill: #aaabad; }
+      .edlio.cms .data-table .th .icon.active {
+        fill: #333333;
+        margin-top: -0.4em; }
+  .edlio.cms .data-table .action.column .menu {
+    margin: 0;
+    height: 1.75em;
+    border-radius: 0.24063em; }
+    .edlio.cms .data-table .action.column .menu .title {
+      height: 1.75em; }
+    .edlio.cms .data-table .action.column .menu > svg {
+      margin: 0; }
+  .edlio.cms .data-table .mobile-only {
+    display: none; }
+  @media screen and (max-width: 31.9375rem) {
+    .edlio.cms .data-table .mobile-only {
+      display: initial; }
+    .edlio.cms .data-table .desktop-only {
+      display: none; }
+    .edlio.cms .data-table .th,
+    .edlio.cms .data-table .tr {
+      -ms-flex-align: initial;
+      -webkit-align-items: initial;
+      align-items: initial; }
+    .edlio.cms .data-table .th {
+      display: none; }
+    .edlio.cms .data-table .tr {
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .edlio.cms .data-table .tr:hover > .action.column {
+        -webkit-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
         display: -webkit-flex;
         display: -ms-flexbox;
         display: flex;
-        visibility: visible;
-        opacity: 1;
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        -webkit-transform: translateX(0%);
-        transform: translateX(0%); }
-        .edlio.cms uniform-overlay uniform-modal page.current > *,
-        .edlio.cms uniform-overlay edlio-modal page.current > *,
-        .edlio.cms edlio-overlay uniform-modal page.current > *,
-        .edlio.cms edlio-overlay edlio-modal page.current > * {
-          padding: 0 1.618em; }
-        .edlio.cms uniform-overlay uniform-modal page.current header,
-        .edlio.cms uniform-overlay edlio-modal page.current header,
-        .edlio.cms edlio-overlay uniform-modal page.current header,
-        .edlio.cms edlio-overlay edlio-modal page.current header {
-          -webkit-flex-direction: row;
-          -ms-flex-direction: row;
-          flex-direction: row;
+        -ms-flex-pack: distribute;
+        -webkit-justify-content: space-around;
+        justify-content: space-around; }
+        .edlio.cms .data-table .tr:hover > .action.column .action {
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
           -ms-flex-align: center;
           -webkit-align-items: center;
           align-items: center;
-          -ms-flex-pack: justify;
-          -webkit-justify-content: space-between;
-          justify-content: space-between;
-          -webkit-flex: 0 0 auto;
-          -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-          background-color: #cccccc; }
-          .edlio.cms uniform-overlay uniform-modal page.current header h1,
-          .edlio.cms uniform-overlay edlio-modal page.current header h1,
-          .edlio.cms edlio-overlay uniform-modal page.current header h1,
-          .edlio.cms edlio-overlay edlio-modal page.current header h1 {
-            -webkit-order: 0;
-            -ms-flex-order: 0;
-            order: 0;
-            margin: 0 auto; }
-          .edlio.cms uniform-overlay uniform-modal page.current header svg.icon,
-          .edlio.cms uniform-overlay edlio-modal page.current header svg.icon,
-          .edlio.cms edlio-overlay uniform-modal page.current header svg.icon,
-          .edlio.cms edlio-overlay edlio-modal page.current header svg.icon {
-            pointer-events: all;
-            cursor: pointer; }
-            .edlio.cms uniform-overlay uniform-modal page.current header svg.icon.back,
-            .edlio.cms uniform-overlay edlio-modal page.current header svg.icon.back,
-            .edlio.cms edlio-overlay uniform-modal page.current header svg.icon.back,
-            .edlio.cms edlio-overlay edlio-modal page.current header svg.icon.back {
-              -webkit-order: -1;
-              -ms-flex-order: -1;
-              order: -1; }
-            .edlio.cms uniform-overlay uniform-modal page.current header svg.icon.close,
-            .edlio.cms uniform-overlay edlio-modal page.current header svg.icon.close,
-            .edlio.cms edlio-overlay uniform-modal page.current header svg.icon.close,
-            .edlio.cms edlio-overlay edlio-modal page.current header svg.icon.close {
-              -webkit-order: 1;
-              -ms-flex-order: 1;
-              order: 1;
-              margin-left: 0; }
-        .edlio.cms uniform-overlay uniform-modal page.current .content,
-        .edlio.cms uniform-overlay edlio-modal page.current .content,
-        .edlio.cms edlio-overlay uniform-modal page.current .content,
-        .edlio.cms edlio-overlay edlio-modal page.current .content {
-          padding-top: 1em;
-          padding-bottom: 1em;
-          overflow: auto; }
-        .edlio.cms uniform-overlay uniform-modal page.current footer,
-        .edlio.cms uniform-overlay edlio-modal page.current footer,
-        .edlio.cms edlio-overlay uniform-modal page.current footer,
-        .edlio.cms edlio-overlay edlio-modal page.current footer {
-          -webkit-flex-direction: row;
-          -ms-flex-direction: row;
-          flex-direction: row;
-          -ms-flex-pack: end;
-          -webkit-justify-content: flex-end;
-          justify-content: flex-end;
-          -webkit-flex: 0 0 auto;
-          -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-          margin-top: auto;
-          padding-top: 1em;
-          padding-bottom: 1em;
-          border-top: 2px solid #aaabad; }
-          .edlio.cms uniform-overlay uniform-modal page.current footer .button, .edlio.cms uniform-overlay uniform-modal page.current footer .kitchen-sink button, .edlio.cms .kitchen-sink uniform-overlay uniform-modal page.current footer button,
-          .edlio.cms uniform-overlay edlio-modal page.current footer .button,
-          .edlio.cms uniform-overlay edlio-modal page.current footer .kitchen-sink button,
-          .edlio.cms .kitchen-sink uniform-overlay edlio-modal page.current footer button,
-          .edlio.cms edlio-overlay uniform-modal page.current footer .button,
-          .edlio.cms edlio-overlay uniform-modal page.current footer .kitchen-sink button,
-          .edlio.cms .kitchen-sink edlio-overlay uniform-modal page.current footer button,
-          .edlio.cms edlio-overlay edlio-modal page.current footer .button,
-          .edlio.cms edlio-overlay edlio-modal page.current footer .kitchen-sink button,
-          .edlio.cms .kitchen-sink edlio-overlay edlio-modal page.current footer button {
-            margin-bottom: 0; }
-            .edlio.cms uniform-overlay uniform-modal page.current footer .button:last-of-type, .edlio.cms uniform-overlay uniform-modal page.current footer .kitchen-sink button:last-of-type, .edlio.cms .kitchen-sink uniform-overlay uniform-modal page.current footer button:last-of-type,
-            .edlio.cms uniform-overlay edlio-modal page.current footer .button:last-of-type,
-            .edlio.cms uniform-overlay edlio-modal page.current footer .kitchen-sink button:last-of-type,
-            .edlio.cms .kitchen-sink uniform-overlay edlio-modal page.current footer button:last-of-type,
-            .edlio.cms edlio-overlay uniform-modal page.current footer .button:last-of-type,
-            .edlio.cms edlio-overlay uniform-modal page.current footer .kitchen-sink button:last-of-type,
-            .edlio.cms .kitchen-sink edlio-overlay uniform-modal page.current footer button:last-of-type,
-            .edlio.cms edlio-overlay edlio-modal page.current footer .button:last-of-type,
-            .edlio.cms edlio-overlay edlio-modal page.current footer .kitchen-sink button:last-of-type,
-            .edlio.cms .kitchen-sink edlio-overlay edlio-modal page.current footer button:last-of-type {
-              margin-right: 0; }
-            @media screen and (max-width: 31.9375rem) {
-              .edlio.cms uniform-overlay uniform-modal page.current footer .button:not(:last-of-type), .edlio.cms uniform-overlay uniform-modal page.current footer .kitchen-sink button:not(:last-of-type), .edlio.cms .kitchen-sink uniform-overlay uniform-modal page.current footer button:not(:last-of-type),
-              .edlio.cms uniform-overlay edlio-modal page.current footer .button:not(:last-of-type),
-              .edlio.cms uniform-overlay edlio-modal page.current footer .kitchen-sink button:not(:last-of-type),
-              .edlio.cms .kitchen-sink uniform-overlay edlio-modal page.current footer button:not(:last-of-type),
-              .edlio.cms edlio-overlay uniform-modal page.current footer .button:not(:last-of-type),
-              .edlio.cms edlio-overlay uniform-modal page.current footer .kitchen-sink button:not(:last-of-type),
-              .edlio.cms .kitchen-sink edlio-overlay uniform-modal page.current footer button:not(:last-of-type),
-              .edlio.cms edlio-overlay edlio-modal page.current footer .button:not(:last-of-type),
-              .edlio.cms edlio-overlay edlio-modal page.current footer .kitchen-sink button:not(:last-of-type),
-              .edlio.cms .kitchen-sink edlio-overlay edlio-modal page.current footer button:not(:last-of-type) {
-                margin-right: 0.5em; } }
-      .edlio.cms uniform-overlay uniform-modal page.past,
-      .edlio.cms uniform-overlay edlio-modal page.past,
-      .edlio.cms edlio-overlay uniform-modal page.past,
-      .edlio.cms edlio-overlay edlio-modal page.past {
-        position: absolute;
-        -webkit-transform: translateX(-150%);
-        transform: translateX(-150%); }
-      .edlio.cms uniform-overlay uniform-modal page.future,
-      .edlio.cms uniform-overlay edlio-modal page.future,
-      .edlio.cms edlio-overlay uniform-modal page.future,
-      .edlio.cms edlio-overlay edlio-modal page.future {
-        position: absolute;
-        -webkit-transform: translateX(150%);
-        transform: translateX(150%); }
-    @media screen and (min-width: 48rem) {
-      .edlio.cms uniform-overlay uniform-modal,
-      .edlio.cms uniform-overlay edlio-modal,
-      .edlio.cms edlio-overlay uniform-modal,
-      .edlio.cms edlio-overlay edlio-modal {
-        max-width: 40em;
-        width: auto;
-        height: auto;
-        border-radius: 0.24063em; }
-        .edlio.cms uniform-overlay uniform-modal.full,
-        .edlio.cms uniform-overlay edlio-modal.full,
-        .edlio.cms edlio-overlay uniform-modal.full,
-        .edlio.cms edlio-overlay edlio-modal.full {
-          max-width: 100vw;
-          width: 100%;
-          height: 100%;
-          border-radius: 0; } }
-
-.edlio.cms .kitchen-sink .content > section {
-  margin-bottom: 3.82em; }
-  .edlio.cms .kitchen-sink .content > section > header {
-    margin-bottom: 1.618em;
-    border: none; }
+          background-color: rgba(0, 0, 0, 0.7);
+          border-radius: 0.24063em;
+          width: 5em;
+          padding: 1em;
+          color: white; }
+          .edlio.cms .data-table .tr:hover > .action.column .action svg.icon {
+            fill: white;
+            min-width: 1em;
+            min-height: 1em; }
+          .edlio.cms .data-table .tr:hover > .action.column .action span {
+            font-size: 0.7em; }
+      .edlio.cms .data-table .tr .action.column {
+        display: none; } }
+  .edlio.cms .tags {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap; }
+    .edlio.cms .tags > .tag {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      padding: 0 1em;
+      vertical-align: baseline;
+      box-shadow: inset 0 0 0 1px #dadbdd;
+      border-radius: 0.24063em; }
+  .edlio.cms .toggle-selector {
+    display: flex; }
+    .edlio.cms .toggle-selector .option {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ededed;
+      box-shadow: inset -1px 0 0 0 #cccccc, inset 0 1px 0 0 #cccccc, inset 0 -1px 0 0 #cccccc;
+      border-radius: 0;
+      border: none;
+      outline: none;
+      font-weight: 300;
+      font-style: normal;
+      text-align: center;
+      text-decoration: none;
+      color: #555555;
+      cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+      .edlio.cms .toggle-selector .option input,
+      .edlio.cms .toggle-selector .option label:before {
+        display: none;
+        visibility: hidden;
+        opacity: 0; }
+      .edlio.cms .toggle-selector .option label {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
+      .edlio.cms .toggle-selector .option .icon {
+        margin-right: .382em; }
+      .edlio.cms .toggle-selector .option:hover {
+        background: #f4f4f4; }
+      .edlio.cms .toggle-selector .option.selected {
+        background: white;
+        box-shadow: -1px 0 0 0 #555555, inset -1px 0 0 0 #555555, inset 0 1px 0 0 #555555, inset 0 -1px 0 0 #555555; }
+        .edlio.cms .toggle-selector .option.selected label {
+          color: black; }
+      .edlio.cms .toggle-selector .option.disabled {
+        opacity: .382;
+        pointer-events: none; }
+        .edlio.cms .toggle-selector .option.disabled + .option:not(.disabled) {
+          box-shadow: inset -1px 0 0 0 #cccccc, -1px 0 0 0 #cccccc, inset 0 1px 0 0 #cccccc, inset 0 -1px 0 0 #cccccc; }
+      .edlio.cms .toggle-selector .option:first-of-type {
+        border-radius: 0.24063em 0 0 0.24063em;
+        box-shadow: inset 0 0 0 1px #cccccc; }
+        .edlio.cms .toggle-selector .option:first-of-type.selected {
+          box-shadow: inset 0 0 0 1px #555555; }
+      .edlio.cms .toggle-selector .option:last-of-type {
+        border-radius: 0 0.24063em 0.24063em 0; }
+    .edlio.cms .toggle-selector.disabled {
+      opacity: .382; }
+      .edlio.cms .toggle-selector.disabled .option {
+        opacity: 1;
+        pointer-events: none; }
+  .edlio.cms [data-tooltip] {
+    position: relative; }
+    .edlio.cms [data-tooltip]:before, .edlio.cms [data-tooltip]:after {
+      position: absolute;
+      z-index: 2;
+      display: inline-block;
+      visibility: hidden;
+      opacity: 0; }
+      @media screen and (max-width: 47.9375rem) {
+        .edlio.cms [data-tooltip]:before, .edlio.cms [data-tooltip]:after {
+          display: none;
+          visibility: hidden;
+          opacity: 0; } }
+    .edlio.cms [data-tooltip]:before {
+      content: '';
+      transition: all 0.1146s cubic-bezier(0.44, 0.01, 0.37, 0.99) 0.1146s; }
+    .edlio.cms [data-tooltip]:after {
+      content: attr(data-tooltip);
+      width: 12em;
+      height: auto;
+      overflow: hidden;
+      background-color: #333333;
+      text-align: center;
+      color: white;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.44, 0.01, 0.37, 0.99) 0.1854s; }
+      @media screen and (max-width: 47.9375rem) {
+        .edlio.cms [data-tooltip]:after {
+          font-size: 14px;
+          line-height: 24px; } }
+      @media screen and (min-width: 48rem) {
+        .edlio.cms [data-tooltip]:after {
+          font-size: 14px;
+          line-height: 24px; } }
+      @media screen and (min-width: 64rem) {
+        .edlio.cms [data-tooltip]:after {
+          font-size: 15px;
+          line-height: 25.5px; } }
+      @media screen and (min-width: 75rem) {
+        .edlio.cms [data-tooltip]:after {
+          font-size: 16px;
+          line-height: 27px; } }
+    .edlio.cms [data-tooltip]:hover:before {
+      transition: all 0.3s cubic-bezier(0.44, 0.01, 0.37, 0.99) 0.3s; }
+    .edlio.cms [data-tooltip]:hover:before, .edlio.cms [data-tooltip]:hover:after {
+      opacity: 1;
+      visibility: visible; }
+    .edlio.cms [data-tooltip][data-tooltip-position="top"]:before {
+      top: -2.5em;
+      left: 50%;
+      margin-left: -1.382em;
+      border-top: 1.382em solid #333333;
+      border-left: 1.382em solid transparent;
+      border-right: 1.382em solid transparent; }
+    .edlio.cms [data-tooltip][data-tooltip-position="top"]:after {
+      left: 50%;
+      bottom: 100%;
+      margin-left: -6em; }
+    .edlio.cms [data-tooltip][data-tooltip-position="top"]:hover:before {
+      -webkit-transform: translateY(1em);
+      transform: translateY(1em); }
+    .edlio.cms [data-tooltip][data-tooltip-position="top"]:hover:after {
+      -webkit-transform: translateY(-1em);
+      transform: translateY(-1em); }
+    .edlio.cms [data-tooltip][data-tooltip-position="bottom"]:before {
+      bottom: -2.5em;
+      right: 50%;
+      margin-right: -1.382em;
+      border-top: none;
+      border-bottom: 1.382em solid #333333;
+      border-left: 1.382em solid transparent;
+      border-right: 1.382em solid transparent; }
+    .edlio.cms [data-tooltip][data-tooltip-position="bottom"]:after {
+      top: 100%;
+      right: 50%;
+      margin-right: -6em; }
+    .edlio.cms [data-tooltip][data-tooltip-position="bottom"]:hover:before {
+      -webkit-transform: translateY(-1em);
+      transform: translateY(-1em); }
+    .edlio.cms [data-tooltip][data-tooltip-position="bottom"]:hover:after {
+      -webkit-transform: translateY(1em);
+      transform: translateY(1em); }
+  .edlio.cms .uniform-card {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: left;
+    -webkit-justify-content: left;
+    justify-content: left;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 100%;
+    padding: 0.75em;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    color: #444444; }
     @media screen and (max-width: 47.9375rem) {
-      .edlio.cms .kitchen-sink .content > section > header {
-        text-align: center; } }
-    .edlio.cms .kitchen-sink .content > section > header h1 {
-      margin-bottom: 0;
-      padding: .382em .618em;
-      background: #ededed; }
-    .edlio.cms .kitchen-sink .content > section > header .breadcrumb {
-      margin: 0; }
-  .edlio.cms .kitchen-sink .content > section .breadcrumb {
-    padding: .382em .618em;
-    border-bottom: 1px solid #ededed; }
-  .edlio.cms .kitchen-sink .content > section .example {
-    padding: 0; }
+      .edlio.cms .uniform-card .card-title {
+        font-size: 1.125rem;
+        line-height: 1.5rem; } }
     @media screen and (min-width: 48rem) {
-      .edlio.cms .kitchen-sink .content > section .example {
-        padding: 0 1em; } }
-
-.edlio.cms .kitchen-sink .search.bar {
-  margin-bottom: 3em;
-  padding: 0;
-  border: none; }
-  .edlio.cms .kitchen-sink .search.bar form {
-    width: 100%; }
-    .edlio.cms .kitchen-sink .search.bar form .input,
-    .edlio.cms .kitchen-sink .search.bar form input {
+      .edlio.cms .uniform-card .card-title {
+        font-size: 1.25rem;
+        line-height: 1.5rem; } }
+    @media screen and (min-width: 64rem) {
+      .edlio.cms .uniform-card .card-title {
+        font-size: 1.5rem;
+        line-height: 1.59375rem; } }
+    @media screen and (min-width: 75rem) {
+      .edlio.cms .uniform-card .card-title {
+        font-size: 1.75rem;
+        line-height: 2.125rem; } }
+    .edlio.cms .uniform-card.thumbnail.user-welcome {
+      background-color: #ededed; }
+    .edlio.cms .uniform-card.thumbnail .graphic {
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      min-width: 4em;
+      height: 4em;
+      margin-right: 1em;
+      border-radius: 50%;
+      background: #444444;
+      overflow: hidden; }
+      .edlio.cms .uniform-card.thumbnail .graphic img {
+        min-width: 4em;
+        height: 4em; }
+      .edlio.cms .uniform-card.thumbnail .graphic svg {
+        width: 2em;
+        height: 2em;
+        fill: white; }
+    .edlio.cms .uniform-card.thumbnail aside.details {
+      text-align: center; }
+      @media screen and (max-width: 47.9375rem) {
+        .edlio.cms .uniform-card.thumbnail aside.details {
+          font-size: 0.875rem;
+          line-height: 1.5rem; } }
+      @media screen and (min-width: 48rem) {
+        .edlio.cms .uniform-card.thumbnail aside.details {
+          font-size: 0.875rem;
+          line-height: 1.5rem; } }
+      @media screen and (min-width: 64rem) {
+        .edlio.cms .uniform-card.thumbnail aside.details {
+          font-size: 0.9375rem;
+          line-height: 1.59375rem; } }
+      @media screen and (min-width: 75rem) {
+        .edlio.cms .uniform-card.thumbnail aside.details {
+          font-size: 1rem;
+          line-height: 1.6875rem; } }
+    @media screen and (max-width: 47.9375rem) {
+      .edlio.cms .uniform-card.thumbnail {
+        margin: 0 0.75em;
+        padding: 0; }
+        .edlio.cms .uniform-card.thumbnail.user-welcome {
+          display: none; }
+        .edlio.cms .uniform-card.thumbnail .graphic {
+          width: 50%;
+          margin-right: 0;
+          border-radius: unset;
+          border-top-left-radius: 3px;
+          border-bottom-left-radius: 3px; }
+        .edlio.cms .uniform-card.thumbnail aside.details {
+          width: 50%;
+          padding: 0 0.75em; }
+          .edlio.cms .uniform-card.thumbnail aside.details div:not(.card-title) {
+            display: none; } }
+    @media screen and (max-width: 31.9375rem) {
+      .edlio.cms .uniform-card.thumbnail aside.details {
+        padding: 0 0.6em; }
+        .edlio.cms .uniform-card.thumbnail aside.details .card-title {
+          font-size: initial;
+          line-height: initial;
+          margin-bottom: initial;
+          font-size: 1em; } }
+    .edlio.cms .uniform-card.info {
+      -ms-flex-align: start;
+      -webkit-align-items: flex-start;
+      align-items: flex-start;
+      background-color: #ededed; }
+      .edlio.cms .uniform-card.info svg {
+        width: 1.5em;
+        min-width: 1.5em;
+        fill: #444444; }
+      .edlio.cms .uniform-card.info div {
+        margin-left: 0.5em; }
+  .edlio.cms uniform-uploader {
+    font-size: 16px;
+    color: #888;
+    /* for Blazer global style overwrite woot woot */ }
+    .edlio.cms uniform-uploader .dropzone,
+    .edlio.cms uniform-uploader .loadingzone {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-line-pack: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -ms-flex-wrap: wrap;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      height: 10em;
+      border: 2px dashed #ccc;
+      border-radius: 0.24063em;
+      margin-bottom: 1em;
+      text-align: center; }
+    .edlio.cms uniform-uploader .dropzone {
+      padding: 0 1em; }
+    .edlio.cms uniform-uploader .dropzone.dragover {
+      background-color: #e4f4fc;
+      border-color: #2ca9e1; }
+      .edlio.cms uniform-uploader .dropzone.dragover span,
+      .edlio.cms uniform-uploader .dropzone.dragover .type.file-icon {
+        display: none; }
+    .edlio.cms uniform-uploader .dropzone span,
+    .edlio.cms uniform-uploader .dropzone svg,
+    .edlio.cms uniform-uploader .loadingzone .progress,
+    .edlio.cms uniform-uploader .loadingzone .cancel {
+      -ms-flex-item-align: center;
+      -webkit-align-self: center;
+      align-self: center; }
+    .edlio.cms uniform-uploader .dropzone span {
+      font-weight: bold; }
+    .edlio.cms uniform-uploader .dropzone header a {
+      color: #29abe2;
+      text-decoration: none; }
+    .edlio.cms uniform-uploader .dropzone svg.type.file-icon {
+      -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+      flex: 1 1 100%;
+      height: 3em !important;
+      fill: #ccc !important;
+      margin-bottom: 1em; }
+    .edlio.cms uniform-uploader .dropzone .dropdown {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
       margin-bottom: 0; }
-
-@media screen and (max-width: 47.9375rem) {
-  .edlio.cms .kitchen-sink .typography section h1 {
-    font-size: 1.125rem;
-    line-height: 1.5rem;
-    margin-bottom: 1.5rem; } }
-
-@media screen and (min-width: 48rem) {
-  .edlio.cms .kitchen-sink .typography section h1 {
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    margin-bottom: 1.5rem; } }
-
-@media screen and (min-width: 64rem) {
-  .edlio.cms .kitchen-sink .typography section h1 {
-    font-size: 1.5rem;
-    line-height: 1.59375rem;
-    margin-bottom: 1.59375rem; } }
-
-@media screen and (min-width: 75rem) {
-  .edlio.cms .kitchen-sink .typography section h1 {
-    font-size: 1.75rem;
-    line-height: 2.125rem;
-    margin-bottom: 2.125rem; } }
-
-.edlio.cms .kitchen-sink .typography .breadcrumb {
-  margin-bottom: 2em; }
-
-.edlio.cms .kitchen-sink .typography .columns {
-  -ms-flex-align: initial;
-  -webkit-align-items: initial;
-  align-items: initial; }
-  .edlio.cms .kitchen-sink .typography .columns > * {
-    display: block;
-    margin: 0; }
-    @media screen and (max-width: 47.9375rem) {
-      .edlio.cms .kitchen-sink .typography .columns > * {
-        margin: 0 0 1em; }
-        .edlio.cms .kitchen-sink .typography .columns > *:last-child {
-          margin: 0; }
-        .edlio.cms .kitchen-sink .typography .columns > *.sidebar {
+    .edlio.cms uniform-uploader .dropzone .dropdown .file-icon {
+      vertical-align: middle;
+      width: 1.382em;
+      height: 1.382em;
+      margin-right: 1em; }
+    .edlio.cms uniform-uploader .dropzone .dropdown .menu {
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      font-weight: normal;
+      position: absolute;
+      top: 0;
+      display: none;
+      opacity: 0;
+      transition: all 0.3s;
+      min-width: 15em;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 3px; }
+      .edlio.cms uniform-uploader .dropzone .dropdown .menu.open {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        top: 2em;
+        visibility: visible;
+        opacity: 1;
+        height: auto;
+        z-index: 101; }
+        .edlio.cms uniform-uploader .dropzone .dropdown .menu.open a {
+          -webkit-flex: 1 0 auto;
+          -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          align-items: center;
+          line-height: 3em;
+          padding: 0 1.382em 0 1em;
+          color: #888888;
+          text-decoration: none; }
+    .edlio.cms uniform-uploader .dropzone .dropdown .menu a:hover {
+      background-color: #eee;
+      text-decoration: none; }
+    .edlio.cms uniform-uploader .dropzone .dropdown a:not(:last-child) {
+      border-bottom: 1px solid #ccc; }
+    .edlio.cms uniform-uploader .loadingzone {
+      padding: 1em; }
+      .edlio.cms uniform-uploader .loadingzone .progress {
+        -webkit-flex: 1 1 0%;
+        -ms-flex: 1 1 0%;
+        flex: 1 1 0%;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        height: 40px;
+        margin: 1em;
+        background-color: #f4f4f4;
+        color: #2ca9e1;
+        border-radius: 2px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; }
+      .edlio.cms uniform-uploader .loadingzone .progress .progress-bar {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: end;
+        -webkit-justify-content: flex-end;
+        justify-content: flex-end;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        transition: width 0.3s ease-in-out;
+        background-color: #3BA16A;
+        height: 100%;
+        color: #fff;
+        padding-right: 1em; }
+        .edlio.cms uniform-uploader .loadingzone .progress .progress-bar.indeterminate {
+          position: relative;
+          overflow: hidden; }
+        .edlio.cms uniform-uploader .loadingzone .progress .progress-bar.indeterminate:before {
           display: block;
-          margin-right: 0; }
-          .edlio.cms .kitchen-sink .typography .columns > *.sidebar.right {
-            margin-left: 0; } }
-  @media screen and (min-width: 48rem) {
-    .edlio.cms .kitchen-sink .typography .columns {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: -200px;
+          width: 30%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.3);
+          -webkit-animation: loading 2s linear infinite;
+          animation: loading 2s linear infinite; }
+
+@-webkit-keyframes loading {
+  from {
+    left: -200px;
+    width: 30%; }
+  50% {
+    width: 30%; }
+  70% {
+    width: 70%; }
+  80% {
+    left: 50%; }
+  95% {
+    left: 120%; }
+  to {
+    left: 100%; } }
+
+@keyframes loading {
+  from {
+    left: -200px;
+    width: 30%; }
+  50% {
+    width: 30%; }
+  70% {
+    width: 70%; }
+  80% {
+    left: 50%; }
+  95% {
+    left: 120%; }
+  to {
+    left: 100%; } }
+      .edlio.cms uniform-uploader .loadingzone .cancel {
+        color: #e07c3a;
+        cursor: pointer; }
+        .edlio.cms uniform-uploader .loadingzone .cancel:hover {
+          text-decoration: none; }
+        .edlio.cms uniform-uploader .loadingzone .cancel:active {
+          color: #ff6500; }
+      .edlio.cms uniform-uploader .loadingzone .status {
+        -webkit-flex: 1 1 100%;
+        -ms-flex: 1 1 100%;
+        flex: 1 1 100%;
+        text-align: center; }
+    .edlio.cms uniform-uploader .files {
       display: -webkit-flex;
       display: -ms-flexbox;
       display: flex;
       -ms-flex-wrap: wrap;
       -webkit-flex-wrap: wrap;
       flex-wrap: wrap;
-      -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-      flex-direction: row; }
-      .edlio.cms .kitchen-sink .typography .columns > * {
-        margin-top: 0;
-        margin-right: 2em;
-        margin-left: 2em; }
-        .edlio.cms .kitchen-sink .typography .columns > *:not(.sidebar) {
-          -webkit-flex: 1 1 0%;
-          -ms-flex: 1 1 0%;
-          flex: 1 1 0%; }
-        .edlio.cms .kitchen-sink .typography .columns > *:first-child {
-          margin-left: 0; }
-        .edlio.cms .kitchen-sink .typography .columns > *:last-child {
-          margin-right: 0; } }
-  .edlio.cms .kitchen-sink .typography .columns .open-sans {
-    font-family: 'Open Sans'; }
-  .edlio.cms .kitchen-sink .typography .columns .helvetica {
-    font-family: Helvetica; }
-  .edlio.cms .kitchen-sink .typography .columns .arial {
-    font-family: Arial; }
-  .edlio.cms .kitchen-sink .typography .columns .sans-serif {
-    font-family: sans-serif; }
+      margin-bottom: 2em;
+      margin-top: .382em; }
+      .edlio.cms uniform-uploader .files .file {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 12em;
+        height: 6.667em;
+        padding: .3em;
+        border: 1px solid #cccccc;
+        margin: .382em; }
+      .edlio.cms uniform-uploader .files .file .icons {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center; }
+        .edlio.cms uniform-uploader .files .file .icons a {
+          padding: .2em;
+          box-shadow: 0 0px 1px rgba(0, 0, 0, 0.6);
+          border-radius: 2px; }
+          .edlio.cms uniform-uploader .files .file .icons a:hover {
+            pointer-events: all;
+            cursor: pointer; }
+            .edlio.cms uniform-uploader .files .file .icons a:hover .icon {
+              fill: #29abe2; }
+      .edlio.cms uniform-uploader .files .file .name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #888888;
+        text-align: center;
+        margin-top: .618em; }
+    .edlio.cms uniform-uploader .row,
+    .edlio.cms uniform-uploader .dropzone .menu a {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; }
+    .edlio.cms uniform-uploader .hidden {
+      display: none; }
+    .edlio.cms uniform-uploader .errors {
+      color: #e07c3a;
+      font-weight: bold; }
+      .edlio.cms uniform-uploader .errors div {
+        margin-bottom: 0.3em; }
+      .edlio.cms uniform-uploader .errors .hint {
+        color: #888;
+        font-weight: normal; }
+    .edlio.cms uniform-uploader section {
+      margin-bottom: 0 !important;
+      vertical-align: middle !important; }
+    .edlio.cms uniform-uploader .mobile-only {
+      display: none; }
+    @media screen and (max-width: 31.9375rem) {
+      .edlio.cms uniform-uploader .dropzone {
+        height: 5em; }
+      .edlio.cms uniform-uploader .dropzone svg.type.file-icon {
+        display: none; }
+      .edlio.cms uniform-uploader .dropzone .mobile-only {
+        display: block; }
+      .edlio.cms uniform-uploader .dropzone .desktop-only {
+        display: none; } }
+  .edlio.cms uniform-accordion > section,
+  .edlio.cms .uniform-accordion > section,
+  .edlio.cms edlio-accordion > section,
+  .edlio.cms .edlio-accordion > section, .edlio.cms uniform-accordion > section header,
+  .edlio.cms .uniform-accordion > section header,
+  .edlio.cms edlio-accordion > section header,
+  .edlio.cms .edlio-accordion > section header, .edlio.cms .bar.tab .width-constraint, .edlio.cms uniform-drawer a,
+  .edlio.cms edlio-drawer a, .edlio.cms .icon.input, .edlio.cms uniform-notification,
+  .edlio.cms .uniform-notification,
+  .edlio.cms edlio-notification,
+  .edlio.cms .edlio-notification, .edlio.cms uniform-select select-title,
+  .edlio.cms uniform-select .select-title,
+  .edlio.cms .uniform-select select-title,
+  .edlio.cms .uniform-select .select-title,
+  .edlio.cms edlio-select select-title,
+  .edlio.cms edlio-select .select-title,
+  .edlio.cms .edlio-select select-title,
+  .edlio.cms .edlio-select .select-title, .edlio.cms .uniform-card, .edlio.cms .uniform-card.thumbnail .graphic, .edlio.cms uniform-overlay,
+  .edlio.cms edlio-overlay, .edlio.cms uniform-overlay uniform-modal,
+  .edlio.cms uniform-overlay edlio-modal,
+  .edlio.cms edlio-overlay uniform-modal,
+  .edlio.cms edlio-overlay edlio-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
+  .edlio.cms uniform-overlay edlio-modal page.current header,
+  .edlio.cms edlio-overlay uniform-modal page.current header,
+  .edlio.cms edlio-overlay edlio-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer,
+  .edlio.cms uniform-overlay edlio-modal page.current footer,
+  .edlio.cms edlio-overlay uniform-modal page.current footer,
+  .edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell, .edlio.cms .kitchen-sink .dashboard-card-container, .edlio.cms .kitchen-sink #uploader_settings {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+  .edlio.cms uniform-drawer a span,
+  .edlio.cms edlio-drawer a span {
+    -webkit-flex: 1 1 0%;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%; }
+  .edlio.cms uniform-accordion > section,
+  .edlio.cms .uniform-accordion > section,
+  .edlio.cms edlio-accordion > section,
+  .edlio.cms .edlio-accordion > section, .edlio.cms uniform-accordion > section header,
+  .edlio.cms .uniform-accordion > section header,
+  .edlio.cms edlio-accordion > section header,
+  .edlio.cms .edlio-accordion > section header, .edlio.cms .bar.tab .width-constraint, .edlio.cms uniform-drawer a,
+  .edlio.cms edlio-drawer a, .edlio.cms .icon.input, .edlio.cms uniform-notification,
+  .edlio.cms .uniform-notification,
+  .edlio.cms edlio-notification,
+  .edlio.cms .edlio-notification, .edlio.cms uniform-select select-title,
+  .edlio.cms uniform-select .select-title,
+  .edlio.cms .uniform-select select-title,
+  .edlio.cms .uniform-select .select-title,
+  .edlio.cms edlio-select select-title,
+  .edlio.cms edlio-select .select-title,
+  .edlio.cms .edlio-select select-title,
+  .edlio.cms .edlio-select .select-title, .edlio.cms .uniform-card, .edlio.cms .uniform-card.thumbnail .graphic, .edlio.cms uniform-overlay,
+  .edlio.cms edlio-overlay, .edlio.cms uniform-overlay uniform-modal,
+  .edlio.cms uniform-overlay edlio-modal,
+  .edlio.cms edlio-overlay uniform-modal,
+  .edlio.cms edlio-overlay edlio-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
+  .edlio.cms uniform-overlay edlio-modal page.current header,
+  .edlio.cms edlio-overlay uniform-modal page.current header,
+  .edlio.cms edlio-overlay edlio-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer,
+  .edlio.cms uniform-overlay edlio-modal page.current footer,
+  .edlio.cms edlio-overlay uniform-modal page.current footer,
+  .edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell, .edlio.cms .kitchen-sink .dashboard-card-container, .edlio.cms .kitchen-sink #uploader_settings {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+  .edlio.cms uniform-drawer a span,
+  .edlio.cms edlio-drawer a span {
+    -webkit-flex: 1 1 0%;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%; }
+  .edlio.cms .list.grid, .edlio.cms .kitchen-sink .search.bar .width-constraint, .edlio.cms .kitchen-sink .flex-layouts > section, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row, .edlio.cms .kitchen-sink .flex-layouts > section .sidebar, .edlio.cms .kitchen-sink .flex-layouts > section .workspace {
+    -ms-flex-align: initial;
+    -webkit-align-items: initial;
+    align-items: initial; }
+    .edlio.cms .list.grid > *, .edlio.cms .kitchen-sink .search.bar .width-constraint > *, .edlio.cms .kitchen-sink .flex-layouts > section > *, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row > *, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row > *, .edlio.cms .kitchen-sink .flex-layouts > section .sidebar > *, .edlio.cms .kitchen-sink .flex-layouts > section .workspace > * {
+      display: block;
+      margin: 0; }
+      @media screen and (max-width: 47.9375rem) {
+        .edlio.cms .list.grid > *, .edlio.cms .kitchen-sink .search.bar .width-constraint > *, .edlio.cms .kitchen-sink .flex-layouts > section > *, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row > *, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row > *, .edlio.cms .kitchen-sink .flex-layouts > section .sidebar > *, .edlio.cms .kitchen-sink .flex-layouts > section .workspace > * {
+          margin: 0 0 1em; }
+          .edlio.cms .list.grid > *:last-child, .edlio.cms .kitchen-sink .search.bar .width-constraint > *:last-child, .edlio.cms .kitchen-sink .flex-layouts > section > *:last-child, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row > *:last-child, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row > *:last-child, .edlio.cms .kitchen-sink .flex-layouts > section .sidebar > *:last-child, .edlio.cms .kitchen-sink .flex-layouts > section .workspace > *:last-child {
+            margin: 0; }
+          .edlio.cms .list.grid > *.sidebar, .edlio.cms .kitchen-sink .search.bar .width-constraint > *.sidebar, .edlio.cms .kitchen-sink .flex-layouts > section > *.sidebar, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row > *.sidebar, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row > *.sidebar, .edlio.cms .kitchen-sink .flex-layouts > section .sidebar > *.sidebar, .edlio.cms .kitchen-sink .flex-layouts > section .workspace > *.sidebar {
+            display: block;
+            margin-right: 0; }
+            .edlio.cms .list.grid > *.sidebar.right, .edlio.cms .kitchen-sink .search.bar .width-constraint > *.sidebar.right, .edlio.cms .kitchen-sink .flex-layouts > section > *.sidebar.right, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row > *.sidebar.right, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row > *.sidebar.right, .edlio.cms .kitchen-sink .flex-layouts > section .sidebar > *.sidebar.right, .edlio.cms .kitchen-sink .flex-layouts > section .workspace > *.sidebar.right {
+              margin-left: 0; } }
+    @media screen and (min-width: 48rem) {
+      .edlio.cms .list.grid, .edlio.cms .kitchen-sink .search.bar .width-constraint, .edlio.cms .kitchen-sink .flex-layouts > section, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row, .edlio.cms .kitchen-sink .flex-layouts > section .sidebar, .edlio.cms .kitchen-sink .flex-layouts > section .workspace {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row; }
+        .edlio.cms .list.grid > *, .edlio.cms .kitchen-sink .search.bar .width-constraint > *, .edlio.cms .kitchen-sink .flex-layouts > section > *, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row > *, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row > *, .edlio.cms .kitchen-sink .flex-layouts > section .sidebar > *, .edlio.cms .kitchen-sink .flex-layouts > section .workspace > * {
+          margin-top: 0;
+          margin-right: 0.5em;
+          margin-left: 0.5em; }
+          .edlio.cms .list.grid > *:not(.sidebar), .edlio.cms .kitchen-sink .search.bar .width-constraint > *:not(.sidebar), .edlio.cms .kitchen-sink .flex-layouts > section > *:not(.sidebar), .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row > *:not(.sidebar), .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row > *:not(.sidebar), .edlio.cms .kitchen-sink .flex-layouts > section .sidebar > *:not(.sidebar), .edlio.cms .kitchen-sink .flex-layouts > section .workspace > *:not(.sidebar) {
+            -webkit-flex: 1 1 0%;
+            -ms-flex: 1 1 0%;
+            flex: 1 1 0%; }
+          .edlio.cms .list.grid > *:first-child, .edlio.cms .kitchen-sink .search.bar .width-constraint > *:first-child, .edlio.cms .kitchen-sink .flex-layouts > section > *:first-child, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row > *:first-child, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row > *:first-child, .edlio.cms .kitchen-sink .flex-layouts > section .sidebar > *:first-child, .edlio.cms .kitchen-sink .flex-layouts > section .workspace > *:first-child {
+            margin-left: 0; }
+          .edlio.cms .list.grid > *:last-child, .edlio.cms .kitchen-sink .search.bar .width-constraint > *:last-child, .edlio.cms .kitchen-sink .flex-layouts > section > *:last-child, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row > *:last-child, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row > *:last-child, .edlio.cms .kitchen-sink .flex-layouts > section .sidebar > *:last-child, .edlio.cms .kitchen-sink .flex-layouts > section .workspace > *:last-child {
+            margin-right: 0; } }
+  .edlio.cms uniform-accordion > section,
+  .edlio.cms .uniform-accordion > section,
+  .edlio.cms edlio-accordion > section,
+  .edlio.cms .edlio-accordion > section, .edlio.cms uniform-accordion > section header,
+  .edlio.cms .uniform-accordion > section header,
+  .edlio.cms edlio-accordion > section header,
+  .edlio.cms .edlio-accordion > section header, .edlio.cms .bar.tab .width-constraint, .edlio.cms uniform-drawer a,
+  .edlio.cms edlio-drawer a, .edlio.cms .icon.input, .edlio.cms uniform-notification,
+  .edlio.cms .uniform-notification,
+  .edlio.cms edlio-notification,
+  .edlio.cms .edlio-notification, .edlio.cms uniform-select select-title,
+  .edlio.cms uniform-select .select-title,
+  .edlio.cms .uniform-select select-title,
+  .edlio.cms .uniform-select .select-title,
+  .edlio.cms edlio-select select-title,
+  .edlio.cms edlio-select .select-title,
+  .edlio.cms .edlio-select select-title,
+  .edlio.cms .edlio-select .select-title, .edlio.cms .uniform-card, .edlio.cms .uniform-card.thumbnail .graphic, .edlio.cms uniform-overlay,
+  .edlio.cms edlio-overlay, .edlio.cms uniform-overlay uniform-modal,
+  .edlio.cms uniform-overlay edlio-modal,
+  .edlio.cms edlio-overlay uniform-modal,
+  .edlio.cms edlio-overlay edlio-modal, .edlio.cms uniform-overlay uniform-modal page.current header,
+  .edlio.cms uniform-overlay edlio-modal page.current header,
+  .edlio.cms edlio-overlay uniform-modal page.current header,
+  .edlio.cms edlio-overlay edlio-modal page.current header, .edlio.cms uniform-overlay uniform-modal page.current footer,
+  .edlio.cms uniform-overlay edlio-modal page.current footer,
+  .edlio.cms edlio-overlay uniform-modal page.current footer,
+  .edlio.cms edlio-overlay edlio-modal page.current footer, .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell, .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell, .edlio.cms .kitchen-sink .dashboard-card-container, .edlio.cms .kitchen-sink #uploader_settings {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+  .edlio.cms uniform-drawer a span,
+  .edlio.cms edlio-drawer a span {
+    -webkit-flex: 1 1 0%;
+    -ms-flex: 1 1 0%;
+    flex: 1 1 0%; }
+  .edlio.cms ol.breadcrumb li.active a, .edlio.cms a.disabled, .edlio.cms .bar.tab > *.selected:not(.width-constraint),
+  .edlio.cms .bar.tab .width-constraint > *.selected, .edlio.cms .button.disabled, .edlio.cms .kitchen-sink button.disabled {
+    pointer-events: none; }
+  .edlio.cms .bar.tab > *:not(.width-constraint),
+  .edlio.cms .bar.tab .width-constraint > *, .edlio.cms .button, .edlio.cms .kitchen-sink button, .edlio.cms uniform-select,
+  .edlio.cms .uniform-select,
+  .edlio.cms edlio-select,
+  .edlio.cms .edlio-select, .edlio.cms .toggle-selector .option {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none; }
+  .edlio.cms ol.breadcrumb li.active a, .edlio.cms a.disabled {
+    color: #aaabad; }
+  .edlio.cms :host {
+    font-size: 16px;
+    color: #888;
+    /* for Blazer global style overwrite woot woot */ }
+    .edlio.cms :host .dropzone,
+    .edlio.cms :host .loadingzone {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-line-pack: center;
+      -webkit-align-content: center;
+      align-content: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -ms-flex-wrap: wrap;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      height: 10em;
+      border: 2px dashed #ccc;
+      border-radius: 0.24063em;
+      margin-bottom: 1em;
+      text-align: center; }
+    .edlio.cms :host .dropzone {
+      padding: 0 1em; }
+    .edlio.cms :host .dropzone.dragover {
+      background-color: #e4f4fc;
+      border-color: #2ca9e1; }
+      .edlio.cms :host .dropzone.dragover span,
+      .edlio.cms :host .dropzone.dragover .type.file-icon {
+        display: none; }
+    .edlio.cms :host .dropzone span,
+    .edlio.cms :host .dropzone svg,
+    .edlio.cms :host .loadingzone .progress,
+    .edlio.cms :host .loadingzone .cancel {
+      -ms-flex-item-align: center;
+      -webkit-align-self: center;
+      align-self: center; }
+    .edlio.cms :host .dropzone span {
+      font-weight: bold; }
+    .edlio.cms :host .dropzone header a {
+      color: #29abe2;
+      text-decoration: none; }
+    .edlio.cms :host .dropzone svg.type.file-icon {
+      -webkit-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+      flex: 1 1 100%;
+      height: 3em !important;
+      fill: #ccc !important;
+      margin-bottom: 1em; }
+    .edlio.cms :host .dropzone .dropdown {
+      position: relative;
+      cursor: pointer;
+      display: inline-block;
+      margin-bottom: 0; }
+    .edlio.cms :host .dropzone .dropdown .file-icon {
+      vertical-align: middle;
+      width: 1.382em;
+      height: 1.382em;
+      margin-right: 1em; }
+    .edlio.cms :host .dropzone .dropdown .menu {
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      font-weight: normal;
+      position: absolute;
+      top: 0;
+      display: none;
+      opacity: 0;
+      transition: all 0.3s;
+      min-width: 15em;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 3px; }
+      .edlio.cms :host .dropzone .dropdown .menu.open {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        top: 2em;
+        visibility: visible;
+        opacity: 1;
+        height: auto;
+        z-index: 101; }
+        .edlio.cms :host .dropzone .dropdown .menu.open a {
+          -webkit-flex: 1 0 auto;
+          -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          align-items: center;
+          line-height: 3em;
+          padding: 0 1.382em 0 1em;
+          color: #888888;
+          text-decoration: none; }
+    .edlio.cms :host .dropzone .dropdown .menu a:hover {
+      background-color: #eee;
+      text-decoration: none; }
+    .edlio.cms :host .dropzone .dropdown a:not(:last-child) {
+      border-bottom: 1px solid #ccc; }
+    .edlio.cms :host .loadingzone {
+      padding: 1em; }
+      .edlio.cms :host .loadingzone .progress {
+        -webkit-flex: 1 1 0%;
+        -ms-flex: 1 1 0%;
+        flex: 1 1 0%;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        height: 40px;
+        margin: 1em;
+        background-color: #f4f4f4;
+        color: #2ca9e1;
+        border-radius: 2px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; }
+      .edlio.cms :host .loadingzone .progress .progress-bar {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: end;
+        -webkit-justify-content: flex-end;
+        justify-content: flex-end;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        transition: width 0.3s ease-in-out;
+        background-color: #3BA16A;
+        height: 100%;
+        color: #fff;
+        padding-right: 1em; }
+        .edlio.cms :host .loadingzone .progress .progress-bar.indeterminate {
+          position: relative;
+          overflow: hidden; }
+        .edlio.cms :host .loadingzone .progress .progress-bar.indeterminate:before {
+          display: block;
+          position: absolute;
+          content: "";
+          top: 0;
+          left: -200px;
+          width: 30%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.3);
+          -webkit-animation: loading 2s linear infinite;
+          animation: loading 2s linear infinite; }
 
-@media screen and (min-width: 48rem) {
-  .edlio.cms .kitchen-sink .accordions .description {
-    -webkit-columns: 2 auto;
-    -moz-columns: 2 auto;
-    columns: 2 auto; } }
+@-webkit-keyframes loading {
+  from {
+    left: -200px;
+    width: 30%; }
+  50% {
+    width: 30%; }
+  70% {
+    width: 70%; }
+  80% {
+    left: 50%; }
+  95% {
+    left: 120%; }
+  to {
+    left: 100%; } }
 
-.edlio.cms .kitchen-sink .accordions uniform-accordion > section {
-  box-shadow: inset 2px 2px 0 0 #ededed, inset -2px 0 0 0 #ededed; }
-  .edlio.cms .kitchen-sink .accordions uniform-accordion > section:last-of-type {
-    box-shadow: inset 2px 2px 0 0 #ededed, inset -2px -2px 0 0 #ededed; }
-  .edlio.cms .kitchen-sink .accordions uniform-accordion > section .content {
-    transition: padding .2s, max-height .15s, opacity .15s; }
-  .edlio.cms .kitchen-sink .accordions uniform-accordion > section header {
+@keyframes loading {
+  from {
+    left: -200px;
+    width: 30%; }
+  50% {
+    width: 30%; }
+  70% {
+    width: 70%; }
+  80% {
+    left: 50%; }
+  95% {
+    left: 120%; }
+  to {
+    left: 100%; } }
+      .edlio.cms :host .loadingzone .cancel {
+        color: #e07c3a;
+        cursor: pointer; }
+        .edlio.cms :host .loadingzone .cancel:hover {
+          text-decoration: none; }
+        .edlio.cms :host .loadingzone .cancel:active {
+          color: #ff6500; }
+      .edlio.cms :host .loadingzone .status {
+        -webkit-flex: 1 1 100%;
+        -ms-flex: 1 1 100%;
+        flex: 1 1 100%;
+        text-align: center; }
+    .edlio.cms :host .files {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      margin-bottom: 2em;
+      margin-top: .382em; }
+      .edlio.cms :host .files .file {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        width: 12em;
+        height: 6.667em;
+        padding: .3em;
+        border: 1px solid #cccccc;
+        margin: .382em; }
+      .edlio.cms :host .files .file .icons {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center; }
+        .edlio.cms :host .files .file .icons a {
+          padding: .2em;
+          box-shadow: 0 0px 1px rgba(0, 0, 0, 0.6);
+          border-radius: 2px; }
+          .edlio.cms :host .files .file .icons a:hover {
+            pointer-events: all;
+            cursor: pointer; }
+            .edlio.cms :host .files .file .icons a:hover .icon {
+              fill: #29abe2; }
+      .edlio.cms :host .files .file .name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #888888;
+        text-align: center;
+        margin-top: .618em; }
+    .edlio.cms :host .row,
+    .edlio.cms :host .dropzone .menu a {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; }
+    .edlio.cms :host .hidden {
+      display: none; }
+    .edlio.cms :host .errors {
+      color: #e07c3a;
+      font-weight: bold; }
+      .edlio.cms :host .errors div {
+        margin-bottom: 0.3em; }
+      .edlio.cms :host .errors .hint {
+        color: #888;
+        font-weight: normal; }
+    .edlio.cms :host section {
+      margin-bottom: 0 !important;
+      vertical-align: middle !important; }
+    .edlio.cms :host .mobile-only {
+      display: none; }
+    @media screen and (max-width: 31.9375rem) {
+      .edlio.cms :host .dropzone {
+        height: 5em; }
+      .edlio.cms :host .dropzone svg.type.file-icon {
+        display: none; }
+      .edlio.cms :host .dropzone .mobile-only {
+        display: block; }
+      .edlio.cms :host .dropzone .desktop-only {
+        display: none; } }
+  .edlio.cms uniform-modal,
+  .edlio.cms edlio-modal {
+    display: none; }
+  .edlio.cms uniform-overlay,
+  .edlio.cms edlio-overlay {
+    -webkit-flex: 1 0 100%;
+    -ms-flex: 1 0 100%;
+    flex: 1 0 100%; }
+    .edlio.cms uniform-overlay uniform-modal,
+    .edlio.cms uniform-overlay edlio-modal,
+    .edlio.cms edlio-overlay uniform-modal,
+    .edlio.cms edlio-overlay edlio-modal {
+      -webkit-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+      flex: 0 1 auto;
+      position: relative;
+      z-index: 98;
+      opacity: 0; }
+      .edlio.cms uniform-overlay uniform-modal.transition-in,
+      .edlio.cms uniform-overlay edlio-modal.transition-in,
+      .edlio.cms edlio-overlay uniform-modal.transition-in,
+      .edlio.cms edlio-overlay edlio-modal.transition-in {
+        opacity: 1;
+        transition: all 0.3s cubic-bezier(0.44, 0.01, 0.37, 0.99);
+        -webkit-transform: translate3d(0, 0, 0) scale(1);
+        transform: translate3d(0, 0, 0) scale(1); }
+      .edlio.cms uniform-overlay uniform-modal.transition-out,
+      .edlio.cms uniform-overlay edlio-modal.transition-out,
+      .edlio.cms edlio-overlay uniform-modal.transition-out,
+      .edlio.cms edlio-overlay edlio-modal.transition-out {
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.44, 0.01, 0.37, 0.99);
+        -webkit-transform: translate3d(0, -25%, 0) scale(0.2);
+        transform: translate3d(0, -25%, 0) scale(0.2); }
+  .edlio.cms uniform-overlay,
+  .edlio.cms edlio-overlay {
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
-    box-shadow: inset 0 -2px 0 0 #ededed; }
-    .edlio.cms .kitchen-sink .accordions uniform-accordion > section header:hover {
-      background: #f4f4f4; }
-  .edlio.cms .kitchen-sink .accordions uniform-accordion > section.collapsed {
-    box-shadow: inset 2px 2px 0 0 #ededed, inset -2px 0 0 0 #ededed; }
-    .edlio.cms .kitchen-sink .accordions uniform-accordion > section.collapsed:last-of-type {
-      box-shadow: inset 2px 2px 0 0 #ededed, inset -2px -2px 0 0 #ededed; }
-    .edlio.cms .kitchen-sink .accordions uniform-accordion > section.collapsed header {
-      box-shadow: none; }
-    .edlio.cms .kitchen-sink .accordions uniform-accordion > section.collapsed .content {
-      transition: padding .2s, max-height .15s, opacity .15s, visibility 0.1s .3s; }
-
-.edlio.cms .kitchen-sink .flex-layouts > section {
-  margin-bottom: 1em;
-  min-height: 10em;
-  background: #cccccc;
-  padding: 1em;
-  text-align: center; }
-  .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar {
-    background: white; }
-    .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row {
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap; }
+    .edlio.cms uniform-overlay uniform-modal,
+    .edlio.cms uniform-overlay edlio-modal,
+    .edlio.cms edlio-overlay uniform-modal,
+    .edlio.cms edlio-overlay edlio-modal {
       width: 100%;
-      margin: 0 0 1em; }
-      .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row:last-child {
+      height: 100%;
+      min-width: 16rem;
+      max-width: 82rem;
+      max-height: 100vh;
+      overflow: auto;
+      background-color: white;
+      color: #555555; }
+      .edlio.cms uniform-overlay uniform-modal page,
+      .edlio.cms uniform-overlay edlio-modal page,
+      .edlio.cms edlio-overlay uniform-modal page,
+      .edlio.cms edlio-overlay edlio-modal page {
+        display: none;
+        visibility: hidden;
+        opacity: 0;
+        height: 100%;
+        width: 100%;
+        transition: transform 0.3s ease-in; }
+        .edlio.cms uniform-overlay uniform-modal page.current,
+        .edlio.cms uniform-overlay edlio-modal page.current,
+        .edlio.cms edlio-overlay uniform-modal page.current,
+        .edlio.cms edlio-overlay edlio-modal page.current {
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          visibility: visible;
+          opacity: 1;
+          -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -webkit-transform: translateX(0%);
+          transform: translateX(0%); }
+          .edlio.cms uniform-overlay uniform-modal page.current > *,
+          .edlio.cms uniform-overlay edlio-modal page.current > *,
+          .edlio.cms edlio-overlay uniform-modal page.current > *,
+          .edlio.cms edlio-overlay edlio-modal page.current > * {
+            padding: 0 1.618em; }
+          .edlio.cms uniform-overlay uniform-modal page.current header,
+          .edlio.cms uniform-overlay edlio-modal page.current header,
+          .edlio.cms edlio-overlay uniform-modal page.current header,
+          .edlio.cms edlio-overlay edlio-modal page.current header {
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            -ms-flex-pack: justify;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-flex: 0 0 auto;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+            background-color: #cccccc; }
+            .edlio.cms uniform-overlay uniform-modal page.current header h1,
+            .edlio.cms uniform-overlay edlio-modal page.current header h1,
+            .edlio.cms edlio-overlay uniform-modal page.current header h1,
+            .edlio.cms edlio-overlay edlio-modal page.current header h1 {
+              -webkit-order: 0;
+              -ms-flex-order: 0;
+              order: 0;
+              margin: 0 auto; }
+            .edlio.cms uniform-overlay uniform-modal page.current header svg.icon,
+            .edlio.cms uniform-overlay edlio-modal page.current header svg.icon,
+            .edlio.cms edlio-overlay uniform-modal page.current header svg.icon,
+            .edlio.cms edlio-overlay edlio-modal page.current header svg.icon {
+              pointer-events: all;
+              cursor: pointer; }
+              .edlio.cms uniform-overlay uniform-modal page.current header svg.icon.back,
+              .edlio.cms uniform-overlay edlio-modal page.current header svg.icon.back,
+              .edlio.cms edlio-overlay uniform-modal page.current header svg.icon.back,
+              .edlio.cms edlio-overlay edlio-modal page.current header svg.icon.back {
+                -webkit-order: -1;
+                -ms-flex-order: -1;
+                order: -1; }
+              .edlio.cms uniform-overlay uniform-modal page.current header svg.icon.close,
+              .edlio.cms uniform-overlay edlio-modal page.current header svg.icon.close,
+              .edlio.cms edlio-overlay uniform-modal page.current header svg.icon.close,
+              .edlio.cms edlio-overlay edlio-modal page.current header svg.icon.close {
+                -webkit-order: 1;
+                -ms-flex-order: 1;
+                order: 1;
+                margin-left: 0; }
+          .edlio.cms uniform-overlay uniform-modal page.current .content,
+          .edlio.cms uniform-overlay edlio-modal page.current .content,
+          .edlio.cms edlio-overlay uniform-modal page.current .content,
+          .edlio.cms edlio-overlay edlio-modal page.current .content {
+            padding-top: 1em;
+            padding-bottom: 1em;
+            overflow: auto; }
+          .edlio.cms uniform-overlay uniform-modal page.current footer,
+          .edlio.cms uniform-overlay edlio-modal page.current footer,
+          .edlio.cms edlio-overlay uniform-modal page.current footer,
+          .edlio.cms edlio-overlay edlio-modal page.current footer {
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -ms-flex-pack: end;
+            -webkit-justify-content: flex-end;
+            justify-content: flex-end;
+            -webkit-flex: 0 0 auto;
+            -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+            margin-top: auto;
+            padding-top: 1em;
+            padding-bottom: 1em;
+            border-top: 2px solid #aaabad; }
+            .edlio.cms uniform-overlay uniform-modal page.current footer .button, .edlio.cms uniform-overlay uniform-modal page.current footer .kitchen-sink button, .edlio.cms .kitchen-sink uniform-overlay uniform-modal page.current footer button,
+            .edlio.cms uniform-overlay edlio-modal page.current footer .button,
+            .edlio.cms uniform-overlay edlio-modal page.current footer .kitchen-sink button,
+            .edlio.cms .kitchen-sink uniform-overlay edlio-modal page.current footer button,
+            .edlio.cms edlio-overlay uniform-modal page.current footer .button,
+            .edlio.cms edlio-overlay uniform-modal page.current footer .kitchen-sink button,
+            .edlio.cms .kitchen-sink edlio-overlay uniform-modal page.current footer button,
+            .edlio.cms edlio-overlay edlio-modal page.current footer .button,
+            .edlio.cms edlio-overlay edlio-modal page.current footer .kitchen-sink button,
+            .edlio.cms .kitchen-sink edlio-overlay edlio-modal page.current footer button {
+              margin-bottom: 0; }
+              .edlio.cms uniform-overlay uniform-modal page.current footer .button:last-of-type, .edlio.cms uniform-overlay uniform-modal page.current footer .kitchen-sink button:last-of-type, .edlio.cms .kitchen-sink uniform-overlay uniform-modal page.current footer button:last-of-type,
+              .edlio.cms uniform-overlay edlio-modal page.current footer .button:last-of-type,
+              .edlio.cms uniform-overlay edlio-modal page.current footer .kitchen-sink button:last-of-type,
+              .edlio.cms .kitchen-sink uniform-overlay edlio-modal page.current footer button:last-of-type,
+              .edlio.cms edlio-overlay uniform-modal page.current footer .button:last-of-type,
+              .edlio.cms edlio-overlay uniform-modal page.current footer .kitchen-sink button:last-of-type,
+              .edlio.cms .kitchen-sink edlio-overlay uniform-modal page.current footer button:last-of-type,
+              .edlio.cms edlio-overlay edlio-modal page.current footer .button:last-of-type,
+              .edlio.cms edlio-overlay edlio-modal page.current footer .kitchen-sink button:last-of-type,
+              .edlio.cms .kitchen-sink edlio-overlay edlio-modal page.current footer button:last-of-type {
+                margin-right: 0; }
+              @media screen and (max-width: 31.9375rem) {
+                .edlio.cms uniform-overlay uniform-modal page.current footer .button:not(:last-of-type), .edlio.cms uniform-overlay uniform-modal page.current footer .kitchen-sink button:not(:last-of-type), .edlio.cms .kitchen-sink uniform-overlay uniform-modal page.current footer button:not(:last-of-type),
+                .edlio.cms uniform-overlay edlio-modal page.current footer .button:not(:last-of-type),
+                .edlio.cms uniform-overlay edlio-modal page.current footer .kitchen-sink button:not(:last-of-type),
+                .edlio.cms .kitchen-sink uniform-overlay edlio-modal page.current footer button:not(:last-of-type),
+                .edlio.cms edlio-overlay uniform-modal page.current footer .button:not(:last-of-type),
+                .edlio.cms edlio-overlay uniform-modal page.current footer .kitchen-sink button:not(:last-of-type),
+                .edlio.cms .kitchen-sink edlio-overlay uniform-modal page.current footer button:not(:last-of-type),
+                .edlio.cms edlio-overlay edlio-modal page.current footer .button:not(:last-of-type),
+                .edlio.cms edlio-overlay edlio-modal page.current footer .kitchen-sink button:not(:last-of-type),
+                .edlio.cms .kitchen-sink edlio-overlay edlio-modal page.current footer button:not(:last-of-type) {
+                  margin-right: 0.5em; } }
+        .edlio.cms uniform-overlay uniform-modal page.past,
+        .edlio.cms uniform-overlay edlio-modal page.past,
+        .edlio.cms edlio-overlay uniform-modal page.past,
+        .edlio.cms edlio-overlay edlio-modal page.past {
+          position: absolute;
+          -webkit-transform: translateX(-150%);
+          transform: translateX(-150%); }
+        .edlio.cms uniform-overlay uniform-modal page.future,
+        .edlio.cms uniform-overlay edlio-modal page.future,
+        .edlio.cms edlio-overlay uniform-modal page.future,
+        .edlio.cms edlio-overlay edlio-modal page.future {
+          position: absolute;
+          -webkit-transform: translateX(150%);
+          transform: translateX(150%); }
+      @media screen and (min-width: 48rem) {
+        .edlio.cms uniform-overlay uniform-modal,
+        .edlio.cms uniform-overlay edlio-modal,
+        .edlio.cms edlio-overlay uniform-modal,
+        .edlio.cms edlio-overlay edlio-modal {
+          max-width: 40em;
+          width: auto;
+          height: auto;
+          border-radius: 0.24063em; }
+          .edlio.cms uniform-overlay uniform-modal.full,
+          .edlio.cms uniform-overlay edlio-modal.full,
+          .edlio.cms edlio-overlay uniform-modal.full,
+          .edlio.cms edlio-overlay edlio-modal.full {
+            max-width: 100vw;
+            width: 100%;
+            height: 100%;
+            border-radius: 0; } }
+  .edlio.cms .kitchen-sink .content > section {
+    margin-bottom: 3.82em; }
+    .edlio.cms .kitchen-sink .content > section > header {
+      margin-bottom: 1.618em;
+      border: none; }
+      @media screen and (max-width: 47.9375rem) {
+        .edlio.cms .kitchen-sink .content > section > header {
+          text-align: center; } }
+      .edlio.cms .kitchen-sink .content > section > header h1 {
+        margin-bottom: 0;
+        padding: .382em .618em;
+        background: #ededed; }
+      .edlio.cms .kitchen-sink .content > section > header .breadcrumb {
+        margin: 0; }
+    .edlio.cms .kitchen-sink .content > section .breadcrumb {
+      padding: .382em .618em;
+      border-bottom: 1px solid #ededed; }
+    .edlio.cms .kitchen-sink .content > section .example {
+      padding: 0; }
+      @media screen and (min-width: 48rem) {
+        .edlio.cms .kitchen-sink .content > section .example {
+          padding: 0 1em; } }
+  .edlio.cms .kitchen-sink .search.bar {
+    margin-bottom: 3em;
+    padding: 0;
+    border: none; }
+    .edlio.cms .kitchen-sink .search.bar form {
+      width: 100%; }
+      .edlio.cms .kitchen-sink .search.bar form .input,
+      .edlio.cms .kitchen-sink .search.bar form input {
         margin-bottom: 0; }
-      .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell {
+  @media screen and (max-width: 47.9375rem) {
+    .edlio.cms .kitchen-sink .typography section h1 {
+      font-size: 1.125rem;
+      line-height: 1.5rem;
+      margin-bottom: 1.5rem; } }
+  @media screen and (min-width: 48rem) {
+    .edlio.cms .kitchen-sink .typography section h1 {
+      font-size: 1.25rem;
+      line-height: 1.5rem;
+      margin-bottom: 1.5rem; } }
+  @media screen and (min-width: 64rem) {
+    .edlio.cms .kitchen-sink .typography section h1 {
+      font-size: 1.5rem;
+      line-height: 1.59375rem;
+      margin-bottom: 1.59375rem; } }
+  @media screen and (min-width: 75rem) {
+    .edlio.cms .kitchen-sink .typography section h1 {
+      font-size: 1.75rem;
+      line-height: 2.125rem;
+      margin-bottom: 2.125rem; } }
+  .edlio.cms .kitchen-sink .typography .breadcrumb {
+    margin-bottom: 2em; }
+  .edlio.cms .kitchen-sink .typography .columns {
+    -ms-flex-align: initial;
+    -webkit-align-items: initial;
+    align-items: initial; }
+    .edlio.cms .kitchen-sink .typography .columns > * {
+      display: block;
+      margin: 0; }
+      @media screen and (max-width: 47.9375rem) {
+        .edlio.cms .kitchen-sink .typography .columns > * {
+          margin: 0 0 1em; }
+          .edlio.cms .kitchen-sink .typography .columns > *:last-child {
+            margin: 0; }
+          .edlio.cms .kitchen-sink .typography .columns > *.sidebar {
+            display: block;
+            margin-right: 0; }
+            .edlio.cms .kitchen-sink .typography .columns > *.sidebar.right {
+              margin-left: 0; } }
+    @media screen and (min-width: 48rem) {
+      .edlio.cms .kitchen-sink .typography .columns {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row; }
+        .edlio.cms .kitchen-sink .typography .columns > * {
+          margin-top: 0;
+          margin-right: 2em;
+          margin-left: 2em; }
+          .edlio.cms .kitchen-sink .typography .columns > *:not(.sidebar) {
+            -webkit-flex: 1 1 0%;
+            -ms-flex: 1 1 0%;
+            flex: 1 1 0%; }
+          .edlio.cms .kitchen-sink .typography .columns > *:first-child {
+            margin-left: 0; }
+          .edlio.cms .kitchen-sink .typography .columns > *:last-child {
+            margin-right: 0; } }
+    .edlio.cms .kitchen-sink .typography .columns .open-sans {
+      font-family: 'Open Sans'; }
+    .edlio.cms .kitchen-sink .typography .columns .helvetica {
+      font-family: Helvetica; }
+    .edlio.cms .kitchen-sink .typography .columns .arial {
+      font-family: Arial; }
+    .edlio.cms .kitchen-sink .typography .columns .sans-serif {
+      font-family: sans-serif; }
+  @media screen and (min-width: 48rem) {
+    .edlio.cms .kitchen-sink .accordions .description {
+      -webkit-columns: 2 auto;
+      -moz-columns: 2 auto;
+      columns: 2 auto; } }
+  .edlio.cms .kitchen-sink .accordions uniform-accordion > section {
+    box-shadow: inset 2px 2px 0 0 #ededed, inset -2px 0 0 0 #ededed; }
+    .edlio.cms .kitchen-sink .accordions uniform-accordion > section:last-of-type {
+      box-shadow: inset 2px 2px 0 0 #ededed, inset -2px -2px 0 0 #ededed; }
+    .edlio.cms .kitchen-sink .accordions uniform-accordion > section .content {
+      transition: padding .2s, max-height .15s, opacity .15s; }
+    .edlio.cms .kitchen-sink .accordions uniform-accordion > section header {
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      box-shadow: inset 0 -2px 0 0 #ededed; }
+      .edlio.cms .kitchen-sink .accordions uniform-accordion > section header:hover {
+        background: #f4f4f4; }
+    .edlio.cms .kitchen-sink .accordions uniform-accordion > section.collapsed {
+      box-shadow: inset 2px 2px 0 0 #ededed, inset -2px 0 0 0 #ededed; }
+      .edlio.cms .kitchen-sink .accordions uniform-accordion > section.collapsed:last-of-type {
+        box-shadow: inset 2px 2px 0 0 #ededed, inset -2px -2px 0 0 #ededed; }
+      .edlio.cms .kitchen-sink .accordions uniform-accordion > section.collapsed header {
+        box-shadow: none; }
+      .edlio.cms .kitchen-sink .accordions uniform-accordion > section.collapsed .content {
+        transition: padding .2s, max-height .15s, opacity .15s, visibility 0.1s .3s; }
+  .edlio.cms .kitchen-sink .flex-layouts > section {
+    margin-bottom: 1em;
+    min-height: 10em;
+    background: #cccccc;
+    padding: 1em;
+    text-align: center; }
+    .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar {
+      background: white; }
+      .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row {
+        width: 100%;
+        margin: 0 0 1em; }
+        .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row:last-child {
+          margin-bottom: 0; }
+        .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .sidebar .row .cell {
+          -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          align-items: center;
+          -ms-flex-pack: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+          padding: 2em 1em;
+          background: #ededed; }
+    .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace {
+      display: block; }
+      .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row {
+        margin: 0 0 1em 0; }
+        .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row:nth-child(2) .cell {
+          background: #888888;
+          color: white; }
+        .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row:last-child {
+          margin-bottom: 0; }
+    .edlio.cms .kitchen-sink .flex-layouts > section > * {
+      border: 2px solid #d1d2d4;
+      padding: 1em; }
+    .edlio.cms .kitchen-sink .flex-layouts > section .sidebar {
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      text-align: center;
+      background: white; }
+    .edlio.cms .kitchen-sink .flex-layouts > section .workspace {
+      background: white; }
+      .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
         -webkit-flex-direction: column;
         -ms-flex-direction: column;
         flex-direction: column;
@@ -1812,170 +2599,250 @@
         justify-content: center;
         padding: 2em 1em;
         background: #ededed; }
-  .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace {
-    display: block; }
-    .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row {
-      margin: 0 0 1em 0; }
-      .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row:nth-child(2) .cell {
-        background: #888888;
-        color: white; }
-      .edlio.cms .kitchen-sink .flex-layouts > section.example-4 .workspace .row:last-child {
-        margin-bottom: 0; }
-  .edlio.cms .kitchen-sink .flex-layouts > section > * {
-    border: 2px solid #d1d2d4;
-    padding: 1em; }
-  .edlio.cms .kitchen-sink .flex-layouts > section .sidebar {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    text-align: center;
-    background: white; }
-  .edlio.cms .kitchen-sink .flex-layouts > section .workspace {
-    background: white; }
-    .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell {
-      -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-      flex-direction: column;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      padding: 2em 1em;
-      background: #ededed; }
-      .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell:last-child {
-        margin-bottom: 0; }
-
-.edlio.cms .kitchen-sink .icons ul {
-  list-style: none; }
+        .edlio.cms .kitchen-sink .flex-layouts > section .workspace .cell:last-child {
+          margin-bottom: 0; }
+  .edlio.cms .kitchen-sink .icons ul {
+    list-style: none; }
+    @media screen and (min-width: 32rem) {
+      .edlio.cms .kitchen-sink .icons ul {
+        -webkit-columns: 2 auto;
+        -moz-columns: 2 auto;
+        columns: 2 auto; } }
+    @media screen and (min-width: 48rem) {
+      .edlio.cms .kitchen-sink .icons ul {
+        -webkit-columns: 3 auto;
+        -moz-columns: 3 auto;
+        columns: 3 auto; } }
+    .edlio.cms .kitchen-sink .icons ul svg {
+      margin-right: .382em; }
+    .edlio.cms .kitchen-sink .icons ul .item {
+      position: relative; }
   @media screen and (min-width: 32rem) {
-    .edlio.cms .kitchen-sink .icons ul {
+    .edlio.cms .kitchen-sink .colors .columns {
       -webkit-columns: 2 auto;
       -moz-columns: 2 auto;
       columns: 2 auto; } }
   @media screen and (min-width: 48rem) {
-    .edlio.cms .kitchen-sink .icons ul {
+    .edlio.cms .kitchen-sink .colors .columns {
       -webkit-columns: 3 auto;
       -moz-columns: 3 auto;
       columns: 3 auto; } }
-  .edlio.cms .kitchen-sink .icons ul svg {
-    margin-right: .382em; }
-
-@media screen and (max-width: 47.9375rem) {
-  .edlio.cms .kitchen-sink .lists section h1 {
-    font-size: 1.125rem;
-    line-height: 1.5rem; } }
-
-@media screen and (min-width: 48rem) {
-  .edlio.cms .kitchen-sink .lists section h1 {
-    font-size: 1.25rem;
-    line-height: 1.5rem; } }
-
-@media screen and (min-width: 64rem) {
-  .edlio.cms .kitchen-sink .lists section h1 {
-    font-size: 1.5rem;
-    line-height: 1.59375rem; } }
-
-@media screen and (min-width: 75rem) {
-  .edlio.cms .kitchen-sink .lists section h1 {
-    font-size: 1.75rem;
-    line-height: 2.125rem; } }
-
-@media screen and (max-width: 47.9375rem) {
-  .edlio.cms .kitchen-sink .lists .list.grid {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+  @media screen and (min-width: 64rem) {
+    .edlio.cms .kitchen-sink .colors .columns {
+      -webkit-columns: 4 auto;
+      -moz-columns: 4 auto;
+      columns: 4 auto; } }
+  .edlio.cms .kitchen-sink .colors .item {
+    position: relative;
+    margin-bottom: 20px;
+    max-width: 250px;
+    break-inside: avoid;
+    page-break-inside: avoid; }
+  .edlio.cms .kitchen-sink .colors .color-block {
+    height: 3.125rem;
+    box-shadow: #ededed 0 0 0 1px inset; }
+  .edlio.cms .kitchen-sink .colors .color-hex {
+    color: #888888;
+    font-size: 14px;
+    float: right; }
+  @media screen and (max-width: 47.9375rem) {
+    .edlio.cms .kitchen-sink .lists section h1 {
+      font-size: 1.125rem;
+      line-height: 1.5rem; } }
+  @media screen and (min-width: 48rem) {
+    .edlio.cms .kitchen-sink .lists section h1 {
+      font-size: 1.25rem;
+      line-height: 1.5rem; } }
+  @media screen and (min-width: 64rem) {
+    .edlio.cms .kitchen-sink .lists section h1 {
+      font-size: 1.5rem;
+      line-height: 1.59375rem; } }
+  @media screen and (min-width: 75rem) {
+    .edlio.cms .kitchen-sink .lists section h1 {
+      font-size: 1.75rem;
+      line-height: 2.125rem; } }
+  @media screen and (max-width: 47.9375rem) {
+    .edlio.cms .kitchen-sink .lists .list.grid {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row; }
+      .edlio.cms .kitchen-sink .lists .list.grid > * {
+        overflow: hidden;
+        -webkit-flex: 0 0 50%;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        padding: 0 0.5em 1em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:last-child:nth-child(0n) {
+          padding-right: 0.5em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(0n) {
+          padding-right: 0.5em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(0n + 1) {
+          padding-left: 0.5em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:first-child {
+          padding-left: 0; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:last-child:nth-child(2n) {
+          padding-right: 0; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(2n) {
+          padding-right: 0; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(2n + 1), .edlio.cms .kitchen-sink .lists .list.grid > *:first-child:not(:only-child) {
+          padding-left: 0; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:only-child, .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(-n+1), .edlio.cms .kitchen-sink .lists .list.grid > *:first-child:nth-last-child(-n+1) {
+          margin-left: auto;
+          margin-right: auto; } }
+  @media screen and (min-width: 48rem) {
+    .edlio.cms .kitchen-sink .lists .list.grid {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row; }
+      .edlio.cms .kitchen-sink .lists .list.grid > * {
+        overflow: hidden;
+        -webkit-flex: 0 0 25%;
+        -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
+        padding: 0 0.5em 1em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:last-child:nth-child(0n) {
+          padding-right: 0.5em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(0n) {
+          padding-right: 0.5em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(0n + 1) {
+          padding-left: 0.5em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:last-child:nth-child(1n) {
+          padding-right: 0.5em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(1n) {
+          padding-right: 0.5em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(1n + 1) {
+          padding-left: 0.5em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:last-child:nth-child(2n) {
+          padding-right: 0.5em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(2n) {
+          padding-right: 0.5em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(2n + 1) {
+          padding-left: 0.5em; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:first-child {
+          padding-left: 0; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:last-child:nth-child(4n) {
+          padding-right: 0; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(4n) {
+          padding-right: 0; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(4n + 1), .edlio.cms .kitchen-sink .lists .list.grid > *:first-child:not(:only-child) {
+          padding-left: 0; }
+        .edlio.cms .kitchen-sink .lists .list.grid > *:only-child, .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(-n+3), .edlio.cms .kitchen-sink .lists .list.grid > *:first-child:nth-last-child(-n+3) {
+          margin-left: auto;
+          margin-right: auto; } }
+  .edlio.cms .kitchen-sink .lists .list.grid figure {
+    padding: 1em;
+    box-shadow: 0 0 0 2px #ededed; }
+    .edlio.cms .kitchen-sink .lists .list.grid figure svg {
+      width: 100%;
+      height: auto;
+      fill: #333333; }
+    .edlio.cms .kitchen-sink .lists .list.grid figure figcaption {
+      text-align: center; }
+  .edlio.cms .kitchen-sink .dashboard-card-container {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    min-width: 13.875em;
+    max-width: 17.556em;
+    margin-bottom: 1em; }
+    .edlio.cms .kitchen-sink .dashboard-card-container > * {
+      margin-bottom: 1.389em; }
+    @media screen and (max-width: 47.9375rem) {
+      .edlio.cms .kitchen-sink .dashboard-card-container {
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        width: 100%;
+        min-width: unset;
+        max-width: unset; } }
+  .edlio.cms .kitchen-sink .uniform-card:not(.thumbnail):not(.info) {
+    display: inline-block;
+    width: unset;
+    margin-bottom: 1em; }
+  .edlio.cms .kitchen-sink .uniform-card.info {
+    margin-bottom: 1em; }
+  .edlio.cms .kitchen-sink #uploader_settings {
     -ms-flex-wrap: wrap;
     -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row; }
-    .edlio.cms .kitchen-sink .lists .list.grid > * {
-      overflow: hidden;
-      -webkit-flex: 0 0 50%;
-      -ms-flex: 0 0 50%;
-      flex: 0 0 50%;
-      padding: 0 0.5em 1em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:last-child:nth-child(0n) {
-        padding-right: 0.5em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(0n) {
-        padding-right: 0.5em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(0n + 1) {
-        padding-left: 0.5em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:first-child {
-        padding-left: 0; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:last-child:nth-child(2n) {
-        padding-right: 0; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(2n) {
-        padding-right: 0; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(2n + 1), .edlio.cms .kitchen-sink .lists .list.grid > *:first-child:not(:only-child) {
-        padding-left: 0; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:only-child, .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(-n+1), .edlio.cms .kitchen-sink .lists .list.grid > *:first-child:nth-last-child(-n+1) {
-        margin-left: auto;
-        margin-right: auto; } }
-
-@media screen and (min-width: 48rem) {
-  .edlio.cms .kitchen-sink .lists .list.grid {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row; }
-    .edlio.cms .kitchen-sink .lists .list.grid > * {
-      overflow: hidden;
-      -webkit-flex: 0 0 25%;
-      -ms-flex: 0 0 25%;
-      flex: 0 0 25%;
-      padding: 0 0.5em 1em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:last-child:nth-child(0n) {
-        padding-right: 0.5em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(0n) {
-        padding-right: 0.5em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(0n + 1) {
-        padding-left: 0.5em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:last-child:nth-child(1n) {
-        padding-right: 0.5em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(1n) {
-        padding-right: 0.5em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(1n + 1) {
-        padding-left: 0.5em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:last-child:nth-child(2n) {
-        padding-right: 0.5em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(2n) {
-        padding-right: 0.5em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(2n + 1) {
-        padding-left: 0.5em; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:first-child {
-        padding-left: 0; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:last-child:nth-child(4n) {
-        padding-right: 0; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(4n) {
-        padding-right: 0; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(4n + 1), .edlio.cms .kitchen-sink .lists .list.grid > *:first-child:not(:only-child) {
-        padding-left: 0; }
-      .edlio.cms .kitchen-sink .lists .list.grid > *:only-child, .edlio.cms .kitchen-sink .lists .list.grid > *:nth-child(-n+3), .edlio.cms .kitchen-sink .lists .list.grid > *:first-child:nth-last-child(-n+3) {
-        margin-left: auto;
-        margin-right: auto; } }
-
-.edlio.cms .kitchen-sink .lists .list.grid figure {
-  padding: 1em;
-  box-shadow: 0 0 0 2px #ededed; }
-  .edlio.cms .kitchen-sink .lists .list.grid figure svg {
-    width: 100%;
-    height: auto;
-    fill: #333333; }
-  .edlio.cms .kitchen-sink .lists .list.grid figure figcaption {
-    text-align: center; }
+    flex-wrap: wrap; }
+    .edlio.cms .kitchen-sink #uploader_settings > div {
+      max-width: 21em;
+      width: 100%;
+      margin-bottom: 1em; }
+      .edlio.cms .kitchen-sink #uploader_settings > div .uploader-config-header {
+        margin-bottom: 0.5em;
+        font-size: 1.1em;
+        font-weight: bold; }
+      .edlio.cms .kitchen-sink #uploader_settings > div div {
+        font-size: 0.9em; }
+    .edlio.cms .kitchen-sink #uploader_settings input {
+      height: 3em;
+      width: 95%;
+      font-size: 0.9em;
+      margin-bottom: 0.5em; }
+  .edlio.cms .kitchen-sink #save_uploader_settings {
+    cursor: pointer;
+    border: 1px solid black; }
+  .edlio.cms .kitchen-sink #file_uploader_list > * {
+    max-width: 20em; }
+  .edlio.cms .code-modal {
+    max-width: calc(100% - 50px);
+    background-color: #333; }
+  .edlio.cms .prettyprint {
+    font-size: 14px;
+    padding: 2rem; }
+  .edlio.cms kitchensink-clipboard {
+    display: block; }
+    .edlio.cms kitchensink-clipboard .button.secondary, .edlio.cms kitchensink-clipboard .kitchen-sink button.secondary, .edlio.cms .kitchen-sink kitchensink-clipboard button.secondary {
+      line-height: 0.3rem;
+      position: absolute;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-right: 0;
+      margin-bottom: 0;
+      right: 0;
+      top: 0;
+      opacity: 0; }
+    .edlio.cms kitchensink-clipboard:focus .button.secondary, .edlio.cms kitchensink-clipboard:focus .kitchen-sink button.secondary, .edlio.cms .kitchen-sink kitchensink-clipboard:focus button.secondary,
+    .edlio.cms kitchensink-clipboard:hover .button.secondary,
+    .edlio.cms kitchensink-clipboard:hover .kitchen-sink button.secondary,
+    .edlio.cms .kitchen-sink kitchensink-clipboard:hover button.secondary {
+      opacity: 1; }
+  .edlio.cms kitchensink-codeblock {
+    display: block;
+    position: relative; }
+    .edlio.cms kitchensink-codeblock .code {
+      text-align: right;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 0; }
+      .edlio.cms kitchensink-codeblock .code .button, .edlio.cms kitchensink-codeblock .code .kitchen-sink button, .edlio.cms .kitchen-sink kitchensink-codeblock .code button {
+        line-height: 0.3rem;
+        display: inline-block;
+        background-color: #555555;
+        color: white; }
+        .edlio.cms kitchensink-codeblock .code .button:hover, .edlio.cms kitchensink-codeblock .code .kitchen-sink button:hover, .edlio.cms .kitchen-sink kitchensink-codeblock .code button:hover {
+          color: #e64017;
+          background-color: #333333; }
+    .edlio.cms kitchensink-codeblock:focus .code,
+    .edlio.cms kitchensink-codeblock:hover .code {
+      opacity: 1; }
